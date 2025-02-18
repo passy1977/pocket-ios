@@ -1,5 +1,5 @@
 
-#include <pocket/pods/property.hpp>
+//#include <pocket/pods/property.hpp>
 
 #import "Property.h"
 
@@ -83,24 +83,24 @@ using namespace std;
 
 @end
 
-pocket::pods::Property::Ptr convert(const Property* user)
-{
-    return make_shared<pocket::pods::Property>(
-        [user getid]
-        ,[user getServerId]
-        ,[[user getKey] UTF8String]
-        ,[[user getValue] UTF8String]
-    );
-}
+//pocket::pods::Property::Ptr convert(const Property* user)
+//{
+//    return make_shared<pocket::pods::Property>(
+//        [user getid]
+//        ,[user getServerId]
+//        ,[[user getKey] UTF8String]
+//        ,[[user getValue] UTF8String]
+//    );
+//}
 
-Property* convert(const pocket::pods::Property::Ptr &property)
-{
-    Property *ret = [[Property alloc] init];
-    
-    [ret setid:property->id];
-    [ret setServerId:property->serverId];
-    [ret setKey: [NSString stringWithCString:property->key.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setValue: [NSString stringWithCString:property->value.c_str() encoding:NSUTF8StringEncoding] ];
-    
-    return ret;
-}
+//Property* convert(const pocket::pods::Property::Ptr &property)
+//{
+//    Property *ret = [[Property alloc] init];
+//    
+//    [ret setid:property->id];
+//    [ret setServerId:property->serverId];
+//    [ret setKey: [NSString stringWithCString:property->key.c_str() encoding:NSUTF8StringEncoding] ];
+//    [ret setValue: [NSString stringWithCString:property->value.c_str() encoding:NSUTF8StringEncoding] ];
+//    
+//    return ret;
+//}

@@ -11,8 +11,4 @@
 
 #import <Foundation/Foundation.h>
 
-static const char ONE_SESSION[] = "only_one_session";
-static NSString* SYNCHRONIZATOR_START = @"START";
-static NSString* SYNCHRONIZATOR_END = @"END";
-
 #endif /* _CONSTANTS_H_ */

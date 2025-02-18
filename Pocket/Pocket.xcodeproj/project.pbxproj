@@ -13,19 +13,10 @@
 		14173FC3242D27560055410E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC0242D27560055410E /* LoginVC.swift */; };
 		14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC1242D27560055410E /* GroupsFieldsVC.swift */; };
 		14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC2242D27560055410E /* AddNewUserVC.swift */; };
-		1421BB602959707F00D26F30 /* fIelddao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1421BB5C29596FB400D26F30 /* fIelddao.cpp */; };
-		1421BB612959707F00D26F30 /* groupdao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1421BB5E29596FB400D26F30 /* groupdao.cpp */; };
-		1421BB622959707F00D26F30 /* groupfIelddao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1421BB5B29596FB400D26F30 /* groupfIelddao.cpp */; };
-		1421BB632959707F00D26F30 /* propertydao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1421BB5D29596FB400D26F30 /* propertydao.cpp */; };
-		1421BB642959707F00D26F30 /* userdao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1421BB5F29596FB400D26F30 /* userdao.cpp */; };
 		14375090242F41F200375E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437508F242F41F200375E54 /* Constants.swift */; };
 		14375093242F584900375E54 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14375092242F584900375E54 /* TextFieldExtension.swift */; };
 		143830A52430A92300221BB8 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143830A42430A92300221BB8 /* GroupVC.swift */; };
 		1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */; };
-		143DFC812A216A9700A005C6 /* Changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = 143DFC7D2A216A9700A005C6 /* Changelog.md */; };
-		143DFC822A216A9700A005C6 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 143DFC7E2A216A9700A005C6 /* LICENSE.txt */; };
-		143DFC832A216A9700A005C6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 143DFC7F2A216A9700A005C6 /* README.md */; };
-		143DFC842A216A9700A005C6 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 143DFC802A216A9700A005C6 /* TODO.md */; };
 		143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */; };
 		1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 1474415E25B42F1C00B6270D /* SwiftSpinner */; };
 		147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19B228A224876C800FE9722 /* libc++.tbd */; };
@@ -34,40 +25,6 @@
 		149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149382C524A4EEB8002D33B1 /* Security.framework */; };
 		14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */; };
 		14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA14212431CAB30067CFA8 /* FieldVC.swift */; };
-		14D4DE712932C0A200C84FD0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D4DE6F2932C06B00C84FD0 /* libcrypto.a */; platformFilter = ios; };
-		14D4DE722932C0A500C84FD0 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D4DE702932C06B00C84FD0 /* libcurl.a */; platformFilter = ios; };
-		14D4DE732932C0A800C84FD0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D4DE6E2932C04300C84FD0 /* libssl.a */; platformFilter = ios; };
-		14D4DE772932C0E700C84FD0 /* libcrypto-catalyst.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D4DE762932C0E300C84FD0 /* libcrypto-catalyst.a */; platformFilter = maccatalyst; };
-		14D4DE782932C0EA00C84FD0 /* libcurl-catalyst.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D4DE752932C0E200C84FD0 /* libcurl-catalyst.a */; platformFilter = maccatalyst; };
-		14D4DE792932C0ED00C84FD0 /* libssl-catalyst.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D4DE742932C0E200C84FD0 /* libssl-catalyst.a */; platformFilter = maccatalyst; };
-		14D4DE8E2932C27F00C84FD0 /* databasefactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DE7F2932C27F00C84FD0 /* databasefactory.cpp */; };
-		14D4DE912932C27F00C84FD0 /* types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DE832932C27F00C84FD0 /* types.cpp */; };
-		14D4DE922932C27F00C84FD0 /* variant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DE842932C27F00C84FD0 /* variant.cpp */; };
-		14D4DE932932C27F00C84FD0 /* stringutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DE852932C27F00C84FD0 /* stringutils.cpp */; };
-		14D4DE952932C27F00C84FD0 /* timeutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DE882932C27F00C84FD0 /* timeutils.cpp */; };
-		14D4DE962932C27F00C84FD0 /* exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DE892932C27F00C84FD0 /* exception.cpp */; };
-		14D4DED62932C32700C84FD0 /* userrao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DEB72932C32700C84FD0 /* userrao.cpp */; };
-		14D4DEE02932C32700C84FD0 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DEC32932C32700C84FD0 /* globals.cpp */; };
-		14D4DEE52932C32700C84FD0 /* synchronizator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DEC92932C32700C84FD0 /* synchronizator.cpp */; };
-		14D4DEED2932C32700C84FD0 /* countdown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DED32932C32700C84FD0 /* countdown.cpp */; };
-		14D4DEEE2932C32700C84FD0 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DED52932C32700C84FD0 /* tinyxml2.cpp */; };
-		14D4DF152932C4FC00C84FD0 /* aes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF122932C4FC00C84FD0 /* aes.cpp */; };
-		14D4DF162932C4FC00C84FD0 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF132932C4FC00C84FD0 /* base64.cpp */; };
-		14D4DF172932C4FC00C84FD0 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF142932C4FC00C84FD0 /* hash.cpp */; };
-		14D4DF1C2932C51000C84FD0 /* sqlite3database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF1A2932C51000C84FD0 /* sqlite3database.cpp */; };
-		14D4DF1D2932C51000C84FD0 /* sqlite3resultset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF1B2932C51000C84FD0 /* sqlite3resultset.cpp */; };
-		14D4DF1F2932C51900C84FD0 /* net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF1E2932C51900C84FD0 /* net.cpp */; };
-		14D4DF242932C55700C84FD0 /* biometricpasswd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF202932C55700C84FD0 /* biometricpasswd.cpp */; };
-		14D4DF252932C55700C84FD0 /* fieldcontroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF212932C55700C84FD0 /* fieldcontroller.cpp */; };
-		14D4DF262932C55700C84FD0 /* groupcontroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF222932C55700C84FD0 /* groupcontroller.cpp */; };
-		14D4DF272932C55700C84FD0 /* logincontroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF232932C55700C84FD0 /* logincontroller.cpp */; };
-		14D4DF342932C61400C84FD0 /* field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF2E2932C61300C84FD0 /* field.cpp */; };
-		14D4DF352932C61400C84FD0 /* group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF2F2932C61300C84FD0 /* group.cpp */; };
-		14D4DF362932C61400C84FD0 /* property.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF302932C61300C84FD0 /* property.cpp */; };
-		14D4DF372932C61400C84FD0 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF312932C61300C84FD0 /* user.cpp */; };
-		14D4DF382932C61400C84FD0 /* device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF322932C61300C84FD0 /* device.cpp */; };
-		14D4DF392932C61400C84FD0 /* groupfield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF332932C61300C84FD0 /* groupfield.cpp */; };
-		14D4DF412932C64C00C84FD0 /* xmlmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF3E2932C64C00C84FD0 /* xmlmanager.cpp */; };
 		14D4DF5E2932C7A700C84FD0 /* LoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF442932C7A700C84FD0 /* LoginController.mm */; };
 		14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF462932C7A700C84FD0 /* Group.mm */; };
 		14D4DF602932C7A700C84FD0 /* Pair.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF482932C7A700C84FD0 /* Pair.mm */; };
@@ -82,6 +39,9 @@
 		14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */; };
 		14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Globals.mm */; };
 		14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */; };
+		14DF180E2D6543F300E5AEF2 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DF180D2D6543E200E5AEF2 /* libssl.a */; };
+		14DF18112D65441000E5AEF2 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DF180C2D6543E200E5AEF2 /* libcrypto.a */; };
+		14DF18122D65442100E5AEF2 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DF180B2D6543E200E5AEF2 /* libcurl.a */; };
 		14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B117ED25B49BD30024FAD0 /* libz.tbd */; };
 		A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19B226D2248737300FE9722 /* AppDelegate.swift */; };
 		A19B22732248737300FE9722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19B22712248737300FE9722 /* Main.storyboard */; };
@@ -95,20 +55,11 @@
 		14173FC1242D27560055410E /* GroupsFieldsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVC.swift; sourceTree = "<group>"; };
 		14173FC2242D27560055410E /* AddNewUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewUserVC.swift; sourceTree = "<group>"; };
 		14173FD8242D34670055410E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		1421BB5B29596FB400D26F30 /* groupfIelddao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = groupfIelddao.cpp; path = ../../../source/dao/groupfIelddao.cpp; sourceTree = "<group>"; };
-		1421BB5C29596FB400D26F30 /* fIelddao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fIelddao.cpp; path = ../../../source/dao/fIelddao.cpp; sourceTree = "<group>"; };
-		1421BB5D29596FB400D26F30 /* propertydao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = propertydao.cpp; path = ../../../source/dao/propertydao.cpp; sourceTree = "<group>"; };
-		1421BB5E29596FB400D26F30 /* groupdao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = groupdao.cpp; path = ../../../source/dao/groupdao.cpp; sourceTree = "<group>"; };
-		1421BB5F29596FB400D26F30 /* userdao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = userdao.cpp; path = ../../../source/dao/userdao.cpp; sourceTree = "<group>"; };
 		1437508F242F41F200375E54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		14375092242F584900375E54 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		14383099243080FD00221BB8 /* Pocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pocket.entitlements; sourceTree = "<group>"; };
 		143830A42430A92300221BB8 /* GroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
 		143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
-		143DFC7D2A216A9700A005C6 /* Changelog.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = Changelog.md; path = ../../Changelog.md; sourceTree = "<group>"; };
-		143DFC7E2A216A9700A005C6 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../LICENSE.txt; sourceTree = "<group>"; };
-		143DFC7F2A216A9700A005C6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		143DFC802A216A9700A005C6 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = TODO.md; path = ../../TODO.md; sourceTree = "<group>"; };
 		143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout4Logout.swift; sourceTree = "<group>"; };
 		1485CC5F245EC91B00059F5E /* SystemInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
 		1485CC61245EC94B00059F5E /* SystemInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
@@ -118,98 +69,6 @@
 		14B117ED25B49BD30024FAD0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
 		14C4C52E2A196DB9000F20EF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		14D4DE6E2932C04300C84FD0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../cppcommons/lib/Release-iphone/lib/libssl.a"; sourceTree = "<group>"; };
-		14D4DE6F2932C06B00C84FD0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../cppcommons/lib/Release-iphone/lib/libcrypto.a"; sourceTree = "<group>"; };
-		14D4DE702932C06B00C84FD0 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../cppcommons/lib/Release-iphone/lib/libcurl.a"; sourceTree = "<group>"; };
-		14D4DE742932C0E200C84FD0 /* libssl-catalyst.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libssl-catalyst.a"; path = "../../cppcommons/lib/Release-iphone/lib/libssl-catalyst.a"; sourceTree = "<group>"; };
-		14D4DE752932C0E200C84FD0 /* libcurl-catalyst.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcurl-catalyst.a"; path = "../../cppcommons/lib/Release-iphone/lib/libcurl-catalyst.a"; sourceTree = "<group>"; };
-		14D4DE762932C0E300C84FD0 /* libcrypto-catalyst.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcrypto-catalyst.a"; path = "../../cppcommons/lib/Release-iphone/lib/libcrypto-catalyst.a"; sourceTree = "<group>"; };
-		14D4DE7F2932C27F00C84FD0 /* databasefactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = databasefactory.cpp; sourceTree = "<group>"; };
-		14D4DE832932C27F00C84FD0 /* types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = types.cpp; path = ../../cppcommons/src/types.cpp; sourceTree = "<group>"; };
-		14D4DE842932C27F00C84FD0 /* variant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = variant.cpp; path = ../../cppcommons/src/variant.cpp; sourceTree = "<group>"; };
-		14D4DE852932C27F00C84FD0 /* stringutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stringutils.cpp; path = ../../cppcommons/src/stringutils.cpp; sourceTree = "<group>"; };
-		14D4DE882932C27F00C84FD0 /* timeutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = timeutils.cpp; path = ../../cppcommons/src/timeutils.cpp; sourceTree = "<group>"; };
-		14D4DE892932C27F00C84FD0 /* exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = exception.cpp; path = ../../cppcommons/src/exception.cpp; sourceTree = "<group>"; };
-		14D4DEA12932C2A200C84FD0 /* sqlite3resultset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3resultset.h; sourceTree = "<group>"; };
-		14D4DEA22932C2A200C84FD0 /* sqlite3database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3database.h; sourceTree = "<group>"; };
-		14D4DEA42932C2A200C84FD0 /* pod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pod.h; path = ../../cppcommons/include/cppcommons/pod.h; sourceTree = "<group>"; };
-		14D4DEA52932C2A200C84FD0 /* podjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = podjson.h; path = ../../cppcommons/include/cppcommons/podjson.h; sourceTree = "<group>"; };
-		14D4DEA62932C2A200C84FD0 /* singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = singleton.h; path = ../../cppcommons/include/cppcommons/singleton.h; sourceTree = "<group>"; };
-		14D4DEA72932C2A200C84FD0 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exception.h; path = ../../cppcommons/include/cppcommons/exception.h; sourceTree = "<group>"; };
-		14D4DEA82932C2A200C84FD0 /* stringutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stringutils.h; path = ../../cppcommons/include/cppcommons/stringutils.h; sourceTree = "<group>"; };
-		14D4DEA92932C2A200C84FD0 /* cppcommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cppcommons.h; path = ../../cppcommons/include/cppcommons/cppcommons.h; sourceTree = "<group>"; };
-		14D4DEAA2932C2A300C84FD0 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = system.h; path = ../../cppcommons/include/cppcommons/system.h; sourceTree = "<group>"; };
-		14D4DEAB2932C2A300C84FD0 /* timeutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timeutils.h; path = ../../cppcommons/include/cppcommons/timeutils.h; sourceTree = "<group>"; };
-		14D4DEAC2932C2A300C84FD0 /* variant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = variant.h; path = ../../cppcommons/include/cppcommons/variant.h; sourceTree = "<group>"; };
-		14D4DEAE2932C2A300C84FD0 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		14D4DEAF2932C2A300C84FD0 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
-		14D4DEB02932C2A300C84FD0 /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
-		14D4DEB12932C2A300C84FD0 /* logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logger.h; path = ../../cppcommons/include/cppcommons/logger.h; sourceTree = "<group>"; };
-		14D4DEB22932C2A300C84FD0 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = object.h; path = ../../cppcommons/include/cppcommons/object.h; sourceTree = "<group>"; };
-		14D4DEB32932C2A300C84FD0 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.h; path = ../../cppcommons/include/cppcommons/types.h; sourceTree = "<group>"; };
-		14D4DEB52932C2A300C84FD0 /* net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = net.h; sourceTree = "<group>"; };
-		14D4DEB62932C2A300C84FD0 /* netjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netjson.h; sourceTree = "<group>"; };
-		14D4DEB72932C32700C84FD0 /* userrao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userrao.cpp; path = ../../pocket/source/rao/userrao.cpp; sourceTree = "<group>"; };
-		14D4DEC32932C32700C84FD0 /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = globals.cpp; path = ../../pocket/source/globals.cpp; sourceTree = "<group>"; };
-		14D4DEC92932C32700C84FD0 /* synchronizator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = synchronizator.cpp; path = ../../pocket/source/services/synchronizator.cpp; sourceTree = "<group>"; };
-		14D4DED32932C32700C84FD0 /* countdown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = countdown.cpp; path = ../../pocket/source/services/countdown.cpp; sourceTree = "<group>"; };
-		14D4DED52932C32700C84FD0 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
-		14D4DEF02932C34A00C84FD0 /* globals.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = globals.hpp; path = ../../pocket/include/pocket/globals.hpp; sourceTree = "<group>"; };
-		14D4DEF12932C34A00C84FD0 /* constants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = constants.hpp; path = ../../pocket/include/pocket/constants.hpp; sourceTree = "<group>"; };
-		14D4DEF22932C34A00C84FD0 /* stacknavigator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = stacknavigator.hpp; path = ../../pocket/include/pocket/stacknavigator.hpp; sourceTree = "<group>"; };
-		14D4DEF42932C35A00C84FD0 /* groupfieldrao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = groupfieldrao.hpp; sourceTree = "<group>"; };
-		14D4DEF52932C35A00C84FD0 /* grouprao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grouprao.hpp; sourceTree = "<group>"; };
-		14D4DEF62932C35A00C84FD0 /* rao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rao.hpp; sourceTree = "<group>"; };
-		14D4DEF72932C35A00C84FD0 /* fieldrao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fieldrao.hpp; sourceTree = "<group>"; };
-		14D4DEF82932C35A00C84FD0 /* userrao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userrao.hpp; sourceTree = "<group>"; };
-		14D4DEFA2932C35A00C84FD0 /* countdown.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = countdown.hpp; sourceTree = "<group>"; };
-		14D4DEFB2932C35A00C84FD0 /* xmlmanager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xmlmanager.hpp; sourceTree = "<group>"; };
-		14D4DEFC2932C35A00C84FD0 /* synchronizator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synchronizator.hpp; sourceTree = "<group>"; };
-		14D4DEFE2932C35A00C84FD0 /* pair.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pair.hpp; sourceTree = "<group>"; };
-		14D4DEFF2932C35A00C84FD0 /* group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
-		14D4DF002932C35A00C84FD0 /* field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
-		14D4DF012932C35A00C84FD0 /* user.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = user.hpp; sourceTree = "<group>"; };
-		14D4DF022932C35A00C84FD0 /* property.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = property.hpp; sourceTree = "<group>"; };
-		14D4DF032932C35A00C84FD0 /* groupfield.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = groupfield.hpp; sourceTree = "<group>"; };
-		14D4DF042932C35A00C84FD0 /* device.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = device.hpp; sourceTree = "<group>"; };
-		14D4DF052932C35A00C84FD0 /* pod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pod.hpp; sourceTree = "<group>"; };
-		14D4DF072932C35A00C84FD0 /* logincontroller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = logincontroller.hpp; sourceTree = "<group>"; };
-		14D4DF082932C35A00C84FD0 /* groupcontroller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = groupcontroller.hpp; sourceTree = "<group>"; };
-		14D4DF092932C35A00C84FD0 /* fieldcontroller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fieldcontroller.hpp; sourceTree = "<group>"; };
-		14D4DF0A2932C35A00C84FD0 /* biometricpasswd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = biometricpasswd.hpp; sourceTree = "<group>"; };
-		14D4DF0C2932C35A00C84FD0 /* dao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dao.hpp; sourceTree = "<group>"; };
-		14D4DF0D2932C35A00C84FD0 /* fielddao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fielddao.hpp; sourceTree = "<group>"; };
-		14D4DF0E2932C35A00C84FD0 /* userdao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userdao.hpp; sourceTree = "<group>"; };
-		14D4DF0F2932C35A00C84FD0 /* groupfielddao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = groupfielddao.hpp; sourceTree = "<group>"; };
-		14D4DF102932C35A00C84FD0 /* groupdao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = groupdao.hpp; sourceTree = "<group>"; };
-		14D4DF112932C35A00C84FD0 /* propertydao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = propertydao.hpp; sourceTree = "<group>"; };
-		14D4DF122932C4FC00C84FD0 /* aes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aes.cpp; path = ../../../src/crypto/aes.cpp; sourceTree = "<group>"; };
-		14D4DF132932C4FC00C84FD0 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base64.cpp; path = ../../../src/crypto/base64.cpp; sourceTree = "<group>"; };
-		14D4DF142932C4FC00C84FD0 /* hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hash.cpp; path = ../../../src/crypto/hash.cpp; sourceTree = "<group>"; };
-		14D4DF1A2932C51000C84FD0 /* sqlite3database.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sqlite3database.cpp; path = ../../../../src/database/sqlite3/sqlite3database.cpp; sourceTree = "<group>"; };
-		14D4DF1B2932C51000C84FD0 /* sqlite3resultset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sqlite3resultset.cpp; path = ../../../../src/database/sqlite3/sqlite3resultset.cpp; sourceTree = "<group>"; };
-		14D4DF1E2932C51900C84FD0 /* net.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = net.cpp; path = ../../../src/net/net.cpp; sourceTree = "<group>"; };
-		14D4DF202932C55700C84FD0 /* biometricpasswd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = biometricpasswd.cpp; path = ../../../source/controllers/biometricpasswd.cpp; sourceTree = "<group>"; };
-		14D4DF212932C55700C84FD0 /* fieldcontroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fieldcontroller.cpp; path = ../../../source/controllers/fieldcontroller.cpp; sourceTree = "<group>"; };
-		14D4DF222932C55700C84FD0 /* groupcontroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = groupcontroller.cpp; path = ../../../source/controllers/groupcontroller.cpp; sourceTree = "<group>"; };
-		14D4DF232932C55700C84FD0 /* logincontroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = logincontroller.cpp; path = ../../../source/controllers/logincontroller.cpp; sourceTree = "<group>"; };
-		14D4DF282932C5B800C84FD0 /* resultset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = resultset.h; path = ../../include/cppcommons/database/resultset.h; sourceTree = "<group>"; };
-		14D4DF292932C5B800C84FD0 /* databasefactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = databasefactory.h; path = ../../include/cppcommons/database/databasefactory.h; sourceTree = "<group>"; };
-		14D4DF2A2932C5B800C84FD0 /* updatable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = updatable.h; path = ../../include/cppcommons/database/updatable.h; sourceTree = "<group>"; };
-		14D4DF2B2932C5B800C84FD0 /* insertable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = insertable.h; path = ../../include/cppcommons/database/insertable.h; sourceTree = "<group>"; };
-		14D4DF2C2932C5B900C84FD0 /* dao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dao.h; path = ../../include/cppcommons/database/dao.h; sourceTree = "<group>"; };
-		14D4DF2D2932C5B900C84FD0 /* database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = database.h; path = ../../include/cppcommons/database/database.h; sourceTree = "<group>"; };
-		14D4DF2E2932C61300C84FD0 /* field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = field.cpp; path = ../../../source/pods/field.cpp; sourceTree = "<group>"; };
-		14D4DF2F2932C61300C84FD0 /* group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = group.cpp; path = ../../../source/pods/group.cpp; sourceTree = "<group>"; };
-		14D4DF302932C61300C84FD0 /* property.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = property.cpp; path = ../../../source/pods/property.cpp; sourceTree = "<group>"; };
-		14D4DF312932C61300C84FD0 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = user.cpp; path = ../../../source/pods/user.cpp; sourceTree = "<group>"; };
-		14D4DF322932C61300C84FD0 /* device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = device.cpp; path = ../../../source/pods/device.cpp; sourceTree = "<group>"; };
-		14D4DF332932C61300C84FD0 /* groupfield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = groupfield.cpp; path = ../../../source/pods/groupfield.cpp; sourceTree = "<group>"; };
-		14D4DF3A2932C62C00C84FD0 /* userrao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userrao.cpp; path = ../../../source/rao/userrao.cpp; sourceTree = "<group>"; };
-		14D4DF3C2932C64C00C84FD0 /* synchronizator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = synchronizator.cpp; path = ../../../source/services/synchronizator.cpp; sourceTree = "<group>"; };
-		14D4DF3D2932C64C00C84FD0 /* countdown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = countdown.cpp; path = ../../../source/services/countdown.cpp; sourceTree = "<group>"; };
-		14D4DF3E2932C64C00C84FD0 /* xmlmanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xmlmanager.cpp; path = ../../../source/services/xmlmanager.cpp; sourceTree = "<group>"; };
-		14D4DF422932C66F00C84FD0 /* tinyxml2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = tinyxml2.h; path = ../../include/tinyxml2/tinyxml2.h; sourceTree = "<group>"; };
 		14D4DF442932C7A700C84FD0 /* LoginController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginController.mm; sourceTree = "<group>"; };
 		14D4DF452932C7A700C84FD0 /* StackNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackNavigator.h; sourceTree = "<group>"; };
 		14D4DF462932C7A700C84FD0 /* Group.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Group.mm; sourceTree = "<group>"; };
@@ -237,6 +96,9 @@
 		14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StackNavigator.mm; sourceTree = "<group>"; };
 		14D4DF5D2932C7A700C84FD0 /* Globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Globals.mm; sourceTree = "<group>"; };
 		14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVCCell.swift; sourceTree = "<group>"; };
+		14DF180B2D6543E200E5AEF2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../lib/bin/libcurl.a; sourceTree = "<group>"; };
+		14DF180C2D6543E200E5AEF2 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../lib/bin/libcrypto.a; sourceTree = "<group>"; };
+		14DF180D2D6543E200E5AEF2 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../lib/bin/libssl.a; sourceTree = "<group>"; };
 		A19B226A2248737300FE9722 /* Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19B226D2248737300FE9722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19B22722248737300FE9722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -252,16 +114,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14D4DE732932C0A800C84FD0 /* libssl.a in Frameworks */,
+				14DF180E2D6543F300E5AEF2 /* libssl.a in Frameworks */,
 				1407E67425A91CF5002CE6E9 /* Reachability in Frameworks */,
 				14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */,
-				14D4DE722932C0A500C84FD0 /* libcurl.a in Frameworks */,
-				14D4DE712932C0A200C84FD0 /* libcrypto.a in Frameworks */,
 				1407DC45242F7428007CD405 /* libsqlite3.tbd in Frameworks */,
+				14DF18122D65442100E5AEF2 /* libcurl.a in Frameworks */,
+				14DF18112D65441000E5AEF2 /* libcrypto.a in Frameworks */,
 				14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */,
-				14D4DE792932C0ED00C84FD0 /* libssl-catalyst.a in Frameworks */,
-				14D4DE772932C0E700C84FD0 /* libcrypto-catalyst.a in Frameworks */,
-				14D4DE782932C0EA00C84FD0 /* libcurl-catalyst.a in Frameworks */,
 				1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */,
 				147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */,
 				149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */,
@@ -320,201 +179,6 @@
 			path = SZTextView;
 			sourceTree = "<group>";
 		};
-		14D4DE7A2932C16300C84FD0 /* libpocket */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF062932C35A00C84FD0 /* controllers */,
-				14D4DF0B2932C35A00C84FD0 /* dao */,
-				14D4DEFD2932C35A00C84FD0 /* pods */,
-				14D4DEF32932C35A00C84FD0 /* rao */,
-				14D4DEF92932C35A00C84FD0 /* services */,
-				14D4DED42932C32700C84FD0 /* tinyxml2 */,
-				14D4DEF12932C34A00C84FD0 /* constants.hpp */,
-				14D4DED32932C32700C84FD0 /* countdown.cpp */,
-				14D4DEC32932C32700C84FD0 /* globals.cpp */,
-				14D4DEF02932C34A00C84FD0 /* globals.hpp */,
-				14D4DEF22932C34A00C84FD0 /* stacknavigator.hpp */,
-				14D4DEC92932C32700C84FD0 /* synchronizator.cpp */,
-				14D4DEB72932C32700C84FD0 /* userrao.cpp */,
-			);
-			name = libpocket;
-			sourceTree = "<group>";
-		};
-		14D4DE7B2932C16E00C84FD0 /* libcppcommons */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DEAD2932C2A300C84FD0 /* crypto */,
-				14D4DE7E2932C27F00C84FD0 /* database */,
-				14D4DEB42932C2A300C84FD0 /* net */,
-				14D4DEA92932C2A200C84FD0 /* cppcommons.h */,
-				14D4DE892932C27F00C84FD0 /* exception.cpp */,
-				14D4DEA72932C2A200C84FD0 /* exception.h */,
-				14D4DEB12932C2A300C84FD0 /* logger.h */,
-				14D4DEB22932C2A300C84FD0 /* object.h */,
-				14D4DEA42932C2A200C84FD0 /* pod.h */,
-				14D4DEA52932C2A200C84FD0 /* podjson.h */,
-				14D4DEA62932C2A200C84FD0 /* singleton.h */,
-				14D4DE852932C27F00C84FD0 /* stringutils.cpp */,
-				14D4DEA82932C2A200C84FD0 /* stringutils.h */,
-				14D4DEAA2932C2A300C84FD0 /* system.h */,
-				14D4DE882932C27F00C84FD0 /* timeutils.cpp */,
-				14D4DEAB2932C2A300C84FD0 /* timeutils.h */,
-				14D4DE832932C27F00C84FD0 /* types.cpp */,
-				14D4DEB32932C2A300C84FD0 /* types.h */,
-				14D4DE842932C27F00C84FD0 /* variant.cpp */,
-				14D4DEAC2932C2A300C84FD0 /* variant.h */,
-			);
-			name = libcppcommons;
-			sourceTree = "<group>";
-		};
-		14D4DE7E2932C27F00C84FD0 /* database */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DEA02932C2A200C84FD0 /* sqlite3 */,
-				14D4DF2C2932C5B900C84FD0 /* dao.h */,
-				14D4DF2D2932C5B900C84FD0 /* database.h */,
-				14D4DE7F2932C27F00C84FD0 /* databasefactory.cpp */,
-				14D4DF292932C5B800C84FD0 /* databasefactory.h */,
-				14D4DF2B2932C5B800C84FD0 /* insertable.h */,
-				14D4DF282932C5B800C84FD0 /* resultset.h */,
-				14D4DF2A2932C5B800C84FD0 /* updatable.h */,
-			);
-			name = database;
-			path = ../../cppcommons/src/database;
-			sourceTree = "<group>";
-		};
-		14D4DEA02932C2A200C84FD0 /* sqlite3 */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF1A2932C51000C84FD0 /* sqlite3database.cpp */,
-				14D4DEA22932C2A200C84FD0 /* sqlite3database.h */,
-				14D4DF1B2932C51000C84FD0 /* sqlite3resultset.cpp */,
-				14D4DEA12932C2A200C84FD0 /* sqlite3resultset.h */,
-			);
-			name = sqlite3;
-			path = ../../include/cppcommons/database/sqlite3;
-			sourceTree = "<group>";
-		};
-		14D4DEAD2932C2A300C84FD0 /* crypto */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF122932C4FC00C84FD0 /* aes.cpp */,
-				14D4DEAF2932C2A300C84FD0 /* aes.h */,
-				14D4DF132932C4FC00C84FD0 /* base64.cpp */,
-				14D4DEAE2932C2A300C84FD0 /* base64.h */,
-				14D4DF142932C4FC00C84FD0 /* hash.cpp */,
-				14D4DEB02932C2A300C84FD0 /* hash.h */,
-			);
-			name = crypto;
-			path = ../../cppcommons/include/cppcommons/crypto;
-			sourceTree = "<group>";
-		};
-		14D4DEB42932C2A300C84FD0 /* net */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF1E2932C51900C84FD0 /* net.cpp */,
-				14D4DEB52932C2A300C84FD0 /* net.h */,
-				14D4DEB62932C2A300C84FD0 /* netjson.h */,
-			);
-			name = net;
-			path = ../../cppcommons/include/cppcommons/net;
-			sourceTree = "<group>";
-		};
-		14D4DED42932C32700C84FD0 /* tinyxml2 */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF422932C66F00C84FD0 /* tinyxml2.h */,
-				14D4DED52932C32700C84FD0 /* tinyxml2.cpp */,
-			);
-			name = tinyxml2;
-			path = ../../pocket/source/tinyxml2;
-			sourceTree = "<group>";
-		};
-		14D4DEF32932C35A00C84FD0 /* rao */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DEF72932C35A00C84FD0 /* fieldrao.hpp */,
-				14D4DEF42932C35A00C84FD0 /* groupfieldrao.hpp */,
-				14D4DEF52932C35A00C84FD0 /* grouprao.hpp */,
-				14D4DEF62932C35A00C84FD0 /* rao.hpp */,
-				14D4DF3A2932C62C00C84FD0 /* userrao.cpp */,
-				14D4DEF82932C35A00C84FD0 /* userrao.hpp */,
-			);
-			name = rao;
-			path = ../../pocket/include/pocket/rao;
-			sourceTree = "<group>";
-		};
-		14D4DEF92932C35A00C84FD0 /* services */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF3D2932C64C00C84FD0 /* countdown.cpp */,
-				14D4DEFA2932C35A00C84FD0 /* countdown.hpp */,
-				14D4DF3C2932C64C00C84FD0 /* synchronizator.cpp */,
-				14D4DEFC2932C35A00C84FD0 /* synchronizator.hpp */,
-				14D4DF3E2932C64C00C84FD0 /* xmlmanager.cpp */,
-				14D4DEFB2932C35A00C84FD0 /* xmlmanager.hpp */,
-			);
-			name = services;
-			path = ../../pocket/include/pocket/services;
-			sourceTree = "<group>";
-		};
-		14D4DEFD2932C35A00C84FD0 /* pods */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF322932C61300C84FD0 /* device.cpp */,
-				14D4DF042932C35A00C84FD0 /* device.hpp */,
-				14D4DF2E2932C61300C84FD0 /* field.cpp */,
-				14D4DF002932C35A00C84FD0 /* field.hpp */,
-				14D4DF2F2932C61300C84FD0 /* group.cpp */,
-				14D4DEFF2932C35A00C84FD0 /* group.hpp */,
-				14D4DF332932C61300C84FD0 /* groupfield.cpp */,
-				14D4DF032932C35A00C84FD0 /* groupfield.hpp */,
-				14D4DEFE2932C35A00C84FD0 /* pair.hpp */,
-				14D4DF052932C35A00C84FD0 /* pod.hpp */,
-				14D4DF302932C61300C84FD0 /* property.cpp */,
-				14D4DF022932C35A00C84FD0 /* property.hpp */,
-				14D4DF312932C61300C84FD0 /* user.cpp */,
-				14D4DF012932C35A00C84FD0 /* user.hpp */,
-			);
-			name = pods;
-			path = ../../pocket/include/pocket/pods;
-			sourceTree = "<group>";
-		};
-		14D4DF062932C35A00C84FD0 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF202932C55700C84FD0 /* biometricpasswd.cpp */,
-				14D4DF0A2932C35A00C84FD0 /* biometricpasswd.hpp */,
-				14D4DF212932C55700C84FD0 /* fieldcontroller.cpp */,
-				14D4DF092932C35A00C84FD0 /* fieldcontroller.hpp */,
-				14D4DF222932C55700C84FD0 /* groupcontroller.cpp */,
-				14D4DF082932C35A00C84FD0 /* groupcontroller.hpp */,
-				14D4DF232932C55700C84FD0 /* logincontroller.cpp */,
-				14D4DF072932C35A00C84FD0 /* logincontroller.hpp */,
-			);
-			name = controllers;
-			path = ../../pocket/include/pocket/controllers;
-			sourceTree = "<group>";
-		};
-		14D4DF0B2932C35A00C84FD0 /* dao */ = {
-			isa = PBXGroup;
-			children = (
-				14D4DF0C2932C35A00C84FD0 /* dao.hpp */,
-				1421BB5C29596FB400D26F30 /* fIelddao.cpp */,
-				14D4DF0D2932C35A00C84FD0 /* fielddao.hpp */,
-				1421BB5E29596FB400D26F30 /* groupdao.cpp */,
-				14D4DF102932C35A00C84FD0 /* groupdao.hpp */,
-				1421BB5B29596FB400D26F30 /* groupfIelddao.cpp */,
-				14D4DF0F2932C35A00C84FD0 /* groupfielddao.hpp */,
-				1421BB5D29596FB400D26F30 /* propertydao.cpp */,
-				14D4DF112932C35A00C84FD0 /* propertydao.hpp */,
-				1421BB5F29596FB400D26F30 /* userdao.cpp */,
-				14D4DF0E2932C35A00C84FD0 /* userdao.hpp */,
-			);
-			name = dao;
-			path = ../../pocket/include/pocket/dao;
-			sourceTree = "<group>";
-		};
 		14D4DF432932C7A700C84FD0 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,12 +216,6 @@
 		A19B22612248737200FE9722 = {
 			isa = PBXGroup;
 			children = (
-				143DFC7D2A216A9700A005C6 /* Changelog.md */,
-				143DFC7E2A216A9700A005C6 /* LICENSE.txt */,
-				143DFC7F2A216A9700A005C6 /* README.md */,
-				143DFC802A216A9700A005C6 /* TODO.md */,
-				14D4DE7B2932C16E00C84FD0 /* libcppcommons */,
-				14D4DE7A2932C16300C84FD0 /* libpocket */,
 				A19B226C2248737300FE9722 /* Pocket */,
 				A19B226B2248737300FE9722 /* Products */,
 				A19B2285224876A800FE9722 /* Frameworks */,
@@ -596,12 +254,9 @@
 		A19B2285224876A800FE9722 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				14D4DE762932C0E300C84FD0 /* libcrypto-catalyst.a */,
-				14D4DE752932C0E200C84FD0 /* libcurl-catalyst.a */,
-				14D4DE742932C0E200C84FD0 /* libssl-catalyst.a */,
-				14D4DE6F2932C06B00C84FD0 /* libcrypto.a */,
-				14D4DE702932C06B00C84FD0 /* libcurl.a */,
-				14D4DE6E2932C04300C84FD0 /* libssl.a */,
+				14DF180C2D6543E200E5AEF2 /* libcrypto.a */,
+				14DF180B2D6543E200E5AEF2 /* libcurl.a */,
+				14DF180D2D6543E200E5AEF2 /* libssl.a */,
 				14B117ED25B49BD30024FAD0 /* libz.tbd */,
 				149382C524A4EEB8002D33B1 /* Security.framework */,
 				14173FD8242D34670055410E /* libsqlite3.tbd */,
@@ -643,7 +298,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = Scapix;
 				TargetAttributes = {
 					A19B22692248737300FE9722 = {
@@ -680,13 +335,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				143DFC832A216A9700A005C6 /* README.md in Resources */,
 				A19B22782248737300FE9722 /* LaunchScreen.storyboard in Resources */,
-				143DFC842A216A9700A005C6 /* TODO.md in Resources */,
 				A19B22752248737300FE9722 /* Assets.xcassets in Resources */,
 				A19B22732248737300FE9722 /* Main.storyboard in Resources */,
-				143DFC822A216A9700A005C6 /* LICENSE.txt in Resources */,
-				143DFC812A216A9700A005C6 /* Changelog.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,66 +348,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1421BB602959707F00D26F30 /* fIelddao.cpp in Sources */,
-				1421BB612959707F00D26F30 /* groupdao.cpp in Sources */,
-				1421BB622959707F00D26F30 /* groupfIelddao.cpp in Sources */,
-				1421BB632959707F00D26F30 /* propertydao.cpp in Sources */,
-				1421BB642959707F00D26F30 /* userdao.cpp in Sources */,
-				14D4DEE52932C32700C84FD0 /* synchronizator.cpp in Sources */,
 				14D4DF682932C7A700C84FD0 /* Device.mm in Sources */,
 				14375090242F41F200375E54 /* Constants.swift in Sources */,
 				1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */,
 				14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */,
 				14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */,
-				14D4DF172932C4FC00C84FD0 /* hash.cpp in Sources */,
 				14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */,
-				14D4DE912932C27F00C84FD0 /* types.cpp in Sources */,
-				14D4DE922932C27F00C84FD0 /* variant.cpp in Sources */,
 				14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */,
-				14D4DF272932C55700C84FD0 /* logincontroller.cpp in Sources */,
-				14D4DE8E2932C27F00C84FD0 /* databasefactory.cpp in Sources */,
-				14D4DE952932C27F00C84FD0 /* timeutils.cpp in Sources */,
-				14D4DEEE2932C32700C84FD0 /* tinyxml2.cpp in Sources */,
-				14D4DF362932C61400C84FD0 /* property.cpp in Sources */,
-				14D4DF252932C55700C84FD0 /* fieldcontroller.cpp in Sources */,
-				14D4DED62932C32700C84FD0 /* userrao.cpp in Sources */,
-				14D4DF342932C61400C84FD0 /* field.cpp in Sources */,
 				14D4DF662932C7A700C84FD0 /* User.mm in Sources */,
-				14D4DF152932C4FC00C84FD0 /* aes.cpp in Sources */,
-				14D4DE962932C27F00C84FD0 /* exception.cpp in Sources */,
-				14D4DF1C2932C51000C84FD0 /* sqlite3database.cpp in Sources */,
 				1407DC4A24301C85007CD405 /* Graphics.swift in Sources */,
 				14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */,
-				14D4DF392932C61400C84FD0 /* groupfield.cpp in Sources */,
-				14D4DF412932C64C00C84FD0 /* xmlmanager.cpp in Sources */,
 				14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */,
 				14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */,
 				14D4DF5E2932C7A700C84FD0 /* LoginController.mm in Sources */,
 				14D4DF602932C7A700C84FD0 /* Pair.mm in Sources */,
 				14375093242F584900375E54 /* TextFieldExtension.swift in Sources */,
 				148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */,
-				14D4DEE02932C32700C84FD0 /* globals.cpp in Sources */,
 				14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */,
-				14D4DF162932C4FC00C84FD0 /* base64.cpp in Sources */,
 				14173FC3242D27560055410E /* LoginVC.swift in Sources */,
 				143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */,
-				14D4DEED2932C32700C84FD0 /* countdown.cpp in Sources */,
 				A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */,
 				14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */,
-				14D4DF242932C55700C84FD0 /* biometricpasswd.cpp in Sources */,
-				14D4DF1F2932C51900C84FD0 /* net.cpp in Sources */,
-				14D4DF382932C61400C84FD0 /* device.cpp in Sources */,
 				14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */,
-				14D4DF262932C55700C84FD0 /* groupcontroller.cpp in Sources */,
-				14D4DF372932C61400C84FD0 /* user.cpp in Sources */,
-				14D4DE932932C27F00C84FD0 /* stringutils.cpp in Sources */,
-				14D4DF352932C61400C84FD0 /* group.cpp in Sources */,
 				14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */,
 				14D4DF642932C7A700C84FD0 /* Property.mm in Sources */,
 				1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */,
 				14D4DF652932C7A700C84FD0 /* Field.mm in Sources */,
 				143830A52430A92300221BB8 /* GroupVC.swift in Sources */,
-				14D4DF1D2932C51000C84FD0 /* sqlite3resultset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,7 +406,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -821,7 +439,8 @@
 				DEVELOPMENT_TEAM = 777Y7ETUKL;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -844,14 +463,15 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
-					"${PROJECT_DIR}/../../cppcommons/lib/Release-iphone/lib",
+					"${PROJECT_DIR}/../lib/bin",
 					"$(inherited)",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENABLE_SERVER_DEBUG";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 			};
@@ -863,7 +483,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -896,7 +516,8 @@
 				DEVELOPMENT_TEAM = 777Y7ETUKL;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = DISABLE_LOG;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -914,12 +535,13 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LIBRARY_SEARCH_PATHS = (
-					"${PROJECT_DIR}/../../cppcommons/lib/Release-iphone/lib",
+					"${PROJECT_DIR}/../lib/bin",
 					"$(inherited)",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -937,12 +559,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4.2.2;
+				CURRENT_PROJECT_VERSION = 5.0.0;
 				DEVELOPMENT_TEAM = 58CR8N5TPL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PROJECT_DIR}/../../../cppcommons/include",
-					"${PROJECT_DIR}../../../pocket/include",
+					"${PROJECT_DIR}/../lib/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pocket/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -952,7 +573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = it.salsi.app.Pocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -975,12 +596,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4.2.2;
+				CURRENT_PROJECT_VERSION = 5.0.0;
 				DEVELOPMENT_TEAM = 58CR8N5TPL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PROJECT_DIR}/../../../cppcommons/include",
-					"${PROJECT_DIR}../../../pocket/include",
+					"${PROJECT_DIR}/../lib/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pocket/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -990,7 +610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = it.salsi.app.Pocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
