@@ -24,6 +24,10 @@
 		148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D86672431DA8C00EB38D6 /* SZTextView.m */; };
 		149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149382C524A4EEB8002D33B1 /* Security.framework */; };
 		14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */; };
+		14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156032D669E3E00EB655E /* curl.xcframework */; };
+		14B156052D669E3E00EB655E /* curl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156032D669E3E00EB655E /* curl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; };
+		14B1560A2D669F6900EB655E /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA14212431CAB30067CFA8 /* FieldVC.swift */; };
 		14D4DF5E2932C7A700C84FD0 /* LoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF442932C7A700C84FD0 /* LoginController.mm */; };
 		14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF462932C7A700C84FD0 /* Group.mm */; };
@@ -39,15 +43,51 @@
 		14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */; };
 		14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Globals.mm */; };
 		14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */; };
-		14DF180E2D6543F300E5AEF2 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DF180D2D6543E200E5AEF2 /* libssl.a */; };
-		14DF18112D65441000E5AEF2 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DF180C2D6543E200E5AEF2 /* libcrypto.a */; };
-		14DF18122D65442100E5AEF2 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DF180B2D6543E200E5AEF2 /* libcurl.a */; };
+		14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186C2D6548E300E5AEF2 /* view-group.cpp */; };
+		14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */; };
+		14DF18872D6548E300E5AEF2 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18272D6548E300E5AEF2 /* config.cpp */; };
+		14DF18882D6548E300E5AEF2 /* view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186A2D6548E300E5AEF2 /* view.cpp */; };
+		14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18372D6548E300E5AEF2 /* dao-field.cpp */; };
+		14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18502D6548E300E5AEF2 /* response.cpp */; };
+		14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18512D6548E300E5AEF2 /* variant.cpp */; };
+		14DF188D2D6548E300E5AEF2 /* result-set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18602D6548E300E5AEF2 /* result-set.cpp */; };
+		14DF188F2D6548E300E5AEF2 /* dao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18362D6548E300E5AEF2 /* dao.cpp */; };
+		14DF18902D6548E300E5AEF2 /* dao-read-write-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183A2D6548E300E5AEF2 /* dao-read-write-field.cpp */; };
+		14DF18912D6548E300E5AEF2 /* dao-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18382D6548E300E5AEF2 /* dao-group.cpp */; };
+		14DF18922D6548E300E5AEF2 /* synchronizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18612D6548E300E5AEF2 /* synchronizer.cpp */; };
+		14DF18932D6548E300E5AEF2 /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185F2D6548E300E5AEF2 /* network.cpp */; };
+		14DF18952D6548E300E5AEF2 /* crypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185C2D6548E300E5AEF2 /* crypto.cpp */; };
+		14DF18962D6548E300E5AEF2 /* view-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186B2D6548E300E5AEF2 /* view-field.cpp */; };
+		14DF18972D6548E300E5AEF2 /* dao-read-write-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */; };
+		14DF18982D6548E300E5AEF2 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185E2D6548E300E5AEF2 /* json.cpp */; };
+		14DF18992D6548E300E5AEF2 /* session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18282D6548E300E5AEF2 /* session.cpp */; };
+		14DF189A2D6548E300E5AEF2 /* dao-user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183D2D6548E300E5AEF2 /* dao-user.cpp */; };
+		14DF189B2D6548E300E5AEF2 /* view-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */; };
+		14DF189D2D6548E300E5AEF2 /* database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185D2D6548E300E5AEF2 /* database.cpp */; };
+		14DF189E2D6548E300E5AEF2 /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18712D6548E300E5AEF2 /* tree.cpp */; };
+		14DF189F2D6548E300E5AEF2 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18702D6548E300E5AEF2 /* globals.cpp */; };
+		14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */; };
 		14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B117ED25B49BD30024FAD0 /* libz.tbd */; };
 		A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19B226D2248737300FE9722 /* AppDelegate.swift */; };
 		A19B22732248737300FE9722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19B22712248737300FE9722 /* Main.storyboard */; };
 		A19B22752248737300FE9722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19B22742248737300FE9722 /* Assets.xcassets */; };
 		A19B22782248737300FE9722 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19B22762248737300FE9722 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		14B156062D669E3E00EB655E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14B1560A2D669F6900EB655E /* openssl.xcframework in Embed Frameworks */,
+				14B156052D669E3E00EB655E /* curl.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1407DC4924301C85007CD405 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
@@ -61,12 +101,22 @@
 		143830A42430A92300221BB8 /* GroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
 		143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout4Logout.swift; sourceTree = "<group>"; };
+		1447E98A2D66976800812D0A /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		1447E98B2D66976800812D0A /* json_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json_fwd.hpp; sourceTree = "<group>"; };
 		1485CC5F245EC91B00059F5E /* SystemInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
 		1485CC61245EC94B00059F5E /* SystemInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		148D86662431DA8C00EB38D6 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
 		148D86672431DA8C00EB38D6 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		149382C524A4EEB8002D33B1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14B117ED25B49BD30024FAD0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		14B155FB2D669E1100EB655E /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../lib/openssl_arm64-iphonesimulator/lib/libssl.a"; sourceTree = "<group>"; };
+		14B155FC2D669E1100EB655E /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../lib/openssl_arm64-iphonesimulator/lib/libcrypto.a"; sourceTree = "<group>"; };
+		14B155FF2D669E2400EB655E /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../lib/openssl_arm64-iphoneos/lib/libssl.a"; sourceTree = "<group>"; };
+		14B156002D669E2900EB655E /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../lib/openssl_arm64-iphoneos/lib/libcrypto.a"; sourceTree = "<group>"; };
+		14B156012D669E2E00EB655E /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../lib/openssl_x86_64-iphonesimulator/lib/libssl.a"; sourceTree = "<group>"; };
+		14B156022D669E3400EB655E /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../lib/openssl_x86_64-iphonesimulator/lib/libcrypto.a"; sourceTree = "<group>"; };
+		14B156032D669E3E00EB655E /* curl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = curl.xcframework; path = ../lib/curl.xcframework; sourceTree = "<group>"; };
+		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
 		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
 		14C4C52E2A196DB9000F20EF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		14D4DF442932C7A700C84FD0 /* LoginController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginController.mm; sourceTree = "<group>"; };
@@ -99,6 +149,65 @@
 		14DF180B2D6543E200E5AEF2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../lib/bin/libcurl.a; sourceTree = "<group>"; };
 		14DF180C2D6543E200E5AEF2 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../lib/bin/libcrypto.a; sourceTree = "<group>"; };
 		14DF180D2D6543E200E5AEF2 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../lib/bin/libssl.a; sourceTree = "<group>"; };
+		14DF181F2D6548E300E5AEF2 /* globals.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = globals.hpp; sourceTree = "<group>"; };
+		14DF18202D6548E300E5AEF2 /* tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tree.hpp; sourceTree = "<group>"; };
+		14DF18232D6548E300E5AEF2 /* config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = config.hpp; sourceTree = "<group>"; };
+		14DF18242D6548E300E5AEF2 /* session.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = session.hpp; sourceTree = "<group>"; };
+		14DF18272D6548E300E5AEF2 /* config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
+		14DF18282D6548E300E5AEF2 /* session.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = session.cpp; sourceTree = "<group>"; };
+		14DF182B2D6548E300E5AEF2 /* dao.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dao.hpp; sourceTree = "<group>"; };
+		14DF182C2D6548E300E5AEF2 /* dao-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-field.hpp"; sourceTree = "<group>"; };
+		14DF182D2D6548E300E5AEF2 /* dao-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-group.hpp"; sourceTree = "<group>"; };
+		14DF182E2D6548E300E5AEF2 /* dao-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-group-field.hpp"; sourceTree = "<group>"; };
+		14DF182F2D6548E300E5AEF2 /* dao-read-write.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write.hpp"; sourceTree = "<group>"; };
+		14DF18302D6548E300E5AEF2 /* dao-read-write-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-field.hpp"; sourceTree = "<group>"; };
+		14DF18312D6548E300E5AEF2 /* dao-read-write-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-group.hpp"; sourceTree = "<group>"; };
+		14DF18322D6548E300E5AEF2 /* dao-read-write-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-group-field.hpp"; sourceTree = "<group>"; };
+		14DF18332D6548E300E5AEF2 /* dao-user.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-user.hpp"; sourceTree = "<group>"; };
+		14DF18362D6548E300E5AEF2 /* dao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dao.cpp; sourceTree = "<group>"; };
+		14DF18372D6548E300E5AEF2 /* dao-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-field.cpp"; sourceTree = "<group>"; };
+		14DF18382D6548E300E5AEF2 /* dao-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-group.cpp"; sourceTree = "<group>"; };
+		14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-group-field.cpp"; sourceTree = "<group>"; };
+		14DF183A2D6548E300E5AEF2 /* dao-read-write-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-read-write-field.cpp"; sourceTree = "<group>"; };
+		14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-read-write-group.cpp"; sourceTree = "<group>"; };
+		14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-read-write-group-field.cpp"; sourceTree = "<group>"; };
+		14DF183D2D6548E300E5AEF2 /* dao-user.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-user.cpp"; sourceTree = "<group>"; };
+		14DF18402D6548E300E5AEF2 /* has-name.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "has-name.hpp"; sourceTree = "<group>"; };
+		14DF18412D6548E300E5AEF2 /* pod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pod.hpp; sourceTree = "<group>"; };
+		14DF18422D6548E300E5AEF2 /* read-write.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "read-write.hpp"; sourceTree = "<group>"; };
+		14DF18432D6548E300E5AEF2 /* synchronizable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = synchronizable.hpp; sourceTree = "<group>"; };
+		14DF18472D6548E300E5AEF2 /* device.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = device.hpp; sourceTree = "<group>"; };
+		14DF18482D6548E300E5AEF2 /* field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
+		14DF18492D6548E300E5AEF2 /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
+		14DF184A2D6548E300E5AEF2 /* group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "group-field.hpp"; sourceTree = "<group>"; };
+		14DF184B2D6548E300E5AEF2 /* net-transport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "net-transport.hpp"; sourceTree = "<group>"; };
+		14DF184C2D6548E300E5AEF2 /* user.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = user.hpp; sourceTree = "<group>"; };
+		14DF184D2D6548E300E5AEF2 /* variant.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = variant.hpp; sourceTree = "<group>"; };
+		14DF18502D6548E300E5AEF2 /* response.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = response.cpp; sourceTree = "<group>"; };
+		14DF18512D6548E300E5AEF2 /* variant.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = variant.cpp; sourceTree = "<group>"; };
+		14DF18542D6548E300E5AEF2 /* crypto.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = crypto.hpp; sourceTree = "<group>"; };
+		14DF18552D6548E300E5AEF2 /* database.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = database.hpp; sourceTree = "<group>"; };
+		14DF18562D6548E300E5AEF2 /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		14DF18572D6548E300E5AEF2 /* network.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = network.hpp; sourceTree = "<group>"; };
+		14DF18582D6548E300E5AEF2 /* result-set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "result-set.hpp"; sourceTree = "<group>"; };
+		14DF18592D6548E300E5AEF2 /* synchronizer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = synchronizer.hpp; sourceTree = "<group>"; };
+		14DF185C2D6548E300E5AEF2 /* crypto.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = crypto.cpp; sourceTree = "<group>"; };
+		14DF185D2D6548E300E5AEF2 /* database.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = database.cpp; sourceTree = "<group>"; };
+		14DF185E2D6548E300E5AEF2 /* json.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = json.cpp; sourceTree = "<group>"; };
+		14DF185F2D6548E300E5AEF2 /* network.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = network.cpp; sourceTree = "<group>"; };
+		14DF18602D6548E300E5AEF2 /* result-set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "result-set.cpp"; sourceTree = "<group>"; };
+		14DF18612D6548E300E5AEF2 /* synchronizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = synchronizer.cpp; sourceTree = "<group>"; };
+		14DF18642D6548E300E5AEF2 /* view.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = view.hpp; sourceTree = "<group>"; };
+		14DF18652D6548E300E5AEF2 /* view-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-field.hpp"; sourceTree = "<group>"; };
+		14DF18662D6548E300E5AEF2 /* view-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group.hpp"; sourceTree = "<group>"; };
+		14DF18672D6548E300E5AEF2 /* view-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group-field.hpp"; sourceTree = "<group>"; };
+		14DF186A2D6548E300E5AEF2 /* view.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = view.cpp; sourceTree = "<group>"; };
+		14DF186B2D6548E300E5AEF2 /* view-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-field.cpp"; sourceTree = "<group>"; };
+		14DF186C2D6548E300E5AEF2 /* view-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group.cpp"; sourceTree = "<group>"; };
+		14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group-field.cpp"; sourceTree = "<group>"; };
+		14DF18702D6548E300E5AEF2 /* globals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		14DF18712D6548E300E5AEF2 /* tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tree.cpp; sourceTree = "<group>"; };
+		14DF18B72D65492100E5AEF2 /* BS_thread_pool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BS_thread_pool.hpp; sourceTree = "<group>"; };
 		A19B226A2248737300FE9722 /* Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19B226D2248737300FE9722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19B22722248737300FE9722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,16 +223,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14DF180E2D6543F300E5AEF2 /* libssl.a in Frameworks */,
 				1407E67425A91CF5002CE6E9 /* Reachability in Frameworks */,
 				14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */,
 				1407DC45242F7428007CD405 /* libsqlite3.tbd in Frameworks */,
-				14DF18122D65442100E5AEF2 /* libcurl.a in Frameworks */,
-				14DF18112D65441000E5AEF2 /* libcrypto.a in Frameworks */,
 				14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */,
 				1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */,
+				14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */,
 				147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */,
 				149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */,
+				14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +263,39 @@
 				143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1447E9872D66961A00812D0A /* pocket-lib-adds */ = {
+			isa = PBXGroup;
+			children = (
+				1447E9882D66965000812D0A /* inc */,
+				1447E9892D66965B00812D0A /* src */,
+			);
+			path = "pocket-lib-adds";
+			sourceTree = "<group>";
+		};
+		1447E9882D66965000812D0A /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				1447E98C2D66976800812D0A /* nlohmann */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		1447E9892D66965B00812D0A /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		1447E98C2D66976800812D0A /* nlohmann */ = {
+			isa = PBXGroup;
+			children = (
+				1447E98A2D66976800812D0A /* json.hpp */,
+				1447E98B2D66976800812D0A /* json_fwd.hpp */,
+			);
+			path = nlohmann;
 			sourceTree = "<group>";
 		};
 		147D3384242D1AF0000880B6 /* ViewController */ = {
@@ -213,9 +354,302 @@
 			path = Bridge;
 			sourceTree = "<group>";
 		};
+		14DF18212D6548E300E5AEF2 /* pocket */ = {
+			isa = PBXGroup;
+			children = (
+				14DF181F2D6548E300E5AEF2 /* globals.hpp */,
+				14DF18202D6548E300E5AEF2 /* tree.hpp */,
+			);
+			path = pocket;
+			sourceTree = "<group>";
+		};
+		14DF18222D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18212D6548E300E5AEF2 /* pocket */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18252D6548E300E5AEF2 /* pocket-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18232D6548E300E5AEF2 /* config.hpp */,
+				14DF18242D6548E300E5AEF2 /* session.hpp */,
+			);
+			path = "pocket-controllers";
+			sourceTree = "<group>";
+		};
+		14DF18262D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18252D6548E300E5AEF2 /* pocket-controllers */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18292D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18272D6548E300E5AEF2 /* config.cpp */,
+				14DF18282D6548E300E5AEF2 /* session.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF182A2D6548E300E5AEF2 /* pocket-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18262D6548E300E5AEF2 /* inc */,
+				14DF18292D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-controllers";
+			sourceTree = "<group>";
+		};
+		14DF18342D6548E300E5AEF2 /* pocket-daos */ = {
+			isa = PBXGroup;
+			children = (
+				14DF182B2D6548E300E5AEF2 /* dao.hpp */,
+				14DF182C2D6548E300E5AEF2 /* dao-field.hpp */,
+				14DF182D2D6548E300E5AEF2 /* dao-group.hpp */,
+				14DF182E2D6548E300E5AEF2 /* dao-group-field.hpp */,
+				14DF182F2D6548E300E5AEF2 /* dao-read-write.hpp */,
+				14DF18302D6548E300E5AEF2 /* dao-read-write-field.hpp */,
+				14DF18312D6548E300E5AEF2 /* dao-read-write-group.hpp */,
+				14DF18322D6548E300E5AEF2 /* dao-read-write-group-field.hpp */,
+				14DF18332D6548E300E5AEF2 /* dao-user.hpp */,
+			);
+			path = "pocket-daos";
+			sourceTree = "<group>";
+		};
+		14DF18352D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18342D6548E300E5AEF2 /* pocket-daos */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF183E2D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18362D6548E300E5AEF2 /* dao.cpp */,
+				14DF18372D6548E300E5AEF2 /* dao-field.cpp */,
+				14DF18382D6548E300E5AEF2 /* dao-group.cpp */,
+				14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */,
+				14DF183A2D6548E300E5AEF2 /* dao-read-write-field.cpp */,
+				14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */,
+				14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */,
+				14DF183D2D6548E300E5AEF2 /* dao-user.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF183F2D6548E300E5AEF2 /* pocket-daos */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18352D6548E300E5AEF2 /* inc */,
+				14DF183E2D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-daos";
+			sourceTree = "<group>";
+		};
+		14DF18442D6548E300E5AEF2 /* pocket-iface */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18402D6548E300E5AEF2 /* has-name.hpp */,
+				14DF18412D6548E300E5AEF2 /* pod.hpp */,
+				14DF18422D6548E300E5AEF2 /* read-write.hpp */,
+				14DF18432D6548E300E5AEF2 /* synchronizable.hpp */,
+			);
+			path = "pocket-iface";
+			sourceTree = "<group>";
+		};
+		14DF18452D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18442D6548E300E5AEF2 /* pocket-iface */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18462D6548E300E5AEF2 /* pocket-iface */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18452D6548E300E5AEF2 /* inc */,
+			);
+			path = "pocket-iface";
+			sourceTree = "<group>";
+		};
+		14DF184E2D6548E300E5AEF2 /* pocket-pods */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18472D6548E300E5AEF2 /* device.hpp */,
+				14DF18482D6548E300E5AEF2 /* field.hpp */,
+				14DF18492D6548E300E5AEF2 /* group.hpp */,
+				14DF184A2D6548E300E5AEF2 /* group-field.hpp */,
+				14DF184B2D6548E300E5AEF2 /* net-transport.hpp */,
+				14DF184C2D6548E300E5AEF2 /* user.hpp */,
+				14DF184D2D6548E300E5AEF2 /* variant.hpp */,
+			);
+			path = "pocket-pods";
+			sourceTree = "<group>";
+		};
+		14DF184F2D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF184E2D6548E300E5AEF2 /* pocket-pods */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18522D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18502D6548E300E5AEF2 /* response.cpp */,
+				14DF18512D6548E300E5AEF2 /* variant.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF18532D6548E300E5AEF2 /* pocket-pods */ = {
+			isa = PBXGroup;
+			children = (
+				14DF184F2D6548E300E5AEF2 /* inc */,
+				14DF18522D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-pods";
+			sourceTree = "<group>";
+		};
+		14DF185A2D6548E300E5AEF2 /* pocket-services */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18542D6548E300E5AEF2 /* crypto.hpp */,
+				14DF18552D6548E300E5AEF2 /* database.hpp */,
+				14DF18562D6548E300E5AEF2 /* json.hpp */,
+				14DF18572D6548E300E5AEF2 /* network.hpp */,
+				14DF18582D6548E300E5AEF2 /* result-set.hpp */,
+				14DF18592D6548E300E5AEF2 /* synchronizer.hpp */,
+			);
+			path = "pocket-services";
+			sourceTree = "<group>";
+		};
+		14DF185B2D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF185A2D6548E300E5AEF2 /* pocket-services */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18622D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF185C2D6548E300E5AEF2 /* crypto.cpp */,
+				14DF185D2D6548E300E5AEF2 /* database.cpp */,
+				14DF185E2D6548E300E5AEF2 /* json.cpp */,
+				14DF185F2D6548E300E5AEF2 /* network.cpp */,
+				14DF18602D6548E300E5AEF2 /* result-set.cpp */,
+				14DF18612D6548E300E5AEF2 /* synchronizer.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF18632D6548E300E5AEF2 /* pocket-services */ = {
+			isa = PBXGroup;
+			children = (
+				14DF185B2D6548E300E5AEF2 /* inc */,
+				14DF18622D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-services";
+			sourceTree = "<group>";
+		};
+		14DF18682D6548E300E5AEF2 /* pocket-views */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18642D6548E300E5AEF2 /* view.hpp */,
+				14DF18652D6548E300E5AEF2 /* view-field.hpp */,
+				14DF18662D6548E300E5AEF2 /* view-group.hpp */,
+				14DF18672D6548E300E5AEF2 /* view-group-field.hpp */,
+			);
+			path = "pocket-views";
+			sourceTree = "<group>";
+		};
+		14DF18692D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18682D6548E300E5AEF2 /* pocket-views */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF186E2D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF186A2D6548E300E5AEF2 /* view.cpp */,
+				14DF186B2D6548E300E5AEF2 /* view-field.cpp */,
+				14DF186C2D6548E300E5AEF2 /* view-group.cpp */,
+				14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF186F2D6548E300E5AEF2 /* pocket-views */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18692D6548E300E5AEF2 /* inc */,
+				14DF186E2D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-views";
+			sourceTree = "<group>";
+		};
+		14DF18722D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18702D6548E300E5AEF2 /* globals.cpp */,
+				14DF18712D6548E300E5AEF2 /* tree.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF18792D6548E300E5AEF2 /* thread-pool */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18B82D65492100E5AEF2 /* include */,
+			);
+			path = "thread-pool";
+			sourceTree = "<group>";
+		};
+		14DF18832D6548E300E5AEF2 /* pocket-lib */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18222D6548E300E5AEF2 /* inc */,
+				14DF182A2D6548E300E5AEF2 /* pocket-controllers */,
+				14DF183F2D6548E300E5AEF2 /* pocket-daos */,
+				14DF18462D6548E300E5AEF2 /* pocket-iface */,
+				14DF18532D6548E300E5AEF2 /* pocket-pods */,
+				14DF18632D6548E300E5AEF2 /* pocket-services */,
+				14DF186F2D6548E300E5AEF2 /* pocket-views */,
+				14DF18722D6548E300E5AEF2 /* src */,
+				14DF18792D6548E300E5AEF2 /* thread-pool */,
+			);
+			name = "pocket-lib";
+			path = "../pocket-lib";
+			sourceTree = SOURCE_ROOT;
+		};
+		14DF18B82D65492100E5AEF2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18B72D65492100E5AEF2 /* BS_thread_pool.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		A19B22612248737200FE9722 = {
 			isa = PBXGroup;
 			children = (
+				1447E9872D66961A00812D0A /* pocket-lib-adds */,
+				14DF18832D6548E300E5AEF2 /* pocket-lib */,
 				A19B226C2248737300FE9722 /* Pocket */,
 				A19B226B2248737300FE9722 /* Products */,
 				A19B2285224876A800FE9722 /* Frameworks */,
@@ -254,7 +688,15 @@
 		A19B2285224876A800FE9722 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14B156082D669F6900EB655E /* openssl.xcframework */,
+				14B156032D669E3E00EB655E /* curl.xcframework */,
+				14B156022D669E3400EB655E /* libcrypto.a */,
+				14B156012D669E2E00EB655E /* libssl.a */,
+				14B156002D669E2900EB655E /* libcrypto.a */,
+				14B155FF2D669E2400EB655E /* libssl.a */,
 				14DF180C2D6543E200E5AEF2 /* libcrypto.a */,
+				14B155FC2D669E1100EB655E /* libcrypto.a */,
+				14B155FB2D669E1100EB655E /* libssl.a */,
 				14DF180B2D6543E200E5AEF2 /* libcurl.a */,
 				14DF180D2D6543E200E5AEF2 /* libssl.a */,
 				14B117ED25B49BD30024FAD0 /* libz.tbd */,
@@ -275,6 +717,7 @@
 				A19B22662248737300FE9722 /* Sources */,
 				A19B22672248737300FE9722 /* Frameworks */,
 				A19B22682248737300FE9722 /* Resources */,
+				14B156062D669E3E00EB655E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -350,6 +793,30 @@
 			files = (
 				14D4DF682932C7A700C84FD0 /* Device.mm in Sources */,
 				14375090242F41F200375E54 /* Constants.swift in Sources */,
+				14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */,
+				14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */,
+				14DF18872D6548E300E5AEF2 /* config.cpp in Sources */,
+				14DF18882D6548E300E5AEF2 /* view.cpp in Sources */,
+				14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */,
+				14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */,
+				14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */,
+				14DF188D2D6548E300E5AEF2 /* result-set.cpp in Sources */,
+				14DF188F2D6548E300E5AEF2 /* dao.cpp in Sources */,
+				14DF18902D6548E300E5AEF2 /* dao-read-write-field.cpp in Sources */,
+				14DF18912D6548E300E5AEF2 /* dao-group.cpp in Sources */,
+				14DF18922D6548E300E5AEF2 /* synchronizer.cpp in Sources */,
+				14DF18932D6548E300E5AEF2 /* network.cpp in Sources */,
+				14DF18952D6548E300E5AEF2 /* crypto.cpp in Sources */,
+				14DF18962D6548E300E5AEF2 /* view-field.cpp in Sources */,
+				14DF18972D6548E300E5AEF2 /* dao-read-write-group-field.cpp in Sources */,
+				14DF18982D6548E300E5AEF2 /* json.cpp in Sources */,
+				14DF18992D6548E300E5AEF2 /* session.cpp in Sources */,
+				14DF189A2D6548E300E5AEF2 /* dao-user.cpp in Sources */,
+				14DF189B2D6548E300E5AEF2 /* view-group-field.cpp in Sources */,
+				14DF189D2D6548E300E5AEF2 /* database.cpp in Sources */,
+				14DF189E2D6548E300E5AEF2 /* tree.cpp in Sources */,
+				14DF189F2D6548E300E5AEF2 /* globals.cpp in Sources */,
+				14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */,
 				1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */,
 				14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */,
 				14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */,
@@ -447,6 +914,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"DEBUG=1",
+					"POCKET_AES_CBC_IV=\"\\\"qwertyuiopasdfgh\\\"\"",
+					"MAX_BUFFER_RESPONSE_SIZE=10240",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -456,24 +925,28 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PROJECT_DIR}../../../cppcommons/include",
-					"${PROJECT_DIR}../../../cppcommons/lib/include",
-					"${PROJECT_DIR}../../../pocket/include",
-					"${PROJECT_DIR}/Pocket/3thparty",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
+					"${PROJECT_DIR}/../thread-pool/include",
+					"${PROJECT_DIR}/pocket-lib-adds/inc",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LIBRARY_SEARCH_PATHS = (
-					"${PROJECT_DIR}/../lib/bin",
-					"$(inherited)",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../lib/",
+				);
 			};
 			name = Debug;
 		};
@@ -528,23 +1001,27 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PROJECT_DIR}../../../cppcommons/include",
-					"${PROJECT_DIR}../../../cppcommons/lib/include",
-					"${PROJECT_DIR}../../../pocket/include",
-					"${PROJECT_DIR}/Pocket/3thparty",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
+					"${PROJECT_DIR}/../thread-pool/include",
+					"${PROJECT_DIR}/pocket-lib-adds/inc",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LIBRARY_SEARCH_PATHS = (
-					"${PROJECT_DIR}/../lib/bin",
-					"$(inherited)",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../lib/",
+				);
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -563,12 +1040,18 @@
 				DEVELOPMENT_TEAM = 58CR8N5TPL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PROJECT_DIR}/../lib/include",
+					"${PROJECT_DIR}/../pocket-lib/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pocket/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -577,7 +1060,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.salsi.app.Pocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pocket/Pocket-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -600,12 +1083,18 @@
 				DEVELOPMENT_TEAM = 58CR8N5TPL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PROJECT_DIR}/../lib/include",
+					"${PROJECT_DIR}/../pocket-lib/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pocket/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -614,7 +1103,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.salsi.app.Pocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pocket/Pocket-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
