@@ -252,8 +252,8 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             idGroupFieldToModify += 1
             groupField.setid(idGroupFieldToModify)
         }
-        groupField.setReferenceSession(group.getReferenceSession())
-        groupField.setReferenceUserId(group.getReferenceUserId())
+//        groupField.setReferenceSession(group.getReferenceSession())
+//        groupField.setReferenceUserId(group.getReferenceUserId())
         groupField.setGroupId(group.getid())
         groupField.setTitle(txtGroupFieldTitle.text ?? "")
         groupField.setIsHidden(switchGroupFieldIsHidden.isOn)

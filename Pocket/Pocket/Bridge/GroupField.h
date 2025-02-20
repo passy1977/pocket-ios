@@ -28,14 +28,27 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GroupField : NSObject
 
 -(instancetype)init;
--(instancetype)initWithId:(uint32_t)id serverId:(uint32_t)serverId groupId:(uint32_t)groupId title:(NSString*)title isHidden:(BOOL)isHidden synchronized:(BOOL)synchronized deleted:(BOOL)deleted;
+-(instancetype)initWithId:(uint32_t)id
+                serverId:(uint32_t)serverId
+                userId:(uint32_t)userId
+                groupId:(uint32_t)groupId
+                serverGroupFieldId:(uint32_t)serverGroupFieldId
+                title:(NSString*)title
+                isHidden:(BOOL)isHidden
+                synchronized:(BOOL)synchronized
+                deleted:(BOOL)deleted
+                timestampCreation:(uint64_t)timestampCreation;
 
 -(void)setid:(uint32_t)id;
 -(uint32_t)getid;
 -(void)setServerId:(uint32_t)id;
 -(uint32_t)getServerId;
+-(void)setUserId:(uint32_t)id;
+-(uint32_t)getUserId;
 -(void)setGroupId:(uint32_t)groupId;
 -(uint32_t)getGroupId;
+-(void)setServerGroupId:(uint32_t)serverGroupId;
+-(uint32_t)getServerGroupId;
 -(void)setTitle:(NSString*)title;
 -(NSString*)getTitle;
 -(void)setIsHidden:(BOOL)isHidden;
@@ -44,11 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)getSynchronized;
 -(void)setDeleted:(BOOL)deleted;
 -(BOOL)getDeleted;
-
--(void)setReferenceUserId:(uint32_t)referenceUserId;
--(uint32_t)getReferenceUserId;
--(void)setReferenceSession:(NSString*)referenceSession;
--(NSString*)getReferenceSession;
+-(uint64_t)getTimestampCreation;
+-(void)setTimestampCreation:(uint64_t)timestampCreation;
 
 @end
 
