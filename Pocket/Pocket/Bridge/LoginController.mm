@@ -18,9 +18,8 @@
  ***************************************************************************/
 
 //#include <pocket/controllers/logincontroller.hpp>
-using namespace std;
+//using namespace std;
 
-#import "Device.h"
 #import "Field.h"
 #import "Globals.h"
 #import "Group.h"

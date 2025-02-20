@@ -19,7 +19,6 @@
 
 //#include <pocket/controllers/groupcontroller.hpp>
 #import "Constants.h"
-#import "Device.h"
 #import "Field.h"
 #import "Globals.h"
 #import "Group.h"

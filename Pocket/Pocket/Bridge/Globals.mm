@@ -19,7 +19,6 @@
 
 
 #import "Constants.h"
-#import "Device.h"
 #import "Globals.h"
 #import "User.h"
 

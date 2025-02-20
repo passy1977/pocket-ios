@@ -92,9 +92,9 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
         }
     
         let user = User()
-        user.setHost(txtHost.text ?? "")
-        user.setHostAuth(txtHostUser.text ?? "")
-        user.setHostAuthPasswd(txtHostPasswd.text ?? "")
+//        user.setHost(txtHost.text ?? "")
+//        user.setHostAuth(txtHostUser.text ?? "")
+//        user.setHostAuthPasswd(txtHostPasswd.text ?? "")
         user.setName(txtName.text ?? "")
         user.setEmail(txtEmail.text ?? "")
         user.setPasswd(txtPasswd.text ?? "")

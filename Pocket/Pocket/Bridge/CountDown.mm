@@ -22,7 +22,6 @@
 
 #import "Constants.h"
 #import "CountDown.h"
-#import "Device.h"
 #import "Globals.h"
 #import "Property.h"
 #import "User.h"

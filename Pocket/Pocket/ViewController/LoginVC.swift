@@ -66,15 +66,16 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             controller.loginBiometric {passwd in
                 LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Place your finger on the sensor") {success, _ in
                     if (success) {
-                        do {
-                            try self.performLogin(host: user.getHost(),
-                                                  hostAuthUser: user.getHostAuthUser(),
-                                                  hostAuthPasswd: user.getHostAuthPasswd(),
-                                                  email: user.getEmail(),
-                                                  passwd: passwd)
-                        } catch {
-                            print(error)
-                        }
+//                        do {
+//                            //todo: update login
+//                            try self.performLogin(host: user.getHost(),
+//                                                  hostAuthUser: user.getHostAuthUser(),
+//                                                  hostAuthPasswd: user.getHostAuthPasswd(),
+//                                                  email: user.getEmail(),
+//                                                  passwd: passwd)
+//                        } catch {
+//                            print(error)
+//                        }
                     }
                 }
             }
@@ -144,9 +145,9 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             txtHostPasswd.isHidden = true
             txtHost.isEnabled = false
             cnstTxtHost.constant = cnstTxtHostHide
-            txtHost.text = user.getHost()
-            txtHostUser.text = user.getHostAuthUser()
-            txtHostPasswd.text = user.getHostAuthPasswd()
+//            txtHost.text = user.getHost()
+//            txtHostUser.text = user.getHostAuthUser()
+//            txtHostPasswd.text = user.getHostAuthPasswd()
             txtEmail.text = user.getEmail()
         } else {
             btnAddNewUser.isEnabled = true

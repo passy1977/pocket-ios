@@ -22,7 +22,6 @@
 //using namespace std;
 
 #import "Constants.h"
-#import "Device.h"
 #import "Field.h"
 #import "FieldController.h"
 #import "Globals.h"

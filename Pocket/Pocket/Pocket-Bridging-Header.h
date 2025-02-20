@@ -4,7 +4,6 @@
 
 #import "SZTextView.h"
 #import "SystemInfo.h"
-#import "Device.h"
 #import "Field.h"
 #import "Group.h"
 #import "GroupField.h"
