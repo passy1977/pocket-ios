@@ -249,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				1447E9882D66965000812D0A /* inc */,
-				1447E9892D66965B00812D0A /* src */,
 			);
 			path = "pocket-lib-adds";
 			sourceTree = "<group>";
@@ -260,13 +259,6 @@
 				1447E98C2D66976800812D0A /* nlohmann */,
 			);
 			path = inc;
-			sourceTree = "<group>";
-		};
-		1447E9892D66965B00812D0A /* src */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		1447E98C2D66976800812D0A /* nlohmann */ = {

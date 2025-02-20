@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
                 serverId:(uint32_t)serverId
                 userId:(uint32_t)userId
                 groupId:(uint32_t)groupId
-                serverGroupFieldId:(uint32_t)serverGroupFieldId
+                serverGroupId:(uint32_t)serverGroupId
                 title:(NSString*)title
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
