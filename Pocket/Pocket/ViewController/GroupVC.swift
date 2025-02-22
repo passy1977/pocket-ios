@@ -1,0 +1,315 @@
+/***************************************************************************
+ *
+ * Pocket
+ * Copyright (C) 2018/2025 Antonio Salsi <passy.linux@zresa.it>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ ***************************************************************************/
+
+import UIKit
+import Reachability
+
+final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+
+    //MARK: - IBOutlet
+    @IBOutlet private weak var txtGroupTitle: UITextField!
+    @IBOutlet private weak var txtViwGroupNote: SZTextView!
+    @IBOutlet private weak var txtGroupFieldTitle: UITextField!
+    @IBOutlet private weak var switchGroupFieldIsHidden: UISwitch!
+    @IBOutlet private weak var btnGroupAdd: UIBarButtonItem!
+    @IBOutlet private weak var btnGroupFieldAdd: UIButton!
+    @IBOutlet private weak var btnGroupFieldClear: UIButton!
+    @IBOutlet private weak var list: UITableView!
+    
+    //MARK: - Data
+    private let reachability = try! Reachability()
+    private static let controller = GroupController()
+    
+    private var groupFieldList : [GroupField] = []
+    
+    private var insert = true
+    private var groupFieldToModify: GroupField? = nil
+    
+    private var idGroupFieldToModify : UInt32 = 1;
+    
+    public weak var group : Group? = nil {
+        didSet {
+            insert = (group?.getTitle() ?? "") == ""
+        }
+    }
+    
+    //MARK: - system
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        btnGroupAdd.isEnabled = false
+        txtViwGroupNote.isEditable = false
+        setGroupField(enable: false)
+        
+        GroupVC.controller.initialize()
+        
+        idGroupFieldToModify = GroupVC.controller.getLastIdGroupField()
+        
+        if let group = group
+        {
+            GroupVC.controller.fillShowList(group, copy: insert);
+        }
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+          try reachability.startNotifier()
+        }catch{
+          print("could not start reachability notifier:\(error)")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let group = self.group else {
+            alertShow(self, title: "Error", message: "Reference group nil")
+            return
+        }
+        
+        if insert {
+            btnGroupAdd.isEnabled = false
+            txtViwGroupNote.isEditable = false
+        } else {
+            insert = false
+            btnGroupAdd.isEnabled = true
+            txtViwGroupNote.isEditable = true
+            txtGroupTitle.text = group.getTitle()
+            txtViwGroupNote.text = group.getNote()
+        }
+        
+        reloadList(group.getid(), insert: insert)
+        
+        Timeout4Logout.getShared().updateTimeLeft()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self.isMovingFromParent {
+            group = nil
+        }
+    }
+
+    //MARK: - Back
+    
+    override func didMove(toParent parent: UIViewController?) {
+        if !(parent?.isEqual(self.parent) ?? false) {
+            GroupVC.controller.cleanShowList()
+        }
+        super.didMove(toParent: parent)
+    }
+    
+    
+    // MARK: - UITableViewDelegate, UITableViewDataSource
+    @inlinable
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        groupFieldList.count
+    }
+    
+    //data in cell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupFieldCell", for: indexPath)
+        let groupField = groupFieldList[indexPath.row]
+        
+        cell.textLabel?.text = groupField.getTitle()
+
+        return cell
+    }
+    
+    //tap
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
+        let groupField = groupFieldList[indexPath.row]
+        
+        groupFieldToModify = groupField
+        
+        setGroupField(enable: true, title: groupField.getTitle(), isHidden: groupField.getIsHidden())
+    }
+
+
+    //funzioni sullo swipe
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        view.endEditing(true)
+        //delete
+        let delete = UIContextualAction(style: .destructive, title: nil) { _, _, success in
+            alertShow(self, title: "Warning", message: "Dou you want delete it?", handlerNo: { _ in success(false)}) { _ in
+
+                if GroupVC.controller.del(fromShowList: self.groupFieldList[indexPath.row].getid())
+                {
+                    DispatchQueue.main.async {
+                        self.reloadList(self.group?.getid() ?? 0, insert: self.insert)
+                    }
+                }
+            }
+        }
+        delete.backgroundColor = .red
+        delete.image = UIImage(systemName: "trash")
+        
+        let ret = UISwipeActionsConfiguration(actions: [delete])
+        ret.performsFirstActionWithFullSwipe = false
+        return ret
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: - Reachability
+    
+    @objc func reachabilityChanged(note: Notification) {
+      if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
+        print("Network not reachable")
+        GroupVC.controller.setReachability(false)
+      } else {
+        GroupVC.controller.setReachability(true)
+      }
+    }
+    
+    // MARK: - Act
+    
+    @IBAction func actBtnGroupAdd(_ sender: UIBarButtonItem) {
+        guard let group = self.group else {
+            return
+        }
+        if txtGroupFieldTitle.text != "" {
+            alertShow(self, message: "Not all data are saved!")
+            return
+        }
+        
+        let semaphore = DispatchSemaphore(value: 1)
+        if insert {
+            let g = Group()
+            g.setGroupId(group.getid())
+            g.setTitle(txtGroupTitle.text ?? "")
+            g.setNote(txtViwGroupNote.text ?? "")
+            g.setIcon("")
+            GroupsFieldsVC.overrideSearch = g.getTitle()
+            GroupVC.controller.insert(g) { status, _ in
+                DispatchQueue.main.async {
+                    spinnerStatusShow(self, status: status)
+                }
+                if status == synchronizatorEnd {
+                    Timeout4Logout.getShared().start()
+                    //g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
+                    self.group = g
+                    semaphore.signal()
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        } else {
+            group.setTitle(txtGroupTitle.text ?? "")
+            group.setNote(txtViwGroupNote.text ?? "")
+            GroupsFieldsVC.overrideSearch = group.getTitle()
+            GroupVC.controller.update(group) { status in
+                DispatchQueue.main.async {
+                    spinnerStatusShow(self, status: status)
+                }
+                if status == synchronizatorEnd {
+                    Timeout4Logout.getShared().start()
+//                    group.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
+                    semaphore.signal()
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        }
+        semaphore.wait()
+        
+       
+    }
+    
+    
+    @IBAction func actBtnGroupFieldAdd(_ sender: UIButton) {
+        guard let group = self.group else {
+            return
+        }
+        
+        let groupField = GroupField()
+        
+        if let groupFieldToModify = self.groupFieldToModify  {
+            groupField.setid(groupFieldToModify.getid())
+            groupField.setServerId(groupFieldToModify.getServerId())
+        } else {
+            idGroupFieldToModify += 1
+            groupField.setid(idGroupFieldToModify)
+        }
+//        groupField.setReferenceSession(group.getReferenceSession())
+//        groupField.setReferenceUserId(group.getReferenceUserId())
+        groupField.setGroupId(group.getid())
+        groupField.setTitle(txtGroupFieldTitle.text ?? "")
+        groupField.setIsHidden(switchGroupFieldIsHidden.isOn)
+        
+        if(GroupVC.controller.add(toShowList: groupField))
+        {
+            groupFieldToModify = nil;
+            self.setGroupField(enable: false)
+        }
+        
+        reloadList(group.getid(), insert: insert)
+    }
+    
+    @IBAction func actBtnGroupFieldClear(_ sender: UIButton) {
+        groupFieldToModify = nil
+        self.setGroupField(enable: false)
+    }
+    
+    @IBAction func actTxtFieldChange(_ sender: UITextField) {
+        guard let text = sender.text else {
+            return
+        }
+        if text.isEmpty {
+            sender.setBottomBorderOnlyWith()
+        } else {
+            sender.unsetBottomBorderOnlyWith()
+        }
+        if sender == txtGroupTitle {
+            btnGroupAdd.isEnabled = !(sender.text?.isEmpty ?? true)
+            txtViwGroupNote.isEditable = !(sender.text?.isEmpty ?? true)
+        } else if sender == txtGroupFieldTitle {
+            let check = !(sender.text?.isEmpty ?? true)
+            btnGroupFieldAdd.isEnabled = check
+            btnGroupFieldClear.isEnabled = check
+            switchGroupFieldIsHidden.isEnabled = check
+            
+        }
+    }
+    
+    // MARK: - Function
+    
+    private func setGroupField(enable: Bool, title: String = "",  isHidden : Bool? = nil) {
+        txtGroupFieldTitle.text = title
+        btnGroupFieldAdd.isEnabled = enable
+        btnGroupFieldClear.isEnabled = enable
+        switchGroupFieldIsHidden.isEnabled = enable
+        switchGroupFieldIsHidden.isOn = isHidden ?? false
+    }
+    
+    private func reloadList(_ groupId: UInt32, insert : Bool = false) {
+        groupFieldList = [GroupField]()
+        
+        for groupField in GroupVC.controller.getShowList() {
+            groupFieldList.append(groupField)
+        }
+
+        list.reloadData()
+    }
+}

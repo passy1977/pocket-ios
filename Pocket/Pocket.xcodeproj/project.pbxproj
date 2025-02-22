@@ -1,0 +1,1133 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1407DC45242F7428007CD405 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14173FD8242D34670055410E /* libsqlite3.tbd */; };
+		1407DC4A24301C85007CD405 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407DC4924301C85007CD405 /* Graphics.swift */; };
+		1407E67425A91CF5002CE6E9 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 1407E67325A91CF5002CE6E9 /* Reachability */; };
+		14173FC3242D27560055410E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC0242D27560055410E /* LoginVC.swift */; };
+		14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC1242D27560055410E /* GroupsFieldsVC.swift */; };
+		14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC2242D27560055410E /* AddNewUserVC.swift */; };
+		14375090242F41F200375E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437508F242F41F200375E54 /* Constants.swift */; };
+		14375093242F584900375E54 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14375092242F584900375E54 /* TextFieldExtension.swift */; };
+		143830A52430A92300221BB8 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143830A42430A92300221BB8 /* GroupVC.swift */; };
+		1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */; };
+		143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */; };
+		1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 1474415E25B42F1C00B6270D /* SwiftSpinner */; };
+		147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19B228A224876C800FE9722 /* libc++.tbd */; };
+		1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1485CC5F245EC91B00059F5E /* SystemInfo.m */; };
+		148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D86672431DA8C00EB38D6 /* SZTextView.m */; };
+		149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149382C524A4EEB8002D33B1 /* Security.framework */; };
+		14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */; };
+		14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156032D669E3E00EB655E /* curl.xcframework */; };
+		14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; };
+		14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA14212431CAB30067CFA8 /* FieldVC.swift */; };
+		14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF462932C7A700C84FD0 /* Group.mm */; };
+		14D4DF602932C7A700C84FD0 /* Pair.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF482932C7A700C84FD0 /* Pair.mm */; };
+		14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4C2932C7A700C84FD0 /* GroupController.mm */; };
+		14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4D2932C7A700C84FD0 /* CountDown.mm */; };
+		14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF502932C7A700C84FD0 /* GroupField.mm */; };
+		14D4DF642932C7A700C84FD0 /* Property.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF522932C7A700C84FD0 /* Property.mm */; };
+		14D4DF652932C7A700C84FD0 /* Field.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF542932C7A700C84FD0 /* Field.mm */; };
+		14D4DF662932C7A700C84FD0 /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF572932C7A700C84FD0 /* User.mm */; };
+		14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5A2932C7A700C84FD0 /* FieldController.mm */; };
+		14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */; };
+		14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Globals.mm */; };
+		14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */; };
+		14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186C2D6548E300E5AEF2 /* view-group.cpp */; };
+		14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */; };
+		14DF18872D6548E300E5AEF2 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18272D6548E300E5AEF2 /* config.cpp */; };
+		14DF18882D6548E300E5AEF2 /* view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186A2D6548E300E5AEF2 /* view.cpp */; };
+		14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18372D6548E300E5AEF2 /* dao-field.cpp */; };
+		14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18502D6548E300E5AEF2 /* response.cpp */; };
+		14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18512D6548E300E5AEF2 /* variant.cpp */; };
+		14DF188D2D6548E300E5AEF2 /* result-set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18602D6548E300E5AEF2 /* result-set.cpp */; };
+		14DF188F2D6548E300E5AEF2 /* dao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18362D6548E300E5AEF2 /* dao.cpp */; };
+		14DF18902D6548E300E5AEF2 /* dao-read-write-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183A2D6548E300E5AEF2 /* dao-read-write-field.cpp */; };
+		14DF18912D6548E300E5AEF2 /* dao-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18382D6548E300E5AEF2 /* dao-group.cpp */; };
+		14DF18922D6548E300E5AEF2 /* synchronizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18612D6548E300E5AEF2 /* synchronizer.cpp */; };
+		14DF18932D6548E300E5AEF2 /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185F2D6548E300E5AEF2 /* network.cpp */; };
+		14DF18952D6548E300E5AEF2 /* crypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185C2D6548E300E5AEF2 /* crypto.cpp */; };
+		14DF18962D6548E300E5AEF2 /* view-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186B2D6548E300E5AEF2 /* view-field.cpp */; };
+		14DF18972D6548E300E5AEF2 /* dao-read-write-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */; };
+		14DF18982D6548E300E5AEF2 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185E2D6548E300E5AEF2 /* json.cpp */; };
+		14DF18992D6548E300E5AEF2 /* session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18282D6548E300E5AEF2 /* session.cpp */; };
+		14DF189A2D6548E300E5AEF2 /* dao-user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183D2D6548E300E5AEF2 /* dao-user.cpp */; };
+		14DF189B2D6548E300E5AEF2 /* view-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */; };
+		14DF189D2D6548E300E5AEF2 /* database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185D2D6548E300E5AEF2 /* database.cpp */; };
+		14DF189E2D6548E300E5AEF2 /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18712D6548E300E5AEF2 /* tree.cpp */; };
+		14DF189F2D6548E300E5AEF2 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18702D6548E300E5AEF2 /* globals.cpp */; };
+		14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */; };
+		14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B117ED25B49BD30024FAD0 /* libz.tbd */; };
+		A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19B226D2248737300FE9722 /* AppDelegate.swift */; };
+		A19B22732248737300FE9722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19B22712248737300FE9722 /* Main.storyboard */; };
+		A19B22752248737300FE9722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19B22742248737300FE9722 /* Assets.xcassets */; };
+		A19B22782248737300FE9722 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19B22762248737300FE9722 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1407DC4924301C85007CD405 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
+		14173FC0242D27560055410E /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		14173FC1242D27560055410E /* GroupsFieldsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVC.swift; sourceTree = "<group>"; };
+		14173FC2242D27560055410E /* AddNewUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewUserVC.swift; sourceTree = "<group>"; };
+		14173FD8242D34670055410E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1437508F242F41F200375E54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		14375092242F584900375E54 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		14383099243080FD00221BB8 /* Pocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pocket.entitlements; sourceTree = "<group>"; };
+		143830A42430A92300221BB8 /* GroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
+		143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
+		143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout4Logout.swift; sourceTree = "<group>"; };
+		1447E98A2D66976800812D0A /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		1447E98B2D66976800812D0A /* json_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json_fwd.hpp; sourceTree = "<group>"; };
+		1485CC5F245EC91B00059F5E /* SystemInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
+		1485CC61245EC94B00059F5E /* SystemInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
+		148D86662431DA8C00EB38D6 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
+		148D86672431DA8C00EB38D6 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
+		149382C524A4EEB8002D33B1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		14942C372D69D68F004FC897 /* Sercets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Sercets.xcconfig; sourceTree = "<group>"; };
+		14B117ED25B49BD30024FAD0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		14B156032D669E3E00EB655E /* curl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = curl.xcframework; path = ../lib/curl.xcframework; sourceTree = "<group>"; };
+		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
+		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
+		14C4C52E2A196DB9000F20EF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		14D4DF452932C7A700C84FD0 /* StackNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackNavigator.h; sourceTree = "<group>"; };
+		14D4DF462932C7A700C84FD0 /* Group.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Group.mm; sourceTree = "<group>"; };
+		14D4DF482932C7A700C84FD0 /* Pair.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pair.mm; sourceTree = "<group>"; };
+		14D4DF492932C7A700C84FD0 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
+		14D4DF4A2932C7A700C84FD0 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
+		14D4DF4B2932C7A700C84FD0 /* FieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldController.h; sourceTree = "<group>"; };
+		14D4DF4C2932C7A700C84FD0 /* GroupController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupController.mm; sourceTree = "<group>"; };
+		14D4DF4D2932C7A700C84FD0 /* CountDown.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountDown.mm; sourceTree = "<group>"; };
+		14D4DF4E2932C7A700C84FD0 /* GroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupController.h; sourceTree = "<group>"; };
+		14D4DF4F2932C7A700C84FD0 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		14D4DF502932C7A700C84FD0 /* GroupField.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupField.mm; sourceTree = "<group>"; };
+		14D4DF512932C7A700C84FD0 /* GroupField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupField.h; sourceTree = "<group>"; };
+		14D4DF522932C7A700C84FD0 /* Property.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Property.mm; sourceTree = "<group>"; };
+		14D4DF532932C7A700C84FD0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		14D4DF542932C7A700C84FD0 /* Field.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Field.mm; sourceTree = "<group>"; };
+		14D4DF552932C7A700C84FD0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		14D4DF562932C7A700C84FD0 /* Pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pair.h; sourceTree = "<group>"; };
+		14D4DF572932C7A700C84FD0 /* User.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = User.mm; sourceTree = "<group>"; };
+		14D4DF582932C7A700C84FD0 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
+		14D4DF5A2932C7A700C84FD0 /* FieldController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldController.mm; sourceTree = "<group>"; };
+		14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StackNavigator.mm; sourceTree = "<group>"; };
+		14D4DF5D2932C7A700C84FD0 /* Globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Globals.mm; sourceTree = "<group>"; };
+		14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVCCell.swift; sourceTree = "<group>"; };
+		14DF181F2D6548E300E5AEF2 /* globals.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = globals.hpp; sourceTree = "<group>"; };
+		14DF18202D6548E300E5AEF2 /* tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tree.hpp; sourceTree = "<group>"; };
+		14DF18232D6548E300E5AEF2 /* config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = config.hpp; sourceTree = "<group>"; };
+		14DF18242D6548E300E5AEF2 /* session.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = session.hpp; sourceTree = "<group>"; };
+		14DF18272D6548E300E5AEF2 /* config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
+		14DF18282D6548E300E5AEF2 /* session.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = session.cpp; sourceTree = "<group>"; };
+		14DF182B2D6548E300E5AEF2 /* dao.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dao.hpp; sourceTree = "<group>"; };
+		14DF182C2D6548E300E5AEF2 /* dao-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-field.hpp"; sourceTree = "<group>"; };
+		14DF182D2D6548E300E5AEF2 /* dao-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-group.hpp"; sourceTree = "<group>"; };
+		14DF182E2D6548E300E5AEF2 /* dao-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-group-field.hpp"; sourceTree = "<group>"; };
+		14DF182F2D6548E300E5AEF2 /* dao-read-write.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write.hpp"; sourceTree = "<group>"; };
+		14DF18302D6548E300E5AEF2 /* dao-read-write-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-field.hpp"; sourceTree = "<group>"; };
+		14DF18312D6548E300E5AEF2 /* dao-read-write-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-group.hpp"; sourceTree = "<group>"; };
+		14DF18322D6548E300E5AEF2 /* dao-read-write-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-group-field.hpp"; sourceTree = "<group>"; };
+		14DF18332D6548E300E5AEF2 /* dao-user.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-user.hpp"; sourceTree = "<group>"; };
+		14DF18362D6548E300E5AEF2 /* dao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dao.cpp; sourceTree = "<group>"; };
+		14DF18372D6548E300E5AEF2 /* dao-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-field.cpp"; sourceTree = "<group>"; };
+		14DF18382D6548E300E5AEF2 /* dao-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-group.cpp"; sourceTree = "<group>"; };
+		14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-group-field.cpp"; sourceTree = "<group>"; };
+		14DF183A2D6548E300E5AEF2 /* dao-read-write-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-read-write-field.cpp"; sourceTree = "<group>"; };
+		14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-read-write-group.cpp"; sourceTree = "<group>"; };
+		14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-read-write-group-field.cpp"; sourceTree = "<group>"; };
+		14DF183D2D6548E300E5AEF2 /* dao-user.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "dao-user.cpp"; sourceTree = "<group>"; };
+		14DF18402D6548E300E5AEF2 /* has-name.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "has-name.hpp"; sourceTree = "<group>"; };
+		14DF18412D6548E300E5AEF2 /* pod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pod.hpp; sourceTree = "<group>"; };
+		14DF18422D6548E300E5AEF2 /* read-write.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "read-write.hpp"; sourceTree = "<group>"; };
+		14DF18432D6548E300E5AEF2 /* synchronizable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = synchronizable.hpp; sourceTree = "<group>"; };
+		14DF18472D6548E300E5AEF2 /* device.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = device.hpp; sourceTree = "<group>"; };
+		14DF18482D6548E300E5AEF2 /* field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
+		14DF18492D6548E300E5AEF2 /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
+		14DF184A2D6548E300E5AEF2 /* group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "group-field.hpp"; sourceTree = "<group>"; };
+		14DF184B2D6548E300E5AEF2 /* net-transport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "net-transport.hpp"; sourceTree = "<group>"; };
+		14DF184C2D6548E300E5AEF2 /* user.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = user.hpp; sourceTree = "<group>"; };
+		14DF184D2D6548E300E5AEF2 /* variant.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = variant.hpp; sourceTree = "<group>"; };
+		14DF18502D6548E300E5AEF2 /* response.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = response.cpp; sourceTree = "<group>"; };
+		14DF18512D6548E300E5AEF2 /* variant.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = variant.cpp; sourceTree = "<group>"; };
+		14DF18542D6548E300E5AEF2 /* crypto.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = crypto.hpp; sourceTree = "<group>"; };
+		14DF18552D6548E300E5AEF2 /* database.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = database.hpp; sourceTree = "<group>"; };
+		14DF18562D6548E300E5AEF2 /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		14DF18572D6548E300E5AEF2 /* network.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = network.hpp; sourceTree = "<group>"; };
+		14DF18582D6548E300E5AEF2 /* result-set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "result-set.hpp"; sourceTree = "<group>"; };
+		14DF18592D6548E300E5AEF2 /* synchronizer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = synchronizer.hpp; sourceTree = "<group>"; };
+		14DF185C2D6548E300E5AEF2 /* crypto.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = crypto.cpp; sourceTree = "<group>"; };
+		14DF185D2D6548E300E5AEF2 /* database.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = database.cpp; sourceTree = "<group>"; };
+		14DF185E2D6548E300E5AEF2 /* json.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = json.cpp; sourceTree = "<group>"; };
+		14DF185F2D6548E300E5AEF2 /* network.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = network.cpp; sourceTree = "<group>"; };
+		14DF18602D6548E300E5AEF2 /* result-set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "result-set.cpp"; sourceTree = "<group>"; };
+		14DF18612D6548E300E5AEF2 /* synchronizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = synchronizer.cpp; sourceTree = "<group>"; };
+		14DF18642D6548E300E5AEF2 /* view.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = view.hpp; sourceTree = "<group>"; };
+		14DF18652D6548E300E5AEF2 /* view-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-field.hpp"; sourceTree = "<group>"; };
+		14DF18662D6548E300E5AEF2 /* view-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group.hpp"; sourceTree = "<group>"; };
+		14DF18672D6548E300E5AEF2 /* view-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group-field.hpp"; sourceTree = "<group>"; };
+		14DF186A2D6548E300E5AEF2 /* view.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = view.cpp; sourceTree = "<group>"; };
+		14DF186B2D6548E300E5AEF2 /* view-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-field.cpp"; sourceTree = "<group>"; };
+		14DF186C2D6548E300E5AEF2 /* view-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group.cpp"; sourceTree = "<group>"; };
+		14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group-field.cpp"; sourceTree = "<group>"; };
+		14DF18702D6548E300E5AEF2 /* globals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		14DF18712D6548E300E5AEF2 /* tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tree.cpp; sourceTree = "<group>"; };
+		14DF18B72D65492100E5AEF2 /* BS_thread_pool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BS_thread_pool.hpp; sourceTree = "<group>"; };
+		A19B226A2248737300FE9722 /* Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A19B226D2248737300FE9722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A19B22722248737300FE9722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A19B22742248737300FE9722 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A19B22772248737300FE9722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A19B22792248737300FE9722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A19B227F2248748C00FE9722 /* Pocket-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pocket-Bridging-Header.h"; sourceTree = "<group>"; };
+		A19B228A224876C800FE9722 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A19B22672248737300FE9722 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1407E67425A91CF5002CE6E9 /* Reachability in Frameworks */,
+				14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */,
+				1407DC45242F7428007CD405 /* libsqlite3.tbd in Frameworks */,
+				14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */,
+				1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */,
+				14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */,
+				147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */,
+				149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */,
+				14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1407DC46242F87AC007CD405 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				148D86652431DA8C00EB38D6 /* SZTextView */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		14375091242F582A00375E54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				14375092242F584900375E54 /* TextFieldExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		143EFA53244A2B7900DBBE0F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */,
+				1485CC5F245EC91B00059F5E /* SystemInfo.m */,
+				1485CC61245EC94B00059F5E /* SystemInfo.h */,
+				143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1447E9872D66961A00812D0A /* pocket-lib-adds */ = {
+			isa = PBXGroup;
+			children = (
+				1447E9882D66965000812D0A /* inc */,
+			);
+			path = "pocket-lib-adds";
+			sourceTree = "<group>";
+		};
+		1447E9882D66965000812D0A /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				1447E98C2D66976800812D0A /* nlohmann */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		1447E98C2D66976800812D0A /* nlohmann */ = {
+			isa = PBXGroup;
+			children = (
+				1447E98A2D66976800812D0A /* json.hpp */,
+				1447E98B2D66976800812D0A /* json_fwd.hpp */,
+			);
+			path = nlohmann;
+			sourceTree = "<group>";
+		};
+		147D3384242D1AF0000880B6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */,
+				14173FC1242D27560055410E /* GroupsFieldsVC.swift */,
+				14BA14212431CAB30067CFA8 /* FieldVC.swift */,
+				143830A42430A92300221BB8 /* GroupVC.swift */,
+				14173FC2242D27560055410E /* AddNewUserVC.swift */,
+				14173FC0242D27560055410E /* LoginVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		148D86652431DA8C00EB38D6 /* SZTextView */ = {
+			isa = PBXGroup;
+			children = (
+				148D86662431DA8C00EB38D6 /* SZTextView.h */,
+				148D86672431DA8C00EB38D6 /* SZTextView.m */,
+			);
+			path = SZTextView;
+			sourceTree = "<group>";
+		};
+		14D4DF432932C7A700C84FD0 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				14C4C52E2A196DB9000F20EF /* Constants.h */,
+				14D4DF492932C7A700C84FD0 /* CountDown.h */,
+				14D4DF4D2932C7A700C84FD0 /* CountDown.mm */,
+				14D4DF4A2932C7A700C84FD0 /* Field.h */,
+				14D4DF542932C7A700C84FD0 /* Field.mm */,
+				14D4DF4B2932C7A700C84FD0 /* FieldController.h */,
+				14D4DF5A2932C7A700C84FD0 /* FieldController.mm */,
+				14D4DF4F2932C7A700C84FD0 /* Globals.h */,
+				14D4DF5D2932C7A700C84FD0 /* Globals.mm */,
+				14D4DF532932C7A700C84FD0 /* Group.h */,
+				14D4DF462932C7A700C84FD0 /* Group.mm */,
+				14D4DF4E2932C7A700C84FD0 /* GroupController.h */,
+				14D4DF4C2932C7A700C84FD0 /* GroupController.mm */,
+				14D4DF512932C7A700C84FD0 /* GroupField.h */,
+				14D4DF502932C7A700C84FD0 /* GroupField.mm */,
+				14D4DF562932C7A700C84FD0 /* Pair.h */,
+				14D4DF482932C7A700C84FD0 /* Pair.mm */,
+				14D4DF582932C7A700C84FD0 /* Property.h */,
+				14D4DF522932C7A700C84FD0 /* Property.mm */,
+				14D4DF452932C7A700C84FD0 /* StackNavigator.h */,
+				14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */,
+				14D4DF552932C7A700C84FD0 /* User.h */,
+				14D4DF572932C7A700C84FD0 /* User.mm */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		14DF18212D6548E300E5AEF2 /* pocket */ = {
+			isa = PBXGroup;
+			children = (
+				14DF181F2D6548E300E5AEF2 /* globals.hpp */,
+				14DF18202D6548E300E5AEF2 /* tree.hpp */,
+			);
+			path = pocket;
+			sourceTree = "<group>";
+		};
+		14DF18222D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18212D6548E300E5AEF2 /* pocket */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18252D6548E300E5AEF2 /* pocket-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18232D6548E300E5AEF2 /* config.hpp */,
+				14DF18242D6548E300E5AEF2 /* session.hpp */,
+			);
+			path = "pocket-controllers";
+			sourceTree = "<group>";
+		};
+		14DF18262D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18252D6548E300E5AEF2 /* pocket-controllers */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18292D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18272D6548E300E5AEF2 /* config.cpp */,
+				14DF18282D6548E300E5AEF2 /* session.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF182A2D6548E300E5AEF2 /* pocket-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18262D6548E300E5AEF2 /* inc */,
+				14DF18292D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-controllers";
+			sourceTree = "<group>";
+		};
+		14DF18342D6548E300E5AEF2 /* pocket-daos */ = {
+			isa = PBXGroup;
+			children = (
+				14DF182B2D6548E300E5AEF2 /* dao.hpp */,
+				14DF182C2D6548E300E5AEF2 /* dao-field.hpp */,
+				14DF182D2D6548E300E5AEF2 /* dao-group.hpp */,
+				14DF182E2D6548E300E5AEF2 /* dao-group-field.hpp */,
+				14DF182F2D6548E300E5AEF2 /* dao-read-write.hpp */,
+				14DF18302D6548E300E5AEF2 /* dao-read-write-field.hpp */,
+				14DF18312D6548E300E5AEF2 /* dao-read-write-group.hpp */,
+				14DF18322D6548E300E5AEF2 /* dao-read-write-group-field.hpp */,
+				14DF18332D6548E300E5AEF2 /* dao-user.hpp */,
+			);
+			path = "pocket-daos";
+			sourceTree = "<group>";
+		};
+		14DF18352D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18342D6548E300E5AEF2 /* pocket-daos */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF183E2D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18362D6548E300E5AEF2 /* dao.cpp */,
+				14DF18372D6548E300E5AEF2 /* dao-field.cpp */,
+				14DF18382D6548E300E5AEF2 /* dao-group.cpp */,
+				14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */,
+				14DF183A2D6548E300E5AEF2 /* dao-read-write-field.cpp */,
+				14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */,
+				14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */,
+				14DF183D2D6548E300E5AEF2 /* dao-user.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF183F2D6548E300E5AEF2 /* pocket-daos */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18352D6548E300E5AEF2 /* inc */,
+				14DF183E2D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-daos";
+			sourceTree = "<group>";
+		};
+		14DF18442D6548E300E5AEF2 /* pocket-iface */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18402D6548E300E5AEF2 /* has-name.hpp */,
+				14DF18412D6548E300E5AEF2 /* pod.hpp */,
+				14DF18422D6548E300E5AEF2 /* read-write.hpp */,
+				14DF18432D6548E300E5AEF2 /* synchronizable.hpp */,
+			);
+			path = "pocket-iface";
+			sourceTree = "<group>";
+		};
+		14DF18452D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18442D6548E300E5AEF2 /* pocket-iface */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18462D6548E300E5AEF2 /* pocket-iface */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18452D6548E300E5AEF2 /* inc */,
+			);
+			path = "pocket-iface";
+			sourceTree = "<group>";
+		};
+		14DF184E2D6548E300E5AEF2 /* pocket-pods */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18472D6548E300E5AEF2 /* device.hpp */,
+				14DF18482D6548E300E5AEF2 /* field.hpp */,
+				14DF18492D6548E300E5AEF2 /* group.hpp */,
+				14DF184A2D6548E300E5AEF2 /* group-field.hpp */,
+				14DF184B2D6548E300E5AEF2 /* net-transport.hpp */,
+				14DF184C2D6548E300E5AEF2 /* user.hpp */,
+				14DF184D2D6548E300E5AEF2 /* variant.hpp */,
+			);
+			path = "pocket-pods";
+			sourceTree = "<group>";
+		};
+		14DF184F2D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF184E2D6548E300E5AEF2 /* pocket-pods */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18522D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18502D6548E300E5AEF2 /* response.cpp */,
+				14DF18512D6548E300E5AEF2 /* variant.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF18532D6548E300E5AEF2 /* pocket-pods */ = {
+			isa = PBXGroup;
+			children = (
+				14DF184F2D6548E300E5AEF2 /* inc */,
+				14DF18522D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-pods";
+			sourceTree = "<group>";
+		};
+		14DF185A2D6548E300E5AEF2 /* pocket-services */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18542D6548E300E5AEF2 /* crypto.hpp */,
+				14DF18552D6548E300E5AEF2 /* database.hpp */,
+				14DF18562D6548E300E5AEF2 /* json.hpp */,
+				14DF18572D6548E300E5AEF2 /* network.hpp */,
+				14DF18582D6548E300E5AEF2 /* result-set.hpp */,
+				14DF18592D6548E300E5AEF2 /* synchronizer.hpp */,
+			);
+			path = "pocket-services";
+			sourceTree = "<group>";
+		};
+		14DF185B2D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF185A2D6548E300E5AEF2 /* pocket-services */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF18622D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF185C2D6548E300E5AEF2 /* crypto.cpp */,
+				14DF185D2D6548E300E5AEF2 /* database.cpp */,
+				14DF185E2D6548E300E5AEF2 /* json.cpp */,
+				14DF185F2D6548E300E5AEF2 /* network.cpp */,
+				14DF18602D6548E300E5AEF2 /* result-set.cpp */,
+				14DF18612D6548E300E5AEF2 /* synchronizer.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF18632D6548E300E5AEF2 /* pocket-services */ = {
+			isa = PBXGroup;
+			children = (
+				14DF185B2D6548E300E5AEF2 /* inc */,
+				14DF18622D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-services";
+			sourceTree = "<group>";
+		};
+		14DF18682D6548E300E5AEF2 /* pocket-views */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18642D6548E300E5AEF2 /* view.hpp */,
+				14DF18652D6548E300E5AEF2 /* view-field.hpp */,
+				14DF18662D6548E300E5AEF2 /* view-group.hpp */,
+				14DF18672D6548E300E5AEF2 /* view-group-field.hpp */,
+			);
+			path = "pocket-views";
+			sourceTree = "<group>";
+		};
+		14DF18692D6548E300E5AEF2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18682D6548E300E5AEF2 /* pocket-views */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		14DF186E2D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF186A2D6548E300E5AEF2 /* view.cpp */,
+				14DF186B2D6548E300E5AEF2 /* view-field.cpp */,
+				14DF186C2D6548E300E5AEF2 /* view-group.cpp */,
+				14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF186F2D6548E300E5AEF2 /* pocket-views */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18692D6548E300E5AEF2 /* inc */,
+				14DF186E2D6548E300E5AEF2 /* src */,
+			);
+			path = "pocket-views";
+			sourceTree = "<group>";
+		};
+		14DF18722D6548E300E5AEF2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18702D6548E300E5AEF2 /* globals.cpp */,
+				14DF18712D6548E300E5AEF2 /* tree.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		14DF18792D6548E300E5AEF2 /* thread-pool */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18B82D65492100E5AEF2 /* include */,
+			);
+			path = "thread-pool";
+			sourceTree = "<group>";
+		};
+		14DF18832D6548E300E5AEF2 /* pocket-lib */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18222D6548E300E5AEF2 /* inc */,
+				14DF182A2D6548E300E5AEF2 /* pocket-controllers */,
+				14DF183F2D6548E300E5AEF2 /* pocket-daos */,
+				14DF18462D6548E300E5AEF2 /* pocket-iface */,
+				14DF18532D6548E300E5AEF2 /* pocket-pods */,
+				14DF18632D6548E300E5AEF2 /* pocket-services */,
+				14DF186F2D6548E300E5AEF2 /* pocket-views */,
+				14DF18722D6548E300E5AEF2 /* src */,
+				14DF18792D6548E300E5AEF2 /* thread-pool */,
+			);
+			name = "pocket-lib";
+			path = "../pocket-lib";
+			sourceTree = SOURCE_ROOT;
+		};
+		14DF18B82D65492100E5AEF2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				14DF18B72D65492100E5AEF2 /* BS_thread_pool.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A19B22612248737200FE9722 = {
+			isa = PBXGroup;
+			children = (
+				14942C372D69D68F004FC897 /* Sercets.xcconfig */,
+				1447E9872D66961A00812D0A /* pocket-lib-adds */,
+				14DF18832D6548E300E5AEF2 /* pocket-lib */,
+				A19B226C2248737300FE9722 /* Pocket */,
+				A19B226B2248737300FE9722 /* Products */,
+				A19B2285224876A800FE9722 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A19B226B2248737300FE9722 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A19B226A2248737300FE9722 /* Pocket.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A19B226C2248737300FE9722 /* Pocket */ = {
+			isa = PBXGroup;
+			children = (
+				14383099243080FD00221BB8 /* Pocket.entitlements */,
+				A19B22792248737300FE9722 /* Info.plist */,
+				A19B227F2248748C00FE9722 /* Pocket-Bridging-Header.h */,
+				1407DC46242F87AC007CD405 /* Libs */,
+				14375091242F582A00375E54 /* Extensions */,
+				143EFA53244A2B7900DBBE0F /* Services */,
+				147D3384242D1AF0000880B6 /* ViewController */,
+				14D4DF432932C7A700C84FD0 /* Bridge */,
+				A19B226D2248737300FE9722 /* AppDelegate.swift */,
+				1437508F242F41F200375E54 /* Constants.swift */,
+				1407DC4924301C85007CD405 /* Graphics.swift */,
+				A19B22712248737300FE9722 /* Main.storyboard */,
+				A19B22742248737300FE9722 /* Assets.xcassets */,
+				A19B22762248737300FE9722 /* LaunchScreen.storyboard */,
+			);
+			path = Pocket;
+			sourceTree = "<group>";
+		};
+		A19B2285224876A800FE9722 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14B156082D669F6900EB655E /* openssl.xcframework */,
+				14B156032D669E3E00EB655E /* curl.xcframework */,
+				14B117ED25B49BD30024FAD0 /* libz.tbd */,
+				149382C524A4EEB8002D33B1 /* Security.framework */,
+				14173FD8242D34670055410E /* libsqlite3.tbd */,
+				A19B228A224876C800FE9722 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A19B22692248737300FE9722 /* Pocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A19B227C2248737300FE9722 /* Build configuration list for PBXNativeTarget "Pocket" */;
+			buildPhases = (
+				A19B22662248737300FE9722 /* Sources */,
+				A19B22672248737300FE9722 /* Frameworks */,
+				A19B22682248737300FE9722 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pocket;
+			packageProductDependencies = (
+				14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */,
+				1407E67325A91CF5002CE6E9 /* Reachability */,
+				1474415E25B42F1C00B6270D /* SwiftSpinner */,
+			);
+			productName = chat;
+			productReference = A19B226A2248737300FE9722 /* Pocket.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A19B22622248737200FE9722 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1620;
+				ORGANIZATIONNAME = Scapix;
+				TargetAttributes = {
+					A19B22692248737300FE9722 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = A19B22652248737200FE9722 /* Build configuration list for PBXProject "Pocket" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A19B22612248737200FE9722;
+			packageReferences = (
+				14A4446F24D2D16200857BA4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				1407E67225A91CF5002CE6E9 /* XCRemoteSwiftPackageReference "Reachability" */,
+				1474415D25B42F1C00B6270D /* XCRemoteSwiftPackageReference "SwiftSpinner" */,
+			);
+			productRefGroup = A19B226B2248737300FE9722 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A19B22692248737300FE9722 /* Pocket */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A19B22682248737300FE9722 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A19B22782248737300FE9722 /* LaunchScreen.storyboard in Resources */,
+				A19B22752248737300FE9722 /* Assets.xcassets in Resources */,
+				A19B22732248737300FE9722 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A19B22662248737300FE9722 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14375090242F41F200375E54 /* Constants.swift in Sources */,
+				14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */,
+				14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */,
+				14DF18872D6548E300E5AEF2 /* config.cpp in Sources */,
+				14DF18882D6548E300E5AEF2 /* view.cpp in Sources */,
+				14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */,
+				14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */,
+				14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */,
+				14DF188D2D6548E300E5AEF2 /* result-set.cpp in Sources */,
+				14DF188F2D6548E300E5AEF2 /* dao.cpp in Sources */,
+				14DF18902D6548E300E5AEF2 /* dao-read-write-field.cpp in Sources */,
+				14DF18912D6548E300E5AEF2 /* dao-group.cpp in Sources */,
+				14DF18922D6548E300E5AEF2 /* synchronizer.cpp in Sources */,
+				14DF18932D6548E300E5AEF2 /* network.cpp in Sources */,
+				14DF18952D6548E300E5AEF2 /* crypto.cpp in Sources */,
+				14DF18962D6548E300E5AEF2 /* view-field.cpp in Sources */,
+				14DF18972D6548E300E5AEF2 /* dao-read-write-group-field.cpp in Sources */,
+				14DF18982D6548E300E5AEF2 /* json.cpp in Sources */,
+				14DF18992D6548E300E5AEF2 /* session.cpp in Sources */,
+				14DF189A2D6548E300E5AEF2 /* dao-user.cpp in Sources */,
+				14DF189B2D6548E300E5AEF2 /* view-group-field.cpp in Sources */,
+				14DF189D2D6548E300E5AEF2 /* database.cpp in Sources */,
+				14DF189E2D6548E300E5AEF2 /* tree.cpp in Sources */,
+				14DF189F2D6548E300E5AEF2 /* globals.cpp in Sources */,
+				14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */,
+				1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */,
+				14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */,
+				14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */,
+				14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */,
+				14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */,
+				14D4DF662932C7A700C84FD0 /* User.mm in Sources */,
+				1407DC4A24301C85007CD405 /* Graphics.swift in Sources */,
+				14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */,
+				14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */,
+				14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */,
+				14D4DF602932C7A700C84FD0 /* Pair.mm in Sources */,
+				14375093242F584900375E54 /* TextFieldExtension.swift in Sources */,
+				148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */,
+				14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */,
+				14173FC3242D27560055410E /* LoginVC.swift in Sources */,
+				143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */,
+				A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */,
+				14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */,
+				14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */,
+				14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */,
+				14D4DF642932C7A700C84FD0 /* Property.mm in Sources */,
+				1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */,
+				14D4DF652932C7A700C84FD0 /* Field.mm in Sources */,
+				143830A52430A92300221BB8 /* GroupVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A19B22712248737300FE9722 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A19B22722248737300FE9722 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A19B22762248737300FE9722 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A19B22772248737300FE9722 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A19B227A2248737300FE9722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14942C372D69D68F004FC897 /* Sercets.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 777Y7ETUKL;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+					"POCKET_AES_CBC_IV=\"\\\"qwertyuiopasdfgh\\\"\"",
+					"MAX_BUFFER_RESPONSE_SIZE=10240",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
+					"${PROJECT_DIR}/../thread-pool/include",
+					"${PROJECT_DIR}/pocket-lib-adds/inc",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../lib/",
+				);
+			};
+			name = Debug;
+		};
+		A19B227B2248737300FE9722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14942C372D69D68F004FC897 /* Sercets.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 777Y7ETUKL;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = DISABLE_LOG;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
+					"${PROJECT_DIR}/../thread-pool/include",
+					"${PROJECT_DIR}/pocket-lib-adds/inc",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../lib/",
+				);
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A19B227D2248737300FE9722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14942C372D69D68F004FC897 /* Sercets.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pocket/Pocket.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5.0.0;
+				DEVELOPMENT_TEAM = 58CR8N5TPL;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../pocket-lib/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Pocket/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5;
+				PRODUCT_BUNDLE_IDENTIFIER = it.salsi.app.Pocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pocket/Pocket-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A19B227E2248737300FE9722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14942C372D69D68F004FC897 /* Sercets.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pocket/Pocket.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5.0.0;
+				DEVELOPMENT_TEAM = 58CR8N5TPL;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PROJECT_DIR}/../pocket-lib/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-controllers/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-daos/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-pods/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-services/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-views/inc",
+					"${PROJECT_DIR}/../pocket-lib/pocket-iface/inc",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Pocket/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5;
+				PRODUCT_BUNDLE_IDENTIFIER = it.salsi.app.Pocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pocket/Pocket-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A19B22652248737200FE9722 /* Build configuration list for PBXProject "Pocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A19B227A2248737300FE9722 /* Debug */,
+				A19B227B2248737300FE9722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A19B227C2248737300FE9722 /* Build configuration list for PBXNativeTarget "Pocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A19B227D2248737300FE9722 /* Debug */,
+				A19B227E2248737300FE9722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1407E67225A91CF5002CE6E9 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		1474415D25B42F1C00B6270D /* XCRemoteSwiftPackageReference "SwiftSpinner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/SwiftSpinner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		14A4446F24D2D16200857BA4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1407E67325A91CF5002CE6E9 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1407E67225A91CF5002CE6E9 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		1474415E25B42F1C00B6270D /* SwiftSpinner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1474415D25B42F1C00B6270D /* XCRemoteSwiftPackageReference "SwiftSpinner" */;
+			productName = SwiftSpinner;
+		};
+		14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14A4446F24D2D16200857BA4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A19B22622248737200FE9722 /* Project object */;
+}

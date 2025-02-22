@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
+      "state" : {
+        "revision" : "b0f0a127cca6bb39378447baa2afff74123abd09",
+        "version" : "6.5.5"
+      }
+    },
+    {
+      "identity" : "reachability.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift",
+      "state" : {
+        "revision" : "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "swiftspinner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/icanzilb/SwiftSpinner.git",
+      "state" : {
+        "revision" : "f6cfeb6f1780571bdef8bdaf924ccdb573d23e33",
+        "version" : "2.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
