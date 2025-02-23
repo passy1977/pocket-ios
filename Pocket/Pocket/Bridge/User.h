@@ -28,12 +28,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface User : NSObject
 
+typedef NS_ENUM(NSUInteger, UserStat)
+{
+    NOT_ACTIVE = 1,
+    ACTIVE = 0,
+    DELETED = 2,
+    INVALIDATED = 3
+};
+
 -(instancetype)init;
 -(instancetype)initWithId:(uint32_t)id     email:(NSString*)email
     name:(NSString*)name
     passwd:(NSString*)passwd
     timestampLastUpdate:(uint64_t)timestampLastUpdate
-    status:(uint8_t)status;
+    status:(UserStat)status;
 
 -(void)setid:(uint32_t)id;
 -(uint32_t)getid;
@@ -45,9 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)getPasswd;
 -(uint64_t)getTimestampLastUpdate;
 -(void)setTimestampLastUpdate:(uint64_t)timestampLastUpdate;
--(void)setStatus:(uint8_t)status;
--(uint8_t)getStatus;
--(BOOL)isEmpty;
+-(void)setStatus:(UserStat)status;
+-(UserStat)getStatus;
 
 @end
 

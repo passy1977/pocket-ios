@@ -31,7 +31,7 @@ using namespace std;
 @property NSString* _email;
 @property NSString* _name;
 @property NSString* _passwd;
-@property uint8_t _status;
+@property UserStat _status;
 @property uint64_t _timestampLastUpdate;
 @end
 
@@ -59,7 +59,7 @@ using namespace std;
     name:(NSString*)name
     passwd:(NSString*)passwd
     timestampLastUpdate:(uint64_t)timestampLastUpdate
-    status:(uint8_t)status
+    status:(UserStat)status
 {
     if(self = [super init])
     {
@@ -124,19 +124,14 @@ using namespace std;
     _timestampLastUpdate = timestampLastUpdate;
 }
 
--(void)setStatus:(uint8_t)status
+-(void)setStatus:(UserStat)status
 {
     _status = status;
 }
 
--(uint8_t)getStatus
+-(UserStat)getStatus
 {
     return _status;
-}
-
--(BOOL)isEmpty
-{
-    return [_email length] == 0 || [_passwd length] == 0;
 }
 
 @end
@@ -149,7 +144,7 @@ user::ptr convert(const User* user)
         ,[[user getEmail] UTF8String]
         ,[[user getName] UTF8String]
         ,[[user getPasswd] UTF8String]
-        ,user::stat{[user getStatus]}
+        ,static_cast<user::stat>([user getStatus])
         ,[user getTimestampLastUpdate]
     );;
 }
@@ -162,7 +157,7 @@ User* convert(const user::ptr &user)
     [ret setEmail: [NSString stringWithCString:user->email.c_str() encoding:NSUTF8StringEncoding] ];
     [ret setName: [NSString stringWithCString:user->name.c_str() encoding:NSUTF8StringEncoding] ];
     [ret setPasswd: [NSString stringWithCString:user->passwd.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setStatus: static_cast<uint8_t>(user->status) ];
+    [ret setStatus: static_cast<UserStat>(user->status) ];
     [ret setTimestampLastUpdate: user->timestamp_last_update ];
     
     return ret;
