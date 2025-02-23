@@ -50,11 +50,13 @@ constexpr char APP_TAG[] = "Globals";
 @interface Globals ()
 @property class session* session;
 @property User* user;
+@property class aes* aes;
 @end
 
 @implementation Globals
 @synthesize session;
 @synthesize user;
+@synthesize aes;
 
 -(instancetype)init
 {
@@ -62,6 +64,7 @@ constexpr char APP_TAG[] = "Globals";
     {
         session = nullptr;
         user = nullptr;
+        aes = nullptr;
     }
     return self;
 }
@@ -71,6 +74,12 @@ constexpr char APP_TAG[] = "Globals";
     if(session)
     {
         delete session;
+        session = nullptr;
+    }
+    
+    if(aes)
+    {
+        delete aes;
         session = nullptr;
     }
 
@@ -89,90 +98,102 @@ constexpr char APP_TAG[] = "Globals";
        configJson:(nullable const NSString*)configJson
            passwd:(nonnull const NSString*)passwd
 {
+    if(aes)
+    {
+        delete aes;
+        aes = nullptr;
+    }
+    if(session)
+    {
+        delete session;
+        session = nullptr;
+    }
     
     
-    NSString* deviceStr = [[NSUserDefaults standardUserDefaults] stringForKey: KEY_DEVICE];
+    const NSString* aesIV = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DEVICE_AES_CBC_IV"];
+    if(aesIV == nullptr)
+    {
+        error(APP_TAG, "XCode config issue, not set Sercets.xcconfig and DEVICE_AES_CBC_IV macro");
+        return false;
+    }
+    const NSString* deviceStr = [[NSUserDefaults standardUserDefaults] stringForKey: KEY_DEVICE];
     if(deviceStr)
     {
         try
         {
-            session = new(nothrow) class session([deviceStr UTF8String], [basePath UTF8String]);
+            aes = new(nothrow) class aes([aesIV UTF8String], [passwd UTF8String]);
+            if(aes == nullptr)
+            {
+                error(APP_TAG, "Impossbile alloc aes");
+                return false;
+            }
+            
+            session = new(nothrow) class session(aes->decrypt([deviceStr UTF8String]), [basePath UTF8String]);
             if(session == nullptr)
             {
                 error(APP_TAG, "Impossbile alloc session");
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            
+            session->init();
+            return true;
         }
         catch (const runtime_error& e)
         {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             error(APP_TAG, e.what());
             return false;
         }
     }
     else
     {
+        //no encrypt configJson and not stored
+        
         if (configJson == nullptr)
         {
             error(APP_TAG, "configJson == nullptr");
             return false;
         }
         
-        NSString* ivValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DEVICE_AES_CBC_IV"];
-        if (ivValue)
+        
+        try
         {
-            try
-            {
-                session = new(nothrow) class session([configJson UTF8String], [basePath UTF8String]);
-            }
-            catch (const runtime_error& e)
-            {
-
-                error(APP_TAG, e.what());
-                return false;
-            }
-
+            session = new(nothrow) class session([configJson UTF8String], [basePath UTF8String]);
             if(session == nullptr)
             {
                 error(APP_TAG, "Impossbile alloc session");
                 return false;
             }
-            else
+            session->init();
+            
+            aes = new(nothrow) class aes([aesIV UTF8String], [passwd UTF8String]);
+            if(aes == nullptr)
             {
-                string encrypted;
-                try
-                {
-                    class aes aes([ivValue UTF8String], [passwd UTF8String]);
-                    
-                    encrypted = aes.encrypt(encrypted);
-                }
-                catch(const runtime_error& e)
-                {
-                    error(APP_TAG, e.what());
-                    return false;
-                }
-                
-                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithCString:encrypted.c_str() encoding:NSUTF8StringEncoding] forKey: KEY_DEVICE];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                return true;
+                error(APP_TAG, "Impossbile alloc aes");
+                return false;
             }
             
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithCString:aes->encrypt([configJson UTF8String]).c_str() encoding:NSUTF8StringEncoding] forKey: KEY_DEVICE];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            return true;
         }
-        else
+        catch (const runtime_error& e)
         {
-            error(APP_TAG, "Key 'DEVICE_AES_CBC_IV' not found in Info.plist.");
+            error(APP_TAG, e.what());
+            return false;
         }
-        return false;
     }
 }
 
--(Stat)login:(nonnull const NSString*)email
-      passwd:(nonnull const NSString*)passwd
+-(Stat)login:(nullable const NSString*)email
+      passwd:(nullable const NSString*)passwd
 {
+    if(email == nullptr || passwd == nullptr)
+    {
+        return Stat::ERROR;
+    }
+    
     extern User* convert(const user::ptr &user);
     
     auto&& userOpt = session->login([email UTF8String], [passwd UTF8String]);

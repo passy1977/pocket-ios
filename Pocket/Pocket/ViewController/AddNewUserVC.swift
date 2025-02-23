@@ -81,12 +81,9 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
-
-//        let fileURL = url.appendingPathComponent("mieimiei.txt")
-//        
-
         
         if !Globals.getInstance().initialize(url.absoluteString, configJson: txtViewDeviceJson.text, passwd: passwd) {
+            txtViewDeviceJson.text.removeAll()
             alertShow(self, message: "Server Data wrong format")
             return
         }

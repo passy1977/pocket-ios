@@ -35,6 +35,8 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     private let cnstTxtHostShow : CGFloat = 92
     private let cnstTxtHostHide : CGFloat = 8
     
+    private var configJson : String? = nil
+    
     //MARK: - system
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +45,13 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         //let user = Globals.getInstance().getSafeUser()
         //Timeout4Logout.getShared(user: user).stop()
-        
-        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return
-        }
-        
-
+    
         if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
+            self.configJson = configJson
             
-            Globals.getInstance().initialize(url.absoluteString, configJson: configJson, passwd: "todo")
+//            Globals.getInstance().initialize(url.absoluteString, configJson: configJson, passwd: "todo")
             StackNavigator.getInstance().clear()
+
 
 //            controller.loginBiometric {passwd in
 //                LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Place your finger on the sensor") {success, _ in
@@ -106,15 +105,12 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func actBtnLogin(_ sender: UIButton) {
-//        do {
-//            try self.performLogin(host: self.txtHost.text ?? "",
-//                                  hostAuthUser: self.txtHostUser.text ?? "",
-//                                  hostAuthPasswd: self.txtHostPasswd.text ?? "",
-//                                  email: self.txtEmail.text ?? "",
-//                                  passwd: self.txtPasswd.text ?? "")
-//        } catch {
-//            print(error)
-//        }
+        do {
+            try self.performLogin(email: self.txtEmail.text,
+                                  passwd: self.txtPasswd.text)
+        } catch {
+            print(error)
+        }
     }
     
     
@@ -137,17 +133,69 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
-    private func performLogin(email: String, passwd: String) throws {
+    private func performLogin(email: String?, passwd: String?) throws {
+        guard let email = email else { return }
+        guard let passwd = passwd else { return }
+        guard let _ = UserDefaults.standard.string(forKey: KEY_DEVICE) else {
+            performSegue(withIdentifier: "newUser", sender: self)
+            return
+        }
+        
         if email.isEmpty || passwd.isEmpty {
             alertShow(self, message: "Wrong credential")
         }
     
+        
         
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 SwiftSpinner.show("Synchronize to server...")
             }
         }
+        
+        let semaphore = DispatchSemaphore(value: 1)
+        
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            SwiftSpinner.hide()
+            semaphore.signal()
+            return
+        }
+        
+        
+        if !Globals.getInstance().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
+            alertShow(self, message: "Server Data wrong format")
+            SwiftSpinner.hide()
+            return
+        }
+        
+        
+        let rc = Globals.getInstance().login(txtEmail.text, passwd: txtPasswd.text)
+        if(rc == Stat.OK)
+        {
+            SwiftSpinner.hide()
+            semaphore.signal()
+            let user = Globals.getInstance().getUser()
+            
+            if(user?.getStatus() ?? UserStat.NOT_ACTIVE == UserStat.ACTIVE)
+            {
+                //Timeout4Logout.getShared(user: Globals.getInstance().getSafeUser()).start()
+
+                self.performSegue(withIdentifier: "groups", sender: self)
+            }
+            else
+            {
+                alertShow(self, message: "User unactive")
+                self.txtPasswd.text = ""
+            }
+        }
+        else
+        {
+            SwiftSpinner.hide()
+            semaphore.signal()
+            alertShow(self, message: "Wrong credential")
+            self.txtPasswd.text = ""
+        }
+        
         
 //        let semaphore = DispatchSemaphore(value: 1)
 //        controller.login(SystemInfo().modelNameAndOSVersion

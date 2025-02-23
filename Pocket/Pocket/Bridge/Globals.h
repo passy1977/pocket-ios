@@ -66,8 +66,8 @@ typedef NS_ENUM(NSUInteger, Stat)
        configJson:(nullable const NSString*)configJson
            passwd:(nonnull const NSString*)passwd;
 
--(Stat)login:(nonnull const NSString*)email
-      passwd:(nonnull const NSString*)passwd;
+-(Stat)login:(nullable const NSString*)email
+      passwd:(nullable const NSString*)passwd;
 
 -(nullable const User *)getUser;
 

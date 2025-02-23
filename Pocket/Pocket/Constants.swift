@@ -19,22 +19,6 @@
 
 import UIKit
 
-enum Status: Int32 {
-    case REGISTERED
-    case LOGIN_TRUE = 10
-    case LOGIN_FALSE  = 20
-    case USER_UNACTIVE
-    case USER_DELETED
-    case USER_ALREADY_REGISTERED
-    case DEVICE_UNACTIVE
-    case DEVICE_DELETED
-    case DEVICE_INVALIDATED
-    case ERROR = 30
-    case BIOMETRIC_NOT_INIT = 40
-    case BIOMETRIC_NO_BIOMETRIC_SUPPORT = 50
-    case BIOMETRIC_CANCEL_BY_USER = 60
-}
-
 let primary = UIColor(named: "colorPrimary")
 
 let synchronizatorStart = "START"
@@ -55,8 +39,3 @@ let dateFormatterForFile : DateFormatter = {
 let sessionTimeoutInSecondsDebug = 480
 let sessionTimeoutInSeconds = 480
 
-
-let serverHostDebug = ""
-let serverHost = ""
-let serverHostUser = ""
-let serverHostPasswd = ""
