@@ -98,3 +98,4 @@ final class Timeout4Logout {
         return Timeout4Logout.shared!
     }
 }
+    

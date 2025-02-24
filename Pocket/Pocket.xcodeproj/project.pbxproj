@@ -18,6 +18,7 @@
 		143830A52430A92300221BB8 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143830A42430A92300221BB8 /* GroupVC.swift */; };
 		1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */; };
 		143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */; };
+		145D51172D6D249F008E0714 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 145D51162D6D249F008E0714 /* KeychainSwift */; };
 		1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 1474415E25B42F1C00B6270D /* SwiftSpinner */; };
 		147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19B228A224876C800FE9722 /* libc++.tbd */; };
 		1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1485CC5F245EC91B00059F5E /* SystemInfo.m */; };
@@ -194,6 +195,7 @@
 			files = (
 				1407E67425A91CF5002CE6E9 /* Reachability in Frameworks */,
 				14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */,
+				145D51172D6D249F008E0714 /* KeychainSwift in Frameworks */,
 				1407DC45242F7428007CD405 /* libsqlite3.tbd in Frameworks */,
 				14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */,
 				1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */,
@@ -676,6 +678,7 @@
 				14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */,
 				1407E67325A91CF5002CE6E9 /* Reachability */,
 				1474415E25B42F1C00B6270D /* SwiftSpinner */,
+				145D51162D6D249F008E0714 /* KeychainSwift */,
 			);
 			productName = chat;
 			productReference = A19B226A2248737300FE9722 /* Pocket.app */;
@@ -711,6 +714,7 @@
 				14A4446F24D2D16200857BA4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				1407E67225A91CF5002CE6E9 /* XCRemoteSwiftPackageReference "Reachability" */,
 				1474415D25B42F1C00B6270D /* XCRemoteSwiftPackageReference "SwiftSpinner" */,
+				145D51152D6D249F008E0714 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = A19B226B2248737300FE9722 /* Products */;
 			projectDirPath = "";
@@ -860,9 +864,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
-					"DEBUG=1",
-					"POCKET_AES_CBC_IV=\"\\\"qwertyuiopasdfgh\\\"\"",
+					"POCKET_AES_CBC_IV=$(POCKET_AES_CBC_IV)",
 					"MAX_BUFFER_RESPONSE_SIZE=10240",
+					ENABLE_DEBUG,
+					DISABLE_LOCK,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -940,7 +945,12 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = DISABLE_LOG;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"POCKET_AES_CBC_IV=$(POCKET_AES_CBC_IV)",
+					"MAX_BUFFER_RESPONSE_SIZE=10240",
+					DISABLE_LOCK,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1093,6 +1103,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		145D51152D6D249F008E0714 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 		1474415D25B42F1C00B6270D /* XCRemoteSwiftPackageReference "SwiftSpinner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/icanzilb/SwiftSpinner.git";
@@ -1105,8 +1123,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
 			requirement = {
-				kind = exactVersion;
-				version = 6.5.5;
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1116,6 +1134,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1407E67225A91CF5002CE6E9 /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		145D51162D6D249F008E0714 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 145D51152D6D249F008E0714 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		1474415E25B42F1C00B6270D /* SwiftSpinner */ = {
 			isa = XCSwiftPackageProductDependency;

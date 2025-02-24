@@ -19,6 +19,7 @@
 
 import UIKit
 import LocalAuthentication
+import KeychainSwift
 import SwiftSpinner
 
 final class LoginVC: UIViewController, UITextFieldDelegate {
@@ -37,6 +38,8 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     
     private var configJson : String? = nil
     
+    private let keychain = KeychainSwift()
+    
     //MARK: - system
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,30 +49,21 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         //let user = Globals.getInstance().getSafeUser()
         //Timeout4Logout.getShared(user: user).stop()
     
-        if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
+        if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE), let email = keychain.get(KEY_EMAIL), let passwd = keychain.get(KEY_PASSWD)  {
             self.configJson = configJson
             
-//            Globals.getInstance().initialize(url.absoluteString, configJson: configJson, passwd: "todo")
             StackNavigator.getInstance().clear()
-
-
-//            controller.loginBiometric {passwd in
-//                LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Place your finger on the sensor") {success, _ in
-//                    if (success) {
-//                        do {
-//                            //todo: update login
-//                            try self.performLogin(host: user.getHost(),
-//                                                  hostAuthUser: user.getHostAuthUser(),
-//                                                  hostAuthPasswd: user.getHostAuthPasswd(),
-//                                                  email: user.getEmail(),
-//                                                  passwd: passwd)
-//                        } catch {
-//                            print(error)
-//                        }
-//                    }
-//                }
-//            }
             
+            authenticateUser() { [self] completion in
+                if(completion) {
+                    do {
+                        try self.performLogin(email: email,
+                                              passwd: passwd)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
         } else {
             
             performSegue(withIdentifier: "newUser", sender: self)
@@ -161,25 +155,37 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        
         if !Globals.getInstance().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
             alertShow(self, message: "Server Data wrong format")
             SwiftSpinner.hide()
             return
         }
         
+        guard let email = txtEmail.text else {
+            SwiftSpinner.hide()
+            semaphore.signal()
+            return
+        }
         
-        let rc = Globals.getInstance().login(txtEmail.text, passwd: txtPasswd.text)
-        if(rc == Stat.OK)
+        guard let passwd = txtPasswd.text else {
+            SwiftSpinner.hide()
+            semaphore.signal()
+            return
+        }
+        
+        if(Globals.getInstance().login(email, passwd: passwd) == .OK)
         {
             SwiftSpinner.hide()
             semaphore.signal()
             let user = Globals.getInstance().getUser()
             
-            if(user?.getStatus() ?? UserStat.NOT_ACTIVE == UserStat.ACTIVE)
+            if(user?.getStatus() ?? .NOT_ACTIVE == .ACTIVE)
             {
                 //Timeout4Logout.getShared(user: Globals.getInstance().getSafeUser()).start()
-
+                
+                keychain.set(email, forKey: KEY_EMAIL)
+                keychain.set(passwd, forKey: KEY_PASSWD)
+                
                 self.performSegue(withIdentifier: "groups", sender: self)
             }
             else
@@ -241,5 +247,34 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
 //        semaphore.wait()
     }
     
+    
+    fileprivate func authenticateUser(completion: @escaping (Bool) -> () = { _ in }) {
+        let context = LAContext()
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                   localizedReason: "Authenticate you to access your app by Touch ID or Face ID",
+                                   reply: { success, error in
+                if success {
+                    
+                    completion(true)
+                    
+                } else {
+                    
+                    completion(false)
+                    
+                    if let error = error {
+                        print("Errore di autenticazione: \(error.localizedDescription)")
+                    }
+                }
+            })
+        } else {
+            print("Device don't support Touch ID or Face ID");
+            completion(false)
+            
+            print("Il dispositivo non supporta la funzionalità di autenticazione biometrica.")
+        }
+    }
+
 }
 

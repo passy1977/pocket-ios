@@ -24,6 +24,8 @@
 #endif
 
 #define KEY_DEVICE @"device"
+#define KEY_EMAIL @"email"
+#define KEY_PASSWD @"passwd"
 
 NS_ASSUME_NONNULL_BEGIN
 

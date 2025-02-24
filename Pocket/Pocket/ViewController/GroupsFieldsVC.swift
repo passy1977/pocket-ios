@@ -115,8 +115,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             reloadList(group.getid(), search: srcSearch.text ?? "")
         }
         
-        Timeout4Logout.getShared().callback = timeoutCallback
-        Timeout4Logout.getShared().updateTimeLeft()
+//        Timeout4Logout.getShared().callback = timeoutCallback
+//        Timeout4Logout.getShared().updateTimeLeft()
         
     }
     
@@ -231,7 +231,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                             DispatchQueue.main.async {
                                 self.reloadList(self.group.getid())
                             }
-                            Timeout4Logout.getShared().start()
+//                            Timeout4Logout.getShared().start()
                             semaphore.signal()
                             success(true)
                         }
@@ -248,7 +248,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                             DispatchQueue.main.async {
                                 self.reloadList(self.group.getid())
                             }
-                            Timeout4Logout.getShared().start()
+//                            Timeout4Logout.getShared().start()
                             semaphore.signal()
                             success(true)
                         }
@@ -387,7 +387,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         alertShow(self, title: "Warning", message: "Dou you want import data? All actual data will be deleted!", handlerNo: { _ in }) { _ in
             SwiftSpinner.show("Importing...")
             
-            Timeout4Logout.getShared().stop()
+//            Timeout4Logout.getShared().stop()
             let semaphore = DispatchSemaphore(value: 1)
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                 GroupsFieldsVC.controller.xmlExport(url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path) { status in
@@ -397,7 +397,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                             DispatchQueue.main.async {
                                 self.reloadList(self.group.getid())
                                 SwiftSpinner.hide()
-                                Timeout4Logout.getShared().start()
+//                                Timeout4Logout.getShared().start()
                                 semaphore.signal()
                             }
                         }
