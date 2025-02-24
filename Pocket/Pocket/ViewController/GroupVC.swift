@@ -93,7 +93,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         reloadList(group.getid(), insert: insert)
         
-        Timeout4Logout.getShared().updateTimeLeft()
+//        Timeout4Logout.getShared().updateTimeLeft()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -205,7 +205,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     spinnerStatusShow(self, status: status)
                 }
                 if status == synchronizatorEnd {
-                    Timeout4Logout.getShared().start()
+//                    Timeout4Logout.getShared().start()
                     //g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
                     self.group = g
                     semaphore.signal()
@@ -223,7 +223,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     spinnerStatusShow(self, status: status)
                 }
                 if status == synchronizatorEnd {
-                    Timeout4Logout.getShared().start()
+//                    Timeout4Logout.getShared().start()
 //                    group.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
                     semaphore.signal()
                     DispatchQueue.main.async {

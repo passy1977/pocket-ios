@@ -60,7 +60,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Timeout4Logout.getShared().updateTimeLeft()
+//        Timeout4Logout.getShared().updateTimeLeft()
     }
     
     // MARK: - UITextFieldDelegate
@@ -102,7 +102,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                 if status == synchronizatorStart {
                     semaphore.wait()
                 } else if status == synchronizatorEnd {
-                    Timeout4Logout.getShared().start()
+//                    Timeout4Logout.getShared().start()
                     semaphore.signal()
                     DispatchQueue.main.async {
                         self.navigationController?.popViewController(animated: true)
@@ -123,7 +123,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                         semaphore.wait()
                     } else if status == synchronizatorEnd {
                         GroupsFieldsVC.overrideSearch = field.getTitle()
-                        Timeout4Logout.getShared().start()
+//                        Timeout4Logout.getShared().start()
                         semaphore.signal()
                         DispatchQueue.main.async {
                             self.navigationController?.popViewController(animated: true)

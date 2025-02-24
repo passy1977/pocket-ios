@@ -98,17 +98,10 @@ constexpr char APP_TAG[] = "Globals";
        configJson:(nullable const NSString*)configJson
            passwd:(nonnull const NSString*)passwd
 {
-    if(aes)
+    if(self.session && self.aes)
     {
-        delete aes;
-        aes = nullptr;
+        return true;
     }
-    if(session)
-    {
-        delete session;
-        session = nullptr;
-    }
-    
     
     const NSString* aesIV = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DEVICE_AES_CBC_IV"];
     if(aesIV == nullptr)
@@ -131,6 +124,11 @@ constexpr char APP_TAG[] = "Globals";
             session = new(nothrow) class session(aes->decrypt([deviceStr UTF8String]), [basePath UTF8String]);
             if(session == nullptr)
             {
+                if(aes)
+                {
+                    delete aes;
+                    session = nullptr;
+                }
                 error(APP_TAG, "Impossbile alloc session");
                 return false;
             }
@@ -140,6 +138,18 @@ constexpr char APP_TAG[] = "Globals";
         }
         catch (const runtime_error& e)
         {
+            if(session)
+            {
+                delete session;
+                session = nullptr;
+            }
+            
+            if(aes)
+            {
+                delete aes;
+                session = nullptr;
+            }
+            
             [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
             [[NSUserDefaults standardUserDefaults] synchronize];
             error(APP_TAG, e.what());
@@ -170,6 +180,11 @@ constexpr char APP_TAG[] = "Globals";
             aes = new(nothrow) class aes([aesIV UTF8String], [passwd UTF8String]);
             if(aes == nullptr)
             {
+                if(session)
+                {
+                    delete session;
+                    session = nullptr;
+                }
                 error(APP_TAG, "Impossbile alloc aes");
                 return false;
             }
@@ -180,6 +195,17 @@ constexpr char APP_TAG[] = "Globals";
         }
         catch (const runtime_error& e)
         {
+            if(session)
+            {
+                delete session;
+                session = nullptr;
+            }
+            
+            if(aes)
+            {
+                delete aes;
+                session = nullptr;
+            }
             error(APP_TAG, e.what());
             return false;
         }
