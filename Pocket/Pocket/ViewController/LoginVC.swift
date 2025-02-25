@@ -86,18 +86,6 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    // MARK: - segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "newUser" {
-//            if let addNewUserVC = segue.destination as? AddNewUserVC {
-//                addNewUserVC.loginVC = self
-//            }
-        }
-    }
-    
-    
     // MARK: - Act
     
     @IBAction private func cngTxetField(_ sender: Any) {
@@ -126,10 +114,12 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         if let passwd = passwd {
-            txtPasswd.text = email
+            txtPasswd.text = passwd
         } else {
             txtPasswd.text = ""
         }
+        
+        btnAddNewUser.isEnabled = configJson == nil
     }
     
     @inline(__always)
@@ -172,22 +162,6 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        DispatchQueue.main.async {
-            guard let email = self.txtEmail.text else {
-                SwiftSpinner.hide()
-                semaphore.signal()
-                return
-            }
-        }
-        
-        DispatchQueue.main.async {
-            guard let passwd = self.txtPasswd.text else {
-                SwiftSpinner.hide()
-                semaphore.signal()
-                return
-            }
-        }
-        
         let rc = Globals.getInstance().login(email, passwd: passwd)
         if(rc == .OK)
         {
@@ -217,50 +191,6 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             alertShow(self, message: "Server secret code issue")
             self.txtPasswd.text = ""
         }
-        
-        
-//        let semaphore = DispatchSemaphore(value: 1)
-//        controller.login(SystemInfo().modelNameAndOSVersion
-//                         , deviceSerial: UUDID
-//                         , host: host
-//                         , hostAuthUser: hostAuthUser
-//                         , hostAuthPasswd: hostAuthPasswd
-//                         , email: email
-//                         , passwd: passwd
-//        ) { status in
-//            DispatchQueue.main.async {
-//                SwiftSpinner.hide()
-//                
-//                semaphore.signal()
-//                if status == Status.USER_UNACTIVE.rawValue {
-//                    alertShow(self, message: "User unactive")
-//                    self.txtPasswd.text = ""
-//                } else if status == Status.USER_DELETED.rawValue {
-//                    alertShow(self, message: "User deleted, all data will be deleted")
-//                    self.controllerGroup.exit()
-//                    self.setForm(user: nil)
-//                } else if status == Status.DEVICE_DELETED.rawValue {
-//                    alertShow(self, message: "Device deleted, all data will be deleted")
-//                    self.controllerGroup.exit()
-//                    self.setForm(user: nil)
-//                } else if status == Status.DEVICE_INVALIDATED.rawValue {
-//                    alertShow(self, message: "Device invalidated, try to perform login again")
-//                    self.controllerGroup.exit()
-//                } else if status == Status.DEVICE_UNACTIVE.rawValue {
-//                    alertShow(self, message: "Device unactive")
-//                    self.txtPasswd.text = ""
-//                } else if status == Status.LOGIN_TRUE.rawValue {
-//                    
-//                    //Timeout4Logout.getShared(user: Globals.getInstance().getSafeUser()).start()
-//                    
-//                    self.performSegue(withIdentifier: "groups", sender: self)
-//                } else {
-//                    alertShow(self, message: "Wrong credential")
-//                    self.txtPasswd.text = ""
-//                }
-//            }
-//        }
-//        semaphore.wait()
     }
     
     
