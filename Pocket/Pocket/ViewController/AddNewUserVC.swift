@@ -55,6 +55,17 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newUser" {
+            if let loginVC = segue.destination as? LoginVC {
+                loginVC.passwd = self.txtPasswd.text
+            }
+        }
+    }
+    
+    
     // MARK: - Act
     
     @IBAction private func actBtnSave(_ sender: UIBarButtonItem) {
@@ -74,6 +85,8 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
         }
         
         if passwd != passwdConfirm || passwd.isEmpty || passwdConfirm.isEmpty {
+            txtPasswd.text?.removeAll()
+            txtPasswdConfirm.text?.removeAll()
             alertShow(self, message: "Password and Password confirm dont match or empty")
             return
         }

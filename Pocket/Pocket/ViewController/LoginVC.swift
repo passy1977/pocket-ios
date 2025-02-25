@@ -37,6 +37,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     private let cnstTxtHostHide : CGFloat = 8
     
     private var configJson : String? = nil
+    public var passwd : String? = nil
     
     private let keychain = KeychainSwift()
     
@@ -49,23 +50,28 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         //let user = Globals.getInstance().getSafeUser()
         //Timeout4Logout.getShared(user: user).stop()
     
-        if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE), let email = keychain.get(KEY_EMAIL), let passwd = keychain.get(KEY_PASSWD)  {
+        if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
             self.configJson = configJson
             
             StackNavigator.getInstance().clear()
             
-            authenticateUser() { [self] completion in
-                if(completion) {
-                    do {
-                        try self.performLogin(email: email,
-                                              passwd: passwd)
-                    } catch {
-                        print(error)
+            if let email = keychain.get(KEY_EMAIL), let passwd = keychain.get(KEY_PASSWD) {
+                setForm(email, passwd: passwd)
+                authenticateUser() { [self] completion in
+                    if(completion) {
+                        do {
+                            
+                            try self.performLogin(email: email,
+                                                  passwd: passwd)
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
             }
+
         } else {
-            
+            setForm(nil)
             performSegue(withIdentifier: "newUser", sender: self)
             
         }
@@ -110,13 +116,18 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     
     // MARK: - Functions
     
-    private func setForm(user u: User?) {
-        if let user = u {
+    private func setForm(_ email : String?, passwd: String? = nil) {
+        if let email = email {
             btnAddNewUser.isEnabled = false
-            txtEmail.text = user.getEmail()
+            txtEmail.text = email
         } else {
             btnAddNewUser.isEnabled = true
             txtEmail.text = ""
+        }
+        
+        if let passwd = passwd {
+            txtPasswd.text = email
+        } else {
             txtPasswd.text = ""
         }
     }
@@ -161,19 +172,24 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let email = txtEmail.text else {
-            SwiftSpinner.hide()
-            semaphore.signal()
-            return
+        DispatchQueue.main.async {
+            guard let email = self.txtEmail.text else {
+                SwiftSpinner.hide()
+                semaphore.signal()
+                return
+            }
         }
         
-        guard let passwd = txtPasswd.text else {
-            SwiftSpinner.hide()
-            semaphore.signal()
-            return
+        DispatchQueue.main.async {
+            guard let passwd = self.txtPasswd.text else {
+                SwiftSpinner.hide()
+                semaphore.signal()
+                return
+            }
         }
         
-        if(Globals.getInstance().login(email, passwd: passwd) == .OK)
+        let rc = Globals.getInstance().login(email, passwd: passwd)
+        if(rc == .OK)
         {
             SwiftSpinner.hide()
             semaphore.signal()
@@ -194,11 +210,11 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                 self.txtPasswd.text = ""
             }
         }
-        else
+        else if(rc == .SECRET_NOT_MATCH)
         {
             SwiftSpinner.hide()
             semaphore.signal()
-            alertShow(self, message: "Wrong credential")
+            alertShow(self, message: "Server secret code issue")
             self.txtPasswd.text = ""
         }
         

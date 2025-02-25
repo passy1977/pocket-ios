@@ -1,12 +1,22 @@
 {
+  "originHash" : "5eb35cf2c101cdae22ea63b3800ba9c0245bc60190f1fa2d0025fce6ceee903b",
   "pins" : [
     {
       "identity" : "iqkeyboardmanager",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
       "state" : {
-        "revision" : "b0f0a127cca6bb39378447baa2afff74123abd09",
-        "version" : "6.5.5"
+        "revision" : "c00b1ae9fa1ad8af4465bb6ca901f6943fc98eba",
+        "version" : "6.5.16"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift",
+      "state" : {
+        "revision" : "5e1b02b6a9dac2a759a1d5dbc175c86bd192a608",
+        "version" : "24.0.0"
       }
     },
     {
@@ -14,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ashleymills/Reachability.swift",
       "state" : {
-        "revision" : "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
-        "version" : "5.1.0"
+        "revision" : "21d1dc412cfecbe6e34f1f4c4eb88d3f912654a6",
+        "version" : "5.2.4"
       }
     },
     {
@@ -28,5 +38,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
