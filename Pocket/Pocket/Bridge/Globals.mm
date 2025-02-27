@@ -18,21 +18,21 @@
  ***************************************************************************/
 
 
-#import "Constants.h"
+
 #import "Globals.h"
 #import "User.h"
+#import "Session.h"
 
-
-#include <pocket/globals.hpp>
+#include "pocket/globals.hpp"
 using namespace pocket;
 
-#include <pocket-controllers/session.hpp>
+#include "pocket-controllers/session.hpp"
 using controllers::session;
 
-#include <pocket-services/crypto.hpp>
+#include "pocket-services/crypto.hpp"
 using namespace services;
 
-#include <pocket-pods/user.hpp>
+#include "pocket-pods/user.hpp"
 using pods::user;
 
 #include <memory>
@@ -45,7 +45,6 @@ Globals* singleton = nullptr;
 constexpr char APP_TAG[] = "Globals";
 
 }
-
  
 @interface Globals ()
 @property class session* session;
@@ -237,6 +236,11 @@ constexpr char APP_TAG[] = "Globals";
 -(nullable const User *)getUser
 {
     return user;
+}
+
+-(nonnull Session *)getSession
+{
+    return [[Session alloc] init: session];
 }
 
 @end

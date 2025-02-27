@@ -17,9 +17,19 @@
  *
  ***************************************************************************/
 
-#ifndef _CONSTANTS_H_
-#define _CONSTANTS_H_
-
+#ifdef __OBJC__
 #import <Foundation/Foundation.h>
+#endif
 
-#endif /* _CONSTANTS_H_ */
+#include "pocket-controllers/session.hpp"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Session : NSObject
+@property pocket::controllers::session* session;
+
+-(instancetype)init:(nonnull pocket::controllers::session*)session;
+@end
+
+
+NS_ASSUME_NONNULL_END

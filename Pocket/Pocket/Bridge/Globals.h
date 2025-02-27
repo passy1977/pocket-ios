@@ -18,8 +18,6 @@
  ***************************************************************************/
 
 #ifdef __OBJC__
-#import "User.h"
-
 #import <Foundation/Foundation.h>
 #endif
 
@@ -30,8 +28,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class Device;
-
+@class User;
+@class Session;
 @interface Globals : NSObject
 
 typedef NS_ENUM(NSUInteger, Stat)
@@ -72,6 +70,7 @@ typedef NS_ENUM(NSUInteger, Stat)
       passwd:(nullable const NSString*)passwd;
 
 -(nullable const User *)getUser;
+-(nonnull Session *)getSession;
 
 @end
 

@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
                 userId:(uint32_t)userId
                 groupId:(uint32_t)groupId
                 serverGroupId:(uint32_t)serverGroupId
-                title:(NSString*)title
+                title:(nonnull NSString*)title
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
@@ -49,8 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(uint32_t)getGroupId;
 -(void)setServerGroupId:(uint32_t)serverGroupId;
 -(uint32_t)getServerGroupId;
--(void)setTitle:(NSString*)title;
--(NSString*)getTitle;
+-(void)setTitle:(nonnull NSString*)title;
+-(nonnull const NSString*)getTitle;
 -(void)setIsHidden:(BOOL)isHidden;
 -(BOOL)getIsHidden;
 -(void)setSynchronized:(BOOL)synchronized;

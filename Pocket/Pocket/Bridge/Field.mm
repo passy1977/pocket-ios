@@ -19,7 +19,7 @@
 
 #import "Field.h"
 
-#include <pocket-pods/field.hpp>
+#include "pocket-pods/field.hpp"
 using pocket::pods::field;
 
 #include <memory>
@@ -73,8 +73,8 @@ using namespace std;
                 serverGroupId:(uint32_t)serverGroupId
                 groupFieldId:(uint32_t)groupFieldId
                 serverGroupFieldId:(uint32_t)serverGroupFieldId
-                title:(NSString*)title
-                value:(NSString*)value
+                title:(nonnull NSString*)title
+                value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
@@ -169,22 +169,22 @@ using namespace std;
     return _serverGroupFieldId;
 }
 
--(void)setTitle:(NSString*)title
+-(void)setTitle:(nonnull NSString*)title
 {
     _title = title;
 }
 
--(NSString*)getTitle
+-(nonnull const NSString*)getTitle
 {
     return _title;
 }
 
--(void)setValue:(NSString*)value
+-(void)setValue:(nonnull NSString*)value
 {
     _value = value;
 }
 
--(NSString*)getValue
+-(nonnull const NSString*)getValue
 {
     return _value;
 }

@@ -31,8 +31,6 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var btnAddNewUser: UIButton!
     
     //MARK: - Data
-    private let controllerGroup = GroupController()
-    
     private let cnstTxtHostShow : CGFloat = 92
     private let cnstTxtHostHide : CGFloat = 8
     

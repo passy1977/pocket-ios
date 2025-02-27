@@ -33,8 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
                 serverGroupId:(uint32_t)serverGroupId
                 groupFieldId:(uint32_t)groupFieldId
                 serverGroupFieldId:(uint32_t)serverGroupFieldId
-                title:(NSString*)title
-                value:(NSString*)value
+                title:(nonnull NSString*)title
+                value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
@@ -54,10 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(uint32_t)getGroupFieldId;
 -(void)setServerGroupFieldId:(uint32_t)serverGroupFieldId;
 -(uint32_t)getServerGroupFieldId;
--(void)setTitle:(NSString*)title;
--(NSString*)getTitle;
--(void)setValue:(NSString*)value;
--(NSString*)getValue;
+-(void)setTitle:(nonnull NSString*)title;
+-(nonnull const NSString*)getTitle;
+-(void)setValue:(nonnull NSString*)value;
+-(nonnull const NSString*)getValue;
 -(void)setIsHidden:(BOOL)isHidden;
 -(BOOL)getIsHidden;
 -(void)setSynchronized:(BOOL)synchronized;

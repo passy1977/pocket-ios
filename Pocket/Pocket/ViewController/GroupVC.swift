@@ -34,7 +34,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     //MARK: - Data
     private let reachability = try! Reachability()
-    private static let controller = GroupController()
+    private let controller = GroupController()
     
     private var groupFieldList : [GroupField] = []
     
@@ -56,13 +56,12 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         txtViwGroupNote.isEditable = false
         setGroupField(enable: false)
         
-        GroupVC.controller.initialize()
+        controller.initialize()
         
-        idGroupFieldToModify = GroupVC.controller.getLastIdGroupField()
+        idGroupFieldToModify = controller.getLastIdGroupField()
         
-        if let group = group
-        {
-            GroupVC.controller.fillShowList(group, copy: insert);
+        if let group = group {
+            controller.fillShowList(group, copy: insert);
         }
         
         
@@ -108,7 +107,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func didMove(toParent parent: UIViewController?) {
         if !(parent?.isEqual(self.parent) ?? false) {
-            GroupVC.controller.cleanShowList()
+            controller.cleanShowList()
         }
         super.didMove(toParent: parent)
     }
@@ -147,7 +146,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let delete = UIContextualAction(style: .destructive, title: nil) { _, _, success in
             alertShow(self, title: "Warning", message: "Dou you want delete it?", handlerNo: { _ in success(false)}) { _ in
 
-                if GroupVC.controller.del(fromShowList: self.groupFieldList[indexPath.row].getid())
+                if self.controller.del(fromShowList: self.groupFieldList[indexPath.row].getid())
                 {
                     DispatchQueue.main.async {
                         self.reloadList(self.group?.getid() ?? 0, insert: self.insert)
@@ -175,9 +174,9 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @objc func reachabilityChanged(note: Notification) {
       if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
         print("Network not reachable")
-        GroupVC.controller.setReachability(false)
+          controller.reachability = false;
       } else {
-        GroupVC.controller.setReachability(true)
+          controller.reachability = true;
       }
     }
     
@@ -200,7 +199,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             g.setNote(txtViwGroupNote.text ?? "")
             g.setIcon("")
             GroupsFieldsVC.overrideSearch = g.getTitle()
-            GroupVC.controller.insert(g) { status, _ in
+            controller.insert(g) { status, _ in
                 DispatchQueue.main.async {
                     spinnerStatusShow(self, status: status)
                 }
@@ -218,7 +217,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             group.setTitle(txtGroupTitle.text ?? "")
             group.setNote(txtViwGroupNote.text ?? "")
             GroupsFieldsVC.overrideSearch = group.getTitle()
-            GroupVC.controller.update(group) { status in
+            controller.update(group) { status in
                 DispatchQueue.main.async {
                     spinnerStatusShow(self, status: status)
                 }
@@ -258,7 +257,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         groupField.setTitle(txtGroupFieldTitle.text ?? "")
         groupField.setIsHidden(switchGroupFieldIsHidden.isOn)
         
-        if(GroupVC.controller.add(toShowList: groupField))
+        if(controller.add(toShowList: groupField))
         {
             groupFieldToModify = nil;
             self.setGroupField(enable: false)
@@ -306,7 +305,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     private func reloadList(_ groupId: UInt32, insert : Bool = false) {
         groupFieldList = [GroupField]()
         
-        for groupField in GroupVC.controller.getShowList() {
+        for groupField in controller.getShowList() {
             groupFieldList.append(groupField)
         }
 
