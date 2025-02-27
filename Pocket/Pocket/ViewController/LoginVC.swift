@@ -56,11 +56,10 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             StackNavigator.getInstance().clear()
             
             if let email = keychain.get(KEY_EMAIL), let passwd = keychain.get(KEY_PASSWD) {
-                setForm(email, passwd: passwd)
+                setForm(email)
                 authenticateUser() { [self] completion in
                     if(completion) {
                         do {
-                            
                             try self.performLogin(email: email,
                                                   passwd: passwd)
                         } catch {
@@ -148,11 +147,8 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             }
         }
         
-        let semaphore = DispatchSemaphore(value: 1)
-        
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             SwiftSpinner.hide()
-            semaphore.signal()
             return
         }
         
@@ -162,35 +158,43 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let rc = Globals.getInstance().login(email, passwd: passwd)
-        if(rc == .OK)
-        {
-            SwiftSpinner.hide()
-            semaphore.signal()
-            let user = Globals.getInstance().getUser()
-            
-            if(user?.getStatus() ?? .NOT_ACTIVE == .ACTIVE)
-            {
-                //Timeout4Logout.getShared(user: Globals.getInstance().getSafeUser()).start()
-                
-                keychain.set(email, forKey: KEY_EMAIL)
-                keychain.set(passwd, forKey: KEY_PASSWD)
-                
-                self.performSegue(withIdentifier: "groups", sender: self)
+        DispatchQueue.global(qos: .background).async {
+            let rc = Globals.getInstance().login(email, passwd: passwd)
+            DispatchQueue.main.async {
+                SwiftSpinner.hide()
             }
-            else
+            if(rc == .OK)
             {
-                alertShow(self, message: "User unactive")
-                self.txtPasswd.text = ""
+                let user = Globals.getInstance().getUser()
+                
+                if(user?.getStatus() ?? .NOT_ACTIVE == .ACTIVE)
+                {
+                    //Timeout4Logout.getShared(user: Globals.getInstance().getSafeUser()).start()
+                    
+                    self.keychain.set(email, forKey: KEY_EMAIL)
+                    self.keychain.set(passwd, forKey: KEY_PASSWD)
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "groups", sender: self)
+                    }
+                }
+                else
+                {
+                    DispatchQueue.main.async {
+                        alertShow(self, message: "User unactive")
+                        self.txtPasswd.text = ""
+                    }
+                }
+            }
+            else if(rc == .SECRET_NOT_MATCH)
+            {
+                DispatchQueue.main.async {
+                    alertShow(self, message: "Server secret code issue")
+                    self.txtPasswd.text = ""
+                }
             }
         }
-        else if(rc == .SECRET_NOT_MATCH)
-        {
-            SwiftSpinner.hide()
-            semaphore.signal()
-            alertShow(self, message: "Server secret code issue")
-            self.txtPasswd.text = ""
-        }
+
     }
     
     
