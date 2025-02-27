@@ -150,8 +150,8 @@ constexpr char APP_TAG[] = "Globals";
                 session = nullptr;
             }
             
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+//            [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
             error(APP_TAG, e.what());
             return false;
         }
