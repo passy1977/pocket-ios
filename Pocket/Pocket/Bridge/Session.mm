@@ -17,65 +17,26 @@
  *
  ***************************************************************************/
 
+#import "Session.h"
 
-//#include <pocket/services/countdown.hpp>
-
-
-#import "CountDown.h"
-#import "Globals.h"
-#import "Property.h"
-#import "User.h"
-
-
-@interface CountDown ()
-//@property pocket::services::CountDown* countDown;
-@end
+#include "pocket-controllers/session.hpp"
+using pocket::controllers::session;
 
 
 
-@implementation CountDown
-//@synthesize  countDown;
+//@interface Session ()
+//@property class session* session;
+//@end
 
--(instancetype)initWithUser:( User* )user sessionTimeoutInSeconds:(int16_t)sessionTimeoutInSeconds;
+@implementation Session
+@synthesize session;
+
+-(instancetype)init:(nonnull class session*)session
 {
-
+    if(self = [super init])
+    {
+        self.session = session;
+    }
     return self;
 }
-
--(void)dealloc
-{
-//
-//    if(countDown)
-//    {
-//        delete countDown;
-//    }
-}
-
--(void)setCallback:(void(^)(void))callback
-{
-
-}
-
-
--(void)start
-{
-//    countDown->start();
-}
-
--(void)stop
-{
-//    countDown->stop();
-}
-
--(void)updateTimeLeft
-{
-//    countDown->updateTimeLeft();
-}
-
--(BOOL)isStarted
-{
-//	return countDown->isStarted();
-    return false;
-}
-
 @end

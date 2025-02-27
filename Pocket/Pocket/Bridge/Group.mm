@@ -19,7 +19,7 @@
 
 #import "Group.h"
 
-#include <pocket-pods/group.hpp>
+#include "pocket-pods/group.hpp"
 using pocket::pods::group;
 
 #include <memory>
@@ -75,10 +75,10 @@ using namespace std;
                 serverGroupId:(uint32_t)serverGroupId
                 groupFieldId:(uint32_t)groupFieldId
                 serverGroupFieldId:(uint32_t)serverGroupFieldId
-                title:(NSString*)title
-                icon:(NSString*)icon
-                note:(NSString*)note
-                value:(NSString*)value
+                title:(nonnull NSString*)title
+                icon:(nonnull NSString*)icon
+                note:(nonnull NSString*)note
+                value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
@@ -174,32 +174,32 @@ using namespace std;
     return _serverGroupFieldId;
 }
 
--(void)setTitle:(NSString*)title
+-(void)setTitle:(nonnull NSString*)title
 {
     _title = title;
 }
 
--(NSString*)getTitle
+-(nonnull const NSString*)getTitle
 {
     return _title;
 }
 
--(void)setIcon:(NSString*)icon
+-(void)setIcon:(nonnull NSString*)icon
 {
     _icon = icon;
 }
 
--(NSString*)getIcon
+-(nonnull const NSString*)getIcon
 {
     return _icon;
 }
 
--(void)setNote:(NSString*)note
+-(void)setNote:(nonnull NSString*)note
 {
     _note = note;
 }
 
--(NSString*)getNote
+-(nonnull const NSString*)getNote
 {
     return _note;
 }

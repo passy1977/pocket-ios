@@ -303,11 +303,11 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func reachabilityChanged(note: Notification) {
       if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
         print("Network not reachable")
-        GroupsFieldsVC.controller.setReachability(false)
-        GroupsFieldsVC.fieldController.setReachability(false)
+        GroupsFieldsVC.controller.reachability = false
+        GroupsFieldsVC.fieldController.reachability = false
       } else {
-        GroupsFieldsVC.controller.setReachability(true)
-        GroupsFieldsVC.fieldController.setReachability(true)
+        GroupsFieldsVC.controller.reachability = true
+        GroupsFieldsVC.fieldController.reachability = true
       }
     }
     

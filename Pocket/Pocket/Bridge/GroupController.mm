@@ -17,67 +17,66 @@
  *
  ***************************************************************************/
 
-//#include <pocket/controllers/groupcontroller.hpp>
-#import "Constants.h"
-#import "Field.h"
-#import "Globals.h"
 #import "Group.h"
-#import "GroupController.h"
+#import "Field.h"
 #import "GroupField.h"
+#import "Session.h"
+
+#import "Globals.h"
+#import "GroupController.h"
+
 #import "User.h"
 
-//extern pocket::pods::Device::Ptr convert(const Device* device);
-//extern Device* convert(const pocket::pods::Device::Ptr &group);
-//extern pocket::pods::User::Ptr convert(const User* user);
-//extern User* convert(const pocket::pods::User::Ptr &user);
-//extern pocket::pods::Field::Ptr convert(const Field* group);
-//extern Field* convert(const pocket::pods::Field::Ptr &group);
-//extern pocket::pods::Group::Ptr convert(const Group* group);
-//extern Group* convert(const pocket::pods::Group::Ptr &group);
-//extern pocket::pods::GroupField::Ptr convert(const GroupField* groupField);
-//extern GroupField* convert(const pocket::pods::GroupField::Ptr &groupField);
+#include "pocket-views/view.hpp"
+using pocket::views::view;
+
+#include "pocket-pods/group.hpp"
+#include "pocket-pods/group-field.hpp"
+#include "pocket-pods/field.hpp"
+using namespace pocket::pods;
+
+#include "pocket-controllers/session.hpp"
+using pocket::controllers::session;
+
+extern group::ptr convert(const Group* group);
+extern Group* convert(const group::ptr &field);
+extern group_field::ptr convert(const GroupField* group_field);
+extern GroupField* convert(const group_field::ptr &field);
 
 @interface GroupController ()
-
-//@property pocket::controllers::GroupController *controller;
-
+@property view<group> *viewGroup;
+@property view<group_field> *viewGroupField;
 @end
 
 
 @implementation GroupController
-//@synthesize controller;
+@synthesize reachability;
+@synthesize viewGroup;
+@synthesize viewGroupField;
+
 
 -(instancetype)init
 {
     if(self = [super init])
     {
-//        controller = new(nothrow) pocket::controllers::GroupController(ONE_SESSION);
-//        if(controller == nullptr)
-//        {
-//            return Nil;
-//        }
+        reachability = false;
+        viewGroup = nullptr;
+        viewGroupField = nullptr;
     }
     return self;
 }
 
--(void)dealloc
+-(void)initialize
 {
-
-//    if(controller)
-//    {
-//        delete controller;
-//    }
+    auto session = [[Globals getInstance] getSession].session;
+    
+    viewGroup = session->get_view_group().get();
+    viewGroupField = session->get_view_group_field().get();
 }
 
-
--(void)setReachability:(BOOL)reachability
+-(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group
 {
-//    controller->setReachability(reachability);
-}
-
--(NSArray<GroupField*>*)getListGroupField:(Group*)group
-{
-//    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
+    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
 //    uint32_t count = 0;
 //    for(auto &&it : controller->getListGroupField(convert(group)))
 //    {
@@ -86,7 +85,7 @@
 //    }
 //    
 //    return ret;
-    return nil;
+    return ret;
 }
 
 -(NSArray<GroupField*>*)getAllGroupField
@@ -213,10 +212,7 @@
 
 }
 
--(void)initialize
-{
 
-}
 
 -(void)cleanShowList
 {

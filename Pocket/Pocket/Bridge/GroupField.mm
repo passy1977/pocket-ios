@@ -21,7 +21,7 @@
 
 #import "Groupfield.h"
 
-#include <pocket-pods/group-field.hpp>
+#include "pocket-pods/group-field.hpp"
 using pocket::pods::group_field;
 
 #include <memory>
@@ -68,7 +68,7 @@ using namespace std;
                 userId:(uint32_t)userId
                 groupId:(uint32_t)groupId
                 serverGroupId:(uint32_t)serverGroupId
-                title:(NSString*)title
+                title:(nonnull NSString*)title
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
@@ -140,12 +140,12 @@ using namespace std;
     return _serverGroupId;
 }
 
--(void)setTitle:(NSString*)title
+-(void)setTitle:(nonnull NSString*)title
 {
     _title = title;
 }
 
--(NSString*)getTitle
+-(nonnull const NSString*)getTitle
 {
     return _title;
 }

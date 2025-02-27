@@ -24,19 +24,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class Field;
 @class User;
-@class Device;
-@class Globals;
 @class Group;
 @class GroupField;
+@class Session;
 
 @interface GroupController : NSObject
+@property BOOL reachability;
 
 -(instancetype)init;
+-(void)initialize;
 
--(void)setReachability:(BOOL)reachability;
--(NSArray<GroupField*>*)getListGroupField:(Group*)group;
+-(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group;
 -(NSArray<GroupField*>*)getAllGroupField;
 -(NSArray<GroupField*>*)getListGroupFieldWithGroupId:(uint32_t)groupId;
 -(GroupField*)insertGroupField:(GroupField*)groupField;
@@ -54,7 +53,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback;
 -(void)xmlImport:(NSString*)fullPathFileXmlImport callback:(void(^)(BOOL))callback;
 -(void)exit;
--(void)initialize;
 -(void)cleanShowList;
 -(void)fillShowList:(Group *)group copy:(bool)copy;
 -(void)fillShowList:(Group *)group;

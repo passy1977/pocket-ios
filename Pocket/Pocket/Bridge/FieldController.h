@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class GroupField;
 
 @interface FieldController : NSObject
+@property BOOL reachability;
 
 -(instancetype)init;
 
@@ -40,7 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)delField:(Field*)field callback:(void(^)(NSString*))callback;
 -(int64_t)sizeFiled:(uint32_t)groupId;
 -(void)initialize;
--(void)setReachability:(BOOL)reachability;
 
 @end
 

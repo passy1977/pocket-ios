@@ -41,7 +41,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {   
         super.viewDidLoad()
         
-        //controller.initialize()
+        controller?.initialize()
         
         if let field = self.field {
             setField(enable: true, title: field.getTitle(), value: field.getValue(), isHidden: field.getIsHidden())
@@ -75,9 +75,9 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     @objc func reachabilityChanged(note: Notification) {
       if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
         print("Network not reachable")
-        controller?.setReachability(false)
+        controller?.reachability = false
       } else {
-        controller?.setReachability(true)
+        controller?.reachability = true
       }
     }
     

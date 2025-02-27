@@ -21,7 +21,6 @@
 //#include <pocket/controllers/fieldcontroller.hpp>
 //using namespace std;
 
-#import "Constants.h"
 #import "Field.h"
 #import "FieldController.h"
 #import "Globals.h"
@@ -49,11 +48,13 @@
 
 @implementation FieldController
 //@synthesize controller;
+@synthesize reachability;
 
 -(instancetype)init
 {
     if(self = [super init])
     {
+        reachability = false;
 //        controller = new(nothrow) pocket::controllers::FieldController(ONE_SESSION);
 //        if(controller == nullptr)
 //        {
@@ -141,9 +142,5 @@
 //    controller->initialize();
 }
 
--(void)setReachability:(BOOL)reachability
-{
-//    controller->setReachability(reachability);
-}
 
 @end
