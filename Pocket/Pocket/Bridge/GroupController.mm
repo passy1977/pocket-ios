@@ -47,7 +47,7 @@ extern GroupField* convert(const group_field::ptr &field);
 @property view<group> *viewGroup;
 @property view<group_field> *viewGroupField;
 @property view<field> *viewField;
-@property NSMutableDictionary<NSNumber *, NSString *> *showList;
+@property NSMutableDictionary<NSNumber *, GroupField *> *showList;
 @end
 
 
@@ -169,38 +169,81 @@ extern GroupField* convert(const group_field::ptr &field);
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList
 {
+    [showList removeAllObjects];
 }
 
--(void)fillShowList:(Group *)group copy:(bool)copy
+-(void)fillShowList:(nonnull const Group *)group copy:(bool)copy
 {
+    [self cleanShowList];
+    for(auto&& it : viewGroupField->get_list([group getid]))
+    {
+        [showList setObject:convert(it) forKey:[NSNumber numberWithLongLong:it->id]];
+    }
 }
 
--(void)fillShowList:(Group *)group
+-(void)fillShowList:(nonnull const Group *)group
 {
+    [self fillShowList:group copy:false];
 }
 
--(NSArray<GroupField*>*)getShowList
+-(nonnull NSArray<GroupField*>*)getShowList
 {
-    return 0;
-
+    return [showList allValues];
 }
 
--(BOOL)addToShowList:(GroupField *)groupField
+-(BOOL)addToShowList:(nonnull GroupField *)groupField
 {
-//    return controller->addToShowList(convert(groupField));
-    return 0;
+    //id value = [showList objectForKey: [NSNumber numberWithLongLong:[groupField getid]]];
+    id value = showList[[NSNumber numberWithLongLong:[groupField getid]]];
+    if(value)
+    {
+        [value setSynchronized:false];
+        [value setTitle: [groupField getTitle]];
+        [value setIsHidden: [groupField getIsHidden]];
+        return true;
+    }
+    else
+    {
+        [groupField setSynchronized:false];
+        [showList setObject:groupField forKey:[NSNumber numberWithLongLong:[groupField getid]]];
+        return true;
+    }
 }
 
 -(BOOL)delFromShowList:(uint32_t)idGroupField
 {
-//    return controller->delFromShowList(idGroupField);
-    return 0;
+    int64_t toDelete = -1, i = 0;
+    for (NSNumber *key in showList)
+    {
+        id it = showList[key];
+        
+        if([it getid] == idGroupField)
+        {
+            if([it getServerId] > 0)
+            {
+                viewGroupField->del([it getServerId]);
+            }
+            toDelete = i;
+            break;
+        }
+        i++;
+    }
+        
+    if(toDelete > -1)
+    {
+        [showList removeObjectForKey:[NSNumber numberWithLongLong:toDelete]];
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
 }
 
 -(uint8_t)sizeShowList
 {
-//    return controller->sizeShowList();
-    return 0;
+    return [[showList allKeys] count];
 }
 
 @end

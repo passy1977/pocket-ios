@@ -57,10 +57,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList;
--(void)fillShowList:(Group *)group copy:(bool)copy;
--(void)fillShowList:(Group *)group;
--(NSArray<GroupField*>*)getShowList;
--(BOOL)addToShowList:(GroupField *)groupField;
+-(void)fillShowList:(nonnull const Group *)group copy:(bool)copy;
+-(void)fillShowList:(nonnull const Group *)group;
+-(nonnull NSArray<GroupField*>*)getShowList;
+-(BOOL)addToShowList:(nonnull GroupField *)groupField;
 -(BOOL)delFromShowList:(uint32_t)idGroupField;
 -(uint8_t)sizeShowList;
 
