@@ -51,7 +51,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
             self.configJson = configJson
             
-            StackNavigator.getInstance().clear()
+            StackNavigator.share.clear()
             
             if let email = keychain.get(KEY_EMAIL), let passwd = keychain.get(KEY_PASSWD) {
                 setForm(email)

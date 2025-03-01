@@ -10,6 +10,7 @@
 		1407DC45242F7428007CD405 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14173FD8242D34670055410E /* libsqlite3.tbd */; };
 		1407DC4A24301C85007CD405 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407DC4924301C85007CD405 /* Graphics.swift */; };
 		1407E67425A91CF5002CE6E9 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 1407E67325A91CF5002CE6E9 /* Reachability */; };
+		1409A9B32D736AEA00F91B6A /* StackNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409A9B22D736AEA00F91B6A /* StackNavigator.swift */; };
 		14173FC3242D27560055410E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC0242D27560055410E /* LoginVC.swift */; };
 		14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC1242D27560055410E /* GroupsFieldsVC.swift */; };
 		14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14173FC2242D27560055410E /* AddNewUserVC.swift */; };
@@ -30,14 +31,12 @@
 		14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; };
 		14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA14212431CAB30067CFA8 /* FieldVC.swift */; };
 		14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF462932C7A700C84FD0 /* Group.mm */; };
-		14D4DF602932C7A700C84FD0 /* Pair.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF482932C7A700C84FD0 /* Pair.mm */; };
 		14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4C2932C7A700C84FD0 /* GroupController.mm */; };
 		14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4D2932C7A700C84FD0 /* CountDown.mm */; };
 		14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF502932C7A700C84FD0 /* GroupField.mm */; };
 		14D4DF652932C7A700C84FD0 /* Field.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF542932C7A700C84FD0 /* Field.mm */; };
 		14D4DF662932C7A700C84FD0 /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF572932C7A700C84FD0 /* User.mm */; };
 		14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5A2932C7A700C84FD0 /* FieldController.mm */; };
-		14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */; };
 		14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Globals.mm */; };
 		14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */; };
 		14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186C2D6548E300E5AEF2 /* view-group.cpp */; };
@@ -72,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		1407DC4924301C85007CD405 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
+		1409A9B22D736AEA00F91B6A /* StackNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackNavigator.swift; sourceTree = "<group>"; };
 		14173FC0242D27560055410E /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		14173FC1242D27560055410E /* GroupsFieldsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVC.swift; sourceTree = "<group>"; };
 		14173FC2242D27560055410E /* AddNewUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewUserVC.swift; sourceTree = "<group>"; };
@@ -96,9 +96,7 @@
 		14B156032D669E3E00EB655E /* curl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = curl.xcframework; path = ../lib/curl.xcframework; sourceTree = "<group>"; };
 		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
 		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
-		14D4DF452932C7A700C84FD0 /* StackNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackNavigator.h; sourceTree = "<group>"; };
 		14D4DF462932C7A700C84FD0 /* Group.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Group.mm; sourceTree = "<group>"; };
-		14D4DF482932C7A700C84FD0 /* Pair.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pair.mm; sourceTree = "<group>"; };
 		14D4DF492932C7A700C84FD0 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
 		14D4DF4A2932C7A700C84FD0 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
 		14D4DF4B2932C7A700C84FD0 /* FieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldController.h; sourceTree = "<group>"; };
@@ -111,10 +109,8 @@
 		14D4DF532932C7A700C84FD0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		14D4DF542932C7A700C84FD0 /* Field.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Field.mm; sourceTree = "<group>"; };
 		14D4DF552932C7A700C84FD0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		14D4DF562932C7A700C84FD0 /* Pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pair.h; sourceTree = "<group>"; };
 		14D4DF572932C7A700C84FD0 /* User.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = User.mm; sourceTree = "<group>"; };
 		14D4DF5A2932C7A700C84FD0 /* FieldController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldController.mm; sourceTree = "<group>"; };
-		14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StackNavigator.mm; sourceTree = "<group>"; };
 		14D4DF5D2932C7A700C84FD0 /* Globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Globals.mm; sourceTree = "<group>"; };
 		14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVCCell.swift; sourceTree = "<group>"; };
 		14DF181F2D6548E300E5AEF2 /* globals.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = globals.hpp; sourceTree = "<group>"; };
@@ -225,10 +221,11 @@
 		143EFA53244A2B7900DBBE0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */,
-				1485CC5F245EC91B00059F5E /* SystemInfo.m */,
-				1485CC61245EC94B00059F5E /* SystemInfo.h */,
 				143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */,
+				1409A9B22D736AEA00F91B6A /* StackNavigator.swift */,
+				1485CC61245EC94B00059F5E /* SystemInfo.h */,
+				1485CC5F245EC91B00059F5E /* SystemInfo.m */,
+				143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -297,10 +294,6 @@
 				14D4DF4C2932C7A700C84FD0 /* GroupController.mm */,
 				14D4DF512932C7A700C84FD0 /* GroupField.h */,
 				14D4DF502932C7A700C84FD0 /* GroupField.mm */,
-				14D4DF562932C7A700C84FD0 /* Pair.h */,
-				14D4DF482932C7A700C84FD0 /* Pair.mm */,
-				14D4DF452932C7A700C84FD0 /* StackNavigator.h */,
-				14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */,
 				14D4DF552932C7A700C84FD0 /* User.h */,
 				14D4DF572932C7A700C84FD0 /* User.mm */,
 				149571E92D711CFC002DAF5B /* Session.h */,
@@ -742,6 +735,7 @@
 				14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */,
 				14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */,
 				14DF18872D6548E300E5AEF2 /* config.cpp in Sources */,
+				1409A9B32D736AEA00F91B6A /* StackNavigator.swift in Sources */,
 				14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */,
 				14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */,
 				14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */,
@@ -773,10 +767,8 @@
 				14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */,
 				14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */,
 				14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */,
-				14D4DF602932C7A700C84FD0 /* Pair.mm in Sources */,
 				14375093242F584900375E54 /* TextFieldExtension.swift in Sources */,
 				148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */,
-				14D4DF692932C7A700C84FD0 /* StackNavigator.mm in Sources */,
 				14173FC3242D27560055410E /* LoginVC.swift in Sources */,
 				143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */,
 				A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */,

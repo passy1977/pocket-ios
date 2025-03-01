@@ -17,26 +17,43 @@
  *
  ***************************************************************************/
 
-#ifdef __OBJC__
-#import <Foundation/Foundation.h>
-#endif
+import Foundation
 
-NS_ASSUME_NONNULL_BEGIN
+class StackNavigator {
+    
+    public static let share = StackNavigator()
+    
+    private var stack : [(Group, String)] = []
+    
+    public var isEmpty: Bool {
+        stack.isEmpty
+    }
 
-@class Group;
-@class Pair;
+    public var count: Int {
+        stack.count
+    }
 
-@interface StackNavigator : NSObject
+    public var peek: (Group, String)? {
+        stack.last
+    }
+    
+    public var pop: (Group, String)? {
+        stack.popLast()
+    }
+    
+    public func push(_ group: Group, search: String) {
+        for it in stack where it.0.getid() == group.getid() {
+            return;
+        }
+        stack.append((group, search))
+    }
 
--(instancetype)init;
-
--(void)push:(Group*)group search:(NSString*)search;
--(Pair*)get;
--(Pair*)pop;
--(int64_t)size;
--(void)clear;
-+(StackNavigator*)getInstance;
-
-@end
-
-NS_ASSUME_NONNULL_END
+    public func size() -> Int {
+        stack.count;
+    }
+    
+    public func clear() {
+        stack.removeAll()
+    }
+    
+}
