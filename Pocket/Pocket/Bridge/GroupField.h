@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setServerGroupId:(uint32_t)serverGroupId;
 -(uint32_t)getServerGroupId;
 -(void)setTitle:(nonnull NSString*)title;
--(nonnull const NSString*)getTitle;
+-(nonnull NSString*)getTitle;
 -(void)setIsHidden:(BOOL)isHidden;
 -(BOOL)getIsHidden;
 -(void)setSynchronized:(BOOL)synchronized;
