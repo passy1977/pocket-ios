@@ -58,7 +58,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         controller.initialize()
         
-        idGroupFieldToModify = controller.getLastIdGroupField()
+        idGroupFieldToModify = controller.lastIdGroupField
         
         if let group = group {
             controller.fillShowList(group, copy: insert);

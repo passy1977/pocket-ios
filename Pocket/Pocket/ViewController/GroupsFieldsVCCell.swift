@@ -37,7 +37,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
     
     //MARK: - references
     public weak var father : UIViewController?
-    public weak var controller : GroupController?
+    public weak var groupController : GroupController?
     public weak var fieldController : FieldController?
     
     //MARK: - data
@@ -57,7 +57,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
 //        super.prepareForReuse()
         tuple = nil
         father = nil
-        controller = nil
+        groupController = nil
         txtTitle.text = ""
         showValue(btnValue, value: "", isHidden: false, show: false)
         imgType.image = UIImage(systemName: "text.justify")
@@ -65,7 +65,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        guard let controller = self.controller, let fieldController = self.fieldController else {
+        guard let controller = self.groupController, let fieldController = self.fieldController else {
             return
         }
         

@@ -267,21 +267,21 @@ group::ptr convert(const Group* group)
     return ret;
 }
 
-Group* convert(const group::ptr &field)
+Group* convert(const group::ptr &group)
 {
-    auto ret = [[Group alloc] init];
+    auto ret = [Group new];
     
-    [ret setid: static_cast<uint32_t>(field->id)];
-    [ret setServerId: static_cast<uint32_t>(field->server_id)];
-    [ret setUserId: static_cast<uint32_t>(field->user_id)];
-    [ret setGroupId: static_cast<uint32_t>(field->group_id)];
-    [ret setServerGroupId: static_cast<uint32_t>(field->server_group_id)];
-    [ret setTitle: [NSString stringWithCString:field->title.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setIcon: [NSString stringWithCString:field->icon.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setNote: [NSString stringWithCString:field->note.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setSynchronized: field->synchronized];
-    [ret setDeleted: field->deleted];
-    [ret setTimestampCreation: field->timestamp_creation];
+    [ret setid: static_cast<uint32_t>(group->id)];
+    [ret setServerId: static_cast<uint32_t>(group->server_id)];
+    [ret setUserId: static_cast<uint32_t>(group->user_id)];
+    [ret setGroupId: static_cast<uint32_t>(group->group_id)];
+    [ret setServerGroupId: static_cast<uint32_t>(group->server_group_id)];
+    [ret setTitle: [NSString stringWithCString:group->title.c_str() encoding:NSUTF8StringEncoding] ];
+    [ret setIcon: [NSString stringWithCString:group->icon.c_str() encoding:NSUTF8StringEncoding] ];
+    [ret setNote: [NSString stringWithCString:group->note.c_str() encoding:NSUTF8StringEncoding] ];
+    [ret setSynchronized: group->synchronized];
+    [ret setDeleted: group->deleted];
+    [ret setTimestampCreation: group->timestamp_creation];
     
     return ret;
 }

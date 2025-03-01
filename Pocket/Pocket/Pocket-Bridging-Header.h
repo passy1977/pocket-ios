@@ -7,7 +7,6 @@
 #import "Field.h"
 #import "Group.h"
 #import "GroupField.h"
-#import "Property.h"
 #import "User.h"
 #import "Globals.h"
 #import "Pair.h"

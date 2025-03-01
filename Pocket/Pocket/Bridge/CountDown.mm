@@ -23,7 +23,6 @@
 
 #import "CountDown.h"
 #import "Globals.h"
-#import "Property.h"
 #import "User.h"
 
 

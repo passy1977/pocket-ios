@@ -31,28 +31,31 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupController : NSObject
 @property BOOL reachability;
+@property uint32_t lastIdGroupField;
 
+//MARK: - System
 -(instancetype)init;
 -(void)initialize;
 
--(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group;
--(NSArray<GroupField*>*)getAllGroupField;
--(NSArray<GroupField*>*)getListGroupFieldWithGroupId:(uint32_t)groupId;
--(GroupField*)insertGroupField:(GroupField*)groupField;
--(void)updateGroupField:(GroupField*)groupField;
--(void)delGroupField:(GroupField*)groupField callback:(void(^)(NSString*))callback;
--(NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search;
--(uint32_t)getLastIdGroupField;
--(uint32_t)getLastIdGroupField:(User*)user;
+//MARK: - Group
+-(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search;
+-(int32_t)countChild:(Group*)group;
 -(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback;
 -(void)insertGroup:(Group*)group callback:(void(^)(NSString*, Group* _Nullable))callback;
 -(void)updateGroup:(Group*)group callback:(void(^)(NSString*))callback;
--(uint32_t)getLastIdGroup;
--(uint32_t)getLastIdGroup:(User*)user;
--(int64_t)countChild:(Group*)group;
+
+//MARK: - GroupField
+-(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group;
+-(GroupField*)insertGroupField:(GroupField*)groupField;
+-(void)updateGroupField:(GroupField*)groupField;
+-(void)delGroupField:(GroupField*)groupField callback:(void(^)(NSString*))callback;
+
+//MARK: - ExportImport
 -(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback;
 -(void)xmlImport:(NSString*)fullPathFileXmlImport callback:(void(^)(BOOL))callback;
 -(void)exit;
+
+//MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList;
 -(void)fillShowList:(Group *)group copy:(bool)copy;
 -(void)fillShowList:(Group *)group;

@@ -27,12 +27,12 @@
 
 #import "User.h"
 
-#include "pocket-views/view.hpp"
+#include "pocket-views/view-group.hpp"
+#include "pocket-views/view-group-field.hpp"
 using pocket::views::view;
 
 #include "pocket-pods/group.hpp"
 #include "pocket-pods/group-field.hpp"
-#include "pocket-pods/field.hpp"
 using namespace pocket::pods;
 
 #include "pocket-controllers/session.hpp"
@@ -46,81 +46,88 @@ extern GroupField* convert(const group_field::ptr &field);
 @interface GroupController ()
 @property view<group> *viewGroup;
 @property view<group_field> *viewGroupField;
+@property view<field> *viewField;
+@property NSMutableDictionary<NSNumber *, NSString *> *showList;
 @end
 
 
 @implementation GroupController
 @synthesize reachability;
+@synthesize lastIdGroupField;
 @synthesize viewGroup;
 @synthesize viewGroupField;
+@synthesize showList;
 
-
+//MARK: - System
 -(instancetype)init
 {
     if(self = [super init])
     {
         reachability = false;
+        lastIdGroupField = 0;
         viewGroup = nullptr;
         viewGroupField = nullptr;
+        showList = [NSMutableDictionary new];
     }
     return self;
 }
 
 -(void)initialize
 {
-    auto session = [[Globals getInstance] getSession].session;
-    
-    viewGroup = session->get_view_group().get();
-    viewGroupField = session->get_view_group_field().get();
+    viewGroup = [[Globals getInstance] getSession].session->get_view_group().get();
+    viewGroupField = [[Globals getInstance] getSession].session->get_view_group_field().get();
 }
 
--(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group
+//MARK: - Group
+-(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search
 {
-    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
-//    uint32_t count = 0;
-//    for(auto &&it : controller->getListGroupField(convert(group)))
-//    {
-//        [ret addObject:convert(it)];
-//        count++;
-//    }
-//    
-//    return ret;
+    NSMutableArray<Group*> *ret = [NSMutableArray new];
+    for(auto &&it : viewGroup->get_list(groupId, [search UTF8String]))
+    {
+        [ret addObject:convert(it)];
+    }
     return ret;
 }
 
--(NSArray<GroupField*>*)getAllGroupField
+-(int32_t)countChild:(Group*)group
 {
-//    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
-//    uint32_t count = 0;
-//    for(auto &&it : controller->getAllGroupField())
-//    {
-//        [ret addObject:convert(it)];
-//        count++;
-//    }
-//    
-//    return ret;
-    return nil;
+    return static_cast<uint32_t>(viewGroup->get_list([group getid]).size());
 }
 
--(NSArray<GroupField*>*)getListGroupFieldWithGroupId:(uint32_t)groupId
+-(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback
 {
-//    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
-//    uint32_t count = 0;
-//    for(auto &&it : controller->getListGroupFieldWithGroupId(groupId))
-//    {
-//        [ret addObject:convert(it)];
-//        count++;
-//    }
-//    
-//    return ret;
-    return nil;
+    
 }
+
+-(void)insertGroup:(Group*)group callback:(void(^)(NSString*, Group* _Nullable))callback
+{
+
+}
+
+-(void)updateGroup:(Group*)group callback:(void(^)(NSString*))callback
+{
+
+    
+}
+
+//MARK: - ExportImport
+-(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group
+{
+    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
+    for(auto &&it : viewGroupField->get_list([group getGroupId]))
+    {
+        [ret addObject:convert(it)];
+    }
+    return ret;
+}
+
 
 -(GroupField*)insertGroupField:(GroupField*)groupField
 {
 //    [groupField setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
 //    [groupField setReferenceUserId: controller->getUser()->id];
 //    return convert(controller->insertGroupField(convert(groupField)));
+    lastIdGroupField = 0; //todo: handle last id
     return nil;
 }
 
@@ -140,62 +147,8 @@ extern GroupField* convert(const group_field::ptr &field);
 //    callback(SYNCHRONIZATOR_END);
 }
 
--(NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search
-{
-//    NSMutableArray<Group*> *ret = [NSMutableArray new];
-//    uint32_t count = 0;
-//    for(auto &&it : controller->getListGroup(groupId, [search UTF8String]))
-//    {
-//        [ret addObject:convert(it)];
-//        count++;
-//    }
-//    
-//    return ret;
-    return nil;
-}
 
--(uint32_t)getLastIdGroupField
-{
-//    return controller->getLastIdGroupField();
-    return 0;
-}
-
--(uint32_t)getLastIdGroupField:(User*)user
-{
-//    return controller->getLastIdGroupField(convert(user));
-    return 0;
-}
-
--(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback
-{
-    
-}
-
--(void)insertGroup:(Group*)group callback:(void(^)(NSString*, Group* _Nullable))callback
-{
-
-}
-
--(void)updateGroup:(Group*)group callback:(void(^)(NSString*))callback
-{
-
-    
-}
-
--(uint32_t)getLastIdGroup
-{
-    return 0;
-}
-
--(uint32_t)getLastIdGroup:(User*)user
-{
-    return 0;
-}
-
--(int64_t)countChild:(Group*)group
-{
-    return 0;
-}
+//MARK: - Generic
 
 -(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback
 {
@@ -213,7 +166,7 @@ extern GroupField* convert(const group_field::ptr &field);
 }
 
 
-
+//MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList
 {
 }

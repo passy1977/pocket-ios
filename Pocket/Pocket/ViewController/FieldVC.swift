@@ -32,7 +32,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     
     //MARK: - Data
     private let reachability = try! Reachability()
-    public weak var controller : FieldController? = nil
+    public weak var fieldController : FieldController? = nil
     public var group = Group()
 
     public weak var field : Field? = nil
@@ -41,7 +41,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {   
         super.viewDidLoad()
         
-        controller?.initialize()
+        fieldController?.initialize()
         
         if let field = self.field {
             setField(enable: true, title: field.getTitle(), value: field.getValue(), isHidden: field.getIsHidden())
@@ -75,9 +75,9 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     @objc func reachabilityChanged(note: Notification) {
       if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
         print("Network not reachable")
-        controller?.reachability = false
+        fieldController?.reachability = false
       } else {
-        controller?.reachability = true
+        fieldController?.reachability = true
       }
     }
     
@@ -95,7 +95,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
             field.setValue(txtValue.text ?? "")
             field.setIsHidden(switchIsHidden.isOn)
             GroupsFieldsVC.overrideSearch = field.getTitle()
-            controller?.insert(field) { status in
+            fieldController?.insert(field) { status in
                 DispatchQueue.main.async {
                     spinnerStatusShow(self, status: status)
                 }
@@ -115,7 +115,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                 field.setValue(txtValue.text ?? "")
                 field.setIsHidden(switchIsHidden.isOn)
                 GroupsFieldsVC.overrideSearch = field.getTitle()
-                controller?.update(field) { status in
+                fieldController?.update(field) { status in
                     DispatchQueue.main.async {
                         spinnerStatusShow(self, status: status)
                     }
