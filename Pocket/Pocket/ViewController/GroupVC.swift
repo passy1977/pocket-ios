@@ -139,7 +139,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
 
 
-    //funzioni sullo swipe
+    //swipe
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         view.endEditing(true)
         //delete

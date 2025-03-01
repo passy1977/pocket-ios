@@ -76,9 +76,10 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         menuIconClose.target = self
         menuIconOpen.target = self
         
-        let groupAndSearch = StackNavigator.getInstance().get()
-        group = groupAndSearch.getGroup()
-        txtViwNote.text = groupAndSearch.getSearch()
+        if let (group, search) = StackNavigator.share.peek {
+            self.group = group
+            txtViwNote.text = search
+        }
         
         groupController.initialize()
         fieldController.initialize()
@@ -99,7 +100,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             title = group.getTitle()
         }
         
-        if StackNavigator.getInstance().size() == 0 {
+        if StackNavigator.share.size() == 0 {
             menuShowing = false
             
             actViwMenuOpenOrClose(hideAnimation: true)
@@ -127,12 +128,11 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         actViwMenuOpenOrClose(hideAnimation: true)
         
         if self.isMovingFromParent {
-            let pair = StackNavigator.getInstance().pop()
-            
-            //data will be loaded in viewWillAppear
-            group = pair.getGroup()
-            srcSearch.text = pair.getSearch()
-
+            if let (group, search) = StackNavigator.share.pop {
+                //data will be loaded in viewWillAppear
+                self.group = group
+                srcSearch.text = search
+            }
         }
     }
     
@@ -180,7 +180,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         tupleList.count
     }
     
-    //imposta il valore delle celle
+    //set cell value
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupsFieldsVCCell.identifier, for: indexPath) as? GroupsFieldsVCCell else {
             return tableView.dequeueReusableCell(withIdentifier: GroupsFieldsVCCell.identifier, for: indexPath)
@@ -195,7 +195,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
-    //quando clicco su una cella
+    //cell click
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupsFieldsVCCell.identifier)  else {
             return
@@ -204,13 +204,13 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         cell.selectionStyle = .none
 
         if let group = tupleList[indexPath.row].group {
-            StackNavigator.getInstance().push(group, search: srcSearch.text ?? "")
+            StackNavigator.share.push(group, search: srcSearch.text ?? "")
             actViwMenuOpenOrClose(hideAnimation: true)
             performSegue(withIdentifier: "groups", sender: self)
         }
     }
 
-    //funzioni sullo swipe
+    //swipe
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         view.endEditing(true)
         //delete
@@ -340,7 +340,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc private func actViwMenuOpenOrClose(hideAnimation : Bool = false) {
         view.endEditing(true)
-        if menuShowing, StackNavigator.getInstance().size() == 0 {
+        if menuShowing, StackNavigator.share.size() == 0 {
             
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                 fullPathFileXmlImport = url.appendingPathComponent(fileNameImport, isDirectory: false).path

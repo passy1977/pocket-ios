@@ -49,7 +49,9 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
             setField(enable: false)
         }
         
-        group = StackNavigator.getInstance().get().getGroup()
+        if let group = StackNavigator.share.peek?.0 {
+            self.group = group
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do{
