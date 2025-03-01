@@ -34,13 +34,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property BOOL reachability;
 
 -(instancetype)init;
+-(void)initialize;
 
 -(NSArray<Field*>*)getListField:(uint32_t)groupId search:(NSString*)search;
 -(void)insertField:(Field*)field callback:(void(^)(NSString*))callback;
 -(void)updateField:(Field*)field callback:(void(^)(NSString*))callback;
 -(void)delField:(Field*)field callback:(void(^)(NSString*))callback;
 -(int64_t)sizeFiled:(uint32_t)groupId;
--(void)initialize;
+
 
 @end
 

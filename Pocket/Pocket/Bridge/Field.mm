@@ -256,7 +256,7 @@ field::ptr convert(const Field* field)
 
 Field* convert(const field::ptr &field)
 {
-    auto ret = [[Field alloc] init];
+    auto ret = [Field new];
     
     [ret setid: static_cast<uint32_t>(field->id)];
     [ret setServerId: static_cast<uint32_t>(field->server_id)];

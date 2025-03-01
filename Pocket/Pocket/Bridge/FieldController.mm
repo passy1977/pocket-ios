@@ -24,65 +24,52 @@
 #import "Field.h"
 #import "FieldController.h"
 #import "Globals.h"
-#import "Group.h"
-#import "GroupField.h"
-#import "User.h"
+#import "Session.h"
 
-//extern pocket::pods::Device::Ptr convert(const Device* device);
-//extern Device* convert(const pocket::pods::Device::Ptr &group);
-//extern pocket::pods::User::Ptr convert(const User* user);
-//extern User* convert(const pocket::pods::User::Ptr &user);
-//extern pocket::pods::Field::Ptr convert(const Field* group);
-//extern Field* convert(const pocket::pods::Field::Ptr &group);
-//extern pocket::pods::Group::Ptr convert(const Group* group);
-//extern Group* convert(const pocket::pods::Group::Ptr &group);
-//extern pocket::pods::GroupField::Ptr convert(const GroupField* groupField);
-//extern GroupField* convert(const pocket::pods::GroupField::Ptr &groupField);
+#include "pocket-pods/field.hpp"
+using namespace pocket::pods;
+
+#include "pocket-views/view-field.hpp"
+using pocket::views::view;
+
+#include "pocket-controllers/session.hpp"
+using pocket::controllers::session;
+
+extern field::ptr convert(const Field* group_field);
+extern Field* convert(const field::ptr &field);
 
 @interface FieldController ()
-
-//@property pocket::controllers::FieldController *controller;
-
+@property view<field> *viewField;
 @end
 
 
 @implementation FieldController
-//@synthesize controller;
 @synthesize reachability;
+@synthesize viewField;
 
 -(instancetype)init
 {
     if(self = [super init])
     {
         reachability = false;
-//        controller = new(nothrow) pocket::controllers::FieldController(ONE_SESSION);
-//        if(controller == nullptr)
-//        {
-//            return Nil;
-//        }
+        viewField = nullptr;
     }
     return self;
 }
 
--(void)dealloc
+-(void)initialize
 {
-
-//    if(controller)
-//    {
-//        delete controller;
-//    }
+    viewField = [[Globals getInstance] getSession].session->get_view_field().get();
 }
+
 
 -(NSArray<Field*>*)getListField:(uint32_t)groupId search:(NSString*)search
 {
     NSMutableArray<Field*> *ret = [NSMutableArray new];
-//    uint32_t count = 0;
-//    for(auto &&it : controller->getListField(groupId, [search UTF8String]))
-//    {
-//        [ret addObject:convert(it)];
-//        count++;
-//    }
-    
+    for(auto &&it : viewField->get_list(groupId, [search UTF8String]))
+    {
+        [ret addObject:convert(it)];
+    }
     return ret;
 }
 
@@ -136,11 +123,5 @@
 //	return controller->sizeFiled(groupId);
     return 0;
 }
-
--(void)initialize
-{
-//    controller->initialize();
-}
-
 
 @end

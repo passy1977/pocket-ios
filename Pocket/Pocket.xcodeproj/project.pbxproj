@@ -34,7 +34,6 @@
 		14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4C2932C7A700C84FD0 /* GroupController.mm */; };
 		14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4D2932C7A700C84FD0 /* CountDown.mm */; };
 		14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF502932C7A700C84FD0 /* GroupField.mm */; };
-		14D4DF642932C7A700C84FD0 /* Property.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF522932C7A700C84FD0 /* Property.mm */; };
 		14D4DF652932C7A700C84FD0 /* Field.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF542932C7A700C84FD0 /* Field.mm */; };
 		14D4DF662932C7A700C84FD0 /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF572932C7A700C84FD0 /* User.mm */; };
 		14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5A2932C7A700C84FD0 /* FieldController.mm */; };
@@ -44,7 +43,6 @@
 		14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186C2D6548E300E5AEF2 /* view-group.cpp */; };
 		14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */; };
 		14DF18872D6548E300E5AEF2 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18272D6548E300E5AEF2 /* config.cpp */; };
-		14DF18882D6548E300E5AEF2 /* view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186A2D6548E300E5AEF2 /* view.cpp */; };
 		14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18372D6548E300E5AEF2 /* dao-field.cpp */; };
 		14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18502D6548E300E5AEF2 /* response.cpp */; };
 		14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18512D6548E300E5AEF2 /* variant.cpp */; };
@@ -110,13 +108,11 @@
 		14D4DF4F2932C7A700C84FD0 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		14D4DF502932C7A700C84FD0 /* GroupField.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupField.mm; sourceTree = "<group>"; };
 		14D4DF512932C7A700C84FD0 /* GroupField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupField.h; sourceTree = "<group>"; };
-		14D4DF522932C7A700C84FD0 /* Property.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Property.mm; sourceTree = "<group>"; };
 		14D4DF532932C7A700C84FD0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		14D4DF542932C7A700C84FD0 /* Field.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Field.mm; sourceTree = "<group>"; };
 		14D4DF552932C7A700C84FD0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		14D4DF562932C7A700C84FD0 /* Pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pair.h; sourceTree = "<group>"; };
 		14D4DF572932C7A700C84FD0 /* User.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = User.mm; sourceTree = "<group>"; };
-		14D4DF582932C7A700C84FD0 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
 		14D4DF5A2932C7A700C84FD0 /* FieldController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldController.mm; sourceTree = "<group>"; };
 		14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StackNavigator.mm; sourceTree = "<group>"; };
 		14D4DF5D2932C7A700C84FD0 /* Globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Globals.mm; sourceTree = "<group>"; };
@@ -173,7 +169,6 @@
 		14DF18652D6548E300E5AEF2 /* view-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-field.hpp"; sourceTree = "<group>"; };
 		14DF18662D6548E300E5AEF2 /* view-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group.hpp"; sourceTree = "<group>"; };
 		14DF18672D6548E300E5AEF2 /* view-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group-field.hpp"; sourceTree = "<group>"; };
-		14DF186A2D6548E300E5AEF2 /* view.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = view.cpp; sourceTree = "<group>"; };
 		14DF186B2D6548E300E5AEF2 /* view-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-field.cpp"; sourceTree = "<group>"; };
 		14DF186C2D6548E300E5AEF2 /* view-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group.cpp"; sourceTree = "<group>"; };
 		14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group-field.cpp"; sourceTree = "<group>"; };
@@ -304,8 +299,6 @@
 				14D4DF502932C7A700C84FD0 /* GroupField.mm */,
 				14D4DF562932C7A700C84FD0 /* Pair.h */,
 				14D4DF482932C7A700C84FD0 /* Pair.mm */,
-				14D4DF582932C7A700C84FD0 /* Property.h */,
-				14D4DF522932C7A700C84FD0 /* Property.mm */,
 				14D4DF452932C7A700C84FD0 /* StackNavigator.h */,
 				14D4DF5C2932C7A700C84FD0 /* StackNavigator.mm */,
 				14D4DF552932C7A700C84FD0 /* User.h */,
@@ -548,7 +541,6 @@
 		14DF186E2D6548E300E5AEF2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				14DF186A2D6548E300E5AEF2 /* view.cpp */,
 				14DF186B2D6548E300E5AEF2 /* view-field.cpp */,
 				14DF186C2D6548E300E5AEF2 /* view-group.cpp */,
 				14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */,
@@ -750,7 +742,6 @@
 				14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */,
 				14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */,
 				14DF18872D6548E300E5AEF2 /* config.cpp in Sources */,
-				14DF18882D6548E300E5AEF2 /* view.cpp in Sources */,
 				14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */,
 				14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */,
 				14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */,
@@ -792,7 +783,6 @@
 				14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */,
 				14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */,
 				14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */,
-				14D4DF642932C7A700C84FD0 /* Property.mm in Sources */,
 				1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */,
 				14D4DF652932C7A700C84FD0 /* Field.mm in Sources */,
 				143830A52430A92300221BB8 /* GroupVC.swift in Sources */,

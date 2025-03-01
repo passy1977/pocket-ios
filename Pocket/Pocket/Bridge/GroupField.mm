@@ -211,20 +211,20 @@ group_field::ptr convert(const GroupField* group_field)
     return ret;
 }
 
-GroupField* convert(const group_field::ptr &field)
+GroupField* convert(const group_field::ptr &group_field)
 {
-    auto ret = [[GroupField alloc] init];
+    auto ret = [GroupField new];
     
-    [ret setid: static_cast<uint32_t>(field->id)];
-    [ret setServerId: static_cast<uint32_t>(field->server_id)];
-    [ret setUserId: static_cast<uint32_t>(field->user_id)];
-    [ret setGroupId: static_cast<uint32_t>(field->group_id)];
-    [ret setServerGroupId: static_cast<uint32_t>(field->server_group_id)];
-    [ret setTitle: [NSString stringWithCString:field->title.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setIsHidden: field->is_hidden];
-    [ret setSynchronized: field->synchronized];
-    [ret setDeleted: field->deleted];
-    [ret setTimestampCreation: field->timestamp_creation];
+    [ret setid: static_cast<uint32_t>(group_field->id)];
+    [ret setServerId: static_cast<uint32_t>(group_field->server_id)];
+    [ret setUserId: static_cast<uint32_t>(group_field->user_id)];
+    [ret setGroupId: static_cast<uint32_t>(group_field->group_id)];
+    [ret setServerGroupId: static_cast<uint32_t>(group_field->server_group_id)];
+    [ret setTitle: [NSString stringWithCString:group_field->title.c_str() encoding:NSUTF8StringEncoding] ];
+    [ret setIsHidden: group_field->is_hidden];
+    [ret setSynchronized: group_field->synchronized];
+    [ret setDeleted: group_field->deleted];
+    [ret setTimestampCreation: group_field->timestamp_creation];
     
     return ret;
 }

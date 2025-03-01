@@ -38,8 +38,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     private var tupleList : [(group: Group?, field: Field?)] = []
     
     private let reachability = try! Reachability()
-    private static let controller = GroupController()
-    private static let fieldController = FieldController()
+    private let groupController = GroupController()
+    private let fieldController = FieldController()
     
     private(set) var group = Group()
     
@@ -80,8 +80,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         group = groupAndSearch.getGroup()
         txtViwNote.text = groupAndSearch.getSearch()
         
-        GroupsFieldsVC.controller.initialize()
-        GroupsFieldsVC.fieldController.initialize()
+        groupController.initialize()
+        fieldController.initialize()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do {
@@ -143,7 +143,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == "field" {
             if let fieldVC = segue.destination as? FieldVC {
                 fieldVC.field = fieldForSegue
-                fieldVC.controller = GroupsFieldsVC.fieldController
+                fieldVC.fieldController = fieldController
                 fieldForSegue = nil
             }
         } else if segue.identifier == "group" {
@@ -187,8 +187,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         cell.father = self
-        cell.controller = GroupsFieldsVC.controller
-        cell.fieldController = GroupsFieldsVC.fieldController
+        cell.groupController = groupController
+        cell.fieldController = fieldController
         cell.tuple = tupleList[indexPath.row]
         
         return cell
@@ -221,7 +221,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 //Timeout4Logout.shared.stop()
                 if let group = tuple.group {
                     let semaphore = DispatchSemaphore(value: 1)
-                    GroupsFieldsVC.controller.delGroup(group) { status in
+                    self.groupController.delGroup(group) { status in
                         DispatchQueue.main.async {
                             spinnerStatusShow(self, status: status)
                         }
@@ -238,7 +238,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                 } else if let field = tuple.field {
                     let semaphore = DispatchSemaphore(value: 1)
-                    GroupsFieldsVC.fieldController.delField(field) { status in
+                    self.fieldController.delField(field) { status in
                         DispatchQueue.main.async {
                             spinnerStatusShow(self, status: status)
                         }
@@ -303,11 +303,11 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func reachabilityChanged(note: Notification) {
       if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
         print("Network not reachable")
-        GroupsFieldsVC.controller.reachability = false
-        GroupsFieldsVC.fieldController.reachability = false
+        groupController.reachability = false
+        fieldController.reachability = false
       } else {
-        GroupsFieldsVC.controller.reachability = true
-        GroupsFieldsVC.fieldController.reachability = true
+        groupController.reachability = true
+        fieldController.reachability = true
       }
     }
     
@@ -316,10 +316,10 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     private func reloadList(_ groupId: UInt32, search : String = "") {
         tupleList.removeAll()
         
-        GroupsFieldsVC.controller.getListGroup(groupId, search: search).forEach {
+        groupController.getListGroup(groupId, search: search).forEach {
             tupleList.append((group: $0, field: nil))
         }
-        GroupsFieldsVC.fieldController.getListField(groupId, search: search).forEach {
+        fieldController.getListField(groupId, search: search).forEach {
             tupleList.append((group: nil, field: $0))
         }
         
@@ -347,7 +347,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 btnXmlImport.isEnabled = FileManager.default.fileExists(atPath: fullPathFileXmlImport)
             }
             
-            btnXmlExport.isEnabled = GroupsFieldsVC.controller.countChild(group) > 0
+            btnXmlExport.isEnabled = groupController.countChild(group) > 0
             
             navigationItem.leftBarButtonItem = menuIconOpen
             cnstViewMenu.constant = 0
@@ -390,10 +390,10 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
 //            Timeout4Logout.getShared().stop()
             let semaphore = DispatchSemaphore(value: 1)
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                GroupsFieldsVC.controller.xmlExport(url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path) { status in
+                self.groupController.xmlExport(url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path) { status in
                     
                     if status {
-                        GroupsFieldsVC.controller.xmlImport(self.fullPathFileXmlImport) { _ in
+                        self.groupController.xmlImport(self.fullPathFileXmlImport) { _ in
                             DispatchQueue.main.async {
                                 self.reloadList(self.group.getid())
                                 SwiftSpinner.hide()
@@ -433,7 +433,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
 
             let fileUrl = url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false)
             
-            GroupsFieldsVC.controller.xmlExport(fileUrl.path) { status in
+            groupController.xmlExport(fileUrl.path) { status in
                 DispatchQueue.main.async {
                     SwiftSpinner.hide()
                 
@@ -448,7 +448,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction private func actBtnExit(_ sender: UIButton) {
         actViwMenuOpenOrClose()
-        GroupsFieldsVC.controller.exit()
+        groupController.exit()
         navigationController?.popViewController(animated: true)
     }
     

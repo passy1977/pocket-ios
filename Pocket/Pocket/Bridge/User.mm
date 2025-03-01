@@ -151,7 +151,7 @@ user::ptr convert(const User* user)
 
 User* convert(const user::ptr &user)
 {
-    User *ret = [[User alloc] init];
+    User *ret = [User new];
     
     [ret setid: static_cast<uint32_t>(user->id)];
     [ret setEmail: [NSString stringWithCString:user->email.c_str() encoding:NSUTF8StringEncoding] ];
