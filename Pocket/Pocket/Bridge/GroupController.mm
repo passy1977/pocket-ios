@@ -22,38 +22,52 @@
 #import "GroupField.h"
 #import "Session.h"
 
-#import "Globals.h"
 #import "GroupController.h"
 
 #import "User.h"
 
 #include "pocket-views/view-group.hpp"
 #include "pocket-views/view-group-field.hpp"
-using pocket::views::view;
+using namespace pocket;
+using views::view;
 
 #include "pocket-pods/group.hpp"
 #include "pocket-pods/group-field.hpp"
-using namespace pocket::pods;
+using namespace pods;
 
 #include "pocket-controllers/session.hpp"
-using pocket::controllers::session;
+using controllers::session;
+
+#include <stdexcept>
+using namespace std;
 
 extern group::ptr convert(const Group* group);
 extern Group* convert(const group::ptr &field);
 extern group_field::ptr convert(const GroupField* group_field);
 extern GroupField* convert(const group_field::ptr &field);
+extern user::ptr convert(const User* user);
+extern User* convert(const user::ptr &user);
+
+namespace
+{
+
+constexpr char APP_TAG[] = "GroupController";
+
+}
+ 
 
 @interface GroupController ()
+@property session *session;
 @property view<group> *viewGroup;
 @property view<group_field> *viewGroupField;
-@property view<field> *viewField;
-@property NSMutableDictionary<NSNumber *, GroupField *> *showList;
+@property (strong) NSMutableDictionary<NSNumber *, GroupField *> *showList;
 @end
 
 
 @implementation GroupController
 @synthesize reachability;
 @synthesize lastIdGroupField;
+@synthesize session;
 @synthesize viewGroup;
 @synthesize viewGroupField;
 @synthesize showList;
@@ -65,6 +79,7 @@ extern GroupField* convert(const group_field::ptr &field);
     {
         reachability = false;
         lastIdGroupField = 0;
+        session = nullptr;
         viewGroup = nullptr;
         viewGroupField = nullptr;
         showList = [NSMutableDictionary new];
@@ -74,8 +89,9 @@ extern GroupField* convert(const group_field::ptr &field);
 
 -(void)initialize
 {
-    viewGroup = [[Globals getInstance] getSession].session->get_view_group().get();
-    viewGroupField = [[Globals getInstance] getSession].session->get_view_group_field().get();
+    session = [[Globals getInstance] getSession].session;
+    viewGroup = session->get_view_group().get();
+    viewGroupField = session->get_view_group_field().get();
 }
 
 //MARK: - Group
@@ -99,56 +115,44 @@ extern GroupField* convert(const group_field::ptr &field);
     
 }
 
--(void)insertGroup:(Group*)group callback:(void(^)(NSString*, Group* _Nullable))callback
+-(Stat)insertGroup:(Group*)group
 {
-
+    try
+    {
+        auto&& g = convert(group);
+        g->synchronized = false;
+        g->id = viewGroup->persist(g);
+        
+        for (NSNumber *key in showList)
+        {
+            auto&& gf = convert(showList[key]);
+            gf->group_id = g->id;
+            gf->synchronized = false;
+            
+            gf->id = viewGroupField->persist(gf);
+            
+            NSLog(@"Key: %@, Value: %lld %s", key, gf->id , gf->title.c_str());
+        }
+        
+        session->send_data(convert([[Globals getInstance] getUser]));
+        
+        return static_cast<Stat>(session->get_status());
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return Stat::ERROR;
+    }
 }
 
--(void)updateGroup:(Group*)group callback:(void(^)(NSString*))callback
+-(void)updateGroup:(Group*)group
 {
 
     
 }
 
+
 //MARK: - ExportImport
--(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group
-{
-    NSMutableArray<GroupField*> *ret = [NSMutableArray new];
-    for(auto &&it : viewGroupField->get_list([group getGroupId]))
-    {
-        [ret addObject:convert(it)];
-    }
-    return ret;
-}
-
-
--(GroupField*)insertGroupField:(GroupField*)groupField
-{
-//    [groupField setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
-//    [groupField setReferenceUserId: controller->getUser()->id];
-//    return convert(controller->insertGroupField(convert(groupField)));
-    lastIdGroupField = 0; //todo: handle last id
-    return nil;
-}
-
--(void)updateGroupField:(GroupField*)groupField
-{
-//    [groupField setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
-//    [groupField setReferenceUserId: controller->getUser()->id];
-//    controller->updateGroupField(convert(groupField));
-}
-
--(void)delGroupField:(GroupField*)groupField callback:(void(^)(NSString*))callback
-{
-//    callback(SYNCHRONIZATOR_START);
-//    [groupField setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
-//    [groupField setReferenceUserId: controller->getUser()->id];
-//    controller->delGroupField(convert(groupField));
-//    callback(SYNCHRONIZATOR_END);
-}
-
-
-//MARK: - Generic
 
 -(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback
 {
