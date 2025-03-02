@@ -19,6 +19,7 @@
 
 import UIKit
 import Reachability
+import SwiftSpinner
 
 final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -191,7 +192,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return
         }
         
-        let semaphore = DispatchSemaphore(value: 1)
+//        let semaphore = DispatchSemaphore(value: 1)
         if insert {
             let g = Group()
             g.setGroupId(group.getid())
@@ -199,39 +200,64 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             g.setNote(txtViwGroupNote.text ?? "")
             g.setIcon("")
             GroupsFieldsVC.overrideSearch = g.getTitle()
-            controller.insert(g) { status, _ in
+            
+            SwiftSpinner.show("Synchronize to server...")
+            
+            DispatchQueue.global(qos: .background).async {
+                
+                let rc = self.controller.insert(g)
                 DispatchQueue.main.async {
-                    spinnerStatusShow(self, status: status)
+                    SwiftSpinner.hide()
                 }
-                if status == synchronizatorEnd {
-//                    Timeout4Logout.getShared().start()
-                    //g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
-                    self.group = g
-                    semaphore.signal()
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                if(rc != .OK)
+                {
+                    
                 }
+                
+//                Timeout4Logout.getShared().start()
+//                g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
+                self.group = g
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                
             }
+//            { status, _ in
+//                DispatchQueue.main.async {
+//
+//                }
+//                if status == synchronizatorEnd {
+//                    Timeout4Logout.getShared().start()
+//                    g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
+//                    self.group = g
+//                    semaphore.signal()
+//                    DispatchQueue.main.async {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                }
+//            }
         } else {
             group.setTitle(txtGroupTitle.text ?? "")
             group.setNote(txtViwGroupNote.text ?? "")
             GroupsFieldsVC.overrideSearch = group.getTitle()
-            controller.update(group) { status in
-                DispatchQueue.main.async {
-                    spinnerStatusShow(self, status: status)
-                }
-                if status == synchronizatorEnd {
+            controller.update(group)
+//            { status in
+//                DispatchQueue.main.async {
+//                    spinnerStatusShow(self, status: status)
+//                }
+//                if status == synchronizatorEnd {
 //                    Timeout4Logout.getShared().start()
 //                    group.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
-                    semaphore.signal()
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-            }
+//                    semaphore.signal()
+//                    DispatchQueue.main.async {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                }
+//            }
         }
-        semaphore.wait()
+//        semaphore.wait()
         
        
     }

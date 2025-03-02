@@ -21,6 +21,7 @@
 #import <Foundation/Foundation.h>
 #endif
 
+#import "Globals.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,14 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search;
 -(int32_t)countChild:(Group*)group;
 -(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback;
--(void)insertGroup:(Group*)group callback:(void(^)(NSString*, Group* _Nullable))callback;
--(void)updateGroup:(Group*)group callback:(void(^)(NSString*))callback;
-
-//MARK: - GroupField
--(nonnull NSArray<GroupField*>*)getListGroupField:(Group*)group;
--(GroupField*)insertGroupField:(GroupField*)groupField;
--(void)updateGroupField:(GroupField*)groupField;
--(void)delGroupField:(GroupField*)groupField callback:(void(^)(NSString*))callback;
+-(Stat)insertGroup:(Group*)group;
+-(void)updateGroup:(Group*)group;
 
 //MARK: - ExportImport
 -(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback;
