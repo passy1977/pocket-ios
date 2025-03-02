@@ -53,8 +53,14 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             
             StackNavigator.share.clear()
             
-            if let email = keychain.get(KEY_EMAIL), let passwd = keychain.get(KEY_PASSWD) {
-                setForm(email)
+            if let email = keychain.get(KEY_EMAIL) {
+                if let passwd = self.passwd {
+                    setForm(email, passwd: passwd)
+                } else {
+                    passwd = keychain.get(KEY_PASSWD)
+                    setForm(email)
+                }
+
                 authenticateUser() { [self] completion in
                     if(completion) {
                         do {
@@ -82,6 +88,15 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newUser" {
+            if let addNewUserVC = segue.destination as? AddNewUserVC {
+                addNewUserVC.loginVC = self
+            }
+        }
+    }
     
     // MARK: - Act
     
@@ -134,7 +149,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         if email.isEmpty || passwd.isEmpty {
-            alertShow(self, message: "Wrong credential")
+            alertShow(self, message: "Credentials are mandatory")
         }
     
         
@@ -151,6 +166,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         if !Globals.getInstance().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
+            txtPasswd.text = ""
             alertShow(self, message: "Server Data wrong format")
             SwiftSpinner.hide()
             return

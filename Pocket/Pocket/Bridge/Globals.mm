@@ -38,6 +38,10 @@ using pods::user;
 #include <memory>
 using namespace std;
 
+#ifndef DEVICE_AES_CBC_IV
+#error XCode config issue, not set Sercets.xcconfig and DEVICE_AES_CBC_IV macro
+#endif
+
 namespace
 {
 
@@ -102,18 +106,12 @@ constexpr char APP_TAG[] = "Globals";
         return true;
     }
     
-    const NSString* aesIV = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DEVICE_AES_CBC_IV"];
-    if(aesIV == nullptr)
-    {
-        error(APP_TAG, "XCode config issue, not set Sercets.xcconfig and DEVICE_AES_CBC_IV macro");
-        return false;
-    }
     const NSString* deviceStr = [[NSUserDefaults standardUserDefaults] stringForKey: KEY_DEVICE];
     if(deviceStr)
     {
         try
         {
-            aes = new(nothrow) class aes([aesIV UTF8String], [passwd UTF8String]);
+            aes = new(nothrow) class aes(DEVICE_AES_CBC_IV, [passwd UTF8String]);
             if(aes == nullptr)
             {
                 error(APP_TAG, "Impossbile alloc aes");
@@ -176,7 +174,7 @@ constexpr char APP_TAG[] = "Globals";
             }
             session->init();
             
-            aes = new(nothrow) class aes([aesIV UTF8String], [passwd UTF8String]);
+            aes = new(nothrow) class aes(DEVICE_AES_CBC_IV, [passwd UTF8String]);
             if(aes == nullptr)
             {
                 if(session)
