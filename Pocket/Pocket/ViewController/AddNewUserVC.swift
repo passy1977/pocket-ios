@@ -31,16 +31,16 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
     
     //MARK: - Data
     
-//    private weak var loginVCValue : LoginVC? = nil
-//    public weak var loginVC : LoginVC? {
-//        @available(*, unavailable)
-//        get {
-//            fatalError("You cannot read from this object.")
-//        }
-//        set {
-//            loginVCValue = newValue
-//        }
-//    }
+    private weak var loginVCValue : LoginVC? = nil
+    public weak var loginVC : LoginVC? {
+        @available(*, unavailable)
+        get {
+            fatalError("You cannot read from this object.")
+        }
+        set {
+            loginVCValue = newValue
+        }
+    }
     
     //MARK: - system
     override func viewDidLoad() {
@@ -57,13 +57,13 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
     
     // MARK: - segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "newUser" {
-            if let loginVC = segue.destination as? LoginVC {
-                loginVC.passwd = self.txtPasswd.text
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "newUser" {
+//            if let loginVC = segue.destination as? LoginVC {
+//                loginVC.passwd = self.txtPasswd.text
+//            }
+//        }
+//    }
     
     
     // MARK: - Act
@@ -101,6 +101,7 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
             return
         }
         
+        loginVCValue?.passwd = self.txtPasswd.text
         navigationController?.popViewController(animated: true)
     }
     
