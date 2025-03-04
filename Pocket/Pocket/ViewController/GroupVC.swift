@@ -59,12 +59,10 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         controller.initialize()
         
-        idGroupFieldToModify = controller.lastIdGroupField
-        
         if let group = group {
             controller.fillShowList(group, copy: insert);
         }
-        
+        idGroupFieldToModify = controller.getLastIdGroupField();
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do{
@@ -192,7 +190,6 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return
         }
         
-//        let semaphore = DispatchSemaphore(value: 1)
         if insert {
             let g = Group()
             g.setGroupId(group.getid())
@@ -225,9 +222,6 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 
             }
 //            { status, _ in
-//                DispatchQueue.main.async {
-//
-//                }
 //                if status == synchronizatorEnd {
 //                    Timeout4Logout.getShared().start()
 //                    g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
@@ -275,11 +269,12 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             groupField.setServerId(groupFieldToModify.getServerId())
         } else {
             idGroupFieldToModify += 1
+            groupField.newInsertion = true;
             groupField.setid(idGroupFieldToModify)
         }
 //        groupField.setReferenceSession(group.getReferenceSession())
 //        groupField.setReferenceUserId(group.getReferenceUserId())
-        groupField.setGroupId(group.getid())
+//        groupField.setGroupId(group.getid())
         groupField.setTitle(txtGroupFieldTitle.text ?? "")
         groupField.setIsHidden(switchGroupFieldIsHidden.isOn)
         

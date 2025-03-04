@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coloredNavAppearance.backgroundColor = primary
         coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 24)]
-        
+    
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().barTintColor = primary
         UINavigationBar.appearance().standardAppearance = coloredNavAppearance

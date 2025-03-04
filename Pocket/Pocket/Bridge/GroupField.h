@@ -26,6 +26,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupField : NSObject
+@property BOOL newInsertion;
 
 -(instancetype)init;
 -(instancetype)initWithId:(uint32_t)id
