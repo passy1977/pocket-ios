@@ -40,9 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 //MARK: - Group
 -(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search;
 -(int32_t)countChild:(Group*)group;
--(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback;
--(Stat)insertGroup:(Group*)group;
--(void)updateGroup:(Group*)group;
+-(void)delGroup:(Group*)group;
+-(Stat)persistGroup:(Group*)group;
 
 //MARK: - GroupField
 -(uint32_t)getLastIdGroupField;
@@ -54,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList;
--(void)fillShowList:(nonnull const Group *)group copy:(bool)copy;
+-(void)fillShowList:(nonnull const Group *)group insert:(bool)insert;
 -(void)fillShowList:(nonnull const Group *)group;
 -(nonnull NSArray<GroupField*>*)getShowList;
 -(BOOL)addToShowList:(nonnull GroupField *)groupField;

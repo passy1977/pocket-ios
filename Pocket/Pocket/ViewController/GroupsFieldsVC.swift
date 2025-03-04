@@ -220,22 +220,14 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 let tuple = self.tupleList[indexPath.row]
                 //Timeout4Logout.shared.stop()
                 if let group = tuple.group {
-                    let semaphore = DispatchSemaphore(value: 1)
-                    self.groupController.delGroup(group) { status in
+                    
+                    DispatchQueue.main.async {
+                        self.groupController.delGroup(group)
                         DispatchQueue.main.async {
-                            spinnerStatusShow(self, status: status)
-                        }
-                        if status == synchronizatorStart {
-                            semaphore.wait()
-                        } else if status == synchronizatorEnd {
-                            DispatchQueue.main.async {
-                                self.reloadList(self.group.getid())
-                            }
-//                            Timeout4Logout.getShared().start()
-                            semaphore.signal()
-                            success(true)
+                            SwiftSpinner.hide()
                         }
                     }
+                    
                 } else if let field = tuple.field {
                     let semaphore = DispatchSemaphore(value: 1)
                     self.fieldController.delField(field) { status in
