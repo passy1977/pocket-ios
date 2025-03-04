@@ -26,9 +26,11 @@
 
 #import "User.h"
 
+#include "pocket/globals.hpp"
+using namespace pocket;
+
 #include "pocket-views/view-group.hpp"
 #include "pocket-views/view-group-field.hpp"
-using namespace pocket;
 using views::view;
 
 #include "pocket-pods/group.hpp"
@@ -66,7 +68,6 @@ constexpr char APP_TAG[] = "GroupController";
 
 @implementation GroupController
 @synthesize reachability;
-@synthesize lastIdGroupField;
 @synthesize session;
 @synthesize viewGroup;
 @synthesize viewGroupField;
@@ -78,7 +79,6 @@ constexpr char APP_TAG[] = "GroupController";
     if(self = [super init])
     {
         reachability = false;
-        lastIdGroupField = 0;
         session = nullptr;
         viewGroup = nullptr;
         viewGroupField = nullptr;
@@ -120,12 +120,25 @@ constexpr char APP_TAG[] = "GroupController";
     try
     {
         auto&& g = convert(group);
+        if(g->id == 0)
+        {
+            g->timestamp_creation = get_current_time_GMT();
+        }
         g->synchronized = false;
         g->id = viewGroup->persist(g);
         
         for (NSNumber *key in showList)
         {
+            bool newInsertion = showList[key];
             auto&& gf = convert(showList[key]);
+            if(gf->server_id == 0)
+            {
+                gf->timestamp_creation = get_current_time_GMT();
+            }
+            if(newInsertion)
+            {
+                gf->id = 0;
+            }
             gf->group_id = g->id;
             gf->synchronized = false;
             
@@ -150,7 +163,13 @@ constexpr char APP_TAG[] = "GroupController";
 
     
 }
-
+//MARK: - GroupField
+-(uint32_t)getLastIdGroupField
+{
+    auto lastGroupFieldId = viewGroupField->get_last_id();
+    
+    return lastGroupFieldId > 0 ? static_cast<uint32_t>(lastGroupFieldId) : 1;
+}
 
 //MARK: - ExportImport
 
@@ -192,7 +211,9 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(nonnull NSArray<GroupField*>*)getShowList
 {
-    return [showList allValues];
+    return [[showList allValues] sortedArrayUsingComparator:^(id obj1, id obj2) {
+        return [[[obj1 getTitle] lowercaseString] compare:[[obj2 getTitle] lowercaseString]];
+    }];
 }
 
 -(BOOL)addToShowList:(nonnull GroupField *)groupField

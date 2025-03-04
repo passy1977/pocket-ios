@@ -32,7 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupController : NSObject
 @property BOOL reachability;
-@property uint32_t lastIdGroupField;
 
 //MARK: - System
 -(instancetype)init;
@@ -44,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback;
 -(Stat)insertGroup:(Group*)group;
 -(void)updateGroup:(Group*)group;
+
+//MARK: - GroupField
+-(uint32_t)getLastIdGroupField;
 
 //MARK: - ExportImport
 -(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback;

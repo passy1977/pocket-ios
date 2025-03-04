@@ -43,6 +43,7 @@ using namespace std;
 
 
 @implementation GroupField
+@synthesize newInsertion;
 @synthesize  _id;
 @synthesize _serverId;
 @synthesize _groupId;
@@ -58,7 +59,7 @@ using namespace std;
 {
     if(self = [super init])
     {
-
+        newInsertion = false;
     }
     return self;
 }
