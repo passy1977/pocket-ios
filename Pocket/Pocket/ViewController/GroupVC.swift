@@ -60,7 +60,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         controller.initialize()
         
         if let group = group {
-            controller.fillShowList(group, copy: insert);
+            controller.fillShowList(group, insert: insert);
         }
         idGroupFieldToModify = controller.getLastIdGroupField();
         
@@ -190,6 +190,8 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return
         }
         
+        
+        //                            Timeout4Logout.getShared().start()
         if insert {
             let g = Group()
             g.setGroupId(group.getid())
@@ -202,58 +204,30 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             DispatchQueue.global(qos: .background).async {
                 
-                let rc = self.controller.insert(g)
-                DispatchQueue.main.async {
-                    SwiftSpinner.hide()
-                }
-                if(rc != .OK)
-                {
-                    
-                }
-                
-//                Timeout4Logout.getShared().start()
-//                g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
+                self.controller.persistGroup(g)
                 self.group = g
                 
                 DispatchQueue.main.async {
+                    SwiftSpinner.hide()
                     self.navigationController?.popViewController(animated: true)
                 }
                 
                 
             }
-//            { status, _ in
-//                if status == synchronizatorEnd {
-//                    Timeout4Logout.getShared().start()
-//                    g.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
-//                    self.group = g
-//                    semaphore.signal()
-//                    DispatchQueue.main.async {
-//                        self.navigationController?.popViewController(animated: true)
-//                    }
-//                }
-//            }
         } else {
             group.setTitle(txtGroupTitle.text ?? "")
             group.setNote(txtViwGroupNote.text ?? "")
             GroupsFieldsVC.overrideSearch = group.getTitle()
-            controller.update(group)
-//            { status in
-//                DispatchQueue.main.async {
-//                    spinnerStatusShow(self, status: status)
-//                }
-//                if status == synchronizatorEnd {
-//                    Timeout4Logout.getShared().start()
-//                    group.setid(GroupVC.controller.getLastIdGroup(Globals.getInstance().getSafeUser()));
-//                    semaphore.signal()
-//                    DispatchQueue.main.async {
-//                        self.navigationController?.popViewController(animated: true)
-//                    }
-//                }
-//            }
+            SwiftSpinner.show("Synchronize to server...")
+            
+            DispatchQueue.global(qos: .background).async {
+                self.controller.persistGroup(group)
+                DispatchQueue.main.async {
+                    SwiftSpinner.hide()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
-//        semaphore.wait()
-        
-       
     }
     
     

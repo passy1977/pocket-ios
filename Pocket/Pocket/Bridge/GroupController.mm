@@ -110,12 +110,12 @@ constexpr char APP_TAG[] = "GroupController";
     return static_cast<uint32_t>(viewGroup->get_list([group getid]).size());
 }
 
--(void)delGroup:(Group*)group callback:(void(^)(NSString*))callback
+-(void)delGroup:(Group*)group
 {
     
 }
 
--(Stat)insertGroup:(Group*)group
+-(Stat)persistGroup:(Group*)group
 {
     try
     {
@@ -126,26 +126,24 @@ constexpr char APP_TAG[] = "GroupController";
         }
         g->synchronized = false;
         g->id = viewGroup->persist(g);
+        [group setid:static_cast<int32_t>(g->id)];
         
         for (NSNumber *key in showList)
         {
-            bool newInsertion = showList[key];
-            auto&& gf = convert(showList[key]);
-            if(gf->server_id == 0)
+            GroupField *gfObjC = showList[key];
+            auto&& gf = convert(gfObjC);
+            if(gfObjC.newInsertion)
             {
                 gf->timestamp_creation = get_current_time_GMT();
-            }
-            if(newInsertion)
-            {
                 gf->id = 0;
             }
             gf->group_id = g->id;
             gf->synchronized = false;
             
             gf->id = viewGroupField->persist(gf);
-            
-            NSLog(@"Key: %@, Value: %lld %s", key, gf->id , gf->title.c_str());
         }
+        
+        [showList removeAllObjects];
         
         session->send_data(convert([[Globals getInstance] getUser]));
         
@@ -158,11 +156,6 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(void)updateGroup:(Group*)group
-{
-
-    
-}
 //MARK: - GroupField
 -(uint32_t)getLastIdGroupField
 {
@@ -195,18 +188,26 @@ constexpr char APP_TAG[] = "GroupController";
     [showList removeAllObjects];
 }
 
--(void)fillShowList:(nonnull const Group *)group copy:(bool)copy
+-(void)fillShowList:(nonnull const Group *)group insert:(bool)insert
 {
     [self cleanShowList];
     for(auto&& it : viewGroupField->get_list([group getid]))
     {
-        [showList setObject:convert(it) forKey:[NSNumber numberWithLongLong:it->id]];
+        GroupField *gf = convert(it);
+        if(insert)
+        {
+            gf.newInsertion = true;
+            [gf setServerId:0];
+            [gf setGroupId: [group getid]];
+            [gf setServerGroupId: 0];
+        }
+        [showList setObject:gf forKey:[NSNumber numberWithLongLong:it->id]];
     }
 }
 
 -(void)fillShowList:(nonnull const Group *)group
 {
-    [self fillShowList:group copy:false];
+    [self fillShowList:group insert:false];
 }
 
 -(nonnull NSArray<GroupField*>*)getShowList
