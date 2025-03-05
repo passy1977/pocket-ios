@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 //MARK: - Group
 -(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search;
 -(int32_t)countChild:(Group*)group;
--(void)delGroup:(Group*)group;
+-(Stat)delGroup:(Group*)group;
 -(Stat)persistGroup:(Group*)group;
 
 //MARK: - GroupField
