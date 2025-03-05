@@ -110,9 +110,20 @@ constexpr char APP_TAG[] = "GroupController";
     return static_cast<uint32_t>(viewGroup->get_list([group getid]).size());
 }
 
--(void)delGroup:(Group*)group
+-(Stat)delGroup:(Group*)group
 {
-    
+    try
+    {
+        viewGroup->del([group getid]);
+        viewGroupField->del_by_group_id([group getid]);
+        session->send_data(convert([[Globals getInstance] getUser]));
+        return static_cast<Stat>(session->get_status());
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return Stat::ERROR;
+    }
 }
 
 -(Stat)persistGroup:(Group*)group
@@ -138,6 +149,7 @@ constexpr char APP_TAG[] = "GroupController";
                 gf->id = 0;
             }
             gf->group_id = g->id;
+            gf->server_group_id = g->server_id;
             gf->synchronized = false;
             
             gf->id = viewGroupField->persist(gf);

@@ -195,6 +195,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if insert {
             let g = Group()
             g.setGroupId(group.getid())
+            g.setServerGroupId(group.getServerId())
             g.setTitle(txtGroupTitle.text ?? "")
             g.setNote(txtViwGroupNote.text ?? "")
             g.setIcon("")
