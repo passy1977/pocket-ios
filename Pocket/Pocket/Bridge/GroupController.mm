@@ -35,6 +35,7 @@ using views::view;
 
 #include "pocket-pods/group.hpp"
 #include "pocket-pods/group-field.hpp"
+#include "pocket-pods/field.hpp"
 using namespace pods;
 
 #include "pocket-controllers/session.hpp"
@@ -46,7 +47,9 @@ using namespace std;
 extern group::ptr convert(const Group* group);
 extern Group* convert(const group::ptr &field);
 extern group_field::ptr convert(const GroupField* group_field);
-extern GroupField* convert(const group_field::ptr &field);
+extern GroupField* convert(const group_field::ptr &group);
+extern field::ptr convert(const Field* field);
+extern Field* convert(const field::ptr &field);
 extern user::ptr convert(const User* user);
 extern User* convert(const user::ptr &user);
 
@@ -62,6 +65,8 @@ constexpr char APP_TAG[] = "GroupController";
 @property session *session;
 @property view<group> *viewGroup;
 @property view<group_field> *viewGroupField;
+@property view<field> *viewField;
+@property const User *user;
 @property (strong) NSMutableDictionary<NSNumber *, GroupField *> *showList;
 @end
 
@@ -69,8 +74,10 @@ constexpr char APP_TAG[] = "GroupController";
 @implementation GroupController
 @synthesize reachability;
 @synthesize session;
+@synthesize user;
 @synthesize viewGroup;
 @synthesize viewGroupField;
+@synthesize viewField;
 @synthesize showList;
 
 //MARK: - System
@@ -80,8 +87,10 @@ constexpr char APP_TAG[] = "GroupController";
     {
         reachability = false;
         session = nullptr;
+        user = nullptr;
         viewGroup = nullptr;
         viewGroupField = nullptr;
+        viewField = nullptr;
         showList = [NSMutableDictionary new];
     }
     return self;
@@ -90,8 +99,10 @@ constexpr char APP_TAG[] = "GroupController";
 -(void)initialize
 {
     session = [[Globals getInstance] getSession].session;
+    user = [[Globals getInstance] getUser];
     viewGroup = session->get_view_group().get();
     viewGroupField = session->get_view_group_field().get();
+    viewField = session->get_view_field().get();
 }
 
 //MARK: - Group
@@ -116,7 +127,8 @@ constexpr char APP_TAG[] = "GroupController";
     {
         viewGroup->del([group getid]);
         viewGroupField->del_by_group_id([group getid]);
-        session->send_data(convert([[Globals getInstance] getUser]));
+        viewField->del_by_group_id([group getid]);
+        session->send_data(convert(user));
         return static_cast<Stat>(session->get_status());
     }
     catch(const runtime_error& e)
@@ -131,6 +143,7 @@ constexpr char APP_TAG[] = "GroupController";
     try
     {
         auto&& g = convert(group);
+        g->user_id = [user getid];
         if(g->id == 0)
         {
             g->timestamp_creation = get_current_time_GMT();
@@ -148,6 +161,7 @@ constexpr char APP_TAG[] = "GroupController";
                 gf->timestamp_creation = get_current_time_GMT();
                 gf->id = 0;
             }
+            gf->user_id = [user getid];
             gf->group_id = g->id;
             gf->server_group_id = g->server_id;
             gf->synchronized = false;

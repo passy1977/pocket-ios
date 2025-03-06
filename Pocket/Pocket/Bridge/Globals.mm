@@ -223,6 +223,8 @@ constexpr char APP_TAG[] = "Globals";
     if(userOpt.has_value())
     {
         user = convert(*userOpt);
+        
+        session->retrieve_data(userOpt);
         return OK;
     }
     else
