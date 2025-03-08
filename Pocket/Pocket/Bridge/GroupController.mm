@@ -118,16 +118,16 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(int32_t)countChild:(Group*)group
 {
-    return static_cast<uint32_t>(viewGroup->get_list([group getid]).size());
+    return static_cast<uint32_t>(viewGroup->get_list(group._id).size());
 }
 
 -(Stat)delGroup:(Group*)group
 {
     try
     {
-        viewGroup->del([group getid]);
-        viewGroupField->del_by_group_id([group getid]);
-        viewField->del_by_group_id([group getid]);
+        viewGroup->del(group._id);
+        viewGroupField->del_by_group_id(group._id);
+        viewField->del_by_group_id(group._id);
         session->send_data(convert(user));
         return static_cast<Stat>(session->get_status());
     }
@@ -150,7 +150,7 @@ constexpr char APP_TAG[] = "GroupController";
         }
         g->synchronized = false;
         g->id = viewGroup->persist(g);
-        [group setid:static_cast<int32_t>(g->id)];
+        group._id = static_cast<int32_t>(g->id);
         
         for (NSNumber *key in showList)
         {
@@ -217,14 +217,14 @@ constexpr char APP_TAG[] = "GroupController";
 -(void)fillShowList:(nonnull const Group *)group insert:(bool)insert
 {
     [self cleanShowList];
-    for(auto&& it : viewGroupField->get_list([group getid]))
+    for(auto&& it : viewGroupField->get_list(group._id))
     {
         GroupField *gf = convert(it);
         if(insert)
         {
             gf.newInsertion = true;
             [gf setServerId:0];
-            [gf setGroupId: [group getid]];
+            [gf setGroupId: group._id];
             [gf setServerGroupId: 0];
         }
         [showList setObject:gf forKey:[NSNumber numberWithLongLong:it->id]];
@@ -239,25 +239,25 @@ constexpr char APP_TAG[] = "GroupController";
 -(nonnull NSArray<GroupField*>*)getShowList
 {
     return [[showList allValues] sortedArrayUsingComparator:^(id obj1, id obj2) {
-        return [[[obj1 getTitle] lowercaseString] compare:[[obj2 getTitle] lowercaseString]];
+        return [[[obj1 title] lowercaseString] compare:[[obj2 title] lowercaseString]];
     }];
 }
 
 -(BOOL)addToShowList:(nonnull GroupField *)groupField
 {
     //id value = [showList objectForKey: [NSNumber numberWithLongLong:[groupField getid]]];
-    id value = showList[[NSNumber numberWithLongLong:[groupField getid]]];
+    id value = showList[[NSNumber numberWithLongLong:[groupField _id]]];
     if(value)
     {
         [value setSynchronized:false];
-        [value setTitle: [groupField getTitle]];
-        [value setIsHidden: [groupField getIsHidden]];
+        [value setTitle: [groupField title]];
+        [value setIsHidden: [groupField isHidden]];
         return true;
     }
     else
     {
         [groupField setSynchronized:false];
-        [showList setObject:groupField forKey:[NSNumber numberWithLongLong:[groupField getid]]];
+        [showList setObject:groupField forKey:[NSNumber numberWithLongLong:groupField._id]];
         return true;
     }
 }
@@ -271,9 +271,9 @@ constexpr char APP_TAG[] = "GroupController";
         
         if([it getid] == idGroupField)
         {
-            if([it getServerId] > 0)
+            if([it serverId] > 0)
             {
-                viewGroupField->del([it getServerId]);
+                viewGroupField->del([it _id]);
             }
             toDelete = i;
             break;

@@ -25,6 +25,21 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Group : NSObject
+@property uint32_t _id;
+@property uint32_t serverId;
+@property uint32_t userId;
+@property uint32_t groupId;
+@property uint32_t serverGroupId;
+@property uint32_t groupFieldId;
+@property uint32_t serverGroupFieldId;
+@property NSString *title;
+@property NSString *icon;
+@property NSString *note;
+@property NSString *value;
+@property BOOL isHidden;
+@property BOOL synchronized;
+@property BOOL deleted;
+@property uint64_t timestampCreation;
 
 -(instancetype)init;
 -(instancetype)initWithId:(uint32_t)id
@@ -42,36 +57,6 @@ NS_ASSUME_NONNULL_BEGIN
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
                 timestampCreation:(uint64_t)timestampCreation;
-
--(void)setid:(uint32_t)id;
--(uint32_t)getid;
--(void)setServerId:(uint32_t)id;
--(uint32_t)getServerId;
--(void)setUserId:(uint32_t)id;
--(uint32_t)getUserId;
--(void)setGroupId:(uint32_t)groupId;
--(uint32_t)getGroupId;
--(void)setServerGroupId:(uint32_t)serverGroupId;
--(uint32_t)getServerGroupId;
--(void)setGroupFieldId:(uint32_t)groupFieldId;
--(uint32_t)getGroupFieldId;
--(void)setServerGroupFieldId:(uint32_t)serverGroupFieldId;
--(uint32_t)getServerGroupFieldId;
--(void)setTitle:(NSString*)title;
--(nonnull const NSString*)getTitle;
--(void)setIcon:(NSString*)icon;
--(nonnull const NSString*)getIcon;
--(void)setNote:(NSString*)note;
--(nonnull const NSString*)getNote;
--(void)setIsHidden:(BOOL)isHidden;
--(BOOL)getIsHidden;
--(void)setSynchronized:(BOOL)synchronized;
--(BOOL)getSynchronized;
--(void)setDeleted:(BOOL)deleted;
--(BOOL)getDeleted;
--(uint64_t)getTimestampCreation;
--(void)setTimestampCreation:(uint64_t)timestampCreation;
-
 
 @end
 

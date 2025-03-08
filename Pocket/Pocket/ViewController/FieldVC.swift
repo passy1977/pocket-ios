@@ -92,7 +92,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
         let semaphore = DispatchSemaphore(value: 1)
         if self.field == nil {
             let field = Field()
-            field.setGroupId(group.getid())
+            field.setGroupId(group._id)
             field.setTitle(txtTitle.text ?? "")
             field.setValue(txtValue.text ?? "")
             field.setIsHidden(switchIsHidden.isOn)
