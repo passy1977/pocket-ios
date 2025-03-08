@@ -95,6 +95,7 @@
 		14B117ED25B49BD30024FAD0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		14B156032D669E3E00EB655E /* curl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = curl.xcframework; path = ../lib/curl.xcframework; sourceTree = "<group>"; };
 		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
+		14B8A4632D7C863A004E0CC5 /* helpers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = helpers.hpp; sourceTree = "<group>"; };
 		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
 		14D4DF462932C7A700C84FD0 /* Group.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Group.mm; sourceTree = "<group>"; };
 		14D4DF492932C7A700C84FD0 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		14DF18482D6548E300E5AEF2 /* field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
 		14DF18492D6548E300E5AEF2 /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
 		14DF184A2D6548E300E5AEF2 /* group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "group-field.hpp"; sourceTree = "<group>"; };
-		14DF184B2D6548E300E5AEF2 /* net-transport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "net-transport.hpp"; sourceTree = "<group>"; };
 		14DF184C2D6548E300E5AEF2 /* user.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = user.hpp; sourceTree = "<group>"; };
 		14DF184D2D6548E300E5AEF2 /* variant.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = variant.hpp; sourceTree = "<group>"; };
 		14DF18502D6548E300E5AEF2 /* response.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = response.cpp; sourceTree = "<group>"; };
@@ -432,11 +432,11 @@
 		14DF184E2D6548E300E5AEF2 /* pocket-pods */ = {
 			isa = PBXGroup;
 			children = (
+				14B8A4632D7C863A004E0CC5 /* helpers.hpp */,
 				14DF18472D6548E300E5AEF2 /* device.hpp */,
 				14DF18482D6548E300E5AEF2 /* field.hpp */,
 				14DF18492D6548E300E5AEF2 /* group.hpp */,
 				14DF184A2D6548E300E5AEF2 /* group-field.hpp */,
-				14DF184B2D6548E300E5AEF2 /* net-transport.hpp */,
 				14DF184C2D6548E300E5AEF2 /* user.hpp */,
 				14DF184D2D6548E300E5AEF2 /* variant.hpp */,
 			);

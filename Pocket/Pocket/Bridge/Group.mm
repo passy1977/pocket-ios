@@ -25,39 +25,21 @@ using pocket::pods::group;
 #include <memory>
 using namespace std;
 
-@interface Group ()
-@property uint32_t _id;
-@property uint32_t _serverId;
-@property uint32_t _userId;
-@property uint32_t _groupId;
-@property uint32_t _serverGroupId;
-@property uint32_t _groupFieldId;
-@property uint32_t _serverGroupFieldId;
-@property NSString* _title;
-@property NSString* _icon;
-@property NSString* _note;
-@property BOOL _isHidden;
-@property BOOL _synchronized;
-@property BOOL _deleted;
-@property uint64_t _timestampCreation;
-@end
-
-
 @implementation Group
 @synthesize _id;
-@synthesize _serverId;
-@synthesize _userId;
-@synthesize _groupId;
-@synthesize _serverGroupId;
-@synthesize _groupFieldId;
-@synthesize _serverGroupFieldId;
-@synthesize _title;
-@synthesize _icon;
-@synthesize _note;
-@synthesize _isHidden;
-@synthesize _synchronized;
-@synthesize _deleted;
-@synthesize _timestampCreation;
+@synthesize serverId;
+@synthesize userId;
+@synthesize groupId;
+@synthesize serverGroupId;
+@synthesize groupFieldId;
+@synthesize serverGroupFieldId;
+@synthesize title;
+@synthesize icon;
+@synthesize note;
+@synthesize isHidden;
+@synthesize synchronized;
+@synthesize deleted;
+@synthesize timestampCreation;
 
 -(instancetype)init
 {
@@ -86,164 +68,23 @@ using namespace std;
 {
     if(self = [super init])
     {
-        _id = id;
-        _serverId = serverId;
-        _userId = userId;
-        _groupId = groupId;
-        _serverGroupId = serverGroupId;
-        _groupFieldId = groupFieldId;
-        _serverGroupFieldId = serverGroupFieldId;
-        _title = title;
-        _icon = icon;
-        _note = note;
-        _isHidden = isHidden;
-        _synchronized = synchronized;
-        _deleted = deleted;
-        _timestampCreation = timestampCreation;
+        self._id = id;
+        self.serverId = serverId;
+        self.userId = userId;
+        self.groupId = groupId;
+        self.serverGroupId = serverGroupId;
+        self.groupFieldId = groupFieldId;
+        self.serverGroupFieldId = serverGroupFieldId;
+        self.title = title;
+        self.icon = icon;
+        self.note = note;
+        self.isHidden = isHidden;
+        self.synchronized = synchronized;
+        self.deleted = deleted;
+        self.timestampCreation = timestampCreation;
     }
     return self;
 }
-
--(void)setid:(uint32_t)id
-{
-    _id = id;
-}
-
--(uint32_t)getid
-{
-    return _id;
-}
-
--(void)setServerId:(uint32_t)id
-{
-    _serverId = id;
-}
-
--(uint32_t)getServerId
-{
-    return _serverId;
-}
-
--(void)setUserId:(uint32_t)id
-{
-    _userId = id;
-}
-
--(uint32_t)getUserId
-{
-    return _userId;
-}
-
--(void)setGroupId:(uint32_t)groupId
-{
-    _groupId = groupId;
-}
-
--(uint32_t)getGroupId
-{
-    return _groupId;
-}
-
--(void)setServerGroupId:(uint32_t)serverGroupId
-{
-    _serverGroupId = serverGroupId;
-}
-
--(uint32_t)getServerGroupId
-{
-    return _serverGroupId;
-}
-
--(void)setGroupFieldId:(uint32_t)groupFieldId
-{
-    _groupFieldId = groupFieldId;
-}
-
--(uint32_t)getGroupFieldId
-{
-    return _groupFieldId;
-}
-
--(void)setServerGroupFieldId:(uint32_t)serverGroupFieldId
-{
-    _serverGroupFieldId = serverGroupFieldId;
-}
-
--(uint32_t)getServerGroupFieldId
-{
-    return _serverGroupFieldId;
-}
-
--(void)setTitle:(nonnull NSString*)title
-{
-    _title = title;
-}
-
--(nonnull const NSString*)getTitle
-{
-    return _title;
-}
-
--(void)setIcon:(nonnull NSString*)icon
-{
-    _icon = icon;
-}
-
--(nonnull const NSString*)getIcon
-{
-    return _icon;
-}
-
--(void)setNote:(nonnull NSString*)note
-{
-    _note = note;
-}
-
--(nonnull const NSString*)getNote
-{
-    return _note;
-}
-
--(void)setIsHidden:(BOOL)isHidden
-{
-    _isHidden = isHidden;
-}
-
--(BOOL)getIsHidden
-{
-    return _isHidden;
-}
-
--(void)setSynchronized:(BOOL)synchronized
-{
-    _synchronized = synchronized;
-}
-
--(BOOL)getSynchronized
-{
-    return _synchronized;
-}
-
--(void)setDeleted:(BOOL)deleted
-{
-    _deleted = deleted;
-}
-
--(BOOL)getDeleted
-{
-    return _deleted;
-}
-
--(uint64_t)getTimestampCreation
-{
-    return _timestampCreation;
-}
-
--(void)setTimestampCreation:(uint64_t)timestampCreation
-{
-    _timestampCreation = timestampCreation;
-}
-
 
 @end
 
@@ -252,17 +93,17 @@ group::ptr convert(const Group* group)
     
     auto&& ret = make_unique<struct group>();
     
-    ret->id = [group getid];
-    ret->server_id = [group getServerId];
-    ret->user_id = [group getUserId];
-    ret->group_id = [group getGroupId];
-    ret->server_group_id = [group getServerGroupId];
-    ret->title = [[group getTitle] UTF8String];
-    ret->icon = [[group getIcon] UTF8String];
-    ret->note = [[group getNote] UTF8String];
-    ret->synchronized = [group getSynchronized];
-    ret->deleted = [group getDeleted];
-    ret->timestamp_creation = [group getTimestampCreation];
+    ret->id = group._id;
+    ret->server_id = group.serverId;
+    ret->user_id = group.userId;
+    ret->group_id = group.groupId;
+    ret->server_group_id = group.serverGroupId;
+    ret->title = [group.title UTF8String];
+    ret->icon = [group.icon UTF8String];
+    ret->note = [group.note UTF8String];
+    ret->synchronized = group.synchronized;
+    ret->deleted = group.deleted;
+    ret->timestamp_creation = group.timestampCreation;
     
     return ret;
 }
@@ -271,17 +112,17 @@ Group* convert(const group::ptr &group)
 {
     auto ret = [Group new];
     
-    [ret setid: static_cast<uint32_t>(group->id)];
-    [ret setServerId: static_cast<uint32_t>(group->server_id)];
-    [ret setUserId: static_cast<uint32_t>(group->user_id)];
-    [ret setGroupId: static_cast<uint32_t>(group->group_id)];
-    [ret setServerGroupId: static_cast<uint32_t>(group->server_group_id)];
-    [ret setTitle: [NSString stringWithCString:group->title.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setIcon: [NSString stringWithCString:group->icon.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setNote: [NSString stringWithCString:group->note.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setSynchronized: group->synchronized];
-    [ret setDeleted: group->deleted];
-    [ret setTimestampCreation: group->timestamp_creation];
+    ret._id = static_cast<uint32_t>(group->id);
+    ret.serverId = static_cast<uint32_t>(group->server_id);
+    ret.userId = static_cast<uint32_t>(group->user_id);
+    ret.groupId = static_cast<uint32_t>(group->group_id);
+    ret.serverGroupId = static_cast<uint32_t>(group->server_group_id);
+    ret.title = [NSString stringWithCString:group->title.c_str() encoding:NSUTF8StringEncoding];
+    ret.icon = [NSString stringWithCString:group->icon.c_str() encoding:NSUTF8StringEncoding];
+    ret.note = [NSString stringWithCString:group->note.c_str() encoding:NSUTF8StringEncoding];
+    ret.synchronized = group->synchronized;
+    ret.deleted = group->deleted;
+    ret.timestampCreation = group->timestamp_creation;
     
     return ret;
 }

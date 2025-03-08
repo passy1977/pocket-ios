@@ -46,7 +46,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     public weak var group : Group? = nil {
         didSet {
-            insert = (group?.getTitle() ?? "") == ""
+            insert = (group?.title ?? "") == ""
         }
     }
     
@@ -85,11 +85,11 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             insert = false
             btnGroupAdd.isEnabled = true
             txtViwGroupNote.isEditable = true
-            txtGroupTitle.text = group.getTitle()
-            txtViwGroupNote.text = group.getNote()
+            txtGroupTitle.text = group.title
+            txtViwGroupNote.text = group.note
         }
         
-        reloadList(group.getid(), insert: insert)
+        reloadList(group._id, insert: insert)
         
 //        Timeout4Logout.getShared().updateTimeLeft()
     }
@@ -123,7 +123,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupFieldCell", for: indexPath)
         let groupField = groupFieldList[indexPath.row]
         
-        cell.textLabel?.text = groupField.getTitle()
+        cell.textLabel?.text = groupField.title
 
         return cell
     }
@@ -134,7 +134,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         groupFieldToModify = groupField
         
-        setGroupField(enable: true, title: groupField.getTitle(), isHidden: groupField.getIsHidden())
+        setGroupField(enable: true, title: groupField.title, isHidden: groupField.isHidden)
     }
 
 
@@ -145,10 +145,10 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let delete = UIContextualAction(style: .destructive, title: nil) { _, _, success in
             alertShow(self, title: "Warning", message: "Dou you want delete it?", handlerNo: { _ in success(false)}) { _ in
 
-                if self.controller.del(fromShowList: self.groupFieldList[indexPath.row].getid())
+                if self.controller.del(fromShowList: self.groupFieldList[indexPath.row]._id)
                 {
                     DispatchQueue.main.async {
-                        self.reloadList(self.group?.getid() ?? 0, insert: self.insert)
+                        self.reloadList(self.group?._id ?? 0, insert: self.insert)
                     }
                 }
             }
@@ -194,12 +194,12 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         //                            Timeout4Logout.getShared().start()
         if insert {
             let g = Group()
-            g.setGroupId(group.getid())
-            g.setServerGroupId(group.getServerId())
-            g.setTitle(txtGroupTitle.text ?? "")
-            g.setNote(txtViwGroupNote.text ?? "")
-            g.setIcon("")
-            GroupsFieldsVC.overrideSearch = g.getTitle()
+            g.groupId = group._id
+            g.serverGroupId = group.serverId
+            g.title = txtGroupTitle.text ?? ""
+            g.note = txtViwGroupNote.text ?? ""
+            g.icon = ""
+            GroupsFieldsVC.overrideSearch = g.title
             
             SwiftSpinner.show("Synchronize to server...")
             
@@ -216,9 +216,9 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 
             }
         } else {
-            group.setTitle(txtGroupTitle.text ?? "")
-            group.setNote(txtViwGroupNote.text ?? "")
-            GroupsFieldsVC.overrideSearch = group.getTitle()
+            group.title = txtGroupTitle.text ?? ""
+            group.note = txtViwGroupNote.text ?? ""
+            GroupsFieldsVC.overrideSearch = group.title
             SwiftSpinner.show("Synchronize to server...")
             
             DispatchQueue.global(qos: .background).async {
@@ -240,18 +240,16 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let groupField = GroupField()
         
         if let groupFieldToModify = self.groupFieldToModify  {
-            groupField.setid(groupFieldToModify.getid())
-            groupField.setServerId(groupFieldToModify.getServerId())
+            groupField._id = groupFieldToModify._id
+            groupField.serverId = groupFieldToModify.serverId
         } else {
             idGroupFieldToModify += 1
             groupField.newInsertion = true;
-            groupField.setid(idGroupFieldToModify)
+            groupField._id = idGroupFieldToModify
         }
-//        groupField.setReferenceSession(group.getReferenceSession())
-//        groupField.setReferenceUserId(group.getReferenceUserId())
-//        groupField.setGroupId(group.getid())
-        groupField.setTitle(txtGroupFieldTitle.text ?? "")
-        groupField.setIsHidden(switchGroupFieldIsHidden.isOn)
+        
+        groupField.title = txtGroupFieldTitle.text ?? ""
+        groupField.isHidden = switchGroupFieldIsHidden.isOn
         
         if(controller.add(toShowList: groupField))
         {
@@ -259,7 +257,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.setGroupField(enable: false)
         }
         
-        reloadList(group.getid(), insert: insert)
+        reloadList(group._id, insert: insert)
     }
     
     @IBAction func actBtnGroupFieldClear(_ sender: UIButton) {

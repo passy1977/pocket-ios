@@ -42,7 +42,7 @@ class StackNavigator {
     }
     
     public func push(_ group: Group, search: String) {
-        for it in stack where it.0.getid() == group.getid() {
+        for it in stack where it.0._id == group._id {
             return;
         }
         stack.append((group, search))

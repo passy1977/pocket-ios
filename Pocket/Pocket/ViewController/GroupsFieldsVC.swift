@@ -93,11 +93,11 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        cnstTxtViwNoteHeight.constant = group.getNote().isEmpty ? 0 : 128
-        txtViwNote.text = group.getNote()
+        cnstTxtViwNoteHeight.constant = group.note.isEmpty ? 0 : 128
+        txtViwNote.text = group.note
         
-        if !group.getTitle().isEmpty {
-            title = group.getTitle()
+        if !group.title.isEmpty {
+            title = group.title
         }
         
         if StackNavigator.share.size() == 0 {
@@ -110,10 +110,10 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         
         if let overrideSearch = GroupsFieldsVC.overrideSearch {
             srcSearch.text = overrideSearch
-            reloadList(group.getid(), search: overrideSearch)
+            reloadList(group._id, search: overrideSearch)
             GroupsFieldsVC.overrideSearch = ""
         } else {
-            reloadList(group.getid(), search: srcSearch.text ?? "")
+            reloadList(group._id, search: srcSearch.text ?? "")
         }
         
 //        Timeout4Logout.getShared().callback = timeoutCallback
@@ -152,8 +152,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     groupVC.group = groupForSegue
                     fieldForSegue = nil
                 } else {
-                    group.setTitle("")
-                    group.setNote("")
+                    group.title = ""
+                    group.note = ""
                     groupVC.group = group
                 }
            }
@@ -170,7 +170,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @inlinable
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        reloadList(group.getid(), search: srcSearch.text ?? "")
+        reloadList(group._id, search: srcSearch.text ?? "")
         
     }
 
@@ -238,7 +238,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                             semaphore.wait()
                         } else if status == synchronizatorEnd {
                             DispatchQueue.main.async {
-                                self.reloadList(self.group.getid())
+                                self.reloadList(self.group._id)
                             }
 //                            Timeout4Logout.getShared().start()
                             semaphore.signal()
@@ -387,7 +387,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     if status {
                         self.groupController.xmlImport(self.fullPathFileXmlImport) { _ in
                             DispatchQueue.main.async {
-                                self.reloadList(self.group.getid())
+                                self.reloadList(self.group._id)
                                 SwiftSpinner.hide()
 //                                Timeout4Logout.getShared().start()
                                 semaphore.signal()

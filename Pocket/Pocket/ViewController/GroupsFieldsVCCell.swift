@@ -71,7 +71,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
         
         if let group = tuple?.group {
             imgType.image = UIImage(systemName: "folder")
-            txtTitle.text = group.getTitle()
+            txtTitle.text = group.title
 
             if controller.countChild(group) > 0 {
                 txtTitle.font = UIFont.systemFont(ofSize: fontSizeOriginal)
@@ -79,8 +79,8 @@ final class GroupsFieldsVCCell: UITableViewCell {
                 txtTitle.font = UIFont.italicSystemFont(ofSize: fontSizeOriginal)
             }
 
-            let hiddenBtnShare = fieldController.sizeFiled(group.getid()) == 0
-            let hiddenBtnNote = group.getNote().isEmpty
+            let hiddenBtnShare = fieldController.sizeFiled(group._id) == 0
+            let hiddenBtnNote = group.note.isEmpty
             
             showValue(btnValue, value: "", isHidden: false, show: false)
             btnValue.isHidden = true
@@ -113,7 +113,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
             return
         }
         
-        alertShow(father, title: "Note", message: group.getNote())
+        alertShow(father, title: "Note", message: group.note)
     }
     
     @IBAction private func actBtnShare(_ sender: UIButton) {
@@ -122,13 +122,13 @@ final class GroupsFieldsVCCell: UITableViewCell {
         }
         
         var textToShare = """
-        Title: \(group.getTitle())
-        Note: \(group.getNote())
+        Title: \(group.title)
+        Note: \(group.note)
         ----
         
         """
         
-        fieldController?.getListField(group.getid(), search: "").forEach {
+        fieldController?.getListField(group._id, search: "").forEach {
             textToShare += "\($0.getTitle())=\($0.getValue())\n"
         }
 
