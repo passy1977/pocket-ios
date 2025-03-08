@@ -125,9 +125,9 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
-        viewGroup->del(group._id);
         viewGroupField->del_by_group_id(group._id);
         viewField->del_by_group_id(group._id);
+        viewGroup->del(group._id);
         session->send_data(convert(user));
         return static_cast<Stat>(session->get_status());
     }

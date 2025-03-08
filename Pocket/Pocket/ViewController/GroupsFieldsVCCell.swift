@@ -92,10 +92,10 @@ final class GroupsFieldsVCCell: UITableViewCell {
         } else if let field = tuple?.field {
             imgType.image = UIImage(systemName: "text.justify")
 
-            txtTitle.text = field.getTitle()
+            txtTitle.text = field.title
             txtTitle.font = UIFont.systemFont(ofSize: fontSizeOriginal)
             
-            showValue(btnValue, value: field.getValue(), isHidden: field.getIsHidden(), show: false)
+            showValue(btnValue, value: field.value, isHidden: field.isHidden, show: false)
 
             cnstBtnNoteRight.constant = 0
             cnstBtnNoteWidth.constant = 0
@@ -129,7 +129,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
         """
         
         fieldController?.getListField(group._id, search: "").forEach {
-            textToShare += "\($0.getTitle())=\($0.getValue())\n"
+            textToShare += "\($0.title)=\($0.value)\n"
         }
 
         let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
@@ -145,7 +145,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
             return
         }
         showValue = !showValue
-        showValue(sender, value: field.getValue(), isHidden: field.getIsHidden(), show: showValue, noLink: false)
+        showValue(sender, value: field.value, isHidden: field.isHidden, show: showValue, noLink: false)
     }
     
 
