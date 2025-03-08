@@ -225,6 +225,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                         self.groupController.delGroup(group)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
+                            self.reloadList(self.group._id)
                         }
                     }
                     
@@ -272,7 +273,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         if let field = self.tupleList[indexPath.row].field {
             let copy = UIContextualAction(style: .normal, title: "copy text") { _, _, success in
                 
-                UIPasteboard.general.string = field.getValue()
+                UIPasteboard.general.string = field.value
                 
                 alertShow(self, message: "copied")
                 

@@ -188,8 +188,6 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                     self.keychain.set(email, forKey: KEY_EMAIL)
                     self.keychain.set(passwd, forKey: KEY_PASSWD)
                     
-                    
-                    
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "groups", sender: self)
                     }

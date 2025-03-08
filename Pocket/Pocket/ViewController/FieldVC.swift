@@ -44,7 +44,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
         fieldController?.initialize()
         
         if let field = self.field {
-            setField(enable: true, title: field.getTitle(), value: field.getValue(), isHidden: field.getIsHidden())
+            setField(enable: true, title: field.title, value: field.value, isHidden: field.isHidden)
         } else {
             setField(enable: false)
         }
@@ -92,11 +92,11 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
         let semaphore = DispatchSemaphore(value: 1)
         if self.field == nil {
             let field = Field()
-            field.setGroupId(group._id)
-            field.setTitle(txtTitle.text ?? "")
-            field.setValue(txtValue.text ?? "")
-            field.setIsHidden(switchIsHidden.isOn)
-            GroupsFieldsVC.overrideSearch = field.getTitle()
+            field.groupId = group._id
+            field.title = txtTitle.text ?? ""
+            field.value = txtValue.text ?? ""
+            field.isHidden = switchIsHidden.isOn
+            GroupsFieldsVC.overrideSearch = field.title
             fieldController?.insert(field) { status in
                 DispatchQueue.main.async {
                     spinnerStatusShow(self, status: status)
@@ -113,10 +113,10 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
             }
         } else {
             if let field = self.field {
-                field.setTitle(txtTitle.text ?? "")
-                field.setValue(txtValue.text ?? "")
-                field.setIsHidden(switchIsHidden.isOn)
-                GroupsFieldsVC.overrideSearch = field.getTitle()
+                field.title = txtTitle.text ?? ""
+                field.value = txtValue.text ?? ""
+                field.isHidden = switchIsHidden.isOn
+                GroupsFieldsVC.overrideSearch = field.title
                 fieldController?.update(field) { status in
                     DispatchQueue.main.async {
                         spinnerStatusShow(self, status: status)
@@ -124,7 +124,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                     if status == synchronizatorStart {
                         semaphore.wait()
                     } else if status == synchronizatorEnd {
-                        GroupsFieldsVC.overrideSearch = field.getTitle()
+                        GroupsFieldsVC.overrideSearch = field.title
 //                        Timeout4Logout.getShared().start()
                         semaphore.signal()
                         DispatchQueue.main.async {
