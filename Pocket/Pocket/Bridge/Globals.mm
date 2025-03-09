@@ -219,16 +219,24 @@ constexpr char APP_TAG[] = "Globals";
     
     extern User* convert(const user::ptr &user);
     
-    auto&& userOpt = session->login([email UTF8String], [passwd UTF8String]);
-    if(userOpt.has_value())
+    try
     {
-        user = convert(*userOpt);
-        
-        session->retrieve_data(userOpt);
-        return OK;
+        auto&& userOpt = session->login([email UTF8String], [passwd UTF8String]);
+        if(userOpt.has_value())
+        {
+            user = convert(*userOpt);
+            
+            session->send_data(userOpt);
+            return OK;
+        }
+        else
+        {
+            return static_cast<Stat>(session->get_status());
+        }
     }
-    else
+    catch(const runtime_error& e)
     {
+        error(APP_TAG, e.what());
         return static_cast<Stat>(session->get_status());
     }
 }

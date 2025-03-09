@@ -207,6 +207,13 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                     self.txtPasswd.text = ""
                 }
             }
+            else
+            {
+                DispatchQueue.main.async {
+                    alertShow(self, message: "Server unhandled issue")
+                    self.txtPasswd.text = ""
+                }
+            }
         }
 
     }
