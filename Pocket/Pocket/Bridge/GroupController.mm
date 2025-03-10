@@ -150,7 +150,6 @@ constexpr char APP_TAG[] = "GroupController";
         }
         g->synchronized = false;
         g->id = viewGroup->persist(g);
-        group._id = static_cast<int32_t>(g->id);
         
         for (NSNumber *key in showList)
         {
@@ -167,11 +166,27 @@ constexpr char APP_TAG[] = "GroupController";
             gf->synchronized = false;
             
             gf->id = viewGroupField->persist(gf);
+            gfObjC._id = static_cast<uint32_t>(gf->id);
         }
         
-        [showList removeAllObjects];
+//        if(session->send_data(convert([[Globals getInstance] getUser])))
+//        {
+//            if(auto&& opt = viewGroup->get(g->id); opt.has_value())
+//            {
+//                group = convert(opt.value());
+//            }
+//            
+//            for (NSNumber *key in showList)
+//            {
+//                GroupField *gfObjC = showList[key];
+//                if(auto&& opt = viewGroupField->get(gfObjC._id); opt.has_value())
+//                {
+//                    showList[key] = convert(opt.value());
+//                }
+//            }
+//        }
         
-        session->send_data(convert([[Globals getInstance] getUser]));
+        [showList removeAllObjects];
         
         return static_cast<Stat>(session->get_status());
     }
