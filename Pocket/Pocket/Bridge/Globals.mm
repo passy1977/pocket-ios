@@ -226,7 +226,7 @@ constexpr char APP_TAG[] = "Globals";
         {
             user = convert(*userOpt);
             
-            session->send_data(userOpt);
+            //session->send_data(userOpt);
             return OK;
         }
         else
