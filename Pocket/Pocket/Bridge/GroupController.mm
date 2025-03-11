@@ -106,7 +106,7 @@ constexpr char APP_TAG[] = "GroupController";
 }
 
 //MARK: - Group
--(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(NSString*)search
+-(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(nonnull const NSString*)search
 {
     NSMutableArray<Group*> *ret = [NSMutableArray new];
     for(auto &&it : viewGroup->get_list(groupId, [search UTF8String]))
@@ -116,12 +116,20 @@ constexpr char APP_TAG[] = "GroupController";
     return ret;
 }
 
--(int32_t)countChild:(Group*)group
+-(int32_t)countChild:(nonnull const Group*)group
 {
-    return static_cast<uint32_t>(viewGroup->get_list(group._id).size());
+    try
+    {
+        return static_cast<uint32_t>(viewGroup->get_list(group._id).size());
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return 0;
+    }
 }
 
--(Stat)delGroup:(Group*)group
+-(Stat)delGroup:(nonnull const Group*)group
 {
     try
     {
@@ -138,7 +146,7 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(Stat)persistGroup:(Group*)group
+-(Stat)persistGroup:(nonnull const Group*)group
 {
     try
     {
@@ -185,9 +193,17 @@ constexpr char APP_TAG[] = "GroupController";
 //MARK: - GroupField
 -(uint32_t)getLastIdGroupField
 {
-    auto lastGroupFieldId = viewGroupField->get_last_id();
-    
-    return lastGroupFieldId > 0 ? static_cast<uint32_t>(lastGroupFieldId) : 1;
+    try
+    {
+        auto lastGroupFieldId = viewGroupField->get_last_id();
+        
+        return lastGroupFieldId > 0 ? static_cast<uint32_t>(lastGroupFieldId) : 1;
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return 0;
+    }
 }
 
 //MARK: - ExportImport

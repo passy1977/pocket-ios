@@ -20,6 +20,7 @@
 
 import UIKit
 import Reachability
+import SwiftSpinner
 
 final class FieldVC: UIViewController, UITextFieldDelegate {
 
@@ -84,12 +85,14 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Act
-
-    
-
     @IBAction private func actBtnAdd(_ sender: UIBarButtonItem) {
             
-        let semaphore = DispatchSemaphore(value: 1)
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                SwiftSpinner.show("Synchronize to server...")
+            }
+        }
+
         if self.field == nil {
             let field = Field()
             field.groupId = group._id
@@ -97,18 +100,11 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
             field.value = txtValue.text ?? ""
             field.isHidden = switchIsHidden.isOn
             GroupsFieldsVC.overrideSearch = field.title
-            fieldController?.insert(field) { status in
+            DispatchQueue.global(qos: .background).async {
+                let _ = self.fieldController?.persistField(field)
                 DispatchQueue.main.async {
-                    spinnerStatusShow(self, status: status)
-                }
-                if status == synchronizatorStart {
-                    semaphore.wait()
-                } else if status == synchronizatorEnd {
-//                    Timeout4Logout.getShared().start()
-                    semaphore.signal()
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    SwiftSpinner.hide()
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         } else {
@@ -117,19 +113,11 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                 field.value = txtValue.text ?? ""
                 field.isHidden = switchIsHidden.isOn
                 GroupsFieldsVC.overrideSearch = field.title
-                fieldController?.update(field) { status in
+                DispatchQueue.global(qos: .background).async {
+                    let _ = self.fieldController?.persistField(field)
                     DispatchQueue.main.async {
-                        spinnerStatusShow(self, status: status)
-                    }
-                    if status == synchronizatorStart {
-                        semaphore.wait()
-                    } else if status == synchronizatorEnd {
-                        GroupsFieldsVC.overrideSearch = field.title
-//                        Timeout4Logout.getShared().start()
-                        semaphore.signal()
-                        DispatchQueue.main.async {
-                            self.navigationController?.popViewController(animated: true)
-                        }
+                        SwiftSpinner.hide()
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }

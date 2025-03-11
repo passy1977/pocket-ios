@@ -230,22 +230,29 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     
                 } else if let field = tuple.field {
-                    let semaphore = DispatchSemaphore(value: 1)
-                    self.fieldController.delField(field) { status in
                         DispatchQueue.main.async {
-                            spinnerStatusShow(self, status: status)
-                        }
-                        if status == synchronizatorStart {
-                            semaphore.wait()
-                        } else if status == synchronizatorEnd {
-                            DispatchQueue.main.async {
-                                self.reloadList(self.group._id)
-                            }
-//                            Timeout4Logout.getShared().start()
-                            semaphore.signal()
-                            success(true)
+                        self.fieldController.delField(field)
+                        DispatchQueue.main.async {
+                            SwiftSpinner.hide()
+                            self.reloadList(self.group._id)
                         }
                     }
+                    
+//                    { status in
+//                        DispatchQueue.main.async {
+//                            spinnerStatusShow(self, status: status)
+//                        }
+//                        if status == synchronizatorStart {
+//                            semaphore.wait()
+//                        } else if status == synchronizatorEnd {
+//                            DispatchQueue.main.async {
+//                                self.reloadList(self.group._id)
+//                            }
+////                            Timeout4Logout.getShared().start()
+//                            semaphore.signal()
+//                            success(true)
+//                        }
+//                    }
                 }
             }
         }

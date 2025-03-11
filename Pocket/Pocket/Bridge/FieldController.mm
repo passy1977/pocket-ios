@@ -23,47 +23,72 @@
 
 #import "Field.h"
 #import "FieldController.h"
-#import "Globals.h"
 #import "Session.h"
+#import "User.h"
+
+#include "pocket/globals.hpp"
+using namespace pocket;
 
 #include "pocket-pods/field.hpp"
-using namespace pocket::pods;
+using namespace pods;
 
 #include "pocket-views/view-field.hpp"
-using pocket::views::view;
+using views::view;
 
 #include "pocket-controllers/session.hpp"
-using pocket::controllers::session;
+using controllers::session;
 
-extern field::ptr convert(const Field* group_field);
+#include <stdexcept>
+using namespace std;
+
+
+extern field::ptr convert(const Field* field);
 extern Field* convert(const field::ptr &field);
+extern user::ptr convert(const User* user);
+extern User* convert(const user::ptr &user);
+
+namespace
+{
+
+constexpr char APP_TAG[] = "FieldController";
+
+}
+ 
 
 @interface FieldController ()
+@property session *session;
 @property view<field> *viewField;
+@property const User *user;
 @end
 
 
 @implementation FieldController
 @synthesize reachability;
+@synthesize session;
 @synthesize viewField;
+@synthesize user;
 
 -(instancetype)init
 {
     if(self = [super init])
     {
         reachability = false;
+        session = nullptr;
         viewField = nullptr;
+        user = nullptr;
     }
     return self;
 }
 
 -(void)initialize
 {
-    viewField = [[Globals getInstance] getSession].session->get_view_field().get();
+    session = [[Globals getInstance] getSession].session;
+    user = [[Globals getInstance] getUser];
+    viewField = session->get_view_field().get();
 }
 
-
--(NSArray<Field*>*)getListField:(uint32_t)groupId search:(NSString*)search
+//MARK: - Field
+-(NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search
 {
     NSMutableArray<Field*> *ret = [NSMutableArray new];
     for(auto &&it : viewField->get_list(groupId, [search UTF8String]))
@@ -73,55 +98,49 @@ extern Field* convert(const field::ptr &field);
     return ret;
 }
 
--(void)insertField:(Field*)field callback:(void(^)(NSString*))callback
+-(Stat)persistField:(nonnull const Field*)field
 {
-//    [field setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
-//    [field setReferenceUserId: controller->getUser()->id];
-//    
-//    promise<string> p;
-//    controller->insertField(convert(field), p, false, [callback](auto status)
-//    {
-//        callback([NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding]);
-//        
-//    });
+    try
+    {
+        auto&& f = convert(field);
+        viewField->persist(f);
+        session->send_data(convert(user));
+        return static_cast<Stat>(session->get_status());
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return Stat::ERROR;
+    }
 }
 
--(void)updateField:(Field*)field callback:(void(^)(NSString*))callback
+
+-(Stat)delField:(Field*)field
 {
-//    [field setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
-//    [field setReferenceUserId: controller->getUser()->id];
-//    
-//    promise<string> p;
-//    controller->updateField(convert(field), p, false, [callback](auto status)
-//    {
-//        callback([NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding]);
-//        
-//    });
+    try
+    {
+        viewField->del(field._id);
+        session->send_data(convert(user));
+        return static_cast<Stat>(session->get_status());
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return Stat::ERROR;
+    }
 }
 
--(void)delField:(Field*)field callback:(void(^)(NSString*))callback
+-(int32_t)sizeFiled:(uint32_t)groupId
 {
-//    callback(SYNCHRONIZATOR_START);
-//    [field setReferenceSession: [NSString stringWithCString:controller->getSession().c_str() encoding:NSUTF8StringEncoding]];
-//    [field setReferenceUserId: controller->getUser()->id];
-//  
-//
-//    
-//    try
-//    {
-//        pocket::controllers::FieldDao::getInstance()->del(controller->getUser(), convert(field));
-//    }
-//    catch(const cppcommons::Exception &e)
-//    {
-//        callback([NSString stringWithCString:e.what() encoding:NSUTF8StringEncoding]);
-//    }
-//    callback(SYNCHRONIZATOR_END);
-}
-
--(int64_t)sizeFiled:(uint32_t)groupId
-{
-//	return controller->sizeFiled(groupId);
-    return 0;
+    try
+    {
+        return static_cast<int32_t>(viewField->get_list(groupId).size());
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return 0;
+    }
 }
 
 @end

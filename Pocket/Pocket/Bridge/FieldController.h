@@ -21,14 +21,10 @@
 #import <Foundation/Foundation.h>
 #endif
 
+#import "Globals.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@class Field;
-@class User;
-@class Device;
-@class Globals;
-@class Group;
-@class GroupField;
 
 @interface FieldController : NSObject
 @property BOOL reachability;
@@ -36,12 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)init;
 -(void)initialize;
 
--(NSArray<Field*>*)getListField:(uint32_t)groupId search:(NSString*)search;
--(void)insertField:(Field*)field callback:(void(^)(NSString*))callback;
--(void)updateField:(Field*)field callback:(void(^)(NSString*))callback;
--(void)delField:(Field*)field callback:(void(^)(NSString*))callback;
--(int64_t)sizeFiled:(uint32_t)groupId;
-
+-(NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search;
+-(Stat)persistField:(nonnull const Field*)field;
+-(Stat)delField:(Field*)field;
+-(int32_t)sizeFiled:(uint32_t)groupId;
 
 @end
 
