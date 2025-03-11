@@ -169,22 +169,7 @@ constexpr char APP_TAG[] = "GroupController";
             gfObjC._id = static_cast<uint32_t>(gf->id);
         }
         
-//        if(session->send_data(convert([[Globals getInstance] getUser])))
-//        {
-//            if(auto&& opt = viewGroup->get(g->id); opt.has_value())
-//            {
-//                group = convert(opt.value());
-//            }
-//            
-//            for (NSNumber *key in showList)
-//            {
-//                GroupField *gfObjC = showList[key];
-//                if(auto&& opt = viewGroupField->get(gfObjC._id); opt.has_value())
-//                {
-//                    showList[key] = convert(opt.value());
-//                }
-//            }
-//        }
+        session->send_data(convert(user));
         
         [showList removeAllObjects];
         
