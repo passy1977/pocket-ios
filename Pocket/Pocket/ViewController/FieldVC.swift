@@ -96,6 +96,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
         if self.field == nil {
             let field = Field()
             field.groupId = group._id
+            field.serverGroupId = group.serverId
             field.title = txtTitle.text ?? ""
             field.value = txtValue.text ?? ""
             field.isHidden = switchIsHidden.isOn

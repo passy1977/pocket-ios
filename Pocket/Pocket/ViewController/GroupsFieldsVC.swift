@@ -238,21 +238,6 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                     }
                     
-//                    { status in
-//                        DispatchQueue.main.async {
-//                            spinnerStatusShow(self, status: status)
-//                        }
-//                        if status == synchronizatorStart {
-//                            semaphore.wait()
-//                        } else if status == synchronizatorEnd {
-//                            DispatchQueue.main.async {
-//                                self.reloadList(self.group._id)
-//                            }
-////                            Timeout4Logout.getShared().start()
-//                            semaphore.signal()
-//                            success(true)
-//                        }
-//                    }
                 }
             }
         }
