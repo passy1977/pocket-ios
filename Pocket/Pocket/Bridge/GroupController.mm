@@ -152,10 +152,6 @@ constexpr char APP_TAG[] = "GroupController";
     {
         auto&& g = convert(group);
         g->user_id = [user getid];
-        if(g->id == 0)
-        {
-            g->timestamp_creation = get_current_time_GMT();
-        }
         g->synchronized = false;
         g->id = viewGroup->persist(g);
         
@@ -165,7 +161,6 @@ constexpr char APP_TAG[] = "GroupController";
             auto&& gf = convert(gfObjC);
             if(gfObjC.newInsertion)
             {
-                gf->timestamp_creation = get_current_time_GMT();
                 gf->id = 0;
             }
             gf->user_id = [user getid];
@@ -175,6 +170,20 @@ constexpr char APP_TAG[] = "GroupController";
             
             gf->id = viewGroupField->persist(gf);
             gfObjC._id = static_cast<uint32_t>(gf->id);
+            
+            Field *fObjC = [Field new];
+            fObjC.title = [NSString stringWithCString:gf->title.c_str() encoding:NSUTF8StringEncoding];
+            fObjC.value = @"";
+            auto&& f = convert(fObjC);
+            f->user_id = [user getid];
+            f->group_id = g->id;
+            f->server_group_id = g->server_id;
+            f->group_field_id = gf->id;
+            f->server_group_id = gf->server_id;
+            f->synchronized = false;
+            
+            f->id = viewField->persist(f);
+            fObjC._id = static_cast<uint32_t>(f->id);
         }
         
         session->send_data(convert(user));
