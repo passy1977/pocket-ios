@@ -51,19 +51,9 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-         textField.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
-    
-    // MARK: - segue
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "newUser" {
-//            if let loginVC = segue.destination as? LoginVC {
-//                loginVC.passwd = self.txtPasswd.text
-//            }
-//        }
-//    }
     
     
     // MARK: - Act
@@ -95,7 +85,7 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
             return
         }
         
-        if !Globals.getInstance().initialize(url.absoluteString, configJson: txtViewDeviceJson.text, passwd: passwd) {
+        if !Globals.shared().initialize(url.absoluteString, configJson: txtViewDeviceJson.text, passwd: passwd) {
             txtViewDeviceJson.text.removeAll()
             alertShow(self, message: "Server Data wrong format")
             return

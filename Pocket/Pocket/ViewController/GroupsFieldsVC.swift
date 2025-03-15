@@ -116,8 +116,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             reloadList(group._id, search: srcSearch.text ?? "")
         }
         
-//        Timeout4Logout.getShared().callback = timeoutCallback
-//        Timeout4Logout.getShared().updateTimeLeft()
+        Timeout4Logout.shared.callback = timeoutCallback
+        Timeout4Logout.shared.updateTimeLeft()
         
     }
     
@@ -218,7 +218,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             alertShow(self, title: "Warning", message: "Dou you want delete it?", handlerNo: { _ in success(false)}) { _ in
                 
                 let tuple = self.tupleList[indexPath.row]
-                //Timeout4Logout.shared.stop()
+                
+                Timeout4Logout.shared.stop()
                 if let group = tuple.group {
                     
                     DispatchQueue.global(qos: .background).async {
@@ -226,6 +227,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             self.reloadList(self.group._id)
+                            Timeout4Logout.shared.start()
                         }
                     }
                     
@@ -235,6 +237,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             self.reloadList(self.group._id)
+                            Timeout4Logout.shared.start()
                         }
                     }
                     
@@ -312,12 +315,12 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func timeoutCallback() {
-//        if let viewControllers = self.navigationController?.viewControllers {
-//            if !viewControllers.isEmpty {
-//                self.navigationController?.popToViewController(viewControllers[0], animated: true)
-//            }
-//        }
-        _ = self.navigationController?.popToRootViewController(animated: true)
+        if let viewControllers = self.navigationController?.viewControllers {
+            if !viewControllers.isEmpty {
+                self.navigationController?.popToViewController(viewControllers[0], animated: true)
+            }
+        }
+        
         
     }
 
@@ -372,7 +375,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         alertShow(self, title: "Warning", message: "Dou you want import data? All actual data will be deleted!", handlerNo: { _ in }) { _ in
             SwiftSpinner.show("Importing...")
             
-            //            Timeout4Logout.getShared().stop()
+            Timeout4Logout.shared.stop()
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                 
                 DispatchQueue.global(qos: .background).async {
@@ -387,29 +390,32 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                             }
                             
-                            if Globals.getInstance().sendData() {
+                            if Globals.shared().sendData() {
                                 DispatchQueue.main.async {
                                     SwiftSpinner.hide()
                                     self.reloadList(self.group._id)
                                     SwiftSpinner.hide()
-                                    //                                Timeout4Logout.getShared().start()
+                                    Timeout4Logout.shared.start()
                                 }
                             } else {
                                 DispatchQueue.main.async {
                                     SwiftSpinner.hide()
                                     alertShow(self, message: "Data not synched with server")
+                                    Timeout4Logout.shared.start()
                                 }
                             }
                         } else {
                             DispatchQueue.main.async {
                                 SwiftSpinner.hide()
                                 alertShow(self, message: "Import unexpected error")
+                                Timeout4Logout.shared.start()
                             }
                         }
                     } else {
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             alertShow(self, message: "Export unexpected error")
+                            Timeout4Logout.shared.start()
                         }
                     }
                 }
@@ -420,6 +426,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction private func actBtnXmlExport(_ sender: UIButton) {
         view.endEditing(true)
         
+        Timeout4Logout.shared.stop()
         if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             SwiftSpinner.show("Exporting...")
             
@@ -444,6 +451,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                         SwiftSpinner.hide()
                         let activityVC = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
     
+                        Timeout4Logout.shared.start()
                         activityVC.popoverPresentationController?.sourceView = sender
                         self.present(activityVC, animated: true)
                     }
@@ -451,6 +459,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     DispatchQueue.main.async {
                         SwiftSpinner.hide()
                         alertShow(self, message: "Unexpected error")
+                        Timeout4Logout.shared.start()
                     }
                 }
             }

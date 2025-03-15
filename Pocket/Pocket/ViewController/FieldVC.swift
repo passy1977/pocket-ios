@@ -63,7 +63,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        Timeout4Logout.getShared().updateTimeLeft()
+        Timeout4Logout.shared.updateTimeLeft()
     }
     
     // MARK: - UITextFieldDelegate

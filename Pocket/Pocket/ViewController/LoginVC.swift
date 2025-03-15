@@ -45,8 +45,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //let user = Globals.getInstance().getSafeUser()
-        //Timeout4Logout.getShared(user: user).stop()
+        Timeout4Logout.shared.stop()
     
         if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
             self.configJson = configJson
@@ -165,7 +164,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        if !Globals.getInstance().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
+        if !Globals.shared().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
             txtPasswd.text = ""
             alertShow(self, message: "Server Data wrong format")
             SwiftSpinner.hide()
@@ -173,17 +172,17 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         DispatchQueue.global(qos: .background).async {
-            let rc = Globals.getInstance().login(email, passwd: passwd)
+            let rc = Globals.shared().login(email, passwd: passwd)
             DispatchQueue.main.async {
                 SwiftSpinner.hide()
             }
             if(rc == .OK)
             {
-                let user = Globals.getInstance().getUser()
+                let user = Globals.shared().getUser()
                 
                 if(user?.getStatus() ?? .NOT_ACTIVE == .ACTIVE)
                 {
-                    //Timeout4Logout.getShared(user: Globals.getInstance().getSafeUser()).start()
+                    Timeout4Logout.shared.start()
                     
                     self.keychain.set(email, forKey: KEY_EMAIL)
                     self.keychain.set(passwd, forKey: KEY_PASSWD)

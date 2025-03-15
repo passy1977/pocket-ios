@@ -90,11 +90,11 @@ constexpr char APP_TAG[] = "Globals";
 
 }
 
-+(Globals*)getInstance
++(Globals*)shared
 {
     if(singleton == nullptr)
     {
-        singleton = [[Globals new] init];
+        singleton = [Globals new];
     }
     return singleton;
 }

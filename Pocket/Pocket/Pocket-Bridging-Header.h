@@ -26,5 +26,4 @@
 #import "Globals.h"
 #import "GroupController.h"
 #import "FieldController.h"
-#import "CountDown.h"
 

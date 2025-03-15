@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, Stat)
 
 -(instancetype)init;
 
-+(Globals*)getInstance;
++(Globals*)shared;
 
 -(BOOL)initialize:(nonnull const NSString*)basePath
        configJson:(nullable const NSString*)configJson

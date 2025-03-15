@@ -22,80 +22,111 @@ import CoreMotion
 
 final class Timeout4Logout {
     
-    static private var shared : Timeout4Logout? = nil
+    public typealias Callback = () -> Void
+    
+    static public let shared = Timeout4Logout()
     
     private var timerAccelerometer = Timer()
     
     private let motionManager = CMMotionManager()
+    private var motionManagerSamplingCursor = 0
+    private let motionManagerSamplingMax = 100
+    private var motionManagerX : [Double]
+    private var motionManagerY : [Double]
+    private var motionManagerZ : [Double]
     
     private let k = 0.3
+   
+    private var timerReady : Bool = false
+    private var timerRunning : Bool = false
+    private var timer : Timer?
     
-    var callback : ()->Void = {} {
+    var _callback : Callback = {}
+    var callback : Callback = {} {
         didSet {
-            countDown.setCallback {
-                DispatchQueue.main.async {
-                    self.callback()
-                }
-            }
+            _callback = callback
+            timerReady = true
         }
     }
     
-    private let countDown : CountDown
-
-    init(_ user : User) {
+    init() {
         motionManager.startAccelerometerUpdates()
+        motionManagerX = [Double](repeating: 0, count: motionManagerSamplingMax)
+        motionManagerY = [Double](repeating: 0, count: motionManagerSamplingMax)
+        motionManagerZ = [Double](repeating: 0, count: motionManagerSamplingMax)
+
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: timerCallback)
         
-        
-#if ENABLE_SERVER_DEBUG
-        countDown = CountDown(user: user, sessionTimeoutInSeconds: Int16(sessionTimeoutInSecondsDebug))
-#else
-        countDown = CountDown(user: user, sessionTimeoutInSeconds: Int16(sessionTimeoutInSeconds))
-#endif
     }
+
     
     public func start() {
-        countDown.start()
+        timerRunning = true
         
-        timerAccelerometer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
+        timerAccelerometer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             if let data = self.motionManager.accelerometerData {
-                if data.acceleration.x > self.k || data.acceleration.y > self.k || data.acceleration.z > self.k {
-                    self.countDown.updateTimeLeft()
+                
+                if self.motionManagerX.count >= self.motionManagerSamplingMax {
+                    self.motionManagerSamplingCursor = 0
                 }
+                self.motionManagerX[self.motionManagerSamplingCursor] = data.acceleration.x
+                self.motionManagerY[self.motionManagerSamplingCursor] = data.acceleration.y
+                self.motionManagerZ[self.motionManagerSamplingCursor] = data.acceleration.z
+                
+                self.motionManagerSamplingCursor += 1
             }
         }
         RunLoop.current.add(timerAccelerometer, forMode: RunLoop.Mode.common)
+        
+        timer?.fire()
     }
     
-    @inlinable
-    public func resume() {
-        countDown.start()
-    }
     
     @inlinable
     public func stop() {
-        self.countDown.stop()
-        self.timerAccelerometer.invalidate()
+        if !timerReady {
+            return
+        }
+        timer?.invalidate()
+        timerAccelerometer.invalidate()
     }
     
     @inlinable
     public func updateTimeLeft() {
-        countDown.updateTimeLeft()
+        if !timerReady {
+            return
+        }
+        UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
     }
     
     @inlinable
     public func isStarted() -> Bool {
-        countDown.isStarted()
+        return timerRunning;
     }
-    
-    static public func getShared(user: User?) -> Timeout4Logout {
-        if let user = user {
-            Timeout4Logout.shared = Timeout4Logout(user);
+
+    private func timerCallback(_ timer: Timer) {
+        if !timerReady {
+            return
         }
-        return Timeout4Logout.shared!
-    }
-    
-    static public func getShared() -> Timeout4Logout {
-        return Timeout4Logout.shared!
+        
+        var timerTimeout = 0;
+        if motionManagerX.reduce(0, { $0 + $1 }) > k  {
+            UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
+            timerTimeout = sessionTimeoutInSeconds
+        } else {
+            timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
+        }
+        
+
+        
+        timerTimeout -= 1
+        if timerTimeout <= 0 {
+            timer.invalidate()
+            _callback()
+            UserDefaults.standard.set(0, forKey: "timeout4logout")
+        } else {
+            UserDefaults.standard.set(timerTimeout, forKey: "timeout4logout")
+        }
     }
 }
     

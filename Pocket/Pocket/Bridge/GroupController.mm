@@ -98,8 +98,8 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(void)initialize
 {
-    session = [[Globals getInstance] getSession].session;
-    user = [[Globals getInstance] getUser];
+    session = [[Globals shared] getSession].session;
+    user = [[Globals shared] getUser];
     viewGroup = session->get_view_group().get();
     viewGroupField = session->get_view_group_field().get();
     viewField = session->get_view_field().get();

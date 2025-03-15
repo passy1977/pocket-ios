@@ -32,7 +32,6 @@
 		14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA14212431CAB30067CFA8 /* FieldVC.swift */; };
 		14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF462932C7A700C84FD0 /* Group.mm */; };
 		14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4C2932C7A700C84FD0 /* GroupController.mm */; };
-		14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4D2932C7A700C84FD0 /* CountDown.mm */; };
 		14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF502932C7A700C84FD0 /* GroupField.mm */; };
 		14D4DF652932C7A700C84FD0 /* Field.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF542932C7A700C84FD0 /* Field.mm */; };
 		14D4DF662932C7A700C84FD0 /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF572932C7A700C84FD0 /* User.mm */; };
@@ -97,11 +96,9 @@
 		14B8A4632D7C863A004E0CC5 /* helpers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = helpers.hpp; sourceTree = "<group>"; };
 		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
 		14D4DF462932C7A700C84FD0 /* Group.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Group.mm; sourceTree = "<group>"; };
-		14D4DF492932C7A700C84FD0 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
 		14D4DF4A2932C7A700C84FD0 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
 		14D4DF4B2932C7A700C84FD0 /* FieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldController.h; sourceTree = "<group>"; };
 		14D4DF4C2932C7A700C84FD0 /* GroupController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupController.mm; sourceTree = "<group>"; };
-		14D4DF4D2932C7A700C84FD0 /* CountDown.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CountDown.mm; sourceTree = "<group>"; };
 		14D4DF4E2932C7A700C84FD0 /* GroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupController.h; sourceTree = "<group>"; };
 		14D4DF4F2932C7A700C84FD0 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		14D4DF502932C7A700C84FD0 /* GroupField.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupField.mm; sourceTree = "<group>"; };
@@ -277,8 +274,6 @@
 		14D4DF432932C7A700C84FD0 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
-				14D4DF492932C7A700C84FD0 /* CountDown.h */,
-				14D4DF4D2932C7A700C84FD0 /* CountDown.mm */,
 				14D4DF4A2932C7A700C84FD0 /* Field.h */,
 				14D4DF542932C7A700C84FD0 /* Field.mm */,
 				14D4DF4B2932C7A700C84FD0 /* FieldController.h */,
@@ -752,7 +747,6 @@
 				14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */,
 				1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */,
 				14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */,
-				14D4DF622932C7A700C84FD0 /* CountDown.mm in Sources */,
 				14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */,
 				14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */,
 				14D4DF662932C7A700C84FD0 /* User.mm in Sources */,
@@ -846,7 +840,6 @@
 					"$(inherited)",
 					"POCKET_AES_CBC_IV=$(POCKET_AES_CBC_IV)",
 					"POCKET_MAX_BUFFER_RESPONSE_SIZE=10240",
-					ENABLE_DEBUG,
 					POCKET_DISABLE_LOCK,
 					POCKET_DISABLE_LOG_COLOR,
 					"DEVICE_AES_CBC_IV=$(DEVICE_AES_CBC_IV)",

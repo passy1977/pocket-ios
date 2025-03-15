@@ -91,7 +91,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         reloadList(group._id, insert: insert)
         
-//        Timeout4Logout.getShared().updateTimeLeft()
+        Timeout4Logout.shared.updateTimeLeft()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -191,7 +191,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         
-        //                            Timeout4Logout.getShared().start()
+        Timeout4Logout.shared.stop()
         if insert {
             let g = Group()
             g.groupId = group._id
@@ -210,6 +210,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 
                 DispatchQueue.main.async {
                     SwiftSpinner.hide()
+                    Timeout4Logout.shared.start()
                     self.navigationController?.popViewController(animated: true)
                 }
                 
@@ -225,6 +226,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.controller.persistGroup(group)
                 DispatchQueue.main.async {
                     SwiftSpinner.hide()
+                    Timeout4Logout.shared.start()
                     self.navigationController?.popViewController(animated: true)
                 }
             }
@@ -258,6 +260,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         reloadList(group._id, insert: insert)
+        Timeout4Logout.shared.updateTimeLeft()
     }
     
     @IBAction func actBtnGroupFieldClear(_ sender: UIButton) {
@@ -282,7 +285,6 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             btnGroupFieldAdd.isEnabled = check
             btnGroupFieldClear.isEnabled = check
             switchGroupFieldIsHidden.isEnabled = check
-            
         }
     }
     
