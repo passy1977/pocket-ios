@@ -224,7 +224,7 @@ constexpr char APP_TAG[] = "Globals";
     try
     {
         auto&& userOpt = session->login([email UTF8String], [passwd UTF8String]);
-        if(userOpt.has_value())
+        if(userOpt)
         {
             user = convert(*userOpt);
             

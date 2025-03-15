@@ -109,6 +109,7 @@ final class Timeout4Logout {
             return
         }
         
+        
         var timerTimeout = 0;
         if motionManagerX.reduce(0, { $0 + $1 }) > k  {
             UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
@@ -117,7 +118,19 @@ final class Timeout4Logout {
             timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
         }
         
-
+        if motionManagerY.reduce(0, { $0 + $1 }) > k  {
+            UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
+            timerTimeout = sessionTimeoutInSeconds
+        } else {
+            timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
+        }
+        
+        if motionManagerZ.reduce(0, { $0 + $1 }) > k  {
+            UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
+            timerTimeout = sessionTimeoutInSeconds
+        } else {
+            timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
+        }
         
         timerTimeout -= 1
         if timerTimeout <= 0 {
