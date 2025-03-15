@@ -42,6 +42,8 @@ using namespace std;
 #error XCode config issue, not set Sercets.xcconfig and DEVICE_AES_CBC_IV macro
 #endif
 
+user::ptr convert(const User* user);
+
 namespace
 {
 
@@ -233,6 +235,19 @@ constexpr char APP_TAG[] = "Globals";
         {
             return static_cast<Stat>(session->get_status());
         }
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return static_cast<Stat>(session->get_status());
+    }
+}
+
+-(BOOL)sendData
+{
+    try
+    {
+        return session->send_data(convert(user));
     }
     catch(const runtime_error& e)
     {

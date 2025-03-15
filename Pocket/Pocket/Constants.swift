@@ -24,9 +24,9 @@ let primary = UIColor(named: "colorPrimary")
 let synchronizatorStart = "START"
 let synchronizatorEnd = "END"
 
-let fileNameImport = "import_data.xml"
+let fileNameImport = "import_data.json"
 let fileNamePrefixExport = "export_data_"
-let fileNameExport = "\(fileNamePrefixExport)%@.xml"
+let fileNameExport = "\(fileNamePrefixExport)%@.json"
 let dateFormatterForFile : DateFormatter = {
     
     let dateFormatterGet = DateFormatter()

@@ -221,7 +221,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 //Timeout4Logout.shared.stop()
                 if let group = tuple.group {
                     
-                    DispatchQueue.main.async {
+                    DispatchQueue.global(qos: .background).async {
                         self.groupController.delGroup(group)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
@@ -230,7 +230,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     
                 } else if let field = tuple.field {
-                        DispatchQueue.main.async {
+                    DispatchQueue.global(qos: .background).async {
                         self.fieldController.delField(field)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
@@ -372,27 +372,47 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         alertShow(self, title: "Warning", message: "Dou you want import data? All actual data will be deleted!", handlerNo: { _ in }) { _ in
             SwiftSpinner.show("Importing...")
             
-//            Timeout4Logout.getShared().stop()
-            let semaphore = DispatchSemaphore(value: 1)
+            //            Timeout4Logout.getShared().stop()
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                self.groupController.xmlExport(url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path) { status in
-                    
-                    if status {
-                        self.groupController.xmlImport(self.fullPathFileXmlImport) { _ in
+                
+                DispatchQueue.global(qos: .background).async {
+                    if self.groupController.dataExport(url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path) {
+                        if self.groupController.dataImport(self.fullPathFileXmlImport) {
+                           
+                            if FileManager.default.fileExists(atPath: self.fullPathFileXmlImport) {
+                                do {
+                                    try FileManager.default.removeItem(at: URL(fileURLWithPath: self.fullPathFileXmlImport))
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                            
+                            if Globals.getInstance().sendData() {
+                                DispatchQueue.main.async {
+                                    SwiftSpinner.hide()
+                                    self.reloadList(self.group._id)
+                                    SwiftSpinner.hide()
+                                    //                                Timeout4Logout.getShared().start()
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    SwiftSpinner.hide()
+                                    alertShow(self, message: "Data not synched with server")
+                                }
+                            }
+                        } else {
                             DispatchQueue.main.async {
-                                self.reloadList(self.group._id)
                                 SwiftSpinner.hide()
-//                                Timeout4Logout.getShared().start()
-                                semaphore.signal()
+                                alertShow(self, message: "Import unexpected error")
                             }
                         }
                     } else {
                         DispatchQueue.main.async {
-                            alertShow(self, message: "Unexpected error")
+                            SwiftSpinner.hide()
+                            alertShow(self, message: "Export unexpected error")
                         }
                     }
                 }
-                semaphore.wait()
             }
         }
     }
@@ -418,14 +438,20 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
 
             let fileUrl = url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false)
             
-            groupController.xmlExport(fileUrl.path) { status in
-                DispatchQueue.main.async {
-                    SwiftSpinner.hide()
-                
-                    let activityVC = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
-                    
-                    activityVC.popoverPresentationController?.sourceView = sender
-                    self.present(activityVC, animated: true)
+            DispatchQueue.global(qos: .background).async {
+                if self.groupController.dataExport(fileUrl.path) {
+                    DispatchQueue.main.async {
+                        SwiftSpinner.hide()
+                        let activityVC = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+    
+                        activityVC.popoverPresentationController?.sourceView = sender
+                        self.present(activityVC, animated: true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        SwiftSpinner.hide()
+                        alertShow(self, message: "Unexpected error")
+                    }
                 }
             }
         }

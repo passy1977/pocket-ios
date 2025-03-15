@@ -217,14 +217,30 @@ constexpr char APP_TAG[] = "GroupController";
 
 //MARK: - ExportImport
 
--(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback
+-(BOOL)dataExport:(NSString*)fullPathFileExport
 {
-
+    try
+    {
+        return session->export_data(convert(user), [fullPathFileExport UTF8String], POCKET_ENABLE_AES);
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return false;
+    }
 }
 
--(void)xmlImport:(NSString*)fullPathFileXmlImport callback:(void(^)(BOOL))callback
+-(BOOL)dataImport:(NSString*)fullPathFileImport
 {
-
+    try
+    {
+        return session->import_data(convert(user), [fullPathFileImport UTF8String], POCKET_ENABLE_AES);
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return false;
+    }
 }
 
 -(void)exit
@@ -241,18 +257,25 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(void)fillShowList:(nonnull const Group *)group insert:(bool)insert
 {
-    [self cleanShowList];
-    for(auto&& it : viewGroupField->get_list(group._id))
+    try
     {
-        GroupField *gf = convert(it);
-        if(insert)
+        [self cleanShowList];
+        for(auto&& it : viewGroupField->get_list(group._id))
         {
-            gf.newInsertion = true;
-            [gf setServerId:0];
-            [gf setGroupId: group._id];
-            [gf setServerGroupId: 0];
+            GroupField *gf = convert(it);
+            if(insert)
+            {
+                gf.newInsertion = true;
+                [gf setServerId:0];
+                [gf setGroupId: group._id];
+                [gf setServerGroupId: 0];
+            }
+            [showList setObject:gf forKey:[NSNumber numberWithLongLong:it->id]];
         }
-        [showList setObject:gf forKey:[NSNumber numberWithLongLong:it->id]];
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
     }
 }
 
@@ -289,33 +312,40 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(BOOL)delFromShowList:(uint32_t)idGroupField
 {
-    int64_t toDelete = -1, i = 0;
-    for (NSNumber *key in showList)
+    try
     {
-        id it = showList[key];
-        
-        if([it getid] == idGroupField)
+        int64_t toDelete = -1, i = 0;
+        for (NSNumber *key in showList)
         {
-            if([it serverId] > 0)
+            id it = showList[key];
+            
+            if([it getid] == idGroupField)
             {
-                viewGroupField->del([it _id]);
+                if([it serverId] > 0)
+                {
+                    viewGroupField->del([it _id]);
+                }
+                toDelete = i;
+                break;
             }
-            toDelete = i;
-            break;
+            i++;
         }
-        i++;
+            
+        if(toDelete > -1)
+        {
+            [showList removeObjectForKey:[NSNumber numberWithLongLong:toDelete]];
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-        
-    if(toDelete > -1)
+    catch(const runtime_error& e)
     {
-        [showList removeObjectForKey:[NSNumber numberWithLongLong:toDelete]];
-        return true;
-    }
-    else
-    {
+        error(APP_TAG, e.what());
         return false;
     }
-
 }
 
 -(uint8_t)sizeShowList

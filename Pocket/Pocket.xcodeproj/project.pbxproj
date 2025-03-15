@@ -52,7 +52,6 @@
 		14DF18922D6548E300E5AEF2 /* synchronizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18612D6548E300E5AEF2 /* synchronizer.cpp */; };
 		14DF18932D6548E300E5AEF2 /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185F2D6548E300E5AEF2 /* network.cpp */; };
 		14DF18952D6548E300E5AEF2 /* crypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185C2D6548E300E5AEF2 /* crypto.cpp */; };
-		14DF18962D6548E300E5AEF2 /* view-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186B2D6548E300E5AEF2 /* view-field.cpp */; };
 		14DF18972D6548E300E5AEF2 /* dao-read-write-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183C2D6548E300E5AEF2 /* dao-read-write-group-field.cpp */; };
 		14DF18982D6548E300E5AEF2 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF185E2D6548E300E5AEF2 /* json.cpp */; };
 		14DF18992D6548E300E5AEF2 /* session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18282D6548E300E5AEF2 /* session.cpp */; };
@@ -162,10 +161,8 @@
 		14DF18602D6548E300E5AEF2 /* result-set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "result-set.cpp"; sourceTree = "<group>"; };
 		14DF18612D6548E300E5AEF2 /* synchronizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = synchronizer.cpp; sourceTree = "<group>"; };
 		14DF18642D6548E300E5AEF2 /* view.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = view.hpp; sourceTree = "<group>"; };
-		14DF18652D6548E300E5AEF2 /* view-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-field.hpp"; sourceTree = "<group>"; };
 		14DF18662D6548E300E5AEF2 /* view-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group.hpp"; sourceTree = "<group>"; };
 		14DF18672D6548E300E5AEF2 /* view-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "view-group-field.hpp"; sourceTree = "<group>"; };
-		14DF186B2D6548E300E5AEF2 /* view-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-field.cpp"; sourceTree = "<group>"; };
 		14DF186C2D6548E300E5AEF2 /* view-group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group.cpp"; sourceTree = "<group>"; };
 		14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "view-group-field.cpp"; sourceTree = "<group>"; };
 		14DF18702D6548E300E5AEF2 /* globals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
@@ -516,7 +513,6 @@
 			isa = PBXGroup;
 			children = (
 				14DF18642D6548E300E5AEF2 /* view.hpp */,
-				14DF18652D6548E300E5AEF2 /* view-field.hpp */,
 				14DF18662D6548E300E5AEF2 /* view-group.hpp */,
 				14DF18672D6548E300E5AEF2 /* view-group-field.hpp */,
 			);
@@ -534,7 +530,6 @@
 		14DF186E2D6548E300E5AEF2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				14DF186B2D6548E300E5AEF2 /* view-field.cpp */,
 				14DF186C2D6548E300E5AEF2 /* view-group.cpp */,
 				14DF186D2D6548E300E5AEF2 /* view-group-field.cpp */,
 			);
@@ -746,7 +741,6 @@
 				14DF18922D6548E300E5AEF2 /* synchronizer.cpp in Sources */,
 				14DF18932D6548E300E5AEF2 /* network.cpp in Sources */,
 				14DF18952D6548E300E5AEF2 /* crypto.cpp in Sources */,
-				14DF18962D6548E300E5AEF2 /* view-field.cpp in Sources */,
 				14DF18972D6548E300E5AEF2 /* dao-read-write-group-field.cpp in Sources */,
 				14DF18982D6548E300E5AEF2 /* json.cpp in Sources */,
 				14DF18992D6548E300E5AEF2 /* session.cpp in Sources */,

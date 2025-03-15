@@ -47,8 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(uint32_t)getLastIdGroupField;
 
 //MARK: - ExportImport
--(void)xmlExport:(NSString*)fullPathFileXmlExport callback:(void(^)(BOOL))callback;
--(void)xmlImport:(NSString*)fullPathFileXmlImport callback:(void(^)(BOOL))callback;
+-(BOOL)dataExport:(NSString*)fullPathFileExport;
+-(BOOL)dataImport:(NSString*)fullPathFileImport;
 -(void)exit;
 
 //MARK: - Virtual list for handling new GroupField

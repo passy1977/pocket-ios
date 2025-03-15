@@ -32,7 +32,7 @@ using namespace pocket;
 #include "pocket-pods/field.hpp"
 using namespace pods;
 
-#include "pocket-views/view-field.hpp"
+#include "pocket-views/view.hpp"
 using views::view;
 
 #include "pocket-controllers/session.hpp"
