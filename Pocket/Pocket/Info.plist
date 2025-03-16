@@ -23,8 +23,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>UIFileSharingEnabled</key>
-	<true/>
+	<key>FAST_LOGIN_EMAIL</key>
+	<string>$(FAST_LOGIN_EMAIL)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
@@ -36,6 +36,8 @@
 	</dict>
 	<key>NSFaceIDUsageDescription</key>
 	<string>This allow you to sicurelly sign into you app</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>
 	<key>UIMainStoryboardFile</key>

@@ -69,6 +69,8 @@ typedef NS_ENUM(NSUInteger, Stat)
 -(Stat)login:(nullable const NSString*)email
       passwd:(nullable const NSString*)passwd;
 
+-(Stat)logout;
+
 -(BOOL)sendData;
 
 -(nullable const User *)getUser;

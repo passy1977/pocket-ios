@@ -243,11 +243,6 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(void)exit
-{
-
-}
-
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList

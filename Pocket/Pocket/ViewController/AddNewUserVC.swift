@@ -45,6 +45,12 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
     //MARK: - system
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+#if POCKET_FAST_LOGIN_PASSWD
+        txtPasswd.text = POCKET_FAST_LOGIN_PASSWD
+        txtPasswdConfirm.text = POCKET_FAST_LOGIN_PASSWD
+#endif
+        
     }
     
     

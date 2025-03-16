@@ -42,6 +42,8 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     //MARK: - system
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(FAST_LOGIN_EMAIL)
     }
     
     override func viewWillAppear(_ animated: Bool) {

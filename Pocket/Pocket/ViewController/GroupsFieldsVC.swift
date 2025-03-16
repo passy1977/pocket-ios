@@ -20,6 +20,8 @@
 import UIKit
 import Reachability
 import SwiftSpinner
+import KeychainSwift
+
 
 final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -66,6 +68,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     private var menuShowing = false
     
     private var fullPathFileXmlImport = ""
+    
+    private let keychain = KeychainSwift()
     
     //MARK: - system
     override func viewDidLoad() {
@@ -468,7 +472,9 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction private func actBtnExit(_ sender: UIButton) {
         actViwMenuOpenOrClose()
-        groupController.exit()
+        Globals.shared().logout()
+        self.keychain.delete(KEY_EMAIL)
+        self.keychain.delete(KEY_PASSWD)
         navigationController?.popViewController(animated: true)
     }
     
