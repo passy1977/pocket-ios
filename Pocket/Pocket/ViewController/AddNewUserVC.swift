@@ -46,10 +46,11 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-#if POCKET_FAST_LOGIN_PASSWD
-        txtPasswd.text = POCKET_FAST_LOGIN_PASSWD
-        txtPasswdConfirm.text = POCKET_FAST_LOGIN_PASSWD
-#endif
+        if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
+            txtPasswd.text = passwd
+            txtPasswdConfirm.text = passwd
+        }
+        
         
     }
     

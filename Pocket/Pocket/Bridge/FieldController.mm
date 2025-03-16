@@ -90,10 +90,18 @@ constexpr char APP_TAG[] = "FieldController";
 //MARK: - Field
 -(NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search
 {
+    
     NSMutableArray<Field*> *ret = [NSMutableArray new];
-    for(auto &&it : viewField->get_list(groupId, [search UTF8String]))
+    try
     {
-        [ret addObject:convert(it)];
+        for(auto &&it : viewField->get_list(groupId, [search UTF8String]))
+        {
+            [ret addObject:convert(it)];
+        }
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
     }
     return ret;
 }

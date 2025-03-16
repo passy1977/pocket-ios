@@ -42,13 +42,19 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     //MARK: - system
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(FAST_LOGIN_EMAIL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         Timeout4Logout.shared.stop()
     
+        if let email = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_EMAIL") as? String, !email.isEmpty {
+            txtEmail.text = email
+        }
+        
+        if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
+            txtPasswd.text = passwd
+        }
+        
         if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
             self.configJson = configJson
             
@@ -167,9 +173,11 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         if !Globals.shared().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
-            txtPasswd.text = ""
-            alertShow(self, message: "Server Data wrong format")
-            SwiftSpinner.hide()
+            DispatchQueue.main.async {
+                self.txtPasswd.text = ""
+                SwiftSpinner.hide()
+                alertShow(self, message: "Server Data wrong format")
+            }
             return
         }
         

@@ -109,9 +109,16 @@ constexpr char APP_TAG[] = "GroupController";
 -(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(nonnull const NSString*)search
 {
     NSMutableArray<Group*> *ret = [NSMutableArray new];
-    for(auto &&it : viewGroup->get_list(groupId, [search UTF8String]))
+    try
     {
-        [ret addObject:convert(it)];
+        for(auto &&it : viewGroup->get_list(groupId, [search UTF8String]))
+        {
+            [ret addObject:convert(it)];
+        }
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
     }
     return ret;
 }

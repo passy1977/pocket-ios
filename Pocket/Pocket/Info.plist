@@ -25,6 +25,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FAST_LOGIN_EMAIL</key>
 	<string>$(FAST_LOGIN_EMAIL)</string>
+	<key>FAST_LOGIN_PASSWD</key>
+	<string>$(FAST_LOGIN_PASSWD)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
