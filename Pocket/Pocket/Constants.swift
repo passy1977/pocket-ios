@@ -37,7 +37,7 @@ let dateFormatterForFile : DateFormatter = {
 }()
 
 #if DEBUG
-let sessionTimeoutInSeconds = 10
+let sessionTimeoutInSeconds = 480
 #else
 let sessionTimeoutInSeconds = 480
 #endif

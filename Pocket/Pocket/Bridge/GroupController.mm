@@ -179,8 +179,9 @@ constexpr char APP_TAG[] = "GroupController";
             gfObjC._id = static_cast<uint32_t>(gf->id);
             
             Field *fObjC = [Field new];
-            fObjC.title = [NSString stringWithCString:gf->title.c_str() encoding:NSUTF8StringEncoding];
+            fObjC.title = gfObjC.title;
             fObjC.value = @"";
+            fObjC.isHidden = gf->is_hidden;
             auto&& f = convert(fObjC);
             f->user_id = [user getid];
             f->group_id = g->id;
