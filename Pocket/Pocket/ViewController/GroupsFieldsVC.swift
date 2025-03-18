@@ -67,7 +67,9 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     private let menuOffset : CGFloat = -195
     private var menuShowing = false
     
-    private var fullPathFileXmlImport = ""
+    private var fullPathFileImport = ""
+    private var fullPathFileImportLegacy = ""
+    private var onExit = false
     
     private let keychain = KeychainSwift()
     
@@ -128,7 +130,11 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        if onExit
+        {
+            return
+        }
+        
         actViwMenuOpenOrClose(hideAnimation: true)
         
         if self.isMovingFromParent {
@@ -334,9 +340,19 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         view.endEditing(true)
         if menuShowing, StackNavigator.share.size() == 0 {
             
-            if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                fullPathFileXmlImport = url.appendingPathComponent(fileNameImport, isDirectory: false).path
-                btnXmlImport.isEnabled = FileManager.default.fileExists(atPath: fullPathFileXmlImport)
+            fullPathFileImport = ""
+            fullPathFileImportLegacy = ""
+            for url in FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)   {
+ 
+                if FileManager.default.fileExists(atPath: url.appendingPathComponent(fileNameImport, isDirectory: false).path) {
+                    fullPathFileImport = url.absoluteString + fileNameImport
+                    btnXmlImport.isEnabled = true
+                    break
+                } else if FileManager.default.fileExists(atPath: url.appendingPathComponent(fileNameImportLegacy, isDirectory: false).path) {
+                    fullPathFileImportLegacy = url.absoluteString + fileNameImportLegacy
+                    btnXmlImport.isEnabled = true
+                    break
+                }
             }
             
             btnXmlExport.isEnabled = groupController.countChild(group) > 0
@@ -383,12 +399,29 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                 
                 DispatchQueue.global(qos: .background).async {
-                    if self.groupController.dataExport(url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path) {
-                        if self.groupController.dataImport(self.fullPathFileXmlImport) {
+                    let fullPathExport = url.appendingPathComponent(String(format: fileNameExport, dateFormatterForFile.string(from: Date())), isDirectory: false).path
+                    if self.groupController.dataExport(fullPathExport) {
+                        
+                        if (!self.fullPathFileImport.isEmpty && self.groupController.dataImport(self.fullPathFileImport))
+                            || (!self.fullPathFileImportLegacy.isEmpty && self.groupController.dataImportLegacy(self.fullPathFileImportLegacy)) {
                            
-                            if FileManager.default.fileExists(atPath: self.fullPathFileXmlImport) {
+                            if FileManager.default.fileExists(atPath: fullPathExport) {
                                 do {
-                                    try FileManager.default.removeItem(at: URL(fileURLWithPath: self.fullPathFileXmlImport))
+                                    try FileManager.default.removeItem(at: URL(fileURLWithPath: fullPathExport))
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                            
+                            if FileManager.default.fileExists(atPath: self.fullPathFileImport) {
+                                do {
+                                    try FileManager.default.removeItem(at: URL(fileURLWithPath: self.fullPathFileImport))
+                                } catch {
+                                    print(error)
+                                }
+                            } else if FileManager.default.fileExists(atPath: self.fullPathFileImportLegacy) {
+                                do {
+                                    try FileManager.default.removeItem(at: URL(fileURLWithPath: self.fullPathFileImportLegacy))
                                 } catch {
                                     print(error)
                                 }
@@ -409,6 +442,15 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                             }
                         } else {
+                            
+                            if FileManager.default.fileExists(atPath: fullPathExport) {
+                                do {
+                                    try FileManager.default.removeItem(at: URL(fileURLWithPath: fullPathExport))
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                            
                             DispatchQueue.main.async {
                                 SwiftSpinner.hide()
                                 alertShow(self, message: "Import unexpected error")
@@ -471,6 +513,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction private func actBtnExit(_ sender: UIButton) {
+        onExit = true
         actViwMenuOpenOrClose()
         Globals.shared().logout()
         self.keychain.delete(KEY_EMAIL)

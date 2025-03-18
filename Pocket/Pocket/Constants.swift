@@ -25,6 +25,7 @@ let synchronizatorStart = "START"
 let synchronizatorEnd = "END"
 
 let fileNameImport = "import_data.json"
+let fileNameImportLegacy = "import_data_legacy.xml"
 let fileNamePrefixExport = "export_data_"
 let fileNameExport = "\(fileNamePrefixExport)%@.json"
 let dateFormatterForFile : DateFormatter = {
