@@ -30,6 +30,7 @@
 		14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156032D669E3E00EB655E /* curl.xcframework */; };
 		14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; };
 		14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA14212431CAB30067CFA8 /* FieldVC.swift */; };
+		14CD11B02D89243E00B4C233 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14CD11AD2D89243E00B4C233 /* tinyxml2.cpp */; };
 		14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF462932C7A700C84FD0 /* Group.mm */; };
 		14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF4C2932C7A700C84FD0 /* GroupController.mm */; };
 		14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF502932C7A700C84FD0 /* GroupField.mm */; };
@@ -95,6 +96,9 @@
 		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
 		14B8A4632D7C863A004E0CC5 /* helpers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = helpers.hpp; sourceTree = "<group>"; };
 		14BA14212431CAB30067CFA8 /* FieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVC.swift; sourceTree = "<group>"; };
+		14CD11A62D8921AA00B4C233 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
+		14CD11AB2D89242A00B4C233 /* tinyxml2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
+		14CD11AD2D89243E00B4C233 /* tinyxml2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
 		14D4DF462932C7A700C84FD0 /* Group.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Group.mm; sourceTree = "<group>"; };
 		14D4DF4A2932C7A700C84FD0 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
 		14D4DF4B2932C7A700C84FD0 /* FieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldController.h; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				1447E9882D66965000812D0A /* inc */,
+				14CD11AF2D89243E00B4C233 /* src */,
 			);
 			path = "pocket-lib-adds";
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 		1447E9882D66965000812D0A /* inc */ = {
 			isa = PBXGroup;
 			children = (
+				14CD11AC2D89242A00B4C233 /* tinyxml2 */,
 				1447E98C2D66976800812D0A /* nlohmann */,
 			);
 			path = inc;
@@ -269,6 +275,22 @@
 				148D86672431DA8C00EB38D6 /* SZTextView.m */,
 			);
 			path = SZTextView;
+			sourceTree = "<group>";
+		};
+		14CD11AC2D89242A00B4C233 /* tinyxml2 */ = {
+			isa = PBXGroup;
+			children = (
+				14CD11AB2D89242A00B4C233 /* tinyxml2.h */,
+			);
+			path = tinyxml2;
+			sourceTree = "<group>";
+		};
+		14CD11AF2D89243E00B4C233 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				14CD11AD2D89243E00B4C233 /* tinyxml2.cpp */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		14D4DF432932C7A700C84FD0 /* Bridge */ = {
@@ -585,9 +607,10 @@
 		A19B22612248737200FE9722 = {
 			isa = PBXGroup;
 			children = (
+				14CD11A62D8921AA00B4C233 /* README.md */,
 				14942C372D69D68F004FC897 /* Sercets.xcconfig */,
-				1447E9872D66961A00812D0A /* pocket-lib-adds */,
 				14DF18832D6548E300E5AEF2 /* pocket-lib */,
+				1447E9872D66961A00812D0A /* pocket-lib-adds */,
 				A19B226C2248737300FE9722 /* Pocket */,
 				A19B226B2248737300FE9722 /* Products */,
 				A19B2285224876A800FE9722 /* Frameworks */,
@@ -747,6 +770,7 @@
 				14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */,
 				1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */,
 				14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */,
+				14CD11B02D89243E00B4C233 /* tinyxml2.cpp in Sources */,
 				14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */,
 				14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */,
 				14D4DF662932C7A700C84FD0 /* User.mm in Sources */,

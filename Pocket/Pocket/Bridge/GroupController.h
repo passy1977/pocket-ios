@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 //MARK: - ExportImport
 -(BOOL)dataExport:(NSString*)fullPathFileExport;
 -(BOOL)dataImport:(NSString*)fullPathFileImport;
+-(BOOL)dataImportLegacy:(NSString*)fullPathFileImport;
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList;

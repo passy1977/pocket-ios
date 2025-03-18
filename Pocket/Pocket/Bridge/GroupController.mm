@@ -41,7 +41,11 @@ using namespace pods;
 #include "pocket-controllers/session.hpp"
 using controllers::session;
 
+#include "tinyxml2/tinyxml2.h"
+using namespace tinyxml2;
+
 #include <stdexcept>
+#include <fstream>
 using namespace std;
 
 extern group::ptr convert(const Group* group);
@@ -251,6 +255,65 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
+-(BOOL)dataImportLegacy:(NSString*)fullPathFileImport
+{
+    
+    string full_path_file_xml_import = [fullPathFileImport UTF8String];
+    
+    if(user == nullptr)
+    {
+        return false;
+    }
+    
+    if (!ifstream(full_path_file_xml_import).good())
+    {
+        error(APP_TAG, "file: " + full_path_file_xml_import + " not valid");
+        return false;
+    }
+
+    if(full_path_file_xml_import.empty())
+    {
+        throw runtime_error("path empty");
+    }
+
+
+    XMLDocument document;
+    document.LoadFile(full_path_file_xml_import.c_str());
+
+    if(document.ErrorID())
+    {
+        error(APP_TAG, document.ErrorStr());
+        return false;
+    }
+
+    try {
+        DAOXmlManager dao(db);
+
+        dao.group.delAll(user);
+        dao.groupField.delAll(user);
+        dao.field.delAll(user);
+
+
+        XMLElement *root = document.FirstChildElement("groups");
+
+        XMLElement *element = root->FirstChildElement();
+
+        group group;
+        group.id = 0;
+
+        while (element) {
+            importGroup(dao, element, &group);
+
+            element = element->NextSiblingElement();
+        }
+
+    } catch (const runtime_error &e) {
+        error(APP_TAG, e.what());
+        return false;
+    }
+    
+    return true;
+}
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList
