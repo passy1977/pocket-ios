@@ -141,8 +141,8 @@ user::ptr convert(const User* user)
 {
     return make_unique<struct user>(
         [user getid]
-        ,[[user getEmail] UTF8String]
         ,[[user getName] UTF8String]
+        ,[[user getEmail] UTF8String]
         ,[[user getPasswd] UTF8String]
         ,static_cast<user::stat>([user getStatus])
         ,[user getTimestampLastUpdate]

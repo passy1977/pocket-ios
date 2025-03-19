@@ -22,7 +22,6 @@
 		145D51172D6D249F008E0714 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 145D51162D6D249F008E0714 /* KeychainSwift */; };
 		1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 1474415E25B42F1C00B6270D /* SwiftSpinner */; };
 		147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19B228A224876C800FE9722 /* libc++.tbd */; };
-		1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1485CC5F245EC91B00059F5E /* SystemInfo.m */; };
 		148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D86672431DA8C00EB38D6 /* SZTextView.m */; };
 		149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149382C524A4EEB8002D33B1 /* Security.framework */; };
 		149571EB2D711CFC002DAF5B /* Session.mm in Sources */ = {isa = PBXBuildFile; fileRef = 149571EA2D711CFC002DAF5B /* Session.mm */; };
@@ -83,8 +82,6 @@
 		143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout4Logout.swift; sourceTree = "<group>"; };
 		1447E98A2D66976800812D0A /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
 		1447E98B2D66976800812D0A /* json_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json_fwd.hpp; sourceTree = "<group>"; };
-		1485CC5F245EC91B00059F5E /* SystemInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
-		1485CC61245EC94B00059F5E /* SystemInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		148D86662431DA8C00EB38D6 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
 		148D86672431DA8C00EB38D6 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		149382C524A4EEB8002D33B1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -221,8 +218,6 @@
 			children = (
 				143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */,
 				1409A9B22D736AEA00F91B6A /* StackNavigator.swift */,
-				1485CC61245EC94B00059F5E /* SystemInfo.h */,
-				1485CC5F245EC91B00059F5E /* SystemInfo.m */,
 				143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */,
 			);
 			path = Services;
@@ -787,7 +782,6 @@
 				14D4DF632932C7A700C84FD0 /* GroupField.mm in Sources */,
 				14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */,
 				14D4DF612932C7A700C84FD0 /* GroupController.mm in Sources */,
-				1485CC60245EC91B00059F5E /* SystemInfo.m in Sources */,
 				14D4DF652932C7A700C84FD0 /* Field.mm in Sources */,
 				143830A52430A92300221BB8 /* GroupVC.swift in Sources */,
 			);
@@ -869,6 +863,7 @@
 					"DEVICE_AES_CBC_IV=$(DEVICE_AES_CBC_IV)",
 					POCKET_DISABLE_DB_LOCK,
 					"POCKET_ENABLE_AES=1",
+					DISABLE_SERVER_TIMEOUT,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -955,6 +950,7 @@
 					POCKET_DISABLE_LOG_COLOR,
 					"DEVICE_AES_CBC_IV=$(DEVICE_AES_CBC_IV)",
 					"POCKET_ENABLE_AES=1",
+					DISABLE_SERVER_TIMEOUT,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

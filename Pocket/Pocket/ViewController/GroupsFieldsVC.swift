@@ -330,8 +330,6 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 self.navigationController?.popToViewController(viewControllers[0], animated: true)
             }
         }
-        
-        
     }
 
     // MARK: - Act

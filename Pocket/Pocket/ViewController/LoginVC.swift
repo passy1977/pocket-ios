@@ -46,14 +46,6 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         Timeout4Logout.shared.stop()
-    
-        if let email = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_EMAIL") as? String, !email.isEmpty {
-            txtEmail.text = email
-        }
-        
-        if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
-            txtPasswd.text = passwd
-        }
         
         if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
             self.configJson = configJson
@@ -84,6 +76,14 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             setForm(nil)
             performSegue(withIdentifier: "newUser", sender: self)
             
+        }
+        
+        if let email = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_EMAIL") as? String, !email.isEmpty {
+            txtEmail.text = email
+        }
+        
+        if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
+            txtPasswd.text = passwd
         }
     }
     
