@@ -33,6 +33,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet private weak var viwMenu: UIView!
     @IBOutlet private weak var cnstViewMenu: NSLayoutConstraint!
     @IBOutlet private weak var txtMenuTitle: UILabel!
+    @IBOutlet private weak var btnChangePasswd: UIButton!
     @IBOutlet private weak var btnImport: UIButton!
     @IBOutlet private weak var btnExport: UIButton!
     
@@ -81,6 +82,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         txtMenuTitle.text = "Pocket \(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "")"
         menuIconClose.target = self
         menuIconOpen.target = self
+        btnChangePasswd.isEnabled = true
         
         if let (group, search) = StackNavigator.share.peek {
             self.group = group
@@ -387,7 +389,13 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         performSegue(withIdentifier: "field", sender: self)
     }
     
-    @IBAction private func actBtnXmlImport(_ sender: UIButton) {
+    @IBAction func actBtnChangePasswd(_ sender: UIButton) {
+        view.endEditing(true)
+        actViwMenuOpenOrClose()
+        self.performSegue(withIdentifier: "changePasswd", sender: self)
+    }
+    
+    @IBAction private func actBtnImport(_ sender: UIButton) {
         view.endEditing(true)
         actViwMenuOpenOrClose()
         alertShow(self, title: "Warning", message: "Dou you want import data? All actual data will be deleted!", handlerNo: { _ in }) { _ in
@@ -467,7 +475,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    @IBAction private func actBtnXmlExport(_ sender: UIButton) {
+    @IBAction private func actBtnExport(_ sender: UIButton) {
         view.endEditing(true)
         
         Timeout4Logout.shared.stop()

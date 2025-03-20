@@ -61,6 +61,7 @@
 		14DF189F2D6548E300E5AEF2 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18702D6548E300E5AEF2 /* globals.cpp */; };
 		14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF183B2D6548E300E5AEF2 /* dao-read-write-group.cpp */; };
 		14E255AC25B4B703001FDC10 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B117ED25B49BD30024FAD0 /* libz.tbd */; };
+		14EA5B862D8CCE1D0007A70D /* ChangePasswdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA5B852D8CCE1D0007A70D /* ChangePasswdVC.swift */; };
 		A19B226E2248737300FE9722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19B226D2248737300FE9722 /* AppDelegate.swift */; };
 		A19B22732248737300FE9722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19B22712248737300FE9722 /* Main.storyboard */; };
 		A19B22752248737300FE9722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19B22742248737300FE9722 /* Assets.xcassets */; };
@@ -166,6 +167,7 @@
 		14DF18702D6548E300E5AEF2 /* globals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
 		14DF18712D6548E300E5AEF2 /* tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tree.cpp; sourceTree = "<group>"; };
 		14DF18B72D65492100E5AEF2 /* BS_thread_pool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BS_thread_pool.hpp; sourceTree = "<group>"; };
+		14EA5B852D8CCE1D0007A70D /* ChangePasswdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswdVC.swift; sourceTree = "<group>"; };
 		A19B226A2248737300FE9722 /* Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19B226D2248737300FE9722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19B22722248737300FE9722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				143830A42430A92300221BB8 /* GroupVC.swift */,
 				14173FC2242D27560055410E /* AddNewUserVC.swift */,
 				14173FC0242D27560055410E /* LoginVC.swift */,
+				14EA5B852D8CCE1D0007A70D /* ChangePasswdVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				14DF18892D6548E300E5AEF2 /* dao-field.cpp in Sources */,
 				14DF188A2D6548E300E5AEF2 /* response.cpp in Sources */,
 				14DF188C2D6548E300E5AEF2 /* variant.cpp in Sources */,
+				14EA5B862D8CCE1D0007A70D /* ChangePasswdVC.swift in Sources */,
 				14DF188D2D6548E300E5AEF2 /* result-set.cpp in Sources */,
 				14DF188F2D6548E300E5AEF2 /* dao.cpp in Sources */,
 				14DF18902D6548E300E5AEF2 /* dao-read-write-field.cpp in Sources */,
