@@ -750,8 +750,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnXmlExport" destination="OFQ-Bm-Ech" id="ehY-5O-GJj"/>
-                        <outlet property="btnXmlImport" destination="MyY-xf-KNX" id="1fk-yB-X5m"/>
+                        <outlet property="btnExport" destination="OFQ-Bm-Ech" id="ehY-5O-GJj"/>
+                        <outlet property="btnImport" destination="MyY-xf-KNX" id="1fk-yB-X5m"/>
                         <outlet property="cnstTxtViwNoteHeight" destination="8UW-1A-Ve6" id="Hg2-o9-XL9"/>
                         <outlet property="cnstViewMenu" destination="O8M-br-4wh" id="z0e-I5-9lf"/>
                         <outlet property="list" destination="HkM-3r-CCd" id="9xF-V5-4hn"/>

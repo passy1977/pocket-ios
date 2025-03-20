@@ -33,8 +33,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet private weak var viwMenu: UIView!
     @IBOutlet private weak var cnstViewMenu: NSLayoutConstraint!
     @IBOutlet private weak var txtMenuTitle: UILabel!
-    @IBOutlet private weak var btnXmlImport: UIButton!
-    @IBOutlet private weak var btnXmlExport: UIButton!
+    @IBOutlet private weak var btnImport: UIButton!
+    @IBOutlet private weak var btnExport: UIButton!
     
     //MARK: - Data
     private var tupleList : [(group: Group?, field: Field?)] = []
@@ -344,16 +344,16 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
  
                 if FileManager.default.fileExists(atPath: url.appendingPathComponent(fileNameImport, isDirectory: false).path) {
                     fullPathFileImport = url.absoluteString + fileNameImport
-                    btnXmlImport.isEnabled = true
+                    btnImport.isEnabled = true
                     break
                 } else if FileManager.default.fileExists(atPath: url.appendingPathComponent(fileNameImportLegacy, isDirectory: false).path) {
                     fullPathFileImportLegacy = url.absoluteString + fileNameImportLegacy
-                    btnXmlImport.isEnabled = true
+                    btnImport.isEnabled = true
                     break
                 }
             }
             
-            btnXmlExport.isEnabled = groupController.countChild(group) > 0
+            btnExport.isEnabled = groupController.countChild(group) > 0
             
             navigationItem.leftBarButtonItem = menuIconOpen
             cnstViewMenu.constant = 0
