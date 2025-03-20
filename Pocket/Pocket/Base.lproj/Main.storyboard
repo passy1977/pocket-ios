@@ -93,6 +93,7 @@
                     <connections>
                         <outlet property="btnAddNewUser" destination="uPZ-Y5-buw" id="1pa-pX-sN9"/>
                         <outlet property="btnLogin" destination="HAC-WT-xMg" id="LED-i2-42w"/>
+                        <outlet property="lblTitle" destination="3Tw-bD-L4V" id="1my-x8-YeI"/>
                         <outlet property="txtEmail" destination="1iL-kU-Fh8" id="pQd-z6-ys3"/>
                         <outlet property="txtPasswd" destination="JMh-1Y-qAX" id="O7N-Lx-SBZ"/>
                         <segue destination="S3a-wr-MV9" kind="show" identifier="groups" id="feY-cB-OfS"/>

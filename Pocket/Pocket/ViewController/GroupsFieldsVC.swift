@@ -425,7 +425,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                             }
                             
-                            if Globals.shared().sendData() {
+                            if Globals.shared().sendData() == .OK {
                                 DispatchQueue.main.async {
                                     SwiftSpinner.hide()
                                     self.reloadList(self.group._id)

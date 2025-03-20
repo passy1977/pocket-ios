@@ -112,8 +112,15 @@ constexpr char APP_TAG[] = "FieldController";
     {
         auto&& f = convert(field);
         viewField->persist(f);
-        session->send_data(convert(user));
-        return static_cast<Stat>(session->get_status());
+        if(auto&& user = session->send_data(convert(self.user)); user)
+        {
+            self.user = convert(user.value());
+            return OK;
+        }
+        else
+        {
+            return static_cast<Stat>(session->get_status());
+        }
     }
     catch(const runtime_error& e)
     {
@@ -128,8 +135,15 @@ constexpr char APP_TAG[] = "FieldController";
     try
     {
         viewField->del(field._id);
-        session->send_data(convert(user));
-        return static_cast<Stat>(session->get_status());
+        if(auto&& user = session->send_data(convert(self.user)); user)
+        {
+            self.user = convert(user.value());
+            return OK;
+        }
+        else
+        {
+            return static_cast<Stat>(session->get_status());
+        }
     }
     catch(const runtime_error& e)
     {

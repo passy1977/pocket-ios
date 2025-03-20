@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, Stat)
 
 -(Stat)logout;
 
--(BOOL)sendData;
+-(Stat)sendData;
 
 -(nullable const User *)getUser;
 -(nonnull Session *)getSession;

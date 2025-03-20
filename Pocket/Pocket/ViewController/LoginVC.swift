@@ -29,6 +29,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet private(set) public weak var txtPasswd: UITextField! //lasciarlo pubblico
     @IBOutlet private weak var btnLogin: UIButton!
     @IBOutlet private weak var btnAddNewUser: UIButton!
+    @IBOutlet private weak var lblTitle: UILabel!
     
     //MARK: - Data
     private let cnstTxtHostShow : CGFloat = 92
@@ -46,6 +47,10 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         Timeout4Logout.shared.stop()
+        
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            lblTitle.text = "Pocket \(appVersion)"
+        }
         
         if let configJson = UserDefaults.standard.string(forKey: KEY_DEVICE) {
             self.configJson = configJson
@@ -70,20 +75,21 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                         }
                     }
                 }
+                
+                if let email = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_EMAIL") as? String, !email.isEmpty {
+                    txtEmail.text = email
+                }
+                
+                if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
+                    txtPasswd.text = passwd
+                }
+            } else if let passwd = passwd {
+                setForm(nil, passwd: passwd)
             }
 
         } else {
             setForm(nil)
             performSegue(withIdentifier: "newUser", sender: self)
-            
-        }
-        
-        if let email = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_EMAIL") as? String, !email.isEmpty {
-            txtEmail.text = email
-        }
-        
-        if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
-            txtPasswd.text = passwd
         }
     }
     

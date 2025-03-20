@@ -43,6 +43,7 @@ using namespace std;
 #endif
 
 user::ptr convert(const User* user);
+User* convert(const user::ptr &user);
 
 namespace
 {
@@ -258,11 +259,19 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(BOOL)sendData
+-(Stat)sendData
 {
     try
     {
-        return session->send_data(convert(user));
+        if(auto&& user = session->send_data(convert(self.user)); user)
+        {
+            self.user = convert(user.value());
+            return OK;
+        }
+        else
+        {
+            return static_cast<Stat>(session->get_status());
+        }
     }
     catch(const runtime_error& e)
     {

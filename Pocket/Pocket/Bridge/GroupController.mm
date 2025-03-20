@@ -147,8 +147,15 @@ constexpr char APP_TAG[] = "GroupController";
         viewGroupField->del_by_group_id(group._id);
         viewField->del_by_group_id(group._id);
         viewGroup->del(group._id);
-        session->send_data(convert(user));
-        return static_cast<Stat>(session->get_status());
+        if(auto&& user = session->send_data(convert(self.user)); user)
+        {
+            self.user = convert(user.value());
+            return OK;
+        }
+        else
+        {
+            return static_cast<Stat>(session->get_status());
+        }
     }
     catch(const runtime_error& e)
     {
@@ -198,10 +205,12 @@ constexpr char APP_TAG[] = "GroupController";
             fObjC._id = static_cast<uint32_t>(f->id);
         }
         
-        session->send_data(convert(user));
-        
-        [showList removeAllObjects];
-        
+        if(auto&& user = session->send_data(convert(self.user)); user)
+        {
+            self.user = convert(user.value());
+            [showList removeAllObjects];
+        }
+
         return static_cast<Stat>(session->get_status());
     }
     catch(const runtime_error& e)
