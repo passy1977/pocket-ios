@@ -26,23 +26,13 @@ using pocket::pods::user;
 #include <memory>
 using namespace std;
 
-@interface User ()
-@property uint32_t _id;
-@property NSString* _email;
-@property NSString* _name;
-@property NSString* _passwd;
-@property UserStat _status;
-@property uint64_t _timestampLastUpdate;
-@end
-
-
 @implementation User
 @synthesize  _id;
-@synthesize _email;
-@synthesize _name;
-@synthesize _passwd;
-@synthesize _timestampLastUpdate;
-@synthesize _status;
+@synthesize email;
+@synthesize name;
+@synthesize passwd;
+@synthesize timestampLastUpdate;
+@synthesize status;
 
 
 -(instancetype)init
@@ -54,7 +44,7 @@ using namespace std;
     return self;
 }
 
--(instancetype)initWithId:(uint32_t)id
+-(instancetype)initWithId:(uint32_t)_id
     email:(NSString*)email
     name:(NSString*)name
     passwd:(NSString*)passwd
@@ -63,75 +53,14 @@ using namespace std;
 {
     if(self = [super init])
     {
-        _id = id;
-        _email = email;
-        _name = name;
-        _passwd = passwd;
-        _timestampLastUpdate = timestampLastUpdate;
-        _status = status;
+        self._id = _id;
+        self.email = email;
+        self.name = name;
+        self.passwd = passwd;
+        self.timestampLastUpdate = timestampLastUpdate;
+        self.status = status;
     }
     return self;
-}
-
--(void)setid:(uint32_t)id
-{
-    _id = id;
-}
-
--(uint32_t)getid
-{
-    return _id;
-}
-
--(void)setEmail:(NSString*)email
-{
-    _email = email;
-}
-
--(NSString*)getEmail
-{
-    return _email;
-}
-
--(void)setName:(NSString*)name
-{
-    _name = name;
-}
-
--(NSString*)getName
-{
-    return _name;
-}
-
--(void)setPasswd:(NSString*)passwd
-{
-    _passwd = passwd;
-}
-
--(NSString*)getPasswd
-{
-    return _passwd;
-}
-
-
--(uint64_t)getTimestampLastUpdate
-{
-    return _timestampLastUpdate;
-}
-
--(void)setTimestampLastUpdate:(uint64_t)timestampLastUpdate
-{
-    _timestampLastUpdate = timestampLastUpdate;
-}
-
--(void)setStatus:(UserStat)status
-{
-    _status = status;
-}
-
--(UserStat)getStatus
-{
-    return _status;
 }
 
 @end
@@ -140,25 +69,25 @@ using namespace std;
 user::ptr convert(const User* user)
 {
     return make_unique<struct user>(
-        [user getid]
-        ,[[user getName] UTF8String]
-        ,[[user getEmail] UTF8String]
-        ,[[user getPasswd] UTF8String]
-        ,static_cast<user::stat>([user getStatus])
-        ,[user getTimestampLastUpdate]
-    );;
+                                    user._id
+                                    ,[user.name UTF8String]
+                                    ,[user.email UTF8String]
+                                    ,[user.passwd UTF8String]
+                                    ,static_cast<user::stat>(user.status)
+                                    ,user.timestampLastUpdate
+                                    );
 }
 
 User* convert(const user::ptr &user)
 {
     User *ret = [User new];
     
-    [ret setid: static_cast<uint32_t>(user->id)];
-    [ret setEmail: [NSString stringWithCString:user->email.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setName: [NSString stringWithCString:user->name.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setPasswd: [NSString stringWithCString:user->passwd.c_str() encoding:NSUTF8StringEncoding] ];
-    [ret setStatus: static_cast<UserStat>(user->status) ];
-    [ret setTimestampLastUpdate: user->timestamp_last_update ];
+    ret._id = static_cast<uint32_t>(user->id);
+    ret.email = [NSString stringWithCString:user->email.c_str() encoding:NSUTF8StringEncoding];
+    ret.name = [NSString stringWithCString:user->name.c_str() encoding:NSUTF8StringEncoding];
+    ret.passwd = [NSString stringWithCString:user->passwd.c_str() encoding:NSUTF8StringEncoding];
+    ret.status = static_cast<UserStat>(user->status);
+    ret.timestampLastUpdate = user->timestamp_last_update;
     
     return ret;
 }

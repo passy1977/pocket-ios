@@ -58,6 +58,8 @@ typedef NS_ENUM(NSUInteger, Stat)
     OK = 200
 };
 
+@property User* user;
+
 -(instancetype)init;
 
 +(Globals*)shared;
@@ -71,10 +73,11 @@ typedef NS_ENUM(NSUInteger, Stat)
 
 -(Stat)logout;
 
+-(Stat)changePasswd:(nonnull const NSString*)fullPathFile newPasswd:(nonnull const NSString*)newPasswd;
+
 -(Stat)sendData;
 
--(nullable const User *)getUser;
--(nonnull Session *)getSession;
+-(nonnull void *)getSession;
 
 @end
 

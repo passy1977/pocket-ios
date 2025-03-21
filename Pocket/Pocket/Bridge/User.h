@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class Device;
 
-@interface User : NSObject
 
 typedef NS_ENUM(NSUInteger, UserStat)
 {
@@ -36,25 +35,23 @@ typedef NS_ENUM(NSUInteger, UserStat)
     INVALIDATED = 3
 };
 
--(instancetype)init;
--(instancetype)initWithId:(uint32_t)id     email:(NSString*)email
-    name:(NSString*)name
-    passwd:(NSString*)passwd
-    timestampLastUpdate:(uint64_t)timestampLastUpdate
-    status:(UserStat)status;
 
--(void)setid:(uint32_t)id;
--(uint32_t)getid;
--(void)setEmail:(NSString*)email;
--(NSString*)getEmail;
--(void)setName:(NSString*)name;
--(NSString*)getName;
--(void)setPasswd:(NSString*)passwd;
--(NSString*)getPasswd;
--(uint64_t)getTimestampLastUpdate;
--(void)setTimestampLastUpdate:(uint64_t)timestampLastUpdate;
--(void)setStatus:(UserStat)status;
--(UserStat)getStatus;
+@interface User : NSObject
+@property uint32_t _id;
+@property NSString* email;
+@property NSString* name;
+@property NSString* passwd;
+@property UserStat status;
+@property uint64_t timestampLastUpdate;
+
+-(instancetype)init;
+-(instancetype)initWithId:(uint32_t)_id
+                    email:(NSString*)email
+                     name:(NSString*)name
+                   passwd:(NSString*)passwd
+      timestampLastUpdate:(uint64_t)timestampLastUpdate
+                   status:(UserStat)status;
+
 
 @end
 

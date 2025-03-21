@@ -1,12 +1,26 @@
-//
-//  ChangePasswdVC.swift
-//  Pocket
-//
-//  Created by Antonio Salsi on 20/03/25.
-//  Copyright © 2025 Scapix. All rights reserved.
-//
+/***************************************************************************
+ *
+ * Pocket
+ * Copyright (C) 2018/2025 Antonio Salsi <passy.linux@zresa.it>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ ***************************************************************************/
+
 
 import UIKit
+import SwiftSpinner
+import KeychainSwift
 
 class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
 
@@ -18,9 +32,7 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtOldPasswd.text = "ciao"
-        txtPasswd.text = "ciao1"
-        txtPasswdConfirm.text = "ciao2"
+        Timeout4Logout.shared.updateTimeLeft()
     }
     
     // MARK: - UITextFieldDelegate
@@ -32,6 +44,45 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
     // MARK: - Act
     
     @IBAction func actBtnAdd(_ sender: UIBarButtonItem) {
+        guard let oldPasswd = txtOldPasswd.text, let newPasswd = txtPasswd.text, let confirmPasswd = txtPasswdConfirm.text else {
+            return;
+        }
+        
+        if oldPasswd != Globals.shared().user.passwd {
+            alertShow(self, message: "Wrong old passwd")
+            return
+        }
+        
+        if newPasswd.isEmpty || confirmPasswd.isEmpty {
+            alertShow(self, message: "New password or confirm password are empty")
+            return
+        }
+        
+        if newPasswd != confirmPasswd {
+            alertShow(self, message: "New password and confirm password not match")
+            return
+        }
+        
+        guard var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            alertShow(self, message: "New password and confirm password not match")
+            return
+        }
+        url = url.appendingPathComponent(fileNameChangePasswd);
+        
+        alertShow(self, title: "Warning", message: "Dou you want change passwd?", handlerNo: { _ in }) { _ in
+            Timeout4Logout.shared.stop()
+            
+            SwiftSpinner.show("Changing passwd...")
+            
+            DispatchQueue.global(qos: .background).async {
+                Globals.shared().changePasswd(url.path, newPasswd: newPasswd)
+                DispatchQueue.main.async {
+                    SwiftSpinner.hide()
+                    Timeout4Logout.shared.start()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
         
     }
 }

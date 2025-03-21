@@ -194,7 +194,9 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             }
             if(rc == .OK)
             {
-                if(Globals.shared().user.status == .ACTIVE)
+                let user = Globals.shared().getUser()
+                
+                if(user?.getStatus() ?? .NOT_ACTIVE == .ACTIVE)
                 {
                     Timeout4Logout.shared.start()
                     

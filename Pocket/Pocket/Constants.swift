@@ -28,6 +28,7 @@ let fileNameImport = "import_data.json"
 let fileNameImportLegacy = "import_data_legacy.xml"
 let fileNamePrefixExport = "export_data_"
 let fileNameExport = "\(fileNamePrefixExport)%@.json"
+let fileNameChangePasswd = "export_data_change_passwd.json"
 let dateFormatterForFile : DateFormatter = {
     
     let dateFormatterGet = DateFormatter()

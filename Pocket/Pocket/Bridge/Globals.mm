@@ -21,7 +21,6 @@
 
 #import "Globals.h"
 #import "User.h"
-#import "Session.h"
 
 #include "pocket/globals.hpp"
 using namespace pocket;
@@ -55,7 +54,6 @@ constexpr char APP_TAG[] = "Globals";
  
 @interface Globals ()
 @property class session* session;
-@property User* user;
 @property class aes* aes;
 @end
 
@@ -224,7 +222,7 @@ constexpr char APP_TAG[] = "Globals";
     
     try
     {
-        auto&& userOpt = session->login([email UTF8String], [passwd UTF8String]);
+        auto&& userOpt = session->login([email UTF8String], [passwd UTF8String], POCKET_ENABLE_AES);
         if(userOpt)
         {
             user = convert(*userOpt);
@@ -259,6 +257,29 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
+-(Stat)changePasswd:(nonnull const NSString*)fullPathFile newPasswd:(nonnull const NSString*)newPasswd
+{
+    try
+    {
+
+        if( auto&& userOpt = session->change_passwd(convert(user), [fullPathFile UTF8String], [newPasswd UTF8String], POCKET_ENABLE_AES); userOpt)
+        {
+            user = convert(*userOpt);
+            
+            return OK;
+        }
+        else
+        {
+            return static_cast<Stat>(session->get_status());
+        }
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
+        return static_cast<Stat>(session->get_status());
+    }
+}
+
 -(Stat)sendData
 {
     try
@@ -285,9 +306,9 @@ constexpr char APP_TAG[] = "Globals";
     return user;
 }
 
--(nonnull Session *)getSession
+-(nonnull void *)getSession
 {
-    return [[Session alloc] init: session];
+    return session;
 }
 
 @end

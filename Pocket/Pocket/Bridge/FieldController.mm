@@ -23,7 +23,6 @@
 
 #import "Field.h"
 #import "FieldController.h"
-#import "Session.h"
 #import "User.h"
 
 #include "pocket/globals.hpp"
@@ -82,8 +81,8 @@ constexpr char APP_TAG[] = "FieldController";
 
 -(void)initialize
 {
-    session = [[Globals shared] getSession].session;
-    user = [[Globals shared] getUser];
+    session = static_cast<class session*>([[Globals shared] getSession]);
+    user = [Globals shared].user;
     viewField = session->get_view_field().get();
 }
 

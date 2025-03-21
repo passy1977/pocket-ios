@@ -20,7 +20,6 @@
 #import "Group.h"
 #import "Field.h"
 #import "GroupField.h"
-#import "Session.h"
 
 #import "GroupController.h"
 
@@ -102,8 +101,8 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(void)initialize
 {
-    session = [[Globals shared] getSession].session;
-    user = [[Globals shared] getUser];
+    session = static_cast<class session*>([[Globals shared] getSession]);
+    user = [Globals shared].user;
     viewGroup = session->get_view_group().get();
     viewGroupField = session->get_view_group_field().get();
     viewField = session->get_view_field().get();
@@ -169,7 +168,7 @@ constexpr char APP_TAG[] = "GroupController";
     try
     {
         auto&& g = convert(group);
-        g->user_id = [user getid];
+        g->user_id = user._id;
         g->synchronized = false;
         g->id = viewGroup->persist(g);
         
@@ -181,7 +180,7 @@ constexpr char APP_TAG[] = "GroupController";
             {
                 gf->id = 0;
             }
-            gf->user_id = [user getid];
+            gf->user_id = user._id;
             gf->group_id = g->id;
             gf->server_group_id = g->server_id;
             gf->synchronized = false;
@@ -194,7 +193,7 @@ constexpr char APP_TAG[] = "GroupController";
             fObjC.value = @"";
             fObjC.isHidden = gf->is_hidden;
             auto&& f = convert(fObjC);
-            f->user_id = [user getid];
+            f->user_id = user._id;
             f->group_id = g->id;
             f->server_group_id = g->server_id;
             f->group_field_id = gf->id;
@@ -238,7 +237,7 @@ constexpr char APP_TAG[] = "GroupController";
 
 //MARK: - ExportImport
 
--(BOOL)dataExport:(NSString*)fullPathFileExport
+-(BOOL)dataExport:(nonnull const NSString*)fullPathFileExport
 {
     try
     {
@@ -251,7 +250,7 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(BOOL)dataImport:(NSString*)fullPathFileImport
+-(BOOL)dataImport:(nonnull const NSString*)fullPathFileImport
 {
     try
     {
@@ -264,7 +263,7 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(BOOL)dataImportLegacy:(NSString*)fullPathFileImport
+-(BOOL)dataImportLegacy:(nonnull const NSString*)fullPathFileImport
 {
     try
     {
@@ -345,7 +344,7 @@ constexpr char APP_TAG[] = "GroupController";
         {
             id it = showList[key];
             
-            if([it getid] == idGroupField)
+            if([it _id] == idGroupField)
             {
                 if([it serverId] > 0)
                 {

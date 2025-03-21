@@ -24,7 +24,6 @@
 		147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19B228A224876C800FE9722 /* libc++.tbd */; };
 		148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D86672431DA8C00EB38D6 /* SZTextView.m */; };
 		149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149382C524A4EEB8002D33B1 /* Security.framework */; };
-		149571EB2D711CFC002DAF5B /* Session.mm in Sources */ = {isa = PBXBuildFile; fileRef = 149571EA2D711CFC002DAF5B /* Session.mm */; };
 		14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */; };
 		14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156032D669E3E00EB655E /* curl.xcframework */; };
 		14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; };
@@ -87,8 +86,6 @@
 		148D86672431DA8C00EB38D6 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		149382C524A4EEB8002D33B1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14942C372D69D68F004FC897 /* Sercets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Sercets.xcconfig; sourceTree = "<group>"; };
-		149571E92D711CFC002DAF5B /* Session.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
-		149571EA2D711CFC002DAF5B /* Session.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Session.mm; sourceTree = "<group>"; };
 		14B117ED25B49BD30024FAD0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		14B156032D669E3E00EB655E /* curl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = curl.xcframework; path = ../lib/curl.xcframework; sourceTree = "<group>"; };
 		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
@@ -308,8 +305,6 @@
 				14D4DF502932C7A700C84FD0 /* GroupField.mm */,
 				14D4DF552932C7A700C84FD0 /* User.h */,
 				14D4DF572932C7A700C84FD0 /* User.mm */,
-				149571E92D711CFC002DAF5B /* Session.h */,
-				149571EA2D711CFC002DAF5B /* Session.mm */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -774,7 +769,6 @@
 				14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */,
 				14D4DF662932C7A700C84FD0 /* User.mm in Sources */,
 				1407DC4A24301C85007CD405 /* Graphics.swift in Sources */,
-				149571EB2D711CFC002DAF5B /* Session.mm in Sources */,
 				14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */,
 				14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */,
 				14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */,
