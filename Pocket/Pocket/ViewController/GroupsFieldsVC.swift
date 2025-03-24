@@ -522,8 +522,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         onExit = true
         actViwMenuOpenOrClose()
         Globals.shared().logout()
-        self.keychain.delete(KEY_EMAIL)
-        self.keychain.delete(KEY_PASSWD)
+        keychain.delete(KEY_EMAIL)
+        keychain.delete(KEY_PASSWD)
         navigationController?.popViewController(animated: true)
     }
     

@@ -30,6 +30,8 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
     
     private let groupController = GroupController()
     
+    private let keychain = KeychainSwift()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Timeout4Logout.shared.updateTimeLeft()
@@ -76,10 +78,11 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
             
             DispatchQueue.global(qos: .background).async {
                 Globals.shared().changePasswd(url.path, newPasswd: newPasswd)
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SwiftSpinner.hide()
-                    Timeout4Logout.shared.start()
-                    self.navigationController?.popViewController(animated: true)
+                    Globals.shared().logout()
+                    self.keychain.delete(KEY_PASSWD)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             }
         }
