@@ -250,8 +250,15 @@ constexpr char APP_TAG[] = "Globals";
         {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            return session->logout(convert(user)) ? OK : static_cast<Stat>(session->get_status());
         }
-        return session->logout(convert(user)) ? OK : static_cast<Stat>(session->get_status());
+        else
+        {
+            session->get_view_field()->rm_all();
+            session->get_view_group_field()->rm_all();
+            session->get_view_group()->rm_all();
+            return OK;
+        }
     }
     catch(const runtime_error& e)
     {

@@ -76,6 +76,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                     }
                 }
                 
+#if DEBUG
                 if let email = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_EMAIL") as? String, !email.isEmpty {
                     txtEmail.text = email
                 }
@@ -83,6 +84,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                 if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
                     txtPasswd.text = passwd
                 }
+#endif
             } else if let passwd = passwd {
                 setForm(nil, passwd: passwd)
             }

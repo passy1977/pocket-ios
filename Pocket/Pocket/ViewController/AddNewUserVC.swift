@@ -46,11 +46,12 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+#if DEBUG
         if let passwd = Bundle.main.object(forInfoDictionaryKey: "FAST_LOGIN_PASSWD") as? String, !passwd.isEmpty {
             txtPasswd.text = passwd
             txtPasswdConfirm.text = passwd
         }
-        
+#endif
         
     }
     
