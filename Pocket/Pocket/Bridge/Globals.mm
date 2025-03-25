@@ -242,12 +242,15 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(Stat)logout
+-(Stat)logout:(BOOL)softLogout
 {
     try
     {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        if(!softLogout)
+        {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
         return session->logout(convert(user)) ? OK : static_cast<Stat>(session->get_status());
     }
     catch(const runtime_error& e)

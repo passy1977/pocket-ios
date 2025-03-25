@@ -316,13 +316,17 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     private func reloadList(_ groupId: UInt32, search : String = "") {
         tupleList.removeAll()
         
-        groupController.getListGroup(groupId, search: search).forEach {
-            tupleList.append((group: $0, field: nil))
+        do {
+            groupController.getListGroup(groupId, search: search).forEach {
+                tupleList.append((group: $0, field: nil))
+            }
+            fieldController.getListField(groupId, search: search).forEach {
+                tupleList.append((group: nil, field: $0))
+            }
+        } catch {
+            alertShow(self, message: "Decryption error")
+            Globals.shared().logout(true)
         }
-        fieldController.getListField(groupId, search: search).forEach {
-            tupleList.append((group: nil, field: $0))
-        }
-        
         list.reloadData()
     }
     
@@ -521,7 +525,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction private func actBtnExit(_ sender: UIButton) {
         onExit = true
         actViwMenuOpenOrClose()
-        Globals.shared().logout()
+        Globals.shared().logout(false)
         keychain.delete(KEY_EMAIL)
         keychain.delete(KEY_PASSWD)
         navigationController?.popViewController(animated: true)

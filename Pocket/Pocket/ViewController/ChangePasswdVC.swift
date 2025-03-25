@@ -80,8 +80,8 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
                 Globals.shared().changePasswd(url.path, newPasswd: newPasswd)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SwiftSpinner.hide()
-                    Globals.shared().logout()
-                    self.keychain.delete(KEY_PASSWD)
+                    Globals.shared().logout(true)
+                    self.keychain.set(KEY_PASSWD, forKey: newPasswd)
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             }

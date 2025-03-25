@@ -122,6 +122,7 @@ constexpr char APP_TAG[] = "GroupController";
     catch(const runtime_error& e)
     {
         error(APP_TAG, e.what());
+        @throw([NSString stringWithCString:e.what() encoding:NSUTF8StringEncoding]);
     }
     return ret;
 }
