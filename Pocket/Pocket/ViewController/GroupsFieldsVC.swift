@@ -275,8 +275,23 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         }
         modify.backgroundColor = .blue
         modify.image = UIImage(systemName: "pencil")
+        
+        //copy
+        let copyMove = UIContextualAction(style: .normal, title: nil) { _, _, success in
+            let tuple = self.tupleList[indexPath.row]
+            self.actViwMenuOpenOrClose(hideAnimation: true)
+            if let group = tuple.group  {
 
-        //copia testo
+            } else if let field = tuple.field {
+
+            }
+
+            success(true)
+        }
+        copyMove.backgroundColor = .orange
+        copyMove.image = UIImage(systemName: "chart.line.text.clipboard")
+
+        //text copy
         if let field = self.tupleList[indexPath.row].field {
             let copy = UIContextualAction(style: .normal, title: "copy text") { _, _, success in
                 
@@ -289,12 +304,12 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             copy.backgroundColor = .darkGray
             copy.image = UIImage(systemName: "doc.on.doc")
 
-            let ret = UISwipeActionsConfiguration(actions: [copy, modify, delete])
+            let ret = UISwipeActionsConfiguration(actions: [copy, copyMove, modify, delete])
             ret.performsFirstActionWithFullSwipe = false
             return ret
         }
 
-        let ret = UISwipeActionsConfiguration(actions: [modify, delete])
+        let ret = UISwipeActionsConfiguration(actions: [copyMove, modify, delete])
         ret.performsFirstActionWithFullSwipe = false
         return ret
     }
