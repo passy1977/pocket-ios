@@ -84,7 +84,7 @@ constexpr char APP_TAG[] = "Globals";
     if(aes)
     {
         delete aes;
-        session = nullptr;
+        aes = nullptr;
     }
 
 }
@@ -125,7 +125,7 @@ constexpr char APP_TAG[] = "Globals";
                 if(aes)
                 {
                     delete aes;
-                    session = nullptr;
+                    aes = nullptr;
                 }
                 error(APP_TAG, "Impossbile alloc session");
                 return false;
@@ -145,7 +145,7 @@ constexpr char APP_TAG[] = "Globals";
             if(aes)
             {
                 delete aes;
-                session = nullptr;
+                aes = nullptr;
             }
             
 //            [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
@@ -202,7 +202,7 @@ constexpr char APP_TAG[] = "Globals";
             if(aes)
             {
                 delete aes;
-                session = nullptr;
+                aes = nullptr;
             }
             error(APP_TAG, e.what());
             return false;
@@ -254,10 +254,7 @@ constexpr char APP_TAG[] = "Globals";
         }
         else
         {
-            session->get_view_field()->rm_all();
-            session->get_view_group_field()->rm_all();
-            session->get_view_group()->rm_all();
-            return OK;
+            return session->soft_logout(convert(user)) ? OK : static_cast<Stat>(session->get_status());
         }
     }
     catch(const runtime_error& e)
@@ -271,11 +268,33 @@ constexpr char APP_TAG[] = "Globals";
 {
     try
     {
-
+        
+        const NSString* deviceStr = [[NSUserDefaults standardUserDefaults] stringForKey: KEY_DEVICE];
         if( auto&& userOpt = session->change_passwd(convert(user), [fullPathFile UTF8String], [newPasswd UTF8String], POCKET_ENABLE_AES); userOpt)
         {
             user = convert(*userOpt);
+
+            if(aes)
+            {
+                delete aes;
+                aes = nullptr;
+            }
+            aes = new(nothrow) class aes(DEVICE_AES_CBC_IV, [newPasswd UTF8String]);
+            if(aes == nullptr)
+            {
+                if(session)
+                {
+                    delete session;
+                    session = nullptr;
+                }
+                error(APP_TAG, "Impossbile alloc aes");
+                return ERROR;
+            }
             
+
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
+            [[NSUserDefaults standardUserDefaults] setObject:deviceStr forKey: KEY_DEVICE];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             return OK;
         }
         else
