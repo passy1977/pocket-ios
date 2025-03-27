@@ -1,90 +1,120 @@
-//
-//  CopyMoveVC.swift
-//  Pocket
-//
-//  Created by Antonio Salsi on 25/03/25.
-//  Copyright © 2025 Scapix. All rights reserved.
-//
-
+/***************************************************************************
+ *
+ * Pocket
+ * Copyright (C) 2018/2025 Antonio Salsi <passy.linux@zresa.it>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ ***************************************************************************/
 import UIKit
+import Reachability
 
 class CopyMoveVC: UITableViewController {
 
+    private let reachability = try! Reachability()
+    
+    //MARK: - Data
+    private var tupleList : [(group: Group?, field: Field?)] = []
+    
+    //MARK: - references
+    public weak var father : UIViewController?
+    public weak var groupController : GroupController?
+    public weak var fieldController : FieldController?
+    
+    public var field : Field? = nil
+    public var group : Group? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        
+        if let group = group, let groupId = group.groupId as UInt32? {
+            reloadList(groupId)
+        } else if let field = field, let groupId = field.groupId as UInt32? {
+            reloadList(groupId)
+        }
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        tupleList.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    //set cell value
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CopyMoveVCCell.identifier, for: indexPath) as? CopyMoveVCCell else {
+            return tableView.dequeueReusableCell(withIdentifier: CopyMoveVCCell.identifier, for: indexPath)
+        }
 
-        // Configure the cell...
-
+        if let group = tupleList[indexPath.row].group {
+            cell.kind = .Group
+            cell.titile = group.title
+        } else if let field = tupleList[indexPath.row].field {
+            cell.kind = .Field
+            cell.titile = field.title
+        } else {
+            cell.kind = .None
+            cell.titile = ""
+        }
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    
+    //cell click
+    internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
+        print("---> didSelectRowAt:\(indexPath)")
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    // MARK: - Reachability
+    
+    @objc func reachabilityChanged(note: Notification) {
+      if let reachability = note.object as? Reachability, reachability.connection == .unavailable {
+        print("Network not reachable")
+        groupController?.reachability = false
+        fieldController?.reachability = false
+      } else {
+        groupController?.reachability = true
+        fieldController?.reachability = true
+      }
     }
-    */
+    
+    // MARK: - Method
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    private func reloadList(_ groupId: UInt32, search : String = "") {
+        tupleList.removeAll()
+        tupleList.append((group: nil, field: nil))
+        do {
+            groupController?.getListGroup(groupId, search: search).forEach {
+                tupleList.append((group: $0, field: nil))
+            }
+            fieldController?.getListField(groupId, search: search).forEach {
+                tupleList.append((group: nil, field: $0))
+            }
+        } catch {
+            alertShow(self, message: "Decryption error")
+            Globals.shared().logout(true)
+        }
+        
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

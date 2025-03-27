@@ -169,7 +169,17 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     groupVC.group = group
                 }
            }
-       }
+        } else if segue.identifier == "copyMove" {
+            if let copyMove = segue.destination as? CopyMoveVC {
+                copyMove.groupController = groupController
+                copyMove.fieldController = fieldController
+                if let groupForSegue = self.groupForSegue {
+                    copyMove.group = groupForSegue
+                } else {
+                    copyMove.field = fieldForSegue
+                }
+           }
+        }
     }
     
     @inlinable
@@ -279,17 +289,17 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         //copy
         let copyMove = UIContextualAction(style: .normal, title: nil) { _, _, success in
             let tuple = self.tupleList[indexPath.row]
-            self.actViwMenuOpenOrClose(hideAnimation: true)
             if let group = tuple.group  {
-
+                self.groupForSegue = group
             } else if let field = tuple.field {
-
+                self.fieldForSegue = field
             }
-
+            
+            self.performSegue(withIdentifier: "copyMove", sender: self)
             success(true)
         }
         copyMove.backgroundColor = .orange
-        copyMove.image = UIImage(systemName: "chart.line.text.clipboard")
+        copyMove.image = UIImage(systemName: "document.badge.plus")
 
         //text copy
         if let field = self.tupleList[indexPath.row].field {

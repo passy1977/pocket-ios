@@ -24,6 +24,8 @@
 		147D3383242D1A8A000880B6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A19B228A224876C800FE9722 /* libc++.tbd */; };
 		148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D86672431DA8C00EB38D6 /* SZTextView.m */; };
 		149382C624A4EEB8002D33B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149382C524A4EEB8002D33B1 /* Security.framework */; };
+		149443A52D95F39B005011C9 /* CopyMoveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149443A42D95F39B005011C9 /* CopyMoveVC.swift */; };
+		149443A72D95F3BA005011C9 /* CopyMoveVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149443A62D95F3BA005011C9 /* CopyMoveVCCell.swift */; };
 		14A4447124D2D16200857BA4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14A4447024D2D16200857BA4 /* IQKeyboardManagerSwift */; };
 		14B156042D669E3E00EB655E /* curl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156032D669E3E00EB655E /* curl.xcframework */; };
 		14B156092D669F6900EB655E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B156082D669F6900EB655E /* openssl.xcframework */; };
@@ -36,7 +38,6 @@
 		14D4DF662932C7A700C84FD0 /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF572932C7A700C84FD0 /* User.mm */; };
 		14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5A2932C7A700C84FD0 /* FieldController.mm */; };
 		14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Globals.mm */; };
-		14D9BE162D93606900BD350C /* CopyMoveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9BE152D93606900BD350C /* CopyMoveVC.swift */; };
 		14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */; };
 		14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186C2D6548E300E5AEF2 /* view-group.cpp */; };
 		14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */; };
@@ -87,6 +88,8 @@
 		148D86672431DA8C00EB38D6 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		149382C524A4EEB8002D33B1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14942C372D69D68F004FC897 /* Sercets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Sercets.xcconfig; sourceTree = "<group>"; };
+		149443A42D95F39B005011C9 /* CopyMoveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyMoveVC.swift; sourceTree = "<group>"; };
+		149443A62D95F3BA005011C9 /* CopyMoveVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyMoveVCCell.swift; sourceTree = "<group>"; };
 		14B117ED25B49BD30024FAD0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		14B156032D669E3E00EB655E /* curl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = curl.xcframework; path = ../lib/curl.xcframework; sourceTree = "<group>"; };
 		14B156082D669F6900EB655E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../lib/openssl.xcframework; sourceTree = "<group>"; };
@@ -109,7 +112,6 @@
 		14D4DF572932C7A700C84FD0 /* User.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = User.mm; sourceTree = "<group>"; };
 		14D4DF5A2932C7A700C84FD0 /* FieldController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldController.mm; sourceTree = "<group>"; };
 		14D4DF5D2932C7A700C84FD0 /* Globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Globals.mm; sourceTree = "<group>"; };
-		14D9BE152D93606900BD350C /* CopyMoveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyMoveVC.swift; sourceTree = "<group>"; };
 		14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVCCell.swift; sourceTree = "<group>"; };
 		14DF181F2D6548E300E5AEF2 /* globals.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = globals.hpp; sourceTree = "<group>"; };
 		14DF18202D6548E300E5AEF2 /* tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tree.hpp; sourceTree = "<group>"; };
@@ -261,7 +263,8 @@
 				14173FC2242D27560055410E /* AddNewUserVC.swift */,
 				14173FC0242D27560055410E /* LoginVC.swift */,
 				14EA5B852D8CCE1D0007A70D /* ChangePasswdVC.swift */,
-				14D9BE152D93606900BD350C /* CopyMoveVC.swift */,
+				149443A62D95F3BA005011C9 /* CopyMoveVCCell.swift */,
+				149443A42D95F39B005011C9 /* CopyMoveVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -763,10 +766,11 @@
 				14DF189B2D6548E300E5AEF2 /* view-group-field.cpp in Sources */,
 				14DF189D2D6548E300E5AEF2 /* database.cpp in Sources */,
 				14DF189E2D6548E300E5AEF2 /* tree.cpp in Sources */,
+				149443A72D95F3BA005011C9 /* CopyMoveVCCell.swift in Sources */,
 				14DF189F2D6548E300E5AEF2 /* globals.cpp in Sources */,
 				14DF18A02D6548E300E5AEF2 /* dao-read-write-group.cpp in Sources */,
 				1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */,
-				14D9BE162D93606900BD350C /* CopyMoveVC.swift in Sources */,
+				149443A52D95F39B005011C9 /* CopyMoveVC.swift in Sources */,
 				14D4DF5F2932C7A700C84FD0 /* Group.mm in Sources */,
 				14CD11B02D89243E00B4C233 /* tinyxml2.cpp in Sources */,
 				14173FC5242D27560055410E /* AddNewUserVC.swift in Sources */,
