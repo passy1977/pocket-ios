@@ -219,7 +219,7 @@
             </objects>
             <point key="canvasLocation" x="2170.2290076335876" y="484.50704225352115"/>
         </scene>
-        <!--Source-->
+        <!--Copy or Move-->
         <scene sceneID="GbX-0H-Cxb">
             <objects>
                 <tableViewController id="h3m-wH-j9M" customClass="CopyMoveVC" customModule="Pocket" customModuleProvider="target" sceneMemberID="viewController">
@@ -261,6 +261,7 @@
                                 <connections>
                                     <outlet property="imgType" destination="Pyh-gY-Omd" id="EJv-lq-HzW"/>
                                     <outlet property="txtTitle" destination="ILd-ya-YlG" id="KHv-DI-5Ku"/>
+                                    <segue destination="h3m-wH-j9M" kind="show" identifier="copyMoveLoop" id="MSh-Z1-ubq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -269,12 +270,15 @@
                             <outlet property="delegate" destination="h3m-wH-j9M" id="qWP-A7-snx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Source" id="3sM-wx-BTE">
+                    <navigationItem key="navigationItem" title="Copy or Move" id="3sM-wx-BTE">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="arrow.down.document" catalog="system" id="KC8-Q7-3yT"/>
                             <barButtonItem title="Item" image="document.badge.plus" catalog="system" id="SJH-T7-FLx"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="view" destination="Ul9-tZ-DIH" id="ymr-EB-C60"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMP-ie-jeq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -990,19 +994,19 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

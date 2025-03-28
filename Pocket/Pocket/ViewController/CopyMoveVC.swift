@@ -33,20 +33,60 @@ class CopyMoveVC: UITableViewController {
     
     public var field : Field? = nil
     public var group : Group? = nil
+    public var showFieldIdGroup : UInt32? = nil
+    public var showGroupIdGroup : UInt32? = nil
+    
+    private var fieldForSegue : Field? = nil
+    private var groupForSegue : Group? = nil
+    
+    public override var title : String? {
+        didSet {
+            navigationController?.topViewController?.navigationItem.title = title
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
-        
+
         if let group = group, let groupId = group.groupId as UInt32? {
+            title = group.title
             reloadList(groupId)
         } else if let field = field, let groupId = field.groupId as UInt32? {
+            title = field.title
             reloadList(groupId)
+        } else if let id = showFieldIdGroup {
+            reloadList(id)
+        } else if let id = showGroupIdGroup {
+            reloadList(id)
         }
         
     }
-
+    
+    //MARK: - Segue
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "copyMoveLoop" {
+            if let copyMove = segue.destination as? CopyMoveVC {
+                copyMove.groupController = groupController
+                copyMove.fieldController = fieldController
+                copyMove.title = title
+                if let groupForSegue = self.groupForSegue {
+                    copyMove.showGroupIdGroup = groupForSegue._id
+                } else if let fieldForSegue = self.fieldForSegue {
+                    copyMove.showFieldIdGroup = fieldForSegue._id
+                }
+           }
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        false
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,7 +121,16 @@ class CopyMoveVC: UITableViewController {
     
     //cell click
     internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        print("---> didSelectRowAt:\(indexPath)")
+        if indexPath.row == 0 || (tupleList[indexPath.row].group == nil && tupleList[indexPath.row].field == nil) {
+            navigationController?.popViewController(animated: true)
+        } else {
+            if let group = tupleList[indexPath.row].group {
+                groupForSegue = groupController?.getGroup(group._id)
+            } else if let _ = tupleList[indexPath.row].field {
+                alertShow(self, message: "You are in the lowest level of the hierarchy. You cannot move or copy further")
+            }
+            performSegue(withIdentifier: "copyMoveLoop", sender: self)
+        }
     }
 
     // MARK: - Reachability

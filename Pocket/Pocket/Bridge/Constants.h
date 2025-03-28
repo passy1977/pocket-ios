@@ -17,27 +17,12 @@
  *
  ***************************************************************************/
 
-#ifdef __OBJC__
-#import <Foundation/Foundation.h>
-#endif
 
-#import "Globals.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#ifndef _CONSTANTS_H_
+#define _CONSTANTS_H_
 
 
-@interface FieldController : NSObject
-@property BOOL reachability;
+#define SYNCHRONIZER_TIMEOUT (1L)
+#define SYNCHRONIZER_CONNECT_TIMEOUT (5L)
 
--(instancetype)init;
--(void)initialize;
-
--(nonnull NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search;
--(Stat)persistField:(nonnull const Field*)field;
--(Stat)delField:(Field*)field;
--(int32_t)sizeFiled:(uint32_t)groupId;
--(nullable Field*)getFiled:(uint32_t)groupId;
-
-@end
-
-NS_ASSUME_NONNULL_END
+#endif /* _CONSTANTS_H_ */

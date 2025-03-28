@@ -24,6 +24,7 @@
 #import "Field.h"
 #import "FieldController.h"
 #import "User.h"
+#import "Constants.h"
 
 #include "pocket/globals.hpp"
 using namespace pocket;
@@ -87,7 +88,7 @@ constexpr char APP_TAG[] = "FieldController";
 }
 
 //MARK: - Field
--(NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search
+-(nonnull NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search
 {
     
     NSMutableArray<Field*> *ret = [NSMutableArray new];
@@ -112,6 +113,9 @@ constexpr char APP_TAG[] = "FieldController";
     {
         auto&& f = convert(field);
         viewField->persist(f);
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(auto&& user = session->send_data(convert(self.user)); user)
         {
             self.user = convert(user.value());
@@ -135,6 +139,9 @@ constexpr char APP_TAG[] = "FieldController";
     try
     {
         viewField->del(field._id);
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(auto&& user = session->send_data(convert(self.user)); user)
         {
             self.user = convert(user.value());
@@ -164,5 +171,16 @@ constexpr char APP_TAG[] = "FieldController";
         return 0;
     }
 }
+
+-(nullable Field*)getFiled:(uint32_t)groupId
+{
+    auto&&field_opt = viewField->get(groupId);
+    if(field_opt)
+    {
+        return convert(*field_opt);
+    }
+    return nullptr;
+}
+
 
 @end

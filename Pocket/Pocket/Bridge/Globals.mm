@@ -21,6 +21,7 @@
 
 #import "Globals.h"
 #import "User.h"
+#import "Constants.h"
 
 #include "pocket/globals.hpp"
 using namespace pocket;
@@ -222,6 +223,8 @@ constexpr char APP_TAG[] = "Globals";
     
     try
     {
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         auto&& userOpt = session->login([email UTF8String], [passwd UTF8String], POCKET_ENABLE_AES);
         if(userOpt)
         {
@@ -246,6 +249,9 @@ constexpr char APP_TAG[] = "Globals";
 {
     try
     {
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(!softLogout)
         {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey: KEY_DEVICE];
@@ -270,6 +276,9 @@ constexpr char APP_TAG[] = "Globals";
     {
         
         const NSString* deviceStr = [[NSUserDefaults standardUserDefaults] stringForKey: KEY_DEVICE];
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(0);
         if( auto&& userOpt = session->change_passwd(convert(user), [fullPathFile UTF8String], [newPasswd UTF8String], POCKET_ENABLE_AES); userOpt)
         {
             user = convert(*userOpt);
@@ -313,6 +322,9 @@ constexpr char APP_TAG[] = "Globals";
 {
     try
     {
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(auto&& user = session->send_data(convert(self.user)); user)
         {
             self.user = convert(user.value());

@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(int32_t)countChild:(nonnull const Group*)group;
 -(Stat)delGroup:(nonnull const Group*)group;
 -(Stat)persistGroup:(nonnull const Group*)group;
+-(nullable Group*)getGroup:(uint32_t)groupId;
 
 //MARK: - GroupField
 -(uint32_t)getLastIdGroupField;

@@ -169,6 +169,7 @@
 		14DF18712D6548E300E5AEF2 /* tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tree.cpp; sourceTree = "<group>"; };
 		14DF18B72D65492100E5AEF2 /* BS_thread_pool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BS_thread_pool.hpp; sourceTree = "<group>"; };
 		14EA5B852D8CCE1D0007A70D /* ChangePasswdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswdVC.swift; sourceTree = "<group>"; };
+		14EDC0CC2D968E6000AE0821 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A19B226A2248737300FE9722 /* Pocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19B226D2248737300FE9722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19B22722248737300FE9722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -297,6 +298,7 @@
 		14D4DF432932C7A700C84FD0 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
+				14EDC0CC2D968E6000AE0821 /* Constants.h */,
 				14D4DF4A2932C7A700C84FD0 /* Field.h */,
 				14D4DF542932C7A700C84FD0 /* Field.mm */,
 				14D4DF4B2932C7A700C84FD0 /* FieldController.h */,

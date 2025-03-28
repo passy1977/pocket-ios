@@ -20,6 +20,7 @@
 #import "Group.h"
 #import "Field.h"
 #import "GroupField.h"
+#import "Constants.h"
 
 #import "GroupController.h"
 
@@ -147,6 +148,9 @@ constexpr char APP_TAG[] = "GroupController";
         viewGroupField->del_by_group_id(group._id);
         viewField->del_by_group_id(group._id);
         viewGroup->del(group._id);
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(auto&& user = session->send_data(convert(self.user)); user)
         {
             self.user = convert(user.value());
@@ -205,6 +209,8 @@ constexpr char APP_TAG[] = "GroupController";
             fObjC._id = static_cast<uint32_t>(f->id);
         }
         
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(auto&& user = session->send_data(convert(self.user)); user)
         {
             self.user = convert(user.value());
@@ -218,6 +224,16 @@ constexpr char APP_TAG[] = "GroupController";
         error(APP_TAG, e.what());
         return Stat::ERROR;
     }
+}
+
+-(nullable Group*)getGroup:(uint32_t)groupId
+{
+    auto&&group_opt = viewGroup->get(groupId);
+    if(group_opt)
+    {
+        return convert(*group_opt);
+    }
+    return nullptr;
 }
 
 //MARK: - GroupField
@@ -242,6 +258,9 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(0);
         return session->export_data(convert(user), [fullPathFileExport UTF8String], POCKET_ENABLE_AES);
     }
     catch(const runtime_error& e)
@@ -255,6 +274,9 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
+        
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(0);
         return session->import_data(convert(user), [fullPathFileImport UTF8String], POCKET_ENABLE_AES);
     }
     catch(const runtime_error& e)
@@ -268,6 +290,8 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
+        session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
+        session->set_synchronizer_connect_timeout(0);
         return session->import_data_legacy(convert(user), [fullPathFileImport UTF8String], POCKET_ENABLE_AES);
     } catch (const runtime_error &e) {
         error(APP_TAG, e.what());
@@ -319,7 +343,6 @@ constexpr char APP_TAG[] = "GroupController";
 
 -(BOOL)addToShowList:(nonnull GroupField *)groupField
 {
-    //id value = [showList objectForKey: [NSNumber numberWithLongLong:[groupField getid]]];
     id value = showList[[NSNumber numberWithLongLong:[groupField _id]]];
     if(value)
     {
