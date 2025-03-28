@@ -272,8 +272,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Copy or Move" id="3sM-wx-BTE">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="arrow.down.document" catalog="system" id="KC8-Q7-3yT"/>
-                            <barButtonItem title="Item" image="document.badge.plus" catalog="system" id="SJH-T7-FLx"/>
+                            <barButtonItem title="Item" image="arrow.down.document" catalog="system" id="KC8-Q7-3yT">
+                                <connections>
+                                    <action selector="actMenuBtnMove:" destination="h3m-wH-j9M" id="io1-mR-aIh"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="document.badge.plus" catalog="system" id="SJH-T7-FLx">
+                                <connections>
+                                    <action selector="actMenuBtnCopy:" destination="h3m-wH-j9M" id="8go-BW-rje"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -994,19 +1002,19 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

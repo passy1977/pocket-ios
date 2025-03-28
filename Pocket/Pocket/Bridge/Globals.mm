@@ -318,6 +318,42 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
+-(BOOL)moveGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)copy
+{
+    auto&& groupSrc = session->get_view_group()->get(groupIdSrc);
+    auto&& groupDst = session->get_view_group()->get(groupIdDst);
+    if(!groupSrc)
+    {
+        error(APP_TAG, "Group src not found");
+        return false;
+    }
+    if(!groupDst)
+    {
+        error(APP_TAG, "Group dst not found");
+        return false;
+    }
+    
+    return session->move(convert(user), *groupSrc, *groupDst, copy);
+}
+
+-(BOOL)moveField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)copy
+{
+    auto&& fieldSrc = session->get_view_field()->get(fieldIdSrc);
+    auto&& groupDst = session->get_view_group()->get(groupIdDst);
+    if(!fieldSrc)
+    {
+        error(APP_TAG, "Field src not found");
+        return false;
+    }
+    if(!groupDst)
+    {
+        error(APP_TAG, "Group dst not found");
+        return false;
+    }
+    
+    return session->move(convert(user), *fieldSrc, *groupDst, copy);
+}
+
 -(Stat)sendData
 {
     try

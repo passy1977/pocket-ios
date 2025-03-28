@@ -41,7 +41,13 @@ class CopyMoveVC: UITableViewController {
     
     public override var title : String? {
         didSet {
-            navigationController?.topViewController?.navigationItem.title = title
+            if let title = title {
+                if group != nil || showGroupIdGroup != nil {
+                    navigationController?.topViewController?.navigationItem.title = "Group:\(title)"
+                } else if field != nil || showFieldIdGroup != nil {
+                    navigationController?.topViewController?.navigationItem.title = "Field:\(title)"
+                }
+            }
         }
     }
     
@@ -50,16 +56,16 @@ class CopyMoveVC: UITableViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
 
-        if let group = group, let groupId = group.groupId as UInt32? {
+        if let id = showFieldIdGroup {
+            reloadList(id)
+        } else if let id = showGroupIdGroup {
+            reloadList(id)
+        } else if let group = group, let groupId = group.groupId as UInt32? {
             title = group.title
             reloadList(groupId)
         } else if let field = field, let groupId = field.groupId as UInt32? {
             title = field.title
             reloadList(groupId)
-        } else if let id = showFieldIdGroup {
-            reloadList(id)
-        } else if let id = showGroupIdGroup {
-            reloadList(id)
         }
         
     }
@@ -73,6 +79,8 @@ class CopyMoveVC: UITableViewController {
                 copyMove.groupController = groupController
                 copyMove.fieldController = fieldController
                 copyMove.title = title
+                copyMove.group = group
+                copyMove.field = field
                 if let groupForSegue = self.groupForSegue {
                     copyMove.showGroupIdGroup = groupForSegue._id
                 } else if let fieldForSegue = self.fieldForSegue {
@@ -150,7 +158,9 @@ class CopyMoveVC: UITableViewController {
 
     private func reloadList(_ groupId: UInt32, search : String = "") {
         tupleList.removeAll()
-        tupleList.append((group: nil, field: nil))
+        if showGroupIdGroup != nil || showFieldIdGroup != nil {
+            tupleList.append((group: nil, field: nil))
+        }
         do {
             groupController?.getListGroup(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
@@ -165,5 +175,15 @@ class CopyMoveVC: UITableViewController {
         
         tableView.reloadData()
     }
+    
+    
+    @IBAction private func actMenuBtnCopy(_ sender: UIBarButtonItem) {
+       
+    }
+    
+    @IBAction private func actMenuBtnMove(_ sender: UIBarButtonItem) {
+
+    }
+    
     
 }
