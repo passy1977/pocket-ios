@@ -318,7 +318,7 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(BOOL)copyGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)move
+-(BOOL)copyGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst move:(BOOL)move;
 {
     try
     {
@@ -344,7 +344,7 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(BOOL)copyField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)move
+-(BOOL)copyField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst move:(BOOL)move
 {
     try
     {
@@ -403,5 +403,6 @@ constexpr char APP_TAG[] = "Globals";
 {
     return session;
 }
+
 
 @end
