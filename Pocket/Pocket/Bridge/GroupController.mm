@@ -181,32 +181,34 @@ constexpr char APP_TAG[] = "GroupController";
         {
             GroupField *gfObjC = showList[key];
             auto&& gf = convert(gfObjC);
+            gf->synchronized = false;
             if(gfObjC.newInsertion)
             {
                 gf->id = 0;
+                gf->user_id = user._id;
+                gf->group_id = g->id;
+                gf->server_group_id = g->server_id;
             }
-            gf->user_id = user._id;
-            gf->group_id = g->id;
-            gf->server_group_id = g->server_id;
-            gf->synchronized = false;
-            
             gf->id = viewGroupField->persist(gf);
             gfObjC._id = static_cast<uint32_t>(gf->id);
             
-            Field *fObjC = [Field new];
-            fObjC.title = gfObjC.title;
-            fObjC.value = @"";
-            fObjC.isHidden = gf->is_hidden;
-            auto&& f = convert(fObjC);
-            f->user_id = user._id;
-            f->group_id = g->id;
-            f->server_group_id = g->server_id;
-            f->group_field_id = gf->id;
-            f->server_group_id = gf->server_id;
-            f->synchronized = false;
-            
-            f->id = viewField->persist(f);
-            fObjC._id = static_cast<uint32_t>(f->id);
+            if(gfObjC.newInsertion)
+            {
+                Field *fObjC = [Field new];
+                fObjC.title = gfObjC.title;
+                fObjC.value = @"";
+                fObjC.isHidden = gf->is_hidden;
+                auto&& f = convert(fObjC);
+                f->user_id = user._id;
+                f->group_id = g->id;
+                f->server_group_id = g->server_id;
+                f->group_field_id = gf->id;
+                f->server_group_id = gf->server_id;
+                f->synchronized = false;
+                
+                f->id = viewField->persist(f);
+                fObjC._id = static_cast<uint32_t>(f->id);
+            }
         }
         
         session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
