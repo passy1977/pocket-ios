@@ -25,6 +25,7 @@ class CopyMoveVC: UITableViewController {
     
     //MARK: - Data
     private var tupleList : [(group: Group?, field: Field?)] = []
+    public var navigationDepth = 0 as UInt8
     
     //MARK: - references
     public weak var father : UIViewController?
@@ -60,12 +61,12 @@ class CopyMoveVC: UITableViewController {
             reloadList(id)
         } else if let id = showGroupIdGroup {
             reloadList(id)
-        } else if let group = group, let groupId = group.groupId as UInt32? {
+        } else if let group = group, let _ = group.groupId as UInt32? {
             title = group.title
-            reloadList(groupId)
-        } else if let field = field, let groupId = field.groupId as UInt32? {
+            reloadList(0)
+        } else if let field = field, let _ = field.groupId as UInt32? {
             title = field.title
-            reloadList(groupId)
+            reloadList(0)
         }
         
     }
@@ -81,6 +82,7 @@ class CopyMoveVC: UITableViewController {
                 copyMove.title = title
                 copyMove.group = group
                 copyMove.field = field
+                copyMove.navigationDepth = navigationDepth + 1
                 if let groupForSegue = self.groupForSegue {
                     copyMove.showGroupIdGroup = groupForSegue._id
                 } else if let fieldForSegue = self.fieldForSegue {
@@ -179,17 +181,23 @@ class CopyMoveVC: UITableViewController {
     
     @IBAction private func actMenuBtnCopy(_ sender: UIBarButtonItem) {
         if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup,  copy: true)
-        } else if let field = field, let id = field._id as UInt32?, let showFieldIdGroup = showFieldIdGroup {
-            Globals.shared().copyField(id, groupIdDst: showFieldIdGroup, copy: true)
+            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
+        } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
+            Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
+        }
+        for _ in 0 ..< navigationDepth + 1 {
+            navigationController?.popViewController(animated: true) // torna alla vista precedente
         }
     }
     
     @IBAction private func actMenuBtnMove(_ sender: UIBarButtonItem) {
         if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup,  copy: false)
-        } else if let field = field, let id = field._id as UInt32?, let showFieldIdGroup = showFieldIdGroup {
-            Globals.shared().copyField(id, groupIdDst: showFieldIdGroup, copy: false)
+            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
+        } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
+            Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
+        }
+        for _ in 0 ..< navigationDepth + 1 {
+            navigationController?.popViewController(animated: true) // torna alla vista precedente
         }
     }
     
