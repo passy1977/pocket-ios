@@ -178,11 +178,19 @@ class CopyMoveVC: UITableViewController {
     
     
     @IBAction private func actMenuBtnCopy(_ sender: UIBarButtonItem) {
-       
+        if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
+            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup,  copy: true)
+        } else if let field = field, let id = field._id as UInt32?, let showFieldIdGroup = showFieldIdGroup {
+            Globals.shared().copyField(id, groupIdDst: showFieldIdGroup, copy: true)
+        }
     }
     
     @IBAction private func actMenuBtnMove(_ sender: UIBarButtonItem) {
-
+        if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
+            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup,  copy: false)
+        } else if let field = field, let id = field._id as UInt32?, let showFieldIdGroup = showFieldIdGroup {
+            Globals.shared().copyField(id, groupIdDst: showFieldIdGroup, copy: false)
+        }
     }
     
     

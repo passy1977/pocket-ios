@@ -318,40 +318,56 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(BOOL)moveGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)copy
+-(BOOL)copyGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)move
 {
-    auto&& groupSrc = session->get_view_group()->get(groupIdSrc);
-    auto&& groupDst = session->get_view_group()->get(groupIdDst);
-    if(!groupSrc)
+    try
     {
-        error(APP_TAG, "Group src not found");
+        bool ret = session->copy_group(convert(user), static_cast<int64_t>(groupIdSrc), static_cast<int64_t>(groupIdDst), move);
+        if(ret)
+        {
+            if(auto u = session->send_data(convert(user)); u)
+            {
+                user = convert(*u);
+            }
+            else
+            {
+                ret = false;
+            }
+        }
+        
+        return ret;
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
         return false;
     }
-    if(!groupDst)
-    {
-        error(APP_TAG, "Group dst not found");
-        return false;
-    }
-    
-    return session->move(convert(user), *groupSrc, *groupDst, copy);
 }
 
--(BOOL)moveField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)copy
+-(BOOL)copyField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst copy:(BOOL)move
 {
-    auto&& fieldSrc = session->get_view_field()->get(fieldIdSrc);
-    auto&& groupDst = session->get_view_group()->get(groupIdDst);
-    if(!fieldSrc)
+    try
     {
-        error(APP_TAG, "Field src not found");
+        bool ret = session->copy_field(convert(user), static_cast<int64_t>(fieldIdSrc), static_cast<int64_t>(groupIdDst), move);
+        if(ret)
+        {
+            if(auto u = session->send_data(convert(user)); u)
+            {
+                user = convert(*u);
+            }
+            else
+            {
+                ret = false;
+            }
+        }
+        
+        return ret;
+    }
+    catch(const runtime_error& e)
+    {
+        error(APP_TAG, e.what());
         return false;
     }
-    if(!groupDst)
-    {
-        error(APP_TAG, "Group dst not found");
-        return false;
-    }
-    
-    return session->move(convert(user), *fieldSrc, *groupDst, copy);
 }
 
 -(Stat)sendData
