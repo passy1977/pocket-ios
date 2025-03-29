@@ -180,24 +180,34 @@ class CopyMoveVC: UITableViewController {
     
     
     @IBAction private func actMenuBtnCopy(_ sender: UIBarButtonItem) {
+        var ret = true
         if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
+            ret = Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
         } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
+            ret = Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
         }
-        for _ in 0 ..< navigationDepth + 1 {
-            navigationController?.popViewController(animated: true) // torna alla vista precedente
+        if ret {
+            for _ in 0 ..< navigationDepth + 1 {
+                navigationController?.popViewController(animated: true) // torna alla vista precedente
+            }
+        } else {
+            alertShow(self, message: "Error on copy")
         }
     }
     
     @IBAction private func actMenuBtnMove(_ sender: UIBarButtonItem) {
+        var ret = true
         if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
+            ret = Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: true)
         } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
+            ret = Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: true)
         }
-        for _ in 0 ..< navigationDepth + 1 {
-            navigationController?.popViewController(animated: true) // torna alla vista precedente
+        if ret {
+            for _ in 0 ..< navigationDepth + 1 {
+                navigationController?.popViewController(animated: true) // torna alla vista precedente
+            }
+        } else {
+            alertShow(self, message: "Error on move")
         }
     }
     
