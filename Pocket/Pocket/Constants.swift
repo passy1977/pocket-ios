@@ -20,6 +20,7 @@
 import UIKit
 
 let primary = UIColor(named: "colorPrimary")
+let secondary = UIColor(named: "colorSecondary")
 
 let synchronizatorStart = "START"
 let synchronizatorEnd = "END"

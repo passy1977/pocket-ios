@@ -77,6 +77,8 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: - system
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = primary
+        
         srcSearch.delegate = self
         cnstViewMenu.constant = menuOffset
         txtMenuTitle.text = "Pocket \(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "")"
@@ -298,7 +300,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             self.performSegue(withIdentifier: "copyMove", sender: self)
             success(true)
         }
-        copyMove.backgroundColor = .orange
+        copyMove.backgroundColor = secondary
         copyMove.image = UIImage(systemName: "document.badge.plus")
 
         //text copy

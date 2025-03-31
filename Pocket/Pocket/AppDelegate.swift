@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         
-        let primary = UIColor(named: "colorPrimary")
-        
         let coloredNavAppearance = UINavigationBarAppearance()
         coloredNavAppearance.configureWithOpaqueBackground()
         coloredNavAppearance.backgroundColor = primary

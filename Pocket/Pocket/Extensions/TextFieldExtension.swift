@@ -32,10 +32,10 @@ extension UITextField {
         self.layer.borderColor = color.cgColor
     }
     func setBottomBorderOnlyWith() {
-        guard let p = primary else {
+        guard let primary = primary else {
             return
         }
-        setBottomBorderOnlyWith(color: p)
+        setBottomBorderOnlyWith(color: primary)
     }
     
     func unsetBottomBorderOnlyWith() {

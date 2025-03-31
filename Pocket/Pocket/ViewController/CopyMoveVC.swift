@@ -54,7 +54,8 @@ class CopyMoveVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.barTintColor = secondary
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
 
         if let id = showFieldIdGroup {
@@ -131,7 +132,7 @@ class CopyMoveVC: UITableViewController {
     
     //cell click
     internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        if indexPath.row == 0 || (tupleList[indexPath.row].group == nil && tupleList[indexPath.row].field == nil) {
+        if (fieldForSegue != nil || groupForSegue != nil || showFieldIdGroup != nil || showGroupIdGroup != nil) && (indexPath.row == 0 || (tupleList[indexPath.row].group == nil && tupleList[indexPath.row].field == nil)) {
             navigationController?.popViewController(animated: true)
         } else {
             if let group = tupleList[indexPath.row].group {
