@@ -108,23 +108,23 @@ field::ptr convert(const Field* field)
     return ret;
 }
 
-Field* convert(const field::ptr &group)
+Field* convert(const field::ptr &field)
 {
     auto ret = [Field new];
     
-    ret._id = static_cast<uint32_t>(group->id);
-    ret.serverId = static_cast<uint32_t>(group->server_id);
-    ret.userId = static_cast<uint32_t>(group->user_id);
-    ret.groupId = static_cast<uint32_t>(group->group_id);
-    ret.serverGroupId = static_cast<uint32_t>(group->server_group_id);
-    ret.groupFieldId = static_cast<uint32_t>(group->group_field_id);
-    ret.serverGroupFieldId = static_cast<uint32_t>(group->server_group_field_id);
-    ret.title = [NSString stringWithCString:group->title.c_str() encoding:NSUTF8StringEncoding];
-    ret.value = [NSString stringWithCString:group->value.c_str() encoding:NSUTF8StringEncoding];
-    ret.isHidden = group->is_hidden;
-    ret.synchronized = group->synchronized;
-    ret.deleted = group->deleted;
-    ret.timestampCreation = group->timestamp_creation;
+    ret._id = static_cast<uint32_t>(field->id);
+    ret.serverId = static_cast<uint32_t>(field->server_id);
+    ret.userId = static_cast<uint32_t>(field->user_id);
+    ret.groupId = static_cast<uint32_t>(field->group_id);
+    ret.serverGroupId = static_cast<uint32_t>(field->server_group_id);
+    ret.groupFieldId = static_cast<uint32_t>(field->group_field_id);
+    ret.serverGroupFieldId = static_cast<uint32_t>(field->server_group_field_id);
+    ret.title = [NSString stringWithCString:field->title.c_str() encoding:NSUTF8StringEncoding];
+    ret.value = [NSString stringWithCString:field->value.c_str() encoding:NSUTF8StringEncoding];
+    ret.isHidden = field->is_hidden;
+    ret.synchronized = field->synchronized;
+    ret.deleted = field->deleted;
+    ret.timestampCreation = field->timestamp_creation;
 
     return ret;
 }
