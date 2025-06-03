@@ -35,8 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property BOOL isHidden;
 @property BOOL synchronized;
 @property BOOL deleted;
-@property uint32_t referenceUserId;
-@property NSString* referenceSession;
 @property uint64_t timestampCreation;
 
 
