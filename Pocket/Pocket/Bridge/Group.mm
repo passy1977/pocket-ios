@@ -60,7 +60,6 @@ using namespace std;
                 title:(nonnull NSString*)title
                 icon:(nonnull NSString*)icon
                 note:(nonnull NSString*)note
-                value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
