@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *title;
 @property NSString *icon;
 @property NSString *note;
-@property NSString *value;
 @property BOOL isHidden;
 @property BOOL synchronized;
 @property BOOL deleted;
@@ -52,7 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
                 title:(nonnull NSString*)title
                 icon:(nonnull NSString*)icon
                 note:(nonnull NSString*)note
-                value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
                 deleted:(BOOL)deleted
