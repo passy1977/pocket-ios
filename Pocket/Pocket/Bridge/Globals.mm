@@ -296,7 +296,7 @@ constexpr char APP_TAG[] = "Globals";
                     delete session;
                     session = nullptr;
                 }
-                error(APP_TAG, "Impossbile alloc aes");
+                error(APP_TAG, "Impossible alloc aes");
                 return ERROR;
             }
             
