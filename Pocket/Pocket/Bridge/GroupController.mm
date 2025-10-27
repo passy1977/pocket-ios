@@ -105,7 +105,6 @@ constexpr char APP_TAG[] = "GroupController";
     session = static_cast<class session*>([[Globals shared] getSession]);
     user = [Globals shared].user;
     viewGroup = session->get_view_group().get();
-    viewGroupField = session->get_view_group_field().get();
     viewField = session->get_view_field().get();
 }
 
@@ -145,7 +144,6 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
-        viewGroupField->del_by_group_id(group._id);
         viewField->del_by_group_id(group._id);
         viewGroup->del(group._id);
         
@@ -177,46 +175,11 @@ constexpr char APP_TAG[] = "GroupController";
         g->synchronized = false;
         g->id = viewGroup->persist(g);
         
-        for (NSNumber *key in showList)
-        {
-            GroupField *gfObjC = showList[key];
-            auto&& gf = convert(gfObjC);
-            gf->synchronized = false;
-            if(gfObjC.newInsertion)
-            {
-                gf->id = 0;
-                gf->user_id = user._id;
-                gf->group_id = g->id;
-                gf->server_group_id = g->server_id;
-            }
-            gf->id = viewGroupField->persist(gf);
-            gfObjC._id = static_cast<uint32_t>(gf->id);
-            
-            if(gfObjC.newInsertion)
-            {
-                Field *fObjC = [Field new];
-                fObjC.title = gfObjC.title;
-                fObjC.value = @"";
-                fObjC.isHidden = gf->is_hidden;
-                auto&& f = convert(fObjC);
-                f->user_id = user._id;
-                f->group_id = g->id;
-                f->server_group_id = g->server_id;
-                f->group_field_id = gf->id;
-                f->server_group_id = gf->server_id;
-                f->synchronized = false;
-                
-                f->id = viewField->persist(f);
-                fObjC._id = static_cast<uint32_t>(f->id);
-            }
-        }
-        
         session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
         session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
         if(auto&& user = session->send_data(convert(self.user)); user)
         {
             self.user = convert(user.value());
-            [showList removeAllObjects];
         }
 
         return static_cast<Stat>(session->get_status());
@@ -236,22 +199,6 @@ constexpr char APP_TAG[] = "GroupController";
         return convert(*group_opt);
     }
     return nullptr;
-}
-
-//MARK: - GroupField
--(uint32_t)getLastIdGroupField
-{
-    try
-    {
-        auto lastGroupFieldId = viewGroupField->get_last_id();
-        
-        return lastGroupFieldId > 0 ? static_cast<uint32_t>(lastGroupFieldId) : 1;
-    }
-    catch(const runtime_error& e)
-    {
-        error(APP_TAG, e.what());
-        return 0;
-    }
 }
 
 //MARK: - ExportImport
@@ -299,109 +246,6 @@ constexpr char APP_TAG[] = "GroupController";
         error(APP_TAG, e.what());
         return false;
     }
-}
-
-//MARK: - Virtual list for handling new GroupField
--(void)cleanShowList
-{
-    [showList removeAllObjects];
-}
-
--(void)fillShowList:(nonnull const Group *)group insert:(bool)insert
-{
-    try
-    {
-        [self cleanShowList];
-        for(auto&& it : viewGroupField->get_list(group._id))
-        {
-            GroupField *gf = convert(it);
-            if(insert)
-            {
-                gf.newInsertion = true;
-                [gf setServerId:0];
-                [gf setGroupId: group._id];
-                [gf setServerGroupId: 0];
-            }
-            [showList setObject:gf forKey:[NSNumber numberWithLongLong:it->id]];
-        }
-    }
-    catch(const runtime_error& e)
-    {
-        error(APP_TAG, e.what());
-    }
-}
-
--(void)fillShowList:(nonnull const Group *)group
-{
-    [self fillShowList:group insert:false];
-}
-
--(nonnull NSArray<GroupField*>*)getShowList
-{
-    return [[showList allValues] sortedArrayUsingComparator:^(id obj1, id obj2) {
-        return [[[obj1 title] lowercaseString] compare:[[obj2 title] lowercaseString]];
-    }];
-}
-
--(BOOL)addToShowList:(nonnull GroupField *)groupField
-{
-    id value = showList[[NSNumber numberWithLongLong:[groupField _id]]];
-    if(value)
-    {
-        [value setSynchronized:false];
-        [value setTitle: [groupField title]];
-        [value setIsHidden: [groupField isHidden]];
-        return true;
-    }
-    else
-    {
-        [groupField setSynchronized:false];
-        [showList setObject:groupField forKey:[NSNumber numberWithLongLong:groupField._id]];
-        return true;
-    }
-}
-
--(BOOL)delFromShowList:(uint32_t)idGroupField
-{
-    try
-    {
-        int64_t toDelete = -1, i = 0;
-        for (NSNumber *key in showList)
-        {
-            id it = showList[key];
-            
-            if([it _id] == idGroupField)
-            {
-                if([it serverId] > 0)
-                {
-                    viewGroupField->del([it _id]);
-                }
-                toDelete = i;
-                break;
-            }
-            i++;
-        }
-            
-        if(toDelete > -1)
-        {
-            [showList removeObjectForKey:[NSNumber numberWithLongLong:toDelete]];
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    catch(const runtime_error& e)
-    {
-        error(APP_TAG, e.what());
-        return false;
-    }
-}
-
--(uint8_t)sizeShowList
-{
-    return [[showList allKeys] count];
 }
 
 @end

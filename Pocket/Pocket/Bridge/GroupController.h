@@ -44,22 +44,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(Stat)persistGroup:(nonnull const Group*)group;
 -(nullable Group*)getGroup:(uint32_t)groupId;
 
-//MARK: - GroupField
--(uint32_t)getLastIdGroupField;
-
 //MARK: - ExportImport
 -(BOOL)dataExport:(nonnull const NSString*)fullPathFileExport;
 -(BOOL)dataImport:(nonnull const NSString*)fullPathFileImport;
 -(BOOL)dataImportLegacy:(nonnull const NSString*)fullPathFileImport;
-
-//MARK: - Virtual list for handling new GroupField
--(void)cleanShowList;
--(void)fillShowList:(nonnull const Group *)group insert:(bool)insert;
--(void)fillShowList:(nonnull const Group *)group;
--(nonnull NSArray<GroupField*>*)getShowList;
--(BOOL)addToShowList:(nonnull GroupField *)groupField;
--(BOOL)delFromShowList:(uint32_t)idGroupField;
--(uint8_t)sizeShowList;
 
 @end
 

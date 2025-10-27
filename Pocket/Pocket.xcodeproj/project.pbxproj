@@ -18,6 +18,7 @@
 		14375093242F584900375E54 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14375092242F584900375E54 /* TextFieldExtension.swift */; };
 		143830A52430A92300221BB8 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143830A42430A92300221BB8 /* GroupVC.swift */; };
 		1438962A2A23E8BA00AEF3B3 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */; };
+		1439EEA32EAF36C600B66737 /* GroupFieldController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1439EEA22EAF36C600B66737 /* GroupFieldController.mm */; };
 		143EFA55244A2B9B00DBBE0F /* Timeout4Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */; };
 		145D51172D6D249F008E0714 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 145D51162D6D249F008E0714 /* KeychainSwift */; };
 		1474415F25B42F1C00B6270D /* SwiftSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = 1474415E25B42F1C00B6270D /* SwiftSpinner */; };
@@ -81,6 +82,8 @@
 		14383099243080FD00221BB8 /* Pocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pocket.entitlements; sourceTree = "<group>"; };
 		143830A42430A92300221BB8 /* GroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
 		143896292A23E8BA00AEF3B3 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
+		1439EEA12EAF36C600B66737 /* GroupFieldController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupFieldController.h; sourceTree = "<group>"; };
+		1439EEA22EAF36C600B66737 /* GroupFieldController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupFieldController.mm; sourceTree = "<group>"; };
 		143EFA54244A2B9B00DBBE0F /* Timeout4Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout4Logout.swift; sourceTree = "<group>"; };
 		1447E98A2D66976800812D0A /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
 		1447E98B2D66976800812D0A /* json_fwd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json_fwd.hpp; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				14D4DF4C2932C7A700C84FD0 /* GroupController.mm */,
 				14D4DF512932C7A700C84FD0 /* GroupField.h */,
 				14D4DF502932C7A700C84FD0 /* GroupField.mm */,
+				1439EEA12EAF36C600B66737 /* GroupFieldController.h */,
+				1439EEA22EAF36C600B66737 /* GroupFieldController.mm */,
 				14D4DF552932C7A700C84FD0 /* User.h */,
 				14D4DF572932C7A700C84FD0 /* User.mm */,
 			);
@@ -781,6 +786,7 @@
 				1407DC4A24301C85007CD405 /* Graphics.swift in Sources */,
 				14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */,
 				14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */,
+				1439EEA32EAF36C600B66737 /* GroupFieldController.mm in Sources */,
 				14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */,
 				14375093242F584900375E54 /* TextFieldExtension.swift in Sources */,
 				148D86682431DA8D00EB38D6 /* SZTextView.m in Sources */,
