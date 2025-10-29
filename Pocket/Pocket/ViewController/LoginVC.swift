@@ -180,7 +180,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        if !Globals.shared().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
+        if !Pocket.shared().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
             DispatchQueue.main.async {
                 self.txtPasswd.text = ""
                 SwiftSpinner.hide()
@@ -190,13 +190,13 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         DispatchQueue.global(qos: .background).async {
-            let rc = Globals.shared().login(email, passwd: passwd)
+            let rc = Pocket.shared().login(email, passwd: passwd)
             DispatchQueue.main.async {
                 SwiftSpinner.hide()
             }
             if(rc == .OK)
             {
-                if(Globals.shared().user.status == .ACTIVE)
+                if(Pocket.shared().user.status == .ACTIVE)
                 {
                     Timeout4Logout.shared.start()
                     

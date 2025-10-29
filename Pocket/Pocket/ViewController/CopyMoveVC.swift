@@ -183,9 +183,9 @@ class CopyMoveVC: UITableViewController {
     @IBAction private func actMenuBtnCopy(_ sender: UIBarButtonItem) {
         var ret = true
         if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
+            ret = Pocket.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
         } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
+            ret = Pocket.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
         }
         if ret {
             for _ in 0 ..< navigationDepth + 1 {
@@ -199,9 +199,9 @@ class CopyMoveVC: UITableViewController {
     @IBAction private func actMenuBtnMove(_ sender: UIBarButtonItem) {
         var ret = true
         if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: true)
+            ret = Pocket.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: true)
         } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: true)
+            ret = Pocket.shared().copyField(id, groupIdDst: showGroupIdGroup, move: true)
         }
         if ret {
             for _ in 0 ..< navigationDepth + 1 {

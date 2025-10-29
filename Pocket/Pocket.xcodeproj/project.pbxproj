@@ -38,7 +38,7 @@
 		14D4DF652932C7A700C84FD0 /* Field.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF542932C7A700C84FD0 /* Field.mm */; };
 		14D4DF662932C7A700C84FD0 /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF572932C7A700C84FD0 /* User.mm */; };
 		14D4DF672932C7A700C84FD0 /* FieldController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5A2932C7A700C84FD0 /* FieldController.mm */; };
-		14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Globals.mm */; };
+		14D4DF6A2932C7A700C84FD0 /* Pocket.mm in Sources */ = {isa = PBXBuildFile; fileRef = 14D4DF5D2932C7A700C84FD0 /* Pocket.mm */; };
 		14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */; };
 		14DF18842D6548E300E5AEF2 /* view-group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF186C2D6548E300E5AEF2 /* view-group.cpp */; };
 		14DF18862D6548E300E5AEF2 /* dao-group-field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14DF18392D6548E300E5AEF2 /* dao-group-field.cpp */; };
@@ -106,7 +106,7 @@
 		14D4DF4B2932C7A700C84FD0 /* FieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldController.h; sourceTree = "<group>"; };
 		14D4DF4C2932C7A700C84FD0 /* GroupController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupController.mm; sourceTree = "<group>"; };
 		14D4DF4E2932C7A700C84FD0 /* GroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupController.h; sourceTree = "<group>"; };
-		14D4DF4F2932C7A700C84FD0 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		14D4DF4F2932C7A700C84FD0 /* Pocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pocket.h; sourceTree = "<group>"; };
 		14D4DF502932C7A700C84FD0 /* GroupField.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupField.mm; sourceTree = "<group>"; };
 		14D4DF512932C7A700C84FD0 /* GroupField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupField.h; sourceTree = "<group>"; };
 		14D4DF532932C7A700C84FD0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		14D4DF552932C7A700C84FD0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		14D4DF572932C7A700C84FD0 /* User.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = User.mm; sourceTree = "<group>"; };
 		14D4DF5A2932C7A700C84FD0 /* FieldController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FieldController.mm; sourceTree = "<group>"; };
-		14D4DF5D2932C7A700C84FD0 /* Globals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Globals.mm; sourceTree = "<group>"; };
+		14D4DF5D2932C7A700C84FD0 /* Pocket.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pocket.mm; sourceTree = "<group>"; };
 		14DCC80324326541000491A8 /* GroupsFieldsVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFieldsVCCell.swift; sourceTree = "<group>"; };
 		14DF181F2D6548E300E5AEF2 /* globals.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = globals.hpp; sourceTree = "<group>"; };
 		14DF18202D6548E300E5AEF2 /* tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tree.hpp; sourceTree = "<group>"; };
@@ -306,8 +306,8 @@
 				14D4DF542932C7A700C84FD0 /* Field.mm */,
 				14D4DF4B2932C7A700C84FD0 /* FieldController.h */,
 				14D4DF5A2932C7A700C84FD0 /* FieldController.mm */,
-				14D4DF4F2932C7A700C84FD0 /* Globals.h */,
-				14D4DF5D2932C7A700C84FD0 /* Globals.mm */,
+				14D4DF4F2932C7A700C84FD0 /* Pocket.h */,
+				14D4DF5D2932C7A700C84FD0 /* Pocket.mm */,
 				14D4DF532932C7A700C84FD0 /* Group.h */,
 				14D4DF462932C7A700C84FD0 /* Group.mm */,
 				14D4DF4E2932C7A700C84FD0 /* GroupController.h */,
@@ -784,7 +784,7 @@
 				14DCC80424326541000491A8 /* GroupsFieldsVCCell.swift in Sources */,
 				14D4DF662932C7A700C84FD0 /* User.mm in Sources */,
 				1407DC4A24301C85007CD405 /* Graphics.swift in Sources */,
-				14D4DF6A2932C7A700C84FD0 /* Globals.mm in Sources */,
+				14D4DF6A2932C7A700C84FD0 /* Pocket.mm in Sources */,
 				14BA14222431CAB30067CFA8 /* FieldVC.swift in Sources */,
 				1439EEA32EAF36C600B66737 /* GroupFieldController.mm in Sources */,
 				14173FC4242D27560055410E /* GroupsFieldsVC.swift in Sources */,

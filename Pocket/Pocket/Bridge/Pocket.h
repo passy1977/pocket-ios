@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class User;
 @class Session;
-@interface Globals : NSObject
+@interface Pocket : NSObject
 
 typedef NS_ENUM(NSUInteger, Stat)
 {
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, Stat)
 
 -(instancetype)init;
 
-+(Globals*)shared;
++(Pocket*)shared;
 
 -(BOOL)initialize:(nonnull const NSString*)basePath
        configJson:(nullable const NSString*)configJson

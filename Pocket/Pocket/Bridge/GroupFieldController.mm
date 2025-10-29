@@ -80,8 +80,8 @@ constexpr char APP_TAG[] = "GroupFieldController";
 
 -(void)initialize
 {
-    session = static_cast<class session*>([[Globals shared] getSession]);
-    user = [Globals shared].user;
+    session = static_cast<class session*>([[Pocket shared] getSession]);
+    user = [Pocket shared].user;
     viewGroupField = session->get_view_group_field().get();
 }
 

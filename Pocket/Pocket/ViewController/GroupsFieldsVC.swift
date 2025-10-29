@@ -464,7 +464,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                             }
                             
-                            if Globals.shared().sendData() == .OK {
+                            if Pocket.shared().sendData() == .OK {
                                 DispatchQueue.main.async {
                                     SwiftSpinner.hide()
                                     self.reloadList(self.group._id)
@@ -552,7 +552,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction private func actBtnExit(_ sender: UIButton) {
         onExit = true
         actViwMenuOpenOrClose()
-        Globals.shared().logout(false)
+        Pocket.shared().logout(false)
         keychain.delete(KEY_EMAIL)
         keychain.delete(KEY_PASSWD)
         navigationController?.popViewController(animated: true)

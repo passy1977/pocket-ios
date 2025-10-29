@@ -22,7 +22,7 @@
 #import "Group.h"
 #import "GroupField.h"
 #import "User.h"
-#import "Globals.h"
+#import "Pocket.h"
 #import "GroupController.h"
 #import "GroupFieldController.h"
 #import "FieldController.h"

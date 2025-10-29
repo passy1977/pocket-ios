@@ -82,8 +82,8 @@ constexpr char APP_TAG[] = "FieldController";
 
 -(void)initialize
 {
-    session = static_cast<class session*>([[Globals shared] getSession]);
-    user = [Globals shared].user;
+    session = static_cast<class session*>([[Pocket shared] getSession]);
+    user = [Pocket shared].user;
     viewField = session->get_view_field().get();
 }
 

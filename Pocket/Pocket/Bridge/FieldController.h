@@ -21,7 +21,7 @@
 #import <Foundation/Foundation.h>
 #endif
 
-#import "Globals.h"
+#import "Pocket.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

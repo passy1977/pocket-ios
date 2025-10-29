@@ -19,7 +19,7 @@
 
 
 
-#import "Globals.h"
+#import "Pocket.h"
 #import "User.h"
 #import "Constants.h"
 
@@ -48,17 +48,17 @@ User* convert(const user::ptr &user);
 namespace
 {
 
-Globals* singleton = nullptr;
-constexpr char APP_TAG[] = "Globals";
+Pocket* singleton = nullptr;
+constexpr char APP_TAG[] = "Pocket";
 
 }
  
-@interface Globals ()
+@interface Pocket ()
 @property class session* session;
 @property class aes* aes;
 @end
 
-@implementation Globals
+@implementation Pocket
 @synthesize session;
 @synthesize user;
 @synthesize aes;
@@ -90,11 +90,11 @@ constexpr char APP_TAG[] = "Globals";
 
 }
 
-+(Globals*)shared
++(Pocket*)shared
 {
     if(singleton == nullptr)
     {
-        singleton = [Globals new];
+        singleton = [Pocket new];
     }
     return singleton;
 }
