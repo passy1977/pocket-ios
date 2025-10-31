@@ -59,6 +59,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         setGroupField(enable: false)
         
         groupController.initialize()
+        groupFieldController.initialize()
         
         if let group = group {
             groupFieldController.fillShowList(group, insert: insert);
