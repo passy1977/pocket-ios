@@ -105,7 +105,6 @@ final class Timeout4Logout {
             timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
         }
         
-        print(timerTimeout)
         timerTimeout -= 1
         if timerTimeout <= 0 {
             timer.invalidate()

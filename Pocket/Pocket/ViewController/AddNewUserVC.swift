@@ -53,6 +53,10 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
         }
 #endif
         
+        txtViewDeviceJson.text = """
+            {"id":2,"uuid":"8aac9e00-7d63-4758-bedd-50d22ecb3971","status":"ACTIVE","timestampLastUpdate":1761956043,"timestampCreation":1761956043,"userId":2,"host":"https://test.api-pocket.salsi.it","hostPublicKey":"-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu0/NI63LfihCBlt0E1600G/eH2T8sWjc/1tBcE0c9v9/fe8O0959ZGa4UJ02FVj3oNbx8vIDlF5RiKR20UeLO8V7GnupIxEbT+PKnOOhI8j/iLBUmInCR8ropsU1iWjbnM35Y5mE8oK6b92qT6aHTi027SooHh7DzmCMAQLBdN/pbdURTk5YwRUgS6um1iy2x0/APiWLTz4YWWFawdegTC5mV73VRiMA+a2RrN9IkXbbqCibo2o4OI4R3q5mC693jUtBRUCP/+nroWZDUZzYnRCWt5pl1bQxGXdkNvSr2GPLrYwZGo+cZMsvUnm15g7V6+f81aH2zoM8DEFbwSDWXwIDAQAB\n-----END PUBLIC KEY-----\n","aesCbcIv":"Wc1Rb2irikLB8HsM","corsEnableStrict":false,"corsHeaderToken":"bsr9yvsq63c9s6Mx"}
+            """
+        
     }
     
     

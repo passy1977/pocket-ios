@@ -91,7 +91,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
 
         } else {
             setForm(nil)
-            performSegue(withIdentifier: "newUser", sender: self)
+            //performSegue(withIdentifier: "newUser", sender: self)
         }
     }
     
@@ -151,7 +151,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     
     @inline(__always)
     private func checkLogin() {
-        btnLogin.isEnabled = !(txtEmail.text?.isEmpty ?? false) && !(txtPasswd.text?.isEmpty ?? false) 
+        btnLogin.isEnabled = !(txtEmail.text?.isEmpty ?? false) && !(txtPasswd.text?.isEmpty ?? false)
     }
     
     
