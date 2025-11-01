@@ -104,6 +104,10 @@ final class Timeout4Logout {
         } else {
             timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
         }
+
+#if DEBUG
+        print(timerTimeout)
+#endif
         
         timerTimeout -= 1
         if timerTimeout <= 0 {

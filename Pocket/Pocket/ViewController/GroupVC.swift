@@ -201,6 +201,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             g.title = txtGroupTitle.text ?? ""
             g.note = txtViwGroupNote.text ?? ""
             g.icon = ""
+            g.synchronized = false
             GroupsFieldsVC.overrideSearch = g.title
             
             SwiftSpinner.show("Synchronize to server...")
@@ -221,11 +222,14 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } else {
             group.title = txtGroupTitle.text ?? ""
             group.note = txtViwGroupNote.text ?? ""
+            group.synchronized = false
             GroupsFieldsVC.overrideSearch = group.title
             SwiftSpinner.show("Synchronize to server...")
             
             DispatchQueue.global(qos: .background).async {
+                
                 self.groupController.persistGroup(group)
+                
                 DispatchQueue.main.async {
                     SwiftSpinner.hide()
                     Timeout4Logout.shared.start()
@@ -246,6 +250,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let groupFieldToModify = self.groupFieldToModify  {
             groupField._id = groupFieldToModify._id
             groupField.serverId = groupFieldToModify.serverId
+            groupField.synchronized = false
         } else {
             idGroupFieldToModify += 1
             groupField.newInsertion = true;
