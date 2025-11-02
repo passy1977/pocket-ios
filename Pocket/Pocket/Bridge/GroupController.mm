@@ -129,7 +129,7 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
-        return static_cast<int64_t>(viewGroup->get_list(group._id).size()) + static_cast<int64_t>(viewField->get_list(group._id).size());
+        return static_cast<int32_t>(viewGroup->get_list(group._id).size()) + static_cast<int32_t>(viewField->get_list(group._id).size());
     }
     catch(const runtime_error& e)
     {

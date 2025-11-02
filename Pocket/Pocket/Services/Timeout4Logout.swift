@@ -65,8 +65,19 @@ final class Timeout4Logout {
 
     
     public func start() {
-        timerRunning = true
-        timer.fire()
+        UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
+        
+        if !timer.isValid {
+            DispatchQueue.main.async {
+                self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: self.timerCallback)
+                RunLoop.main.add(self.timer, forMode: RunLoop.Mode.common)
+                self.timerRunning = true
+                self.timer.fire()
+            }
+        } else {
+            timerRunning = true
+            timer.fire()
+        }
     }
     
     
@@ -93,7 +104,7 @@ final class Timeout4Logout {
     }
 
     private func timerCallback(_ timer: Timer) {
-        if !timerReady {
+        if !timerReady || !timerRunning {
             return
         }
         
@@ -106,14 +117,18 @@ final class Timeout4Logout {
         }
 
 #if DEBUG
-        print(timerTimeout)
+        print("Timeout: \(timerTimeout), Running: \(timerRunning)")
 #endif
         
         timerTimeout -= 1
         if timerTimeout <= 0 {
+#if DEBUG
+            print("TIMEOUT - invalidating timer and calling callback")
+#endif
             timer.invalidate()
-            _callback()
+            timerRunning = false
             UserDefaults.standard.set(0, forKey: "timeout4logout")
+            _callback()
         } else {
             UserDefaults.standard.set(timerTimeout, forKey: "timeout4logout")
         }
