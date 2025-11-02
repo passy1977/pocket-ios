@@ -1,7 +1,7 @@
 /***************************************************************************
  *
  * Pocket
- * Copyright (C) 2018/2025 Antonio Salsi <passy.linux@zresa.it>
+ * Copyright (C) 2018/2025 Antonio Salsi <+.linux@zresa.it>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,7 +82,6 @@ constexpr char APP_TAG[] = "GroupController";
 @synthesize viewGroup;
 @synthesize viewGroupField;
 @synthesize viewField;
-@synthesize showList;
 
 //MARK: - System
 -(instancetype)init
@@ -95,7 +94,6 @@ constexpr char APP_TAG[] = "GroupController";
         viewGroup = nullptr;
         viewGroupField = nullptr;
         viewField = nullptr;
-        showList = [NSMutableDictionary new];
     }
     return self;
 }
@@ -109,7 +107,7 @@ constexpr char APP_TAG[] = "GroupController";
 }
 
 //MARK: - Group
--(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(nonnull const NSString*)search
+-(nonnull NSArray<Group*>*)getListGroup:(int64_t)groupId search:(nonnull const NSString*)search
 {
     NSMutableArray<Group*> *ret = [NSMutableArray new];
     try
@@ -131,7 +129,7 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
-        return static_cast<uint32_t>(viewGroup->get_list(group._id).size()) + static_cast<uint32_t>(viewField->get_list(group._id).size());
+        return static_cast<int64_t>(viewGroup->get_list(group._id).size()) + static_cast<int64_t>(viewField->get_list(group._id).size());
     }
     catch(const runtime_error& e)
     {
@@ -140,7 +138,7 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(Stat)delGroup:(nonnull const Group*)group
+-(Stat)del:(nonnull const Group*)group
 {
     try
     {
@@ -166,14 +164,50 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(Stat)persistGroup:(nonnull const Group*)group
+-(Stat)persist:(nonnull const Group*)group groupFieldController:(nonnull const GroupFieldController*)groupFieldController
 {
     try
     {
+        auto viewGroupField = session->get_view_group_field().get();
+        
         auto&& g = convert(group);
         g->user_id = user._id;
         g->synchronized = false;
         g->id = viewGroup->persist(g);
+        
+        for (NSNumber *key in groupFieldController.showList)
+        {
+            GroupField *gfObjC = groupFieldController.showList[key];
+            auto&& gf = convert(gfObjC);
+            gf->synchronized = false;
+            if(gfObjC.newInsertion)
+            {
+                gf->id = 0;
+                gf->user_id = user._id;
+                gf->group_id = g->id;
+                gf->server_group_id = g->server_id;
+            }
+            gf->id = viewGroupField->persist(gf);
+            gfObjC._id = static_cast<int64_t>(gf->id);
+            
+            if(gfObjC.newInsertion)
+            {
+                Field *fObjC = [Field new];
+                fObjC.title = gfObjC.title;
+                fObjC.value = @"";
+                fObjC.isHidden = gf->is_hidden;
+                auto&& f = convert(fObjC);
+                f->user_id = user._id;
+                f->group_id = g->id;
+                f->server_group_id = g->server_id;
+                f->group_field_id = gf->id;
+                f->server_group_id = gf->server_id;
+                f->synchronized = false;
+                
+                f->id = viewField->persist(f);
+                fObjC._id = static_cast<int64_t>(f->id);
+            }
+        }
         
         session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
         session->set_synchronizer_connect_timeout(SYNCHRONIZER_CONNECT_TIMEOUT);
@@ -191,7 +225,7 @@ constexpr char APP_TAG[] = "GroupController";
     }
 }
 
--(nullable Group*)getGroup:(uint32_t)groupId
+-(nullable Group*)get:(int64_t)groupId
 {
     auto&&group_opt = viewGroup->get(groupId);
     if(group_opt)

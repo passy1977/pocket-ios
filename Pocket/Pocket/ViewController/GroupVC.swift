@@ -43,7 +43,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     private var insert = true
     private var groupFieldToModify: GroupField? = nil
     
-    private var idGroupFieldToModify : UInt32 = 1;
+    private var idGroupFieldToModify : Int64 = 1;
     
     public weak var group : Group? = nil {
         didSet {
@@ -208,7 +208,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             DispatchQueue.global(qos: .background).async {
                 
-                self.groupController.persistGroup(g)
+                self.groupController.persist(g, groupFieldController: self.groupFieldController)
                 self.group = g
                 
                 DispatchQueue.main.async {
@@ -228,7 +228,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             DispatchQueue.global(qos: .background).async {
                 
-                self.groupController.persistGroup(group)
+                self.groupController.persist(group, groupFieldController: self.groupFieldController)
                 
                 DispatchQueue.main.async {
                     SwiftSpinner.hide()
@@ -305,10 +305,10 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         switchGroupFieldIsHidden.isOn = isHidden ?? false
     }
     
-    private func reloadList(_ groupId: UInt32, insert : Bool = false) {
+    private func reloadList(_ groupId: Int64, insert : Bool = false) {
         groupFieldList = [GroupField]()
         
-        for groupField in groupFieldController.getShowList() {
+        for groupField in groupFieldController.getOrderedShowList() {
             groupFieldList.append(groupField)
         }
 

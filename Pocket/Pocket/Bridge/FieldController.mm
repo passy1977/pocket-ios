@@ -88,7 +88,7 @@ constexpr char APP_TAG[] = "FieldController";
 }
 
 //MARK: - Field
--(nonnull NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search
+-(nonnull NSArray<Field*>*)getListField:(int64_t)groupId search:(nonnull const NSString*)search
 {
     
     NSMutableArray<Field*> *ret = [NSMutableArray new];
@@ -159,7 +159,7 @@ constexpr char APP_TAG[] = "FieldController";
     }
 }
 
--(int32_t)sizeFiled:(uint32_t)groupId
+-(int32_t)sizeFiled:(int64_t)groupId
 {
     try
     {
@@ -172,7 +172,7 @@ constexpr char APP_TAG[] = "FieldController";
     }
 }
 
--(nullable Field*)getFiled:(uint32_t)groupId
+-(nullable Field*)getFiled:(int64_t)groupId
 {
     auto&&field_opt = viewField->get(groupId);
     if(field_opt)

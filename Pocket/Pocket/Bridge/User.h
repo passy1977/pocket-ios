@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, UserStat)
 
 
 @interface User : NSObject
-@property uint32_t _id;
+@property int64_t _id;
 @property NSString* email;
 @property NSString* name;
 @property NSString* passwd;
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, UserStat)
 @property uint64_t timestampLastUpdate;
 
 -(instancetype)init;
--(instancetype)initWithId:(uint32_t)_id
+-(instancetype)initWithId:(int64_t)_id
                     email:(NSString*)email
                      name:(NSString*)name
                    passwd:(NSString*)passwd

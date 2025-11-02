@@ -247,7 +247,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 if let group = tuple.group {
                     
                     DispatchQueue.global(qos: .background).async {
-                        self.groupController.delGroup(group)
+                        self.groupController.del(group)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             self.reloadList(self.group._id)
@@ -340,7 +340,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Method
 
-    private func reloadList(_ groupId: UInt32, search : String = "") {
+    private func reloadList(_ groupId: Int64, search : String = "") {
         tupleList.removeAll()
         
         //do {

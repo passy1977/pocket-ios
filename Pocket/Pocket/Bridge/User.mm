@@ -44,7 +44,7 @@ using namespace std;
     return self;
 }
 
--(instancetype)initWithId:(uint32_t)_id
+-(instancetype)initWithId:(int64_t)_id
     email:(NSString*)email
     name:(NSString*)name
     passwd:(NSString*)passwd
@@ -82,7 +82,7 @@ User* convert(const user::ptr &user)
 {
     User *ret = [User new];
     
-    ret._id = static_cast<uint32_t>(user->id);
+    ret._id = static_cast<int64_t>(user->id);
     ret.email = [NSString stringWithCString:user->email.c_str() encoding:NSUTF8StringEncoding];
     ret.name = [NSString stringWithCString:user->name.c_str() encoding:NSUTF8StringEncoding];
     ret.passwd = [NSString stringWithCString:user->passwd.c_str() encoding:NSUTF8StringEncoding];

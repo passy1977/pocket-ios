@@ -30,21 +30,23 @@ NS_ASSUME_NONNULL_BEGIN
 @class GroupField;
 
 @interface GroupFieldController : NSObject
+@property (strong, readonly) NSMutableDictionary<NSNumber *, GroupField *> *showList;
+
 
 //MARK: - System
 -(instancetype)init;
 -(void)initialize;
 
 //MARK: - GroupField
--(uint32_t)getLastIdGroupField;
+-(int64_t)getLastIdGroupField;
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList;
 -(void)fillShowList:(nonnull const Group *)group insert:(bool)insert;
 -(void)fillShowList:(nonnull const Group *)group;
--(nonnull NSArray<GroupField*>*)getShowList;
+-(nonnull const NSArray<GroupField*>*)getOrderedShowList;
 -(BOOL)addToShowList:(nonnull GroupField *)groupField;
--(BOOL)delFromShowList:(uint32_t)idGroupField;
+-(BOOL)delFromShowList:(int64_t)idGroupField;
 -(uint8_t)sizeShowList;
 
 @end

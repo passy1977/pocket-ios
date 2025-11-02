@@ -50,13 +50,13 @@ using namespace std;
     return self;
 }
 
--(instancetype)initWithId:(uint32_t)id
-                serverId:(uint32_t)serverId
-                userId:(uint32_t)userId
-                groupId:(uint32_t)groupId
-                serverGroupId:(uint32_t)serverGroupId
-                groupFieldId:(uint32_t)groupFieldId
-                serverGroupFieldId:(uint32_t)serverGroupFieldId
+-(instancetype)initWithId:(int64_t)id
+                serverId:(int64_t)serverId
+                userId:(int64_t)userId
+                groupId:(int64_t)groupId
+                serverGroupId:(int64_t)serverGroupId
+                groupFieldId:(int64_t)groupFieldId
+                serverGroupFieldId:(int64_t)serverGroupFieldId
                 title:(nonnull NSString*)title
                 icon:(nonnull NSString*)icon
                 note:(nonnull NSString*)note
@@ -111,11 +111,11 @@ Group* convert(const group::ptr &group)
 {
     auto ret = [Group new];
     
-    ret._id = static_cast<uint32_t>(group->id);
-    ret.serverId = static_cast<uint32_t>(group->server_id);
-    ret.userId = static_cast<uint32_t>(group->user_id);
-    ret.groupId = static_cast<uint32_t>(group->group_id);
-    ret.serverGroupId = static_cast<uint32_t>(group->server_group_id);
+    ret._id = static_cast<int64_t>(group->id);
+    ret.serverId = static_cast<int64_t>(group->server_id);
+    ret.userId = static_cast<int64_t>(group->user_id);
+    ret.groupId = static_cast<int64_t>(group->group_id);
+    ret.serverGroupId = static_cast<int64_t>(group->server_group_id);
     ret.title = [NSString stringWithCString:group->title.c_str() encoding:NSUTF8StringEncoding];
     ret.icon = [NSString stringWithCString:group->icon.c_str() encoding:NSUTF8StringEncoding];
     ret.note = [NSString stringWithCString:group->note.c_str() encoding:NSUTF8StringEncoding];

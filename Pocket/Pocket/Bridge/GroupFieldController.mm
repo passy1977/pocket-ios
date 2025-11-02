@@ -55,7 +55,6 @@ constexpr char APP_TAG[] = "GroupFieldController";
 @property session *session;
 @property view<group_field> *viewGroupField;
 @property const User *user;
-@property (strong) NSMutableDictionary<NSNumber *, GroupField *> *showList;
 @end
 
 
@@ -86,13 +85,13 @@ constexpr char APP_TAG[] = "GroupFieldController";
 }
 
 //MARK: - GroupField
--(uint32_t)getLastIdGroupField
+-(int64_t)getLastIdGroupField
 {
     try
     {
         auto lastGroupFieldId = viewGroupField->get_last_id();
         
-        return lastGroupFieldId > 0 ? static_cast<uint32_t>(lastGroupFieldId) : 1;
+        return lastGroupFieldId > 0 ? static_cast<int64_t>(lastGroupFieldId) : 1;
     }
     catch(const runtime_error& e)
     {
@@ -136,7 +135,7 @@ constexpr char APP_TAG[] = "GroupFieldController";
     [self fillShowList:group insert:false];
 }
 
--(nonnull NSArray<GroupField*>*)getShowList
+-(nonnull const NSArray<GroupField*>*)getOrderedShowList
 {
     return [[showList allValues] sortedArrayUsingComparator:^(id obj1, id obj2) {
         return [[[obj1 title] lowercaseString] compare:[[obj2 title] lowercaseString]];
@@ -161,7 +160,7 @@ constexpr char APP_TAG[] = "GroupFieldController";
     }
 }
 
--(BOOL)delFromShowList:(uint32_t)idGroupField
+-(BOOL)delFromShowList:(int64_t)idGroupField
 {
     try
     {

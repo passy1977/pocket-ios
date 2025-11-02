@@ -22,6 +22,7 @@
 #endif
 
 #import "Pocket.h"
+#import "GroupFieldController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,11 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)initialize;
 
 //MARK: - Group
--(nonnull NSArray<Group*>*)getListGroup:(uint32_t)groupId search:(nonnull const NSString*)search;
+-(nonnull NSArray<Group*>*)getListGroup:(int64_t)groupId search:(nonnull const NSString*)search;
 -(int32_t)countChild:(nonnull const Group*)group;
--(Stat)delGroup:(nonnull const Group*)group;
--(Stat)persistGroup:(nonnull const Group*)group;
--(nullable Group*)getGroup:(uint32_t)groupId;
+-(Stat)del:(nonnull const Group*)group;
+-(Stat)persist:(nonnull const Group*)group groupFieldController:(nonnull const GroupFieldController*)groupFieldController;
+-(nullable Group*)get:(int64_t)groupId;
 
 //MARK: - ExportImport
 -(BOOL)dataExport:(nonnull const NSString*)fullPathFileExport;

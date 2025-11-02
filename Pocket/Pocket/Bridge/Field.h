@@ -24,13 +24,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Field : NSObject
-@property uint32_t _id;
-@property uint32_t serverId;
-@property uint32_t userId;
-@property uint32_t groupId;
-@property uint32_t serverGroupId;
-@property uint32_t groupFieldId;
-@property uint32_t serverGroupFieldId;
+@property int64_t _id;
+@property int64_t serverId;
+@property int64_t userId;
+@property int64_t groupId;
+@property int64_t serverGroupId;
+@property int64_t groupFieldId;
+@property int64_t serverGroupFieldId;
 @property NSString* title;
 @property NSString* value;
 @property BOOL isHidden;
@@ -39,13 +39,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property uint64_t timestampCreation;
 
 -(instancetype)init;
--(instancetype)initWithId:(uint32_t)id
-                serverId:(uint32_t)serverId
-                userId:(uint32_t)userId
-                groupId:(uint32_t)groupId
-                serverGroupId:(uint32_t)serverGroupId
-                groupFieldId:(uint32_t)groupFieldId
-                serverGroupFieldId:(uint32_t)serverGroupFieldId
+-(instancetype)initWithId:(int64_t)id
+                serverId:(int64_t)serverId
+                userId:(int64_t)userId
+                groupId:(int64_t)groupId
+                serverGroupId:(int64_t)serverGroupId
+                groupFieldId:(int64_t)groupFieldId
+                serverGroupFieldId:(int64_t)serverGroupFieldId
                 title:(nonnull NSString*)title
                 value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden

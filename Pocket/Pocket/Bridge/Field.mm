@@ -50,13 +50,13 @@ using namespace std;
     return self;
 }
 
--(instancetype)initWithId:(uint32_t)id
-                serverId:(uint32_t)serverId
-                userId:(uint32_t)userId
-                groupId:(uint32_t)groupId
-                serverGroupId:(uint32_t)serverGroupId
-                groupFieldId:(uint32_t)groupFieldId
-                serverGroupFieldId:(uint32_t)serverGroupFieldId
+-(instancetype)initWithId:(int64_t)id
+                serverId:(int64_t)serverId
+                userId:(int64_t)userId
+                groupId:(int64_t)groupId
+                serverGroupId:(int64_t)serverGroupId
+                groupFieldId:(int64_t)groupFieldId
+                serverGroupFieldId:(int64_t)serverGroupFieldId
                 title:(nonnull NSString*)title
                 value:(nonnull NSString*)value
                 isHidden:(BOOL)isHidden
@@ -112,13 +112,13 @@ Field* convert(const field::ptr &field)
 {
     auto ret = [Field new];
     
-    ret._id = static_cast<uint32_t>(field->id);
-    ret.serverId = static_cast<uint32_t>(field->server_id);
-    ret.userId = static_cast<uint32_t>(field->user_id);
-    ret.groupId = static_cast<uint32_t>(field->group_id);
-    ret.serverGroupId = static_cast<uint32_t>(field->server_group_id);
-    ret.groupFieldId = static_cast<uint32_t>(field->group_field_id);
-    ret.serverGroupFieldId = static_cast<uint32_t>(field->server_group_field_id);
+    ret._id = static_cast<int64_t>(field->id);
+    ret.serverId = static_cast<int64_t>(field->server_id);
+    ret.userId = static_cast<int64_t>(field->user_id);
+    ret.groupId = static_cast<int64_t>(field->group_id);
+    ret.serverGroupId = static_cast<int64_t>(field->server_group_id);
+    ret.groupFieldId = static_cast<int64_t>(field->group_field_id);
+    ret.serverGroupFieldId = static_cast<int64_t>(field->server_group_field_id);
     ret.title = [NSString stringWithCString:field->title.c_str() encoding:NSUTF8StringEncoding];
     ret.value = [NSString stringWithCString:field->value.c_str() encoding:NSUTF8StringEncoding];
     ret.isHidden = field->is_hidden;

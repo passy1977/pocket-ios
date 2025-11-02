@@ -75,9 +75,9 @@ typedef NS_ENUM(NSUInteger, Stat)
 
 -(Stat)changePasswd:(nonnull const NSString*)fullPathFile newPasswd:(nonnull const NSString*)newPasswd;
 
--(BOOL)copyGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst move:(BOOL)move;
+-(BOOL)copyGroup:(int64_t)groupIdSrc groupIdDst:(int64_t)groupIdDst move:(BOOL)move;
 
--(BOOL)copyField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst move:(BOOL)move;
+-(BOOL)copyField:(int64_t)fieldIdSrc groupIdDst:(int64_t)groupIdDst move:(BOOL)move;
 
 -(Stat)sendData;
 
