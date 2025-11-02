@@ -250,15 +250,16 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                     completion(false)
                     
                     if let error = error {
-                        print("Errore di autenticazione: \(error.localizedDescription)")
+                        print("Auth error: \(error.localizedDescription)")
                     }
                 }
             })
         } else {
             print("Device don't support Touch ID or Face ID");
+            
             completion(false)
             
-            print("Il dispositivo non supporta la funzionalità di autenticazione biometrica.")
+            print("The device don'tsupport the biometric authentication")
         }
     }
 
