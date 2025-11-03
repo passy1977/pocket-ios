@@ -168,7 +168,7 @@ class CopyMoveVC: UITableViewController {
             groupController?.getListGroup(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
             }
-            fieldController?.getListField(groupId, search: search).forEach {
+            fieldController?.getList(groupId, search: search).forEach {
                 tupleList.append((group: nil, field: $0))
             }
         //} catch {

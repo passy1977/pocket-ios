@@ -79,7 +79,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
                 txtTitle.font = UIFont.italicSystemFont(ofSize: fontSizeOriginal)
             }
 
-            let hiddenBtnShare = fieldController.sizeFiled(group._id) == 0
+            let hiddenBtnShare = fieldController.size(group._id) == 0
             let hiddenBtnNote = group.note.isEmpty
             
             showValue(btnValue, value: "", isHidden: false, show: false)
@@ -128,7 +128,7 @@ final class GroupsFieldsVCCell: UITableViewCell {
         
         """
         
-        fieldController?.getListField(group._id, search: "").forEach {
+        fieldController?.getList(group._id, search: "").forEach {
             textToShare += "\($0.title)=\($0.value)\n"
         }
 

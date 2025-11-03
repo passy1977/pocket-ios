@@ -257,7 +257,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     
                 } else if let field = tuple.field {
                     DispatchQueue.global(qos: .background).async {
-                        self.fieldController.delField(field)
+                        self.fieldController.del(field)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             self.reloadList(self.group._id)
@@ -347,7 +347,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
             groupController.getListGroup(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
             }
-            fieldController.getListField(groupId, search: search).forEach {
+            fieldController.getList(groupId, search: search).forEach {
                 tupleList.append((group: nil, field: $0))
             }
         //} catch {

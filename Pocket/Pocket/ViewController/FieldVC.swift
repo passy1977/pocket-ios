@@ -107,7 +107,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
             
             DispatchQueue.global(qos: .background).async {
                 
-                let _ = self.fieldController?.persistField(field)
+                let _ = self.fieldController?.persist(field)
                 DispatchQueue.main.async {
                     Timeout4Logout.shared.start()
                     SwiftSpinner.hide()
@@ -123,7 +123,7 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                 GroupsFieldsVC.overrideSearch = field.title
 
                 DispatchQueue.global(qos: .background).async {
-                    let _ = self.fieldController?.persistField(field)
+                    let _ = self.fieldController?.persist(field)
                     DispatchQueue.main.async {
                         Timeout4Logout.shared.start()
                         SwiftSpinner.hide()
