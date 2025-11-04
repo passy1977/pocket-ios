@@ -125,7 +125,7 @@ constexpr char APP_TAG[] = "GroupController";
     return ret;
 }
 
--(int32_t)countChild:(nonnull const Group*)group
+-(uint32_t)countChild:(nonnull const Group*)group
 {
     try
     {

@@ -159,11 +159,11 @@ constexpr char APP_TAG[] = "FieldController";
     }
 }
 
--(int32_t)size:(int64_t)groupId
+-(uint32_t)size:(int64_t)groupId
 {
     try
     {
-        return static_cast<int32_t>(viewField->get_list(groupId).size());
+        return static_cast<uint32_t>(viewField->get_list(groupId).size());
     }
     catch(const runtime_error& e)
     {
