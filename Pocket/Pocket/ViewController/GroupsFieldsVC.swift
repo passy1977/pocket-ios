@@ -344,7 +344,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
         tupleList.removeAll()
         
         //do {
-            groupController.getListGroup(groupId, search: search).forEach {
+            groupController.getList(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
             }
             fieldController.getList(groupId, search: search).forEach {

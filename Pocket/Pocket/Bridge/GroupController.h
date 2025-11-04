@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)initialize;
 
 //MARK: - Group
--(nonnull NSArray<Group*>*)getListGroup:(int64_t)groupId search:(nonnull const NSString*)search;
+-(nonnull NSArray<Group*>*)getList:(int64_t)groupId search:(nonnull const NSString*)search;
 -(int32_t)countChild:(nonnull const Group*)group;
 -(Stat)del:(nonnull const Group*)group;
 -(Stat)persist:(nonnull const Group*)group groupFieldController:(nonnull const GroupFieldController*)groupFieldController;

@@ -107,7 +107,7 @@ constexpr char APP_TAG[] = "GroupController";
 }
 
 //MARK: - Group
--(nonnull NSArray<Group*>*)getListGroup:(int64_t)groupId search:(nonnull const NSString*)search
+-(nonnull NSArray<Group*>*)getList:(int64_t)groupId search:(nonnull const NSString*)search
 {
     NSMutableArray<Group*> *ret = [NSMutableArray new];
     try
