@@ -64,7 +64,7 @@ final class GroupVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if let group = group {
             groupFieldController.fillShowList(group, insert: insert);
         }
-        idGroupFieldToModify = groupFieldController.getLastIdGroupField();
+        idGroupFieldToModify = groupFieldController.getLastId();
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do{

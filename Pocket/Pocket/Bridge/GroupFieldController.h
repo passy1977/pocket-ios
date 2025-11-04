@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)initialize;
 
 //MARK: - GroupField
--(int64_t)getLastIdGroupField;
+-(int64_t)getLastId;
 
 //MARK: - Virtual list for handling new GroupField
 -(void)cleanShowList;

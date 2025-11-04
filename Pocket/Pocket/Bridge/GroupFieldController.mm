@@ -85,7 +85,7 @@ constexpr char APP_TAG[] = "GroupFieldController";
 }
 
 //MARK: - GroupField
--(int64_t)getLastIdGroupField
+-(int64_t)getLastId
 {
     try
     {
