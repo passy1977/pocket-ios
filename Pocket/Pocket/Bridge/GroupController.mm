@@ -142,6 +142,7 @@ constexpr char APP_TAG[] = "GroupController";
 {
     try
     {
+        viewGroupField->del_by_group_id(group._id);
         viewField->del_by_group_id(group._id);
         viewGroup->del(group._id);
         

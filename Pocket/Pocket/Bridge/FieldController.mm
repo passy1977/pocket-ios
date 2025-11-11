@@ -112,6 +112,7 @@ constexpr char APP_TAG[] = "FieldController";
     try
     {
         auto&& f = convert(field);
+        f->synchronized = false;
         viewField->persist(f);
         
         session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);

@@ -123,8 +123,6 @@
 		14DF18272D6548E300E5AEF2 /* config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
 		14DF18282D6548E300E5AEF2 /* session.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = session.cpp; sourceTree = "<group>"; };
 		14DF182B2D6548E300E5AEF2 /* dao.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dao.hpp; sourceTree = "<group>"; };
-		14DF182C2D6548E300E5AEF2 /* dao-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-field.hpp"; sourceTree = "<group>"; };
-		14DF182D2D6548E300E5AEF2 /* dao-group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-group.hpp"; sourceTree = "<group>"; };
 		14DF182E2D6548E300E5AEF2 /* dao-group-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-group-field.hpp"; sourceTree = "<group>"; };
 		14DF182F2D6548E300E5AEF2 /* dao-read-write.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write.hpp"; sourceTree = "<group>"; };
 		14DF18302D6548E300E5AEF2 /* dao-read-write-field.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "dao-read-write-field.hpp"; sourceTree = "<group>"; };
@@ -378,8 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				14DF182B2D6548E300E5AEF2 /* dao.hpp */,
-				14DF182C2D6548E300E5AEF2 /* dao-field.hpp */,
-				14DF182D2D6548E300E5AEF2 /* dao-group.hpp */,
 				14DF182E2D6548E300E5AEF2 /* dao-group-field.hpp */,
 				14DF182F2D6548E300E5AEF2 /* dao-read-write.hpp */,
 				14DF18302D6548E300E5AEF2 /* dao-read-write-field.hpp */,
@@ -878,7 +874,7 @@
 					POCKET_DISABLE_SERVER_TIMEOUT,
 					POCKET_DISABLE_DB_LOCK,
 					POCKET_ENABLE_LOG,
-					"POCKET_ENABLE_AES=1",
+					"_POCKET_ENABLE_AES=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
