@@ -73,6 +73,10 @@ final class Timeout4Logout {
                 self.motionManagerY[self.motionManagerSamplingCursor] = data.acceleration.y
                 self.motionManagerZ[self.motionManagerSamplingCursor] = data.acceleration.z
                 
+                print(data.acceleration.x)
+                print(data.acceleration.y)
+                print(data.acceleration.z)
+                
                 self.motionManagerSamplingCursor += 1
             }
         }

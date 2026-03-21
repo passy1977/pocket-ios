@@ -343,17 +343,17 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     private func reloadList(_ groupId: UInt32, search : String = "") {
         tupleList.removeAll()
         
-        do {
+        //do {
             groupController.getListGroup(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
             }
             fieldController.getListField(groupId, search: search).forEach {
                 tupleList.append((group: nil, field: $0))
             }
-        } catch {
-            alertShow(self, message: "Decryption error")
-            Globals.shared().logout(true)
-        }
+        //} catch {
+        //    alertShow(self, message: "Decryption error")
+        //    Globals.shared().logout(true)
+        //}
         list.reloadData()
     }
     
