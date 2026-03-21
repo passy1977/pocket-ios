@@ -22,33 +22,32 @@
 #endif
 
 #import "Pocket.h"
-#import "GroupFieldController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class User;
 @class Group;
 @class GroupField;
-@class Session;
 
-@interface GroupController : NSObject
-@property BOOL reachability;
+@interface GroupFieldController : NSObject
+@property (strong, readonly) NSMutableDictionary<NSNumber *, GroupField *> *showList;
+
 
 //MARK: - System
 -(instancetype)init;
 -(void)initialize;
 
-//MARK: - Group
--(nonnull NSArray<Group*>*)getList:(int64_t)groupId search:(nonnull const NSString*)search;
--(uint32_t)countChild:(nonnull const Group*)group;
--(Stat)del:(nonnull const Group*)group;
--(Stat)persist:(nonnull const Group*)group groupFieldController:(nonnull const GroupFieldController*)groupFieldController;
--(nullable Group*)get:(int64_t)groupId;
+//MARK: - GroupField
+-(int64_t)getLastId;
 
-//MARK: - ExportImport
--(BOOL)dataExport:(nonnull const NSString*)fullPathFileExport;
--(BOOL)dataImport:(nonnull const NSString*)fullPathFileImport;
--(BOOL)dataImportLegacy:(nonnull const NSString*)fullPathFileImport;
+//MARK: - Virtual list for handling new GroupField
+-(void)cleanShowList;
+-(void)fillShowList:(nonnull const Group *)group insert:(bool)insert;
+-(void)fillShowList:(nonnull const Group *)group;
+-(nonnull const NSArray<GroupField*>*)getOrderedShowList;
+-(BOOL)addToShowList:(nonnull GroupField *)groupField;
+-(BOOL)delFromShowList:(int64_t)idGroupField;
+-(uint8_t)sizeShowList;
 
 @end
 

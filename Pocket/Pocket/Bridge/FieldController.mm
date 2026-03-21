@@ -82,13 +82,13 @@ constexpr char APP_TAG[] = "FieldController";
 
 -(void)initialize
 {
-    session = static_cast<class session*>([[Globals shared] getSession]);
-    user = [Globals shared].user;
+    session = static_cast<class session*>([[Pocket shared] getSession]);
+    user = [Pocket shared].user;
     viewField = session->get_view_field().get();
 }
 
 //MARK: - Field
--(nonnull NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search
+-(nonnull NSArray<Field*>*)getList:(int64_t)groupId search:(nonnull const NSString*)search
 {
     
     NSMutableArray<Field*> *ret = [NSMutableArray new];
@@ -107,11 +107,12 @@ constexpr char APP_TAG[] = "FieldController";
     return ret;
 }
 
--(Stat)persistField:(nonnull const Field*)field
+-(Stat)persist:(nonnull const Field*)field
 {
     try
     {
         auto&& f = convert(field);
+        f->synchronized = false;
         viewField->persist(f);
         
         session->set_synchronizer_timeout(SYNCHRONIZER_TIMEOUT);
@@ -134,7 +135,7 @@ constexpr char APP_TAG[] = "FieldController";
 }
 
 
--(Stat)delField:(Field*)field
+-(Stat)del:(Field*)field
 {
     try
     {
@@ -159,11 +160,11 @@ constexpr char APP_TAG[] = "FieldController";
     }
 }
 
--(int32_t)sizeFiled:(uint32_t)groupId
+-(uint32_t)size:(int64_t)groupId
 {
     try
     {
-        return static_cast<int32_t>(viewField->get_list(groupId).size());
+        return static_cast<uint32_t>(viewField->get_list(groupId).size());
     }
     catch(const runtime_error& e)
     {
@@ -172,7 +173,7 @@ constexpr char APP_TAG[] = "FieldController";
     }
 }
 
--(nullable Field*)getFiled:(uint32_t)groupId
+-(nullable Field*)get:(int64_t)groupId
 {
     auto&&field_opt = viewField->get(groupId);
     if(field_opt)

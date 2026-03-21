@@ -26,20 +26,20 @@ final class Timeout4Logout {
     
     static public let shared = Timeout4Logout()
     
-    private var timerAccelerometer = Timer()
+    
     
     private let motionManager = CMMotionManager()
-    private var motionManagerSamplingCursor = 0
-    private let motionManagerSamplingMax = 100
-    private var motionManagerX : [Double]
-    private var motionManagerY : [Double]
-    private var motionManagerZ : [Double]
+    var magnitude : Double = 0.0
     
-    private let k = 0.3
+    private let k = 1.3
    
+    private var timerAccelerometer = Timer()
+    
     private var timerReady : Bool = false
     private var timerRunning : Bool = false
-    private var timer : Timer?
+    private var timer = Timer()
+    
+
     
     var _callback : Callback = {}
     var callback : Callback = {} {
@@ -51,38 +51,33 @@ final class Timeout4Logout {
     
     init() {
         motionManager.startAccelerometerUpdates()
-        motionManagerX = [Double](repeating: 0, count: motionManagerSamplingMax)
-        motionManagerY = [Double](repeating: 0, count: motionManagerSamplingMax)
-        motionManagerZ = [Double](repeating: 0, count: motionManagerSamplingMax)
-
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: timerCallback)
-        
-    }
-
-    
-    public func start() {
-        timerRunning = true
         
         timerAccelerometer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             if let data = self.motionManager.accelerometerData {
-                
-                if self.motionManagerX.count >= self.motionManagerSamplingMax {
-                    self.motionManagerSamplingCursor = 0
-                }
-                self.motionManagerX[self.motionManagerSamplingCursor] = data.acceleration.x
-                self.motionManagerY[self.motionManagerSamplingCursor] = data.acceleration.y
-                self.motionManagerZ[self.motionManagerSamplingCursor] = data.acceleration.z
-                
-                print(data.acceleration.x)
-                print(data.acceleration.y)
-                print(data.acceleration.z)
-                
-                self.motionManagerSamplingCursor += 1
+                self.magnitude = sqrt(pow(data.acceleration.x, 2) + pow(data.acceleration.y, 2) + pow(data.acceleration.z, 2))
             }
         }
         RunLoop.current.add(timerAccelerometer, forMode: RunLoop.Mode.common)
         
-        timer?.fire()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: timerCallback)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+    }
+
+    
+    public func start() {
+        UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
+        
+        if !timer.isValid {
+            DispatchQueue.main.async {
+                self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: self.timerCallback)
+                RunLoop.main.add(self.timer, forMode: RunLoop.Mode.common)
+                self.timerRunning = true
+                self.timer.fire()
+            }
+        } else {
+            timerRunning = true
+            timer.fire()
+        }
     }
     
     
@@ -91,8 +86,8 @@ final class Timeout4Logout {
         if !timerReady {
             return
         }
-        timer?.invalidate()
-        timerAccelerometer.invalidate()
+        timer.invalidate()
+        timerRunning = false
     }
     
     @inlinable
@@ -109,38 +104,31 @@ final class Timeout4Logout {
     }
 
     private func timerCallback(_ timer: Timer) {
-        if !timerReady {
+        if !timerReady || !timerRunning {
             return
         }
         
-        
         var timerTimeout = 0;
-        if motionManagerX.reduce(0, { $0 + $1 }) > k  {
+        if magnitude > k  {
             UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
             timerTimeout = sessionTimeoutInSeconds
         } else {
             timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
         }
-        
-        if motionManagerY.reduce(0, { $0 + $1 }) > k  {
-            UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
-            timerTimeout = sessionTimeoutInSeconds
-        } else {
-            timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
-        }
-        
-        if motionManagerZ.reduce(0, { $0 + $1 }) > k  {
-            UserDefaults.standard.set(sessionTimeoutInSeconds, forKey: "timeout4logout")
-            timerTimeout = sessionTimeoutInSeconds
-        } else {
-            timerTimeout = UserDefaults.standard.integer(forKey: "timeout4logout")
-        }
+
+#if DEBUG
+        print("Timeout: \(timerTimeout), Running: \(timerRunning)")
+#endif
         
         timerTimeout -= 1
         if timerTimeout <= 0 {
+#if DEBUG
+            print("TIMEOUT - invalidating timer and calling callback")
+#endif
             timer.invalidate()
-            _callback()
+            timerRunning = false
             UserDefaults.standard.set(0, forKey: "timeout4logout")
+            _callback()
         } else {
             UserDefaults.standard.set(timerTimeout, forKey: "timeout4logout")
         }

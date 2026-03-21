@@ -247,7 +247,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                 if let group = tuple.group {
                     
                     DispatchQueue.global(qos: .background).async {
-                        self.groupController.delGroup(group)
+                        self.groupController.del(group)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             self.reloadList(self.group._id)
@@ -257,7 +257,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                     
                 } else if let field = tuple.field {
                     DispatchQueue.global(qos: .background).async {
-                        self.fieldController.delField(field)
+                        self.fieldController.del(field)
                         DispatchQueue.main.async {
                             SwiftSpinner.hide()
                             self.reloadList(self.group._id)
@@ -340,14 +340,14 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Method
 
-    private func reloadList(_ groupId: UInt32, search : String = "") {
+    private func reloadList(_ groupId: Int64, search : String = "") {
         tupleList.removeAll()
         
         //do {
-            groupController.getListGroup(groupId, search: search).forEach {
+            groupController.getList(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
             }
-            fieldController.getListField(groupId, search: search).forEach {
+            fieldController.getList(groupId, search: search).forEach {
                 tupleList.append((group: nil, field: $0))
             }
         //} catch {
@@ -464,7 +464,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                             }
                             
-                            if Globals.shared().sendData() == .OK {
+                            if Pocket.shared().sendData() == .OK {
                                 DispatchQueue.main.async {
                                     SwiftSpinner.hide()
                                     self.reloadList(self.group._id)
@@ -552,7 +552,7 @@ final class GroupsFieldsVC: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction private func actBtnExit(_ sender: UIButton) {
         onExit = true
         actViwMenuOpenOrClose()
-        Globals.shared().logout(false)
+        Pocket.shared().logout(false)
         keychain.delete(KEY_EMAIL)
         keychain.delete(KEY_PASSWD)
         navigationController?.popViewController(animated: true)

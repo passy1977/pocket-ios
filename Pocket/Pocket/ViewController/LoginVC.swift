@@ -91,7 +91,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
 
         } else {
             setForm(nil)
-            performSegue(withIdentifier: "newUser", sender: self)
+            //performSegue(withIdentifier: "newUser", sender: self)
         }
     }
     
@@ -151,7 +151,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
     
     @inline(__always)
     private func checkLogin() {
-        btnLogin.isEnabled = !(txtEmail.text?.isEmpty ?? false) && !(txtPasswd.text?.isEmpty ?? false) 
+        btnLogin.isEnabled = !(txtEmail.text?.isEmpty ?? false) && !(txtPasswd.text?.isEmpty ?? false)
     }
     
     
@@ -180,7 +180,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        if !Globals.shared().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
+        if !Pocket.shared().initialize(url.absoluteString, configJson: nil, passwd: passwd) {
             DispatchQueue.main.async {
                 self.txtPasswd.text = ""
                 SwiftSpinner.hide()
@@ -190,13 +190,13 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
         DispatchQueue.global(qos: .background).async {
-            let rc = Globals.shared().login(email, passwd: passwd)
+            let rc = Pocket.shared().login(email, passwd: passwd)
             DispatchQueue.main.async {
                 SwiftSpinner.hide()
             }
             if(rc == .OK)
             {
-                if(Globals.shared().user.status == .ACTIVE)
+                if(Pocket.shared().user.status == .ACTIVE)
                 {
                     Timeout4Logout.shared.start()
                     
@@ -250,15 +250,16 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
                     completion(false)
                     
                     if let error = error {
-                        print("Errore di autenticazione: \(error.localizedDescription)")
+                        print("Auth error: \(error.localizedDescription)")
                     }
                 }
             })
         } else {
             print("Device don't support Touch ID or Face ID");
+            
             completion(false)
             
-            print("Il dispositivo non supporta la funzionalità di autenticazione biometrica.")
+            print("The device don'tsupport the biometric authentication")
         }
     }
 

@@ -52,7 +52,6 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
             txtPasswdConfirm.text = passwd
         }
 #endif
-        
     }
     
     
@@ -93,7 +92,7 @@ final class AddNewUserVC: UITableViewController, UITextFieldDelegate {
             return
         }
         
-        if !Globals.shared().initialize(url.absoluteString, configJson: txtViewDeviceJson.text, passwd: passwd) {
+        if !Pocket.shared().initialize(url.absoluteString, configJson: txtViewDeviceJson.text, passwd: passwd) {
             txtViewDeviceJson.text.removeAll()
             alertShow(self, message: "Server Data wrong format")
             return

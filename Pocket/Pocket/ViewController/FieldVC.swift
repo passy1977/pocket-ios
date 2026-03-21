@@ -87,6 +87,8 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
     // MARK: - Act
     @IBAction private func actBtnAdd(_ sender: UIBarButtonItem) {
             
+        Timeout4Logout.shared.stop()
+        
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 SwiftSpinner.show("Synchronize to server...")
@@ -100,10 +102,14 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
             field.title = txtTitle.text ?? ""
             field.value = txtValue.text ?? ""
             field.isHidden = switchIsHidden.isOn
+            
             GroupsFieldsVC.overrideSearch = field.title
+            
             DispatchQueue.global(qos: .background).async {
-                let _ = self.fieldController?.persistField(field)
+                
+                let _ = self.fieldController?.persist(field)
                 DispatchQueue.main.async {
+                    Timeout4Logout.shared.start()
                     SwiftSpinner.hide()
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -113,16 +119,21 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
                 field.title = txtTitle.text ?? ""
                 field.value = txtValue.text ?? ""
                 field.isHidden = switchIsHidden.isOn
+                field.synchronized = false
                 GroupsFieldsVC.overrideSearch = field.title
+
                 DispatchQueue.global(qos: .background).async {
-                    let _ = self.fieldController?.persistField(field)
+                    let _ = self.fieldController?.persist(field)
                     DispatchQueue.main.async {
+                        Timeout4Logout.shared.start()
                         SwiftSpinner.hide()
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
             }
         }
+        
+        
     }
     
     @IBAction private func actTxtFieldChange(_ sender: UITextField) {

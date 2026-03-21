@@ -34,8 +34,8 @@ class CopyMoveVC: UITableViewController {
     
     public var field : Field? = nil
     public var group : Group? = nil
-    public var showFieldIdGroup : UInt32? = nil
-    public var showGroupIdGroup : UInt32? = nil
+    public var showFieldIdGroup : Int64? = nil
+    public var showGroupIdGroup : Int64? = nil
     
     private var fieldForSegue : Field? = nil
     private var groupForSegue : Group? = nil
@@ -62,10 +62,10 @@ class CopyMoveVC: UITableViewController {
             reloadList(id)
         } else if let id = showGroupIdGroup {
             reloadList(id)
-        } else if let group = group, let _ = group.groupId as UInt32? {
+        } else if let group = group, let _ = group.groupId as Int64? {
             title = group.title
             reloadList(0)
-        } else if let field = field, let _ = field.groupId as UInt32? {
+        } else if let field = field, let _ = field.groupId as Int64? {
             title = field.title
             reloadList(0)
         }
@@ -136,7 +136,7 @@ class CopyMoveVC: UITableViewController {
             navigationController?.popViewController(animated: true)
         } else {
             if let group = tupleList[indexPath.row].group {
-                groupForSegue = groupController?.getGroup(group._id)
+                groupForSegue = groupController?.get(group._id)
             } else if let _ = tupleList[indexPath.row].field {
                 alertShow(self, message: "You are in the lowest level of the hierarchy. You cannot move or copy further")
             }
@@ -159,16 +159,16 @@ class CopyMoveVC: UITableViewController {
     
     // MARK: - Method
 
-    private func reloadList(_ groupId: UInt32, search : String = "") {
+    private func reloadList(_ groupId: Int64, search : String = "") {
         tupleList.removeAll()
         if showGroupIdGroup != nil || showFieldIdGroup != nil {
             tupleList.append((group: nil, field: nil))
         }
         //do {
-            groupController?.getListGroup(groupId, search: search).forEach {
+            groupController?.getList(groupId, search: search).forEach {
                 tupleList.append((group: $0, field: nil))
             }
-            fieldController?.getListField(groupId, search: search).forEach {
+            fieldController?.getList(groupId, search: search).forEach {
                 tupleList.append((group: nil, field: $0))
             }
         //} catch {
@@ -182,10 +182,10 @@ class CopyMoveVC: UITableViewController {
     
     @IBAction private func actMenuBtnCopy(_ sender: UIBarButtonItem) {
         var ret = true
-        if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
-        } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
+        if let group = group, let id = group._id as Int64?, let showGroupIdGroup = showGroupIdGroup {
+            ret = Pocket.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: false)
+        } else if let field = field, let id = field._id as Int64?, let showGroupIdGroup = showGroupIdGroup {
+            ret = Pocket.shared().copyField(id, groupIdDst: showGroupIdGroup, move: false)
         }
         if ret {
             for _ in 0 ..< navigationDepth + 1 {
@@ -198,10 +198,10 @@ class CopyMoveVC: UITableViewController {
     
     @IBAction private func actMenuBtnMove(_ sender: UIBarButtonItem) {
         var ret = true
-        if let group = group, let id = group._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: true)
-        } else if let field = field, let id = field._id as UInt32?, let showGroupIdGroup = showGroupIdGroup {
-            ret = Globals.shared().copyField(id, groupIdDst: showGroupIdGroup, move: true)
+        if let group = group, let id = group._id as Int64?, let showGroupIdGroup = showGroupIdGroup {
+            ret = Pocket.shared().copyGroup(id, groupIdDst: showGroupIdGroup, move: true)
+        } else if let field = field, let id = field._id as Int64?, let showGroupIdGroup = showGroupIdGroup {
+            ret = Pocket.shared().copyField(id, groupIdDst: showGroupIdGroup, move: true)
         }
         if ret {
             for _ in 0 ..< navigationDepth + 1 {

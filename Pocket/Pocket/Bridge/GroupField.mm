@@ -48,11 +48,11 @@ using namespace std;
     return self;
 }
 
--(instancetype)initWithId:(uint32_t)id
-                serverId:(uint32_t)serverId
-                userId:(uint32_t)userId
-                groupId:(uint32_t)groupId
-                serverGroupId:(uint32_t)serverGroupId
+-(instancetype)initWithId:(int64_t)id
+                serverId:(int64_t)serverId
+                userId:(int64_t)userId
+                groupId:(int64_t)groupId
+                serverGroupId:(int64_t)serverGroupId
                 title:(nonnull NSString*)title
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized
@@ -98,10 +98,10 @@ GroupField* convert(const group_field::ptr &group_field)
 {
     auto ret = [GroupField new];
     
-    ret._id = static_cast<uint32_t>(group_field->id);
-    ret.serverId = static_cast<uint32_t>(group_field->server_id);
-    ret.groupId = static_cast<uint32_t>(group_field->group_id);
-    ret.serverGroupId = static_cast<uint32_t>(group_field->server_group_id);
+    ret._id = static_cast<int64_t>(group_field->id);
+    ret.serverId = static_cast<int64_t>(group_field->server_id);
+    ret.groupId = static_cast<int64_t>(group_field->group_id);
+    ret.serverGroupId = static_cast<int64_t>(group_field->server_group_id);
     ret.title = [NSString stringWithCString:group_field->title.c_str() encoding:NSUTF8StringEncoding];
     ret.isHidden = group_field->is_hidden;
     ret.synchronized = group_field->synchronized;

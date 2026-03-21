@@ -27,10 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupField : NSObject
 @property BOOL newInsertion;
-@property uint32_t _id;
-@property uint32_t serverId;
-@property uint32_t groupId;
-@property uint32_t serverGroupId;
+@property int64_t _id;
+@property int64_t serverId;
+@property int64_t groupId;
+@property int64_t serverGroupId;
 @property NSString* title;
 @property BOOL isHidden;
 @property BOOL synchronized;
@@ -39,11 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 -(instancetype)init;
--(instancetype)initWithId:(uint32_t)id
-                serverId:(uint32_t)serverId
-                userId:(uint32_t)userId
-                groupId:(uint32_t)groupId
-                serverGroupId:(uint32_t)serverGroupId
+-(instancetype)initWithId:(int64_t)id
+                serverId:(int64_t)serverId
+                userId:(int64_t)userId
+                groupId:(int64_t)groupId
+                serverGroupId:(int64_t)serverGroupId
                 title:(nonnull NSString*)title
                 isHidden:(BOOL)isHidden
                 synchronized:(BOOL)synchronized

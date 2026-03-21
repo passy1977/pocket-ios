@@ -19,7 +19,7 @@
 
 
 
-#import "Globals.h"
+#import "Pocket.h"
 #import "User.h"
 #import "Constants.h"
 
@@ -48,17 +48,17 @@ User* convert(const user::ptr &user);
 namespace
 {
 
-Globals* singleton = nullptr;
-constexpr char APP_TAG[] = "Globals";
+Pocket* singleton = nullptr;
+constexpr char APP_TAG[] = "Pocket";
 
 }
  
-@interface Globals ()
+@interface Pocket ()
 @property class session* session;
 @property class aes* aes;
 @end
 
-@implementation Globals
+@implementation Pocket
 @synthesize session;
 @synthesize user;
 @synthesize aes;
@@ -90,11 +90,11 @@ constexpr char APP_TAG[] = "Globals";
 
 }
 
-+(Globals*)shared
++(Pocket*)shared
 {
     if(singleton == nullptr)
     {
-        singleton = [Globals new];
+        singleton = [Pocket new];
     }
     return singleton;
 }
@@ -318,7 +318,7 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(BOOL)copyGroup:(uint32_t)groupIdSrc groupIdDst:(uint32_t)groupIdDst move:(BOOL)move;
+-(BOOL)copyGroup:(int64_t)groupIdSrc groupIdDst:(int64_t)groupIdDst move:(BOOL)move;
 {
     try
     {
@@ -344,7 +344,7 @@ constexpr char APP_TAG[] = "Globals";
     }
 }
 
--(BOOL)copyField:(uint32_t)fieldIdSrc groupIdDst:(uint32_t)groupIdDst move:(BOOL)move
+-(BOOL)copyField:(int64_t)fieldIdSrc groupIdDst:(int64_t)groupIdDst move:(BOOL)move
 {
     try
     {

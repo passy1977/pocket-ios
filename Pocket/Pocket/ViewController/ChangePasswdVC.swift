@@ -50,7 +50,7 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
             return;
         }
         
-        if oldPasswd != Globals.shared().user.passwd {
+        if oldPasswd != Pocket.shared().user.passwd {
             alertShow(self, message: "Wrong old passwd")
             return
         }
@@ -77,11 +77,11 @@ class ChangePasswdVC: UITableViewController, UITextFieldDelegate {
             SwiftSpinner.show("Changing passwd...")
             
             DispatchQueue.global(qos: .background).async {
-                Globals.shared().changePasswd(url.path, newPasswd: newPasswd)
+                Pocket.shared().changePasswd(url.path, newPasswd: newPasswd)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     SwiftSpinner.hide()
                     self.keychain.delete(KEY_PASSWD)
-                    Globals.shared().logout(true)
+                    Pocket.shared().logout(true)
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             }

@@ -21,7 +21,7 @@
 #import <Foundation/Foundation.h>
 #endif
 
-#import "Globals.h"
+#import "Pocket.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)init;
 -(void)initialize;
 
--(nonnull NSArray<Field*>*)getListField:(uint32_t)groupId search:(nonnull const NSString*)search;
--(Stat)persistField:(nonnull const Field*)field;
--(Stat)delField:(Field*)field;
--(int32_t)sizeFiled:(uint32_t)groupId;
--(nullable Field*)getFiled:(uint32_t)groupId;
+-(nonnull NSArray<Field*>*)getList:(int64_t)groupId search:(nonnull const NSString*)search;
+-(Stat)persist:(nonnull const Field*)field;
+-(Stat)del:(Field*)field;
+-(uint32_t)size:(int64_t)groupId;
+-(nullable Field*)get:(int64_t)groupId;
 
 @end
 
