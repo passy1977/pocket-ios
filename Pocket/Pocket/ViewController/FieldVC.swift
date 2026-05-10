@@ -148,7 +148,6 @@ final class FieldVC: UIViewController, UITextFieldDelegate {
         if sender == txtTitle {
             txtValue.isEnabled = !text.isEmpty
             btnAdd.isEnabled = !text.isEmpty
-            switchIsHidden.isEnabled = !text.isEmpty
         }
     }
     

@@ -259,7 +259,7 @@ final class LoginVC: UIViewController, UITextFieldDelegate {
             
             completion(false)
             
-            print("The device don'tsupport the biometric authentication")
+            print("The device don't support the biometric authentication")
         }
     }
 
